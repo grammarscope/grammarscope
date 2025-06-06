@@ -1,0 +1,73 @@
+<!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:title="@string/pref_header_downloaded">
+
+	<!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to dismiss it. -->
+	<!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+
+	<PreferenceCategory android:title="@string/pref_datapack_category">
+		<Preference
+			android:key="pref_datapack_name"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_name" />
+
+		<Preference
+			android:key="pref_datapack_date"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_date" />
+
+		<Preference
+			android:key="pref_datapack_size"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_size" />
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/pref_source_category">
+		<Preference
+			android:key="pref_datapack_source"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_source" />
+
+		<Preference
+			android:key="pref_datapack_source_type"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_source_type" />
+
+		<Preference
+			android:key="pref_datapack_source_date"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_source_date" />
+
+		<Preference
+			android:key="pref_datapack_source_size"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_source_size" />
+
+		<Preference
+			android:key="pref_datapack_source_etag"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_source_etag" />
+
+		<Preference
+			android:key="pref_datapack_source_version"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_source_version" />
+
+		<Preference
+			android:key="pref_datapack_source_static_version"
+			android:selectable="false"
+			android:title="@string/pref_title_datapack_source_static_version" />
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/pref_control_category">
+		<Preference
+			android:key="pref_datapack_clear"
+			android:summary="@string/description_datapack_clear"
+			android:title="@string/title_datapack_clear" />
+	</PreferenceCategory>
+
+</PreferenceScreen>

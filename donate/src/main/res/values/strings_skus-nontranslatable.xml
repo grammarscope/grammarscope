@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+	<string-array name="skus">
+
+		<item>sku_1</item>
+		<item>sku_2</item>
+		<item>sku_3</item>
+		<item>sku_4</item>
+		<item>sku_5</item>
+
+	</string-array>
+
+
+</resources>

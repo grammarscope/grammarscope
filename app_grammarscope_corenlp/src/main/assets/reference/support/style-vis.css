@@ -1,0 +1,165 @@
+/* -*- Mode: CSS; tab-width: 2; indent-tabs-mode: nil; -*- */
+/* Styling for annotations */
+svg {
+	width: 100%;
+	height: 1px;
+	border: 1px solid #7fa2ff;
+	font-size: 15px;
+}
+
+svg.reselect {
+	border: 1px solid #ff3333;
+}
+
+/* "basic" font */
+text {
+	font-size: 13px;
+	font-family: 'Liberation Sans', sans-serif;
+}
+
+path {
+	pointer-events: none;
+}
+
+.glyph {
+	fill: #444444;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+/* . S P A N  */
+
+/* "basic" font */
+.span text {
+	/*  font-size: 10.5px; */
+	font-size: 10px;
+	text-anchor: middle;
+	font-family: sans-serif;
+	pointer-events: none;
+}
+
+.span rect {
+	stroke-width: 0.75;
+}
+
+.span rect.badTarget {
+	stroke: #f00;
+}
+
+.span path {
+	fill: none;
+}
+
+.span path.curly {
+	/* 'stroke' def here blocks 'stroke' set in JS..? */
+	/* stroke: grey; */
+	stroke-width: 0.5;
+}
+
+.span path.boxcross {
+	stroke: black;
+	opacity: 0.5;
+}
+
+.span.highlight rect {
+	stroke-width: 2px;
+}
+
+/* S H A D O W */
+.shadow {
+	-moz-box-shadow: 5px 5px 5px #444444;
+	-webkit-box-shadow: 5px 5px 5px #444444;
+	box-shadow: 5px 5px 5px #444444;
+}
+
+/* A R C S */
+.arcs text {
+	font-size: 9px;
+	text-anchor: middle;
+	font-family: sans-serif;
+	/* dominant-baseline: central; */
+	cursor: default;
+}
+
+.arcs .highlight text {
+	stroke: black;
+	fill: black;
+	stroke-width: 0.5;
+}
+
+.arcs path {
+	stroke: #989898;
+	fill: none;
+	stroke-width: 1;
+}
+
+.arcs .highlight path {
+	stroke: #000000;
+	stroke-width: 1.5;
+	opacity: 1;
+}
+
+/* A T T R I B U T E S */
+.attribute_warning {
+	baseline-shift: super;
+	font-size: 70%;
+}
+
+/* B A C K G R O U N D */
+.background0 {
+	stroke: none;
+	fill: #ffffff;
+}
+
+.background1 {
+	stroke: none;
+	fill: #eeeeee;
+}
+
+/* S E N T N U M */
+.sentnum text {
+	display: none; /* sentence number disabled for the time being. */
+	fill: #999999;
+	text-anchor: end;
+}
+
+.sentnum path {
+	display: none; /* sentence number disabled for the time being. */
+	stroke: #999999;
+	stroke-width: 1px;
+}
+
+/* O T H E R */
+@font-face {
+	font-family: 'sans Caption';
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* E M B E D D I N G */
+pre.embedding {
+	padding: 0;
+	border: none;
+	overflow: visible;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	background: none;
+	white-space: normal;
+}
+
+/* same margins for <div> and <pre><div> variants */
+.embedding, .embedding.embedded-wrapper {
+	margin: 0.5em 0;
+}
+
+pre.embedded-wrapper, code.embedded-wrapper, embedded-wrapper {
+	margin: 0;
+	padding: 0;
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	background: none;
+	white-space: normal;
+}

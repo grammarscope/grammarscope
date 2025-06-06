@@ -1,0 +1,8 @@
+<resources>
+	<string name="app_name">Dependency parser</string>
+	<string name="actionbar_title">Dependency parser</string>
+	<string name="actionbar_subtitle">(engine)</string>
+
+	<string name="model_is">Model is %s</string>
+	<string name="language_is">Language is %s</string>
+</resources>

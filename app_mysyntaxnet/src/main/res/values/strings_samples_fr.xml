@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="samples_french" translatable="false">
+		<item>Bob lui a donné la pizza qu\'elle mange.</item>
+		<item>Je ne connais pas la femme qu\'il aime.</item>
+		<item>C\'est intéressant de voir comment il progresse.</item>
+		<item>Ce n\'est pas le film que j\'ai vu.</item>
+		<item>Je veux qu\'il déplace sa voiture.</item>
+	</string-array>
+
+</resources>

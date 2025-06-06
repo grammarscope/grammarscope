@@ -1,0 +1,62 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:title="@string/pref_header_semantics">
+
+	<PreferenceCategory
+		android:title="@string/title_category_text_dependency"
+		app:icon="@drawable/ic_settings_palette"
+		app:iconSpaceReserved="true">
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="root_color"
+			android:summary="@string/pref_description_root_color"
+			android:title="@string/pref_title_root_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="label_color"
+			android:summary="@string/pref_description_label_color"
+			android:title="@string/pref_title_label_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="enhanced_label_color"
+			android:summary="@string/pref_description_enhanced_label_color"
+			android:title="@string/pref_title_enhanced_label_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="head_color"
+			android:summary="@string/pref_description_head_color"
+			android:title="@string/pref_title_head_color"
+			app:allowNone="true"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="dependent_color"
+			android:summary="@string/pref_description_dependent_color"
+			android:title="@string/pref_title_dependent_color"
+			app:allowNone="true"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+	</PreferenceCategory>
+
+</PreferenceScreen>

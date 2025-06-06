@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/english"
+		android:checkable="true"
+		android:title="@string/title_english"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/french"
+		android:checkable="true"
+		android:title="@string/title_french"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/sample1"
+		android:title="@string/title_sample1"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/sample2"
+		android:title="@string/title_sample2"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/sample3"
+		android:title="@string/title_sample3"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/sample4"
+		android:title="@string/title_sample4"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/sample5"
+		android:title="@string/title_sample5"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/others"
+		android:title="@string/title_others"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/donate"
+		android:title="@string/title_donate"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/rate"
+		android:title="@string/action_rate"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/about"
+		android:title="@string/title_about"
+		app:showAsAction="never" />
+</menu>

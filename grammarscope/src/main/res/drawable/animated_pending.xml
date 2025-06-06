@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+	android:drawable="@drawable/gears">
+	<target
+		android:name="gearsGroup"
+		android:animation="@animator/animation_rotating" />
+</animated-vector>

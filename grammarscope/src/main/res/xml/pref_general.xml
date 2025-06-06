@@ -1,0 +1,55 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:title="@string/pref_header_general">
+
+	<SwitchPreferenceCompat
+		android:defaultValue="true"
+		android:key="as_annotation"
+		android:summary="@string/pref_description_as_annotation"
+		android:title="@string/pref_title_as_annotation"
+		app:iconSpaceReserved="false"
+		app:singleLineTitle="false" />
+
+	<SwitchPreferenceCompat
+		android:defaultValue="@null"
+		android:key="as_graph"
+		android:summary="@string/pref_description_as_graph"
+		android:title="@string/pref_title_as_graph"
+		app:iconSpaceReserved="false"
+		app:singleLineTitle="false" />
+
+	<SwitchPreferenceCompat
+		android:defaultValue="@null"
+		android:key="as_graphs"
+		android:summary="@string/pref_description_as_graphs"
+		android:title="@string/pref_title_as_graphs"
+		app:iconSpaceReserved="false"
+		app:singleLineTitle="false" />
+
+	<SwitchPreferenceCompat
+		android:defaultValue="@null"
+		android:key="sentence_boundary_detection"
+		android:summary="@string/pref_description_sentence_boundary_detection"
+		android:title="@string/pref_title_sentence_boundary_detection"
+		app:iconSpaceReserved="false"
+		app:singleLineTitle="false" />
+
+	<org.grammarscope.ResettablePreference
+		android:key="pref_model_dir"
+		android:summary="@string/pref_description_model_dir"
+		android:title="@string/pref_title_datapack_dir"
+		android:widgetLayout="@layout/bn_reset"
+		app:iconSpaceReserved="false" />
+
+	<Preference
+		android:summary="@string/pref_description_labels"
+		android:title="@string/pref_title_labels"
+		app:iconSpaceReserved="false">
+		<!--suppress AndroidDomInspection -->
+		<intent
+			android:action="android.intent.action.VIEW"
+			android:targetClass="org.grammarscope.LabelsActivity"
+			android:targetPackage="@string/app_package" />
+	</Preference>
+
+</PreferenceScreen>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="about_app_title" tools:keep="@string/about_app_title">GrammarScope</string>
+	<string name="about_app_logo_description" tools:keep="@string/about_app_logo_description">GrammarScope application</string>
+
+	<string name="about_corenlp_title" tools:keep="@string/about_corenlp_title">CoreNlp</string>
+	<string name="about_corenlp_text" tools:keep="@string/about_corenlp_text">CoreNlp is a trainable pipeline for tokenization, tagging, lemmatization and dependency parsing. </string>
+	<string name="about_corenlp_author" tools:keep="@string/about_corenlp_author">CoreNlp team, the Natural Language Processing Group at Stanford University</string>
+	<string name="about_corenlp_copyright" tools:keep="@string/about_corenlp_copyright">GNU General Public License version 3</string>
+	<string name="about_corenlp_version" tools:keep="@string/about_corenlp_version">4.5.9</string>
+
+</resources>

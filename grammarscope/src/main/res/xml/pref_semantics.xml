@@ -1,0 +1,62 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:title="@string/pref_header_semantics">
+
+	<PreferenceCategory
+		android:title="@string/title_category_predicate_subject_object"
+		app:icon="@drawable/ic_settings_palette"
+		app:iconSpaceReserved="true">
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="predicate_color"
+			android:summary="@string/pref_description_predicate_color"
+			android:title="@string/pref_title_predicate_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="subject_color"
+			android:summary="@string/pref_description_subject_color"
+			android:title="@string/pref_title_subject_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="object_color"
+			android:summary="@string/pref_description_object_color"
+			android:title="@string/pref_title_object_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="term_modifying_subpredicate_color"
+			android:summary="@string/pref_description_term_modifying_predicate_color"
+			android:title="@string/pref_title_term_modifying_predicate_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:key="predicate_modifying_subpredicate_color"
+			android:summary="@string/pref_description_predicate_modifying_predicate_color"
+			android:title="@string/pref_title_predicate_modifying_predicate_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette_200_500_800"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+	</PreferenceCategory>
+
+</PreferenceScreen>

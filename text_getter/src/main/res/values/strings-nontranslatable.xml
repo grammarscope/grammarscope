@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
+
+	<!-- search target -->
+	<string name="search_target" translatable="false">com.bbou.MainActivity</string>
+
+</resources>

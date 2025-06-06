@@ -1,0 +1,40 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:title="@string/pref_header_download">
+
+	<!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to dismiss it. -->
+	<!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+
+	<ListPreference
+		android:defaultValue="@string/default_download_mode"
+		android:entries="@array/download_mode_titles"
+		android:entryValues="@array/download_mode_values"
+		android:key="pref_download_mode"
+		android:negativeButtonText="@null"
+		android:positiveButtonText="@null"
+		android:title="@string/title_download_mode"
+		app:iconSpaceReserved="false" />
+
+	<EditTextPreference
+		android:defaultValue="@string/default_download_repo"
+		android:inputType="text|textUri"
+		android:key="pref_repo"
+		android:maxLines="1"
+		android:selectAllOnFocus="true"
+		android:singleLine="true"
+		android:title="@string/pref_title_datapack_repo"
+		app:iconSpaceReserved="false" />
+
+	<Preference
+		android:key="pref_cache"
+		android:selectable="false"
+		android:title="@string/pref_title_cache"
+		app:iconSpaceReserved="false" />
+
+	<Preference
+		android:key="pref_datapack_dir"
+		android:selectable="false"
+		android:title="@string/pref_title_datapack_dir"
+		app:iconSpaceReserved="false" />
+
+</PreferenceScreen>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="app_name">GrammarScope</string>
+
+	<string name="actionbar_title" tools:keep="@string/actionbar_title">GrammarScope</string>
+	<string name="actionbar_subtitle" tools:keep="@string/actionbar_subtitle">SyntaxNet</string>
+
+	<string name="description_splash" tools:keep="@string/description_splash">powered by SyntaxNet</string>
+
+</resources>

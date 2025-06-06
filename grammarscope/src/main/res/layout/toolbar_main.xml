@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/toolbar"
+	android:layout_width="match_parent"
+	android:layout_height="?attr/actionBarSize"
+	android:elevation="4dp"
+	android:theme="?attr/actionBarTheme"
+	app:popupTheme="?attr/actionBarPopupTheme"
+	tools:ignore="UnusedAttribute|InconsistentLayout">
+
+	<ImageButton
+		android:id="@+id/loaded_indicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical|end"
+		android:layout_marginStart="3dp"
+		android:layout_marginEnd="10dp"
+		android:background="@android:color/transparent"
+		android:contentDescription="@string/app_name"
+		android:src="@drawable/ic_warn" />
+
+	<!--
+	<ImageButton
+		android:id="@+id/bound_indicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical|end"
+		android:layout_marginStart="10dp"
+		android:layout_marginEnd="3dp"
+		android:background="@android:color/transparent"
+		android:contentDescription="@string/app_name" />
+	-->
+
+	<TextView
+		android:id="@+id/lang_indicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="end"
+		android:background="@null"
+		android:drawablePadding="5dp"
+		android:elevation="0dp"
+		android:text=""
+		android:textAppearance="@style/TextAppearance.AppCompat" />
+
+</androidx.appcompat.widget.Toolbar>

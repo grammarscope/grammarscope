@@ -1,0 +1,30 @@
+<resources>
+
+	<!-- Icon -->
+	<string-array name="pref_icon_values">
+		<item>NULL</item>
+		<item>GRADIENT</item>
+		<item>BULLET_RED</item>
+		<item>BULLET_GREEN</item>
+		<item>BULLET_BLUE</item>
+		<item>asterisk.png</item>
+		<item>flower1.png</item>
+		<item>flower2.png</item>
+		<item>flower3.png</item>
+		<item>flower4.png</item>
+		<item>flower5.png</item>
+		<item>flower6.png</item>
+		<item>flower7.png</item>
+		<item>flower8.png</item>
+		<item>sun1.png</item>
+		<item>sun2.png</item>
+		<item>sphere_blue.png</item>
+		<item>sphere_cyan.png</item>
+		<item>sphere_darkblue.png</item>
+		<item>sphere_gold.png</item>
+		<item>sphere_gray.png</item>
+		<item>sphere_magenta.png</item>
+		<item>sphere_red.png</item>
+	</string-array>
+
+</resources>

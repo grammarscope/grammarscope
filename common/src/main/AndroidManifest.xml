@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<application
+		android:allowBackup="true"
+		android:supportsRtl="true" >
+
+		<!--		<activity-->
+		<!--			android:name="org.depparse.common.WebActivity"-->
+		<!--			android:label="@string/title_activity_web">-->
+		<!--		</activity>-->
+
+		<activity
+			android:name="org.depparse.common.AboutActivity"
+			android:label="@string/title_activity_about" />
+
+		<activity
+			android:name="com.bbou.others.OthersActivity"
+			android:label="@string/title_activity_others" />
+
+	</application>
+
+</manifest>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+    <color name="arrowStart">#FFffffff</color>
+    <color name="arrowTip">#FFffffff</color>
+    <color name="edge">#FFffffff</color>
+    <color name="label">#FFffffff</color>
+    <color name="overflow">#494949</color>
+    <color name="pos">#FFffffff</color>
+    <color name="root">#FFAB00</color>
+    <color name="span">#FFffffff</color>
+    <color name="stripes">#20ffffff</color>
+
+</resources>

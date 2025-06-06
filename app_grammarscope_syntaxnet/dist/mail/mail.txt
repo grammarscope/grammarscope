@@ -1,0 +1,24 @@
+Dependency parsing : GrammarScope brings Google's SyntaxNet ML to the mobile.
+
+The free app infers dependency parses of natural language sentences and offers visualisation (both graph and text). AFAIK it's a first!
+
+It uses Google's SyntaxNet framework, based on Tensorflow deep-learning core. 
+
+It works on middle to high-end Android phones, exclusively relying on onboard computing power (no internet connection) and is brisk enough (see screencast). For the record, I tested on a S7 that doesn't have neural chips.
+
+It's not intended to process whole texts and has SyntaxNet's limitation of working at sentence level, though I added OpenNLP's Sentence Boundary Detection for English and French.
+
+Currently it supports the different flavours of English models, French as builtin languages but extra ready-to-use trained models can be downloaded to be used within the app : Chinese, Hindi, Urdu, Spanish and German. The set can be easily extended to encompass the 70 languages available at universaldependencies.org . The models now available are those to be found as the Parseysaurus baselines in the Conll17 shared task.
+
+It's free for the linguist to use: enjoy!
+
+https://play.google.com/store/apps/details?id=org.grammarscope
+
+See also the real-time screencast:
+https://youtu.be/wQPX0MV1dko
+
+NB
+
+There exist
+- an earlier stripped-down version under the name MySyntaxNet (they share some code)
+- a GrammarScope desktop app of the same name but based on Stanford's CoreNLP as its core (they share no code)

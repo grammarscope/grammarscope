@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+	<color name="graph_backColor">#FFFFFF</color>
+
+	<color name="graph_vertexColor">#F9A825</color>
+	<color name="graph_rootVertexColor">#FF0000</color>
+	<color name="graph_vertexLabelColor">#000000</color>
+	<color name="graph_edgeColor">#000000</color>
+	<color name="graph_edgeLabelColor">#000000</color>
+
+	<color name="graph_predicateColor">#FF0000</color>
+	<color name="graph_subjectColor">#0000FF</color>
+	<color name="graph_objectColor">#004D40</color>
+	<color name="graph_termModifyingPredicateColor">#880E4F</color>
+	<color name="graph_predicateModifyingPredicateColor">#4A148C</color>
+
+	<array name="palette_graph">
+		<item>@color/graph_backColor</item>                             <!-- backColor -->
+		<item>@color/graph_vertexColor</item>                           <!-- vertexColor -->
+		<item>@color/graph_rootVertexColor</item>                       <!-- rootVertexColor -->
+		<item>@color/graph_vertexLabelColor</item>                      <!-- vertexLabelColor -->
+		<item>@color/graph_edgeColor</item>                             <!-- edgeColor -->
+		<item>@color/graph_edgeLabelColor</item>                        <!-- edgeLabelColor -->
+		<item>@color/graph_predicateColor</item>                        <!-- predicateColor -->
+		<item>@color/graph_subjectColor</item>                          <!-- subjectColor -->
+		<item>@color/graph_objectColor</item>                           <!-- objectColor  -->
+		<item>@color/graph_termModifyingPredicateColor</item>           <!-- termModifyingPredicateColor -->
+		<item>@color/graph_predicateModifyingPredicateColor</item>      <!-- predicateModifyingPredicateColor -->
+	</array>
+
+</resources>

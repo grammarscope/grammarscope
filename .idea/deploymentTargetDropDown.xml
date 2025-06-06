@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="deploymentTargetDropDown">
+    <value>
+      <entry key="android.apps.app_grammarscope_syntaxnet">
+        <State />
+      </entry>
+      <entry key="android.apps.app_mysyntaxnet">
+        <State />
+      </entry>
+      <entry key="app_grammarscope_syntaxnet">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Medium_Phone_API_31.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-03T17:25:59.846230432Z" />
+        </State>
+      </entry>
+      <entry key="app_grammarscope_udpipe">
+        <State />
+      </entry>
+      <entry key="app_mysyntaxnet">
+        <State />
+      </entry>
+    </value>
+  </component>
+</project>

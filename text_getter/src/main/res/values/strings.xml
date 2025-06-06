@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+	<string name="app_name">TextGetter</string>
+	<string name="title_activity_gettext">Get Text</string>
+
+	<string name="description_from_document">Get text from document</string>
+	<string name="description_from_camera">Get text from camera</string>
+	<string name="description_from_image">Get text from image</string>
+
+	<string-array name="tabs">
+		<item>Text</item>
+		<item>Sentences</item>
+	</string-array>
+
+</resources>

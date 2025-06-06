@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2023. Bernard Bou
+  -->
+
+<lint>
+
+	<issue id="all">
+		<ignore path="*.svg" />
+		<!-- <ignore regexp=".*\.svg"/> -->
+	</issue>
+
+	<!-- Ignore the UnusedResources issue for the given ids -->
+	<issue id="UnusedResources">
+		<!-- not only matched against the path but also the error message -->
+		<ignore regexp=".*default_download_repo.*" />
+		<ignore regexp=".*datapack.*" />
+		<ignore regexp=".*no_url.*" />
+	</issue>
+
+	<issue id="HtmlUnknownAttribute">
+		<ignore regexp=".*/assets/reference/.*\.html" />
+	</issue>
+
+	<issue id="HtmlUnknownTag">
+		<ignore regexp=".*/assets/reference/.*\.html" />
+	</issue>
+
+	<issue id="Typos">
+		<ignore regexp=".*\-nontranslatable\.xml" />
+		<ignore path="**/androidpublisher.dat" />
+		<ignore path="**/client_secrets.json" />
+		<ignore path="**/keystore.properties" />
+		<!-- <ignore regexp=".*\-nontranslatable\.xml"/> -->
+	</issue>
+
+</lint>

@@ -1,0 +1,9 @@
+<resources>
+
+	<string name="parsing">Parsing</string>
+	<string name="pending">(pending)</string>
+
+	<string name="error_null_source">Null source</string>
+	<string name="error_null_data">Null data</string>
+
+</resources>

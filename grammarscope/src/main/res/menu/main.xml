@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<item
+		android:id="@+id/bind"
+		android:icon="@drawable/ic_bind"
+		android:title="@string/action_bind"
+		android:tag="@string/action_bind_unbind"
+		app:showAsAction="ifRoom" />
+
+	<item
+		android:id="@+id/settings"
+		android:title="@string/action_settings"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/status"
+		android:title="@string/action_status"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/engine_version"
+		android:title="@string/action_engine_version"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/model"
+		android:title="@string/action_model"
+		app:showAsAction="never"
+		tools:icon="@android:drawable/star_on">
+		<menu>
+			<item
+				android:id="@+id/download"
+				android:title="@string/action_download"
+				app:showAsAction="never" />
+
+			<item
+				android:id="@+id/builtin_english"
+				android:title="@string/action_builtin_english"
+				app:showAsAction="never" />
+
+			<item
+				android:id="@+id/builtin_french"
+				android:title="@string/action_builtin_french"
+				app:showAsAction="never" />
+
+			<item
+				android:id="@+id/model_status"
+				android:title="@string/action_model_status"
+				app:showAsAction="never" />
+
+			<item
+				android:id="@+id/update"
+				android:title="@string/action_update"
+				app:showAsAction="never" />
+
+			<!--
+			<item
+				android:id="@+id/md5"
+				android:title="@string/action_md5"
+				app:showAsAction="never"/>
+			-->
+
+			<item
+				android:id="@+id/sentences"
+				android:enabled="true"
+				android:title="@string/title_sentences"
+				android:visible="true">
+				<menu>
+					<item android:title="@string/title_sentence_1" />
+				</menu>
+			</item>
+		</menu>
+	</item>
+
+	<item
+		android:id="@+id/sentence_detect"
+		android:title="@string/action_sentence_detect"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/strip_accents"
+		android:checkable="true"
+		android:title="@string/action_strip_accents"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/labels"
+		android:title="@string/action_labels"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/help"
+		android:title="@string/action_help"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/reference"
+		android:title="@string/action_reference"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/support"
+		android:title="@string/action_support"
+		app:showAsAction="never">
+		<menu>
+			<item
+				android:id="@+id/others"
+				android:title="@string/title_others"
+				app:showAsAction="never" />
+
+			<item
+				android:id="@+id/rate"
+				android:title="@string/action_rate"
+				app:showAsAction="never" />
+
+			<item
+				android:id="@+id/donate"
+				android:title="@string/action_donate"
+				app:showAsAction="never" />
+		</menu>
+	</item>
+
+	<item
+		android:title="@string/action_theme"
+		app:showAsAction="never">
+		<menu>
+			<group
+				android:id="@+id/theme_group"
+				android:checkableBehavior="single">
+				<item
+					android:id="@+id/action_theme_system"
+					android:title="@string/action_theme_system" />
+				<item
+					android:id="@+id/action_theme_night"
+					android:title="@string/action_theme_night" />
+				<item
+					android:id="@+id/action_theme_day"
+					android:title="@string/action_theme_day" />
+			</group>
+		</menu>
+	</item>
+
+	<item
+		android:id="@+id/about"
+		android:title="@string/title_about"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/graph"
+		android:checkable="true"
+		android:title="@string/action_as_graph"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/graphs"
+		android:checkable="true"
+		android:title="@string/action_as_graphs"
+		app:showAsAction="never" />
+
+</menu>

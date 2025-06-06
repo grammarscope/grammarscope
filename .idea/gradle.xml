@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/annotations" />
+            <option value="$PROJECT_DIR$/app_grammarscope_corenlp" />
+            <option value="$PROJECT_DIR$/app_grammarscope_syntaxnet" />
+            <option value="$PROJECT_DIR$/app_grammarscope_udpipe" />
+            <option value="$PROJECT_DIR$/app_mysyntaxnet" />
+            <option value="$PROJECT_DIR$/capture" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/corenlp" />
+            <option value="$PROJECT_DIR$/corenlp_bound_server" />
+            <option value="$PROJECT_DIR$/corenlp_engine" />
+            <option value="$PROJECT_DIR$/coroutines" />
+            <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/deploy" />
+            <option value="$PROJECT_DIR$/depparse_bound_client" />
+            <option value="$PROJECT_DIR$/donate" />
+            <option value="$PROJECT_DIR$/download" />
+            <option value="$PROJECT_DIR$/download_common" />
+            <option value="$PROJECT_DIR$/grammarscope" />
+            <option value="$PROJECT_DIR$/graph" />
+            <option value="$PROJECT_DIR$/livedata" />
+            <option value="$PROJECT_DIR$/others" />
+            <option value="$PROJECT_DIR$/provider" />
+            <option value="$PROJECT_DIR$/rate" />
+            <option value="$PROJECT_DIR$/result" />
+            <option value="$PROJECT_DIR$/semantics" />
+            <option value="$PROJECT_DIR$/sentence_detector" />
+            <option value="$PROJECT_DIR$/service_bound_client" />
+            <option value="$PROJECT_DIR$/service_bound_server" />
+            <option value="$PROJECT_DIR$/service_client_iface" />
+            <option value="$PROJECT_DIR$/service_iface" />
+            <option value="$PROJECT_DIR$/syntaxnet1_jni" />
+            <option value="$PROJECT_DIR$/syntaxnet2_jni" />
+            <option value="$PROJECT_DIR$/syntaxnet_bound_server" />
+            <option value="$PROJECT_DIR$/syntaxnet_engine" />
+            <option value="$PROJECT_DIR$/text_getter" />
+            <option value="$PROJECT_DIR$/udpipe_bound_server" />
+            <option value="$PROJECT_DIR$/udpipe_engine" />
+            <option value="$PROJECT_DIR$/udpipe_jni" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

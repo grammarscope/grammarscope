@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="title_activity_web" tools:keep="@string/title_activity_web">Doc</string>
+
+</resources>

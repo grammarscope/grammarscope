@@ -1,0 +1,42 @@
+<resources>
+    <string name="status_processing">Processing</string>
+
+    <string name="pref_header_annotations">Annotations</string>
+    <string name="pref_header_summary_annotations">Annotation settings</string>
+    <string name="title_category_annotation_colors">Annotation colors</string>
+    <string name="title_category_annotation_ignore_relations">Annotation ignore</string>
+    <string name="title_category_annotation_boxes">Annotation boxes</string>
+
+    <string name="pref_description_as_annotation">Annotation</string>
+    <string name="pref_title_as_annotation">Dependencies as annotations</string>
+
+    <string name="pref_description_ignore_relations">Ignore relations: %s</string>
+    <string name="pref_description_ignore_relations_none">No relation ignored</string>
+    <string name="pref_title_ignore_relations">"Ignore</string>
+
+    <string name="pref_description_box_words">Box words in text</string>
+    <string name="pref_title_box_words">"Box words</string>
+
+    <string name="pref_description_extends_box_to_edges">Extend boxes to edges</string>
+    <string name="pref_title_extends_box_to_edges">Box edges</string>
+
+    <string name="pref_description_annotation_edge_color">Edge and arrow color</string>
+    <string name="pref_title_annotation_edge_color">Edge</string>
+
+    <string name="pref_description_annotation_label_color">Label color</string>
+    <string name="pref_title_annotation_label_color">Label</string>
+
+    <string name="pref_description_annotation_root_color">Root color</string>
+    <string name="pref_title_annotation_root_color">Root</string>
+
+    <string name="pref_description_annotation_meta_color">Meta color used in overflow, span, …</string>
+    <string name="pref_title_annotation_meta_color">Meta</string>
+
+    <string name="pref_description_annotation_relation_colors">Relation color map</string>
+    <string name="pref_title_annotation_relation_colors">Relations</string>
+
+    <string name="pref_description_pos_color">POS color in annotation</string>
+    <string name="pref_title_pos_color">POS color</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

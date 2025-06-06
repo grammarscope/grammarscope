@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- download -->
+	<string name="default_download_repo" translatable="false">https://sourceforge.net/projects/mysyntaxnet/files/current</string>
+
+</resources>

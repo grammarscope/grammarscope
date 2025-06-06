@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+    <color name="c_supertypes">#1B5E20</color>
+    <color name="c_root">#990000</color>
+    <color name="c_subj">#E65100</color>
+    <color name="c_obj">#1A237E</color>
+    <color name="c_comp">#FF66FF</color>
+    <color name="c_aux">#FFAA00</color>
+    <color name="c_clauses">#9933FF</color>
+    <color name="c_mod">#004D40</color>
+    <color name="c_func">#CC6E0F</color>
+    <color name="c_det">#FF6666</color>
+    <color name="c_conj">#880E4F</color>
+    <color name="c_mwe">#433C3C</color>
+    <color name="c_loose">#433C3C</color>
+    <color name="c_special">#433C3C</color>
+    <color name="c_other">#7C7070</color>
+    <color name="c_punct">#5D5757</color>
+</resources>

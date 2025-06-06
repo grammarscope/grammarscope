@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2023. Bernard Bou
+  -->
+
+<resources>
+
+	<string name="action_copy_datapack_from_file">Copy model from …</string>
+	<string name="action_unzip_datapack_from_archive">Unzip model from …</string>
+
+	<string name="description_download_datapack">Download model</string>
+
+	<string name="no_datapack">No zipped model file in storage</string>
+	<string name="no_url">Unavailable download url (model may be builtin)</string>
+
+</resources>

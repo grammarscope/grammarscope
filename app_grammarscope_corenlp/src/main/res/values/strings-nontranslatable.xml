@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
+
+    <!-- package -->
+    <string name="app_package" translatable="false" tools:keep="@string/app_package">org.grammarscope.corenlp</string>
+    <string name="app_package_data" translatable="false" tools:keep="@string/app_package_data">package:org.grammarscope.corenlp</string>
+
+    <!-- engine -->
+    <string name="engine_class" translatable="false" tools:keep="@string/engine_class">org.grammarscope.corenlp.CoreNlpEngine</string>
+
+    <!-- service -->
+    <string name="bound_service" translatable="false" tools:keep="@string/bound_service">org.grammarscope.service.server.bound.corenlp.CoreNlpBoundService</string>
+
+    <!-- search target override-->
+    <string name="search_target" translatable="false" tools:keep="@string/search_target">org.grammarscope.MainActivity</string>
+
+    <!-- labels: use default -->
+
+    <!-- download -->
+    <string name="default_download_repo" translatable="false" tools:keep="@string/default_download_repo">https://sourceforge.net/projects/grammarscope-corenlp/files/4.5.9</string>
+
+ 	<!-- model files -->
+    <string-array name="core_model_files" translatable="false" tools:keep="@array/core_model_files">
+        <item>.+.tagger</item>
+        <item>.+.gz</item>
+        <item>StanfordCoreNLP.properties</item>
+        <item>.+.tagger.props</item>
+    </string-array>
+
+    <string-array name="model_files" translatable="false" tools:keep="@array/model_files" />
+
+	<!-- pos key -->
+	<string name="poskey">postag</string>
+	<string name="xposkey">xpostag</string>
+
+</resources>

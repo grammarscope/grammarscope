@@ -1,0 +1,50 @@
+Dependency parsing : GrammarScope brings UDPipe's parser to the mobile.
+https://play.google.com/store/apps/details?id=org.grammarscope.udpipe
+
+The free app infers dependency parses of natural language sentences and offers visualisation (both graph and text).
+
+This flavour of GrammarScope uses UDPipe's framework as its parsing engine/service. Likewise, there's a sister version of GrammarScope that uses Google's SyntaxNet+Tensorflow ( https://play.google.com/store/apps/details?id=org.grammarscope ). Both share user interface code. NB: There's a GrammarScope version for the desktop that leverages Stanford CoreNlp power, but there's little in common besides the philosophy).
+
+It works on middle to high-end Android phones, exclusively relying on onboard computing power (no internet connection) and is brisk enough (see screencast). For the record, I tested on a Galaxy S7 that doesn't have neural chips.
+
+It's not intended to batch-process whole texts and has the limitation of working at sentence level, though OpenNLP's Sentence Boundary Detection has been added for English and French. But it does a good job of instant sentence testing.
+
+Currently it supports English and French as builtin languages but extra ready-to-use trained models can be downloaded to be used within the app : 
+
+Chinese-gsd
+Czech-cac
+Czech-pdt
+English-ewt
+English-gum
+English-lines
+English-partut
+French-gsd
+French-partut
+French-sequoia
+French-spoken
+German-gsd
+Hindi-hdtb
+Italian-isdt
+Japanese-gsd
+Russian-gsd
+Russian-syntagrus
+Russian-taiga
+Spanish-ancora
+Spanish-gsd
+Urdu-udtb
+
+The set can be easily extended to encompass the 70 languages available universaldependencies.org or . You'll find the bash script that packages a UDPipe model into a format that GrammarScope understands (basically: rename to model.udpipe, add md5, add language info) so you can download your own models.
+
+https://play.google.com/store/apps/details?id=org.grammarscope.udpipe
+
+See also the real-time screencast:
+https://youtu.be/zmOHILBI6NU
+https://youtu.be/yQQJCgIbG1M
+
+Lastly, I don't work for a business, the app is free for the linguist to use. Enjoy!
+
+
+Bernard Bou
+
+formerly: bbou@ac-toulouse.fr
+now     : 1313ou@gmail.com

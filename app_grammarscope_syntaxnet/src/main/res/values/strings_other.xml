@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="text_grammarscope_udpipe" tools:keep="@string/text_grammarscope_udpipe">GrammarScope is another version of this application. It is powered by UDPipe.</string>
+
+</resources>

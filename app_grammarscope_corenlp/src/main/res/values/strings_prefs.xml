@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+    <string name="pref_header_corenlp">CoreNLP</string>
+    <string name="pref_header_summary_corenlp">CoreNLP parameters</string>
+
+    <string name="pref_description_neural">Neural/Constituency</string>
+    <string name="pref_title_neural">Parser</string>
+
+    <string name="pref_neural_value_on">Neural</string>
+    <string name="pref_neural_value_off">Constituency</string>
+</resources>

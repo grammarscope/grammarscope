@@ -1,0 +1,189 @@
+/* -*- Mode: CSS; tab-width: 4; indent-tabs-mode: nil; -*- */
+
+/* S T A N D A R D */
+body {
+	font-family: sans-serif;
+	font-size: 14px;
+	overflow-y: scroll;
+}
+
+h1 {
+	margin-top: 1.5em;
+}
+
+h2, h3 {
+	margin-top: 1em;
+}
+
+h1, h2, h3 {
+	font-weight: 600;
+}
+
+h4, h5, h6 {
+	font-weight: normal;
+}
+
+pre {
+	display: block;
+	white-space: pre;
+	font-size: 13px;
+	line-height: 19px;
+	overflow: auto;
+	padding: 0px 0px;
+	background-color: #F8F8F8;
+	border-radius: 3px;
+	border: 1px solid #CCC;
+}
+
+code {
+	line-height: 1.4;
+	font-family: monospace;
+	margin: 0;
+}
+
+pre>code {
+	margin: 0;
+	padding: 0;
+	white-space: pre;
+	border: none;
+	background-color: transparent;
+}
+
+div.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+em, strong, b {
+	font-weight: 600;
+	color: black;
+}
+
+/* I D S */
+#main {
+	max-width: 600px;
+	min-width: 250px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#content {
+	margin: 0;
+}
+
+#footer {
+	font-size: 9px;
+	color: #999;
+	border-top: 1px solid lightgray;
+	margin-top: 5em;
+	margin-bottom: 5em;
+	clear: both;
+}
+
+/* C L A S S E S */
+.gloss {
+	font-weight: 700;
+	font-size: large;
+}
+
+.version {
+	color: darkslategray;
+}
+
+/* footer */
+.footer-text {
+	float: right;
+}
+
+.footer-logo {
+	float: right;
+}
+
+.footer-link {
+	color: black;
+}
+
+/* T A B L E */
+table.taxonomy {
+	vertical-align: top;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+table.category {
+	vertical-align: top;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	border: none;
+}
+
+td {
+	vertical-align: top;
+	border: 1px solid gray;
+}
+
+/* D E P */
+.depname {
+	font-weight: bold;
+	color: black;
+}
+
+.depname-head {
+	font-size: xx-large;
+	font-weight: bolder;
+	color: white;
+	background-color: darkslategray;
+	padding: 10px;
+}
+
+.dep {
+	background-color: white;
+	border: none;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.dep-col-header {
+	color: black;
+	max-width: 120px;
+	background-color: slategray;
+	color: white;
+	border: 1px solid darkgray;
+}
+
+.dep-row-header {
+	max-width: 120px;
+	background-color: #fff59d;
+	color: black;
+	border: 1px solid darkgray;
+}
+
+.dep-link {
+	color: #cc3300;
+	font-weight: bolder;
+	text-decoration: none;
+}
+
+/* D O C */
+a.doclink {
+	color: black;
+	text-decoration: underline;
+	text-decoration-color: black;
+}
+
+a.doclabel {
+	line-height: 1.4;
+	font-family: monospace;
+	margin: 0;
+}
+
+/* S V G */
+.visualization {
+	background-color: white;
+}

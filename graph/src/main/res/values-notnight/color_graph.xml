@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+	<color name="graph_backColor">#FFFFFF</color>                               <!-- backColor -->
+	<color name="graph_vertexColor">#F9A825</color>                             <!-- vertexColor -->
+	<color name="graph_rootVertexColor">#B71C1C</color>                         <!-- rootVertexColor -->
+	<color name="graph_vertexLabelColor">#000000</color>                        <!-- vertexLabelColor -->
+	<color name="graph_edgeColor">#404040</color>                               <!-- edgeColor -->
+	<color name="graph_edgeLabelColor">#000000</color>                          <!-- edgeLabelColor -->
+	<color name="graph_predicateColor">#B71C1C</color>                          <!-- predicateColor -->
+	<color name="graph_subjectColor">#1A237E</color>                            <!-- subjectColor -->
+	<color name="graph_objectColor">#8625A2</color>                             <!-- objectColor  -->
+	<color name="graph_termModifyingPredicateColor">#BF360C</color>             <!-- termModifyingPredicateColor -->
+	<color name="graph_predicateModifyingPredicateColor">#880E4F</color>        <!-- predicateModifyingPredicateColor -->
+
+</resources>

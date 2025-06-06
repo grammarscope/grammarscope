@@ -1,0 +1,94 @@
+<resources>
+
+	<string name="app_name">GrammarScope</string>
+
+	<string name="actionbar_title">GrammarScope</string>
+
+	<string name="title_activity_main">GrammarScope</string>
+	<string name="title_activity_share">GrammarScope</string>
+	<string name="title_activity_web">GrammarScope</string>
+
+	<string name="title_activity_labels">Labels</string>
+	<string name="title_activity_parse">Parse</string>
+	<string name="title_activity_dependency_graph">Dependency graph</string>
+	<string name="title_activity_dependency_graphs">Dependency graphs</string>
+	<string name="title_activity_semantic_parse">Semantic parse</string>
+	<string name="title_activity_semantic_graph_parse">Semantic graph</string>
+	<string name="title_activity_semantic_graphs_parse">Semantic graphs</string>
+	<string name="title_activity_annotate">Annotate</string>
+
+	<string name="title_sentences">Sentences</string>
+	<string name="title_sentence_1">Sentence 1</string>
+
+	<string name="action_model">Model</string>
+	<string name="action_bind">Bind</string>
+	<string name="action_unbind">Unbind</string>
+	<string name="action_bind_unbind">bind_unbind</string>
+	<string name="action_status">Status</string>
+	<string name="action_engine_version">Engine version</string>
+	<string name="action_settings">Settings</string>
+	<string name="action_theme">Theme …</string>
+	<string name="action_theme_system">Theme follows system</string>
+	<string name="action_theme_night">Night theme</string>
+	<string name="action_theme_day">Day theme</string>
+
+	<string name="action_strip_accents">Strip accents</string>
+	<string name="action_as_graph">Graph</string>
+	<string name="action_as_graphs">Graphs</string>
+
+	<string name="action_builtin_english">Built-in English</string>
+	<string name="action_builtin_french">Built-in French</string>
+	<string name="action_model_status">Info</string>
+
+	<string name="action_sentence_detect">Detect sentence</string>
+	<string name="action_labels">Labels</string>
+	<string name="action_help">Help</string>
+	<string name="action_reference">Reference</string>
+
+	<string name="action_support">Support</string>
+	<string name="action_donate">Donate</string>
+
+	<string name="action_semantics_reset">Reset semantics</string>
+
+	<string name="description_splash">powered by SyntaxNet</string>
+	<string name="description_graph">Graph</string>
+	<string name="description_main_fab_dependencies">Run dependencies</string>
+	<string name="description_main_fab_semantics">Run semantics</string>
+	<string name="description_graph_fab_refresh">Refresh</string>
+	<string name="description_graph_fab_next">Next</string>
+	<string name="description_graph_fab_prev">Prev</string>
+	<string name="description_clear">Clear</string>
+	<string name="description_examples">Examples</string>
+	<string name="hint_query">Enter text</string>
+	<string name="powered_by">powered by</string>
+
+	<string name="model">Model</string>
+	<string name="model_none">no model</string>
+
+	<string name="error_deploy">Deploy error: </string>
+
+	<string name="status_clear_data">Clear model.</string>
+	<string name="status_disable_sentence_boundary_detect">Disabling sentence boundary detection.</string>
+
+	<string name="download_down">current model</string>
+	<string name="download_newer">source model is possibly newer</string>
+	<string name="download_uptodate">current model is up-to-date</string>
+
+	<string name="provider_none">No provider.</string>
+	<string name="provider_is">Provider is %s</string>
+	<string name="provider_engine">engine</string>
+	<string name="provider_service">service</string>
+	<string name="provider_loaded">loaded</string>
+	<string name="provider_unloaded">unloaded</string>
+	<string name="provider_bound">bound</string>
+	<string name="provider_unbound">unbound</string>
+	<string name="provider_not_ready">not ready</string>
+	<string name="provider_pending">pending</string>
+
+	<plurals name="sentences_found">
+		<item quantity="zero">No sentence found.</item>
+		<item quantity="one">%1$d sentence found.</item>
+		<item quantity="other">%1$d sentences found.</item>
+	</plurals>
+
+</resources>

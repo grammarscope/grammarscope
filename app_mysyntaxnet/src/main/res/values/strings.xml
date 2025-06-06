@@ -1,0 +1,26 @@
+<resources>
+	<string name="app_name">MySyntaxNet</string>
+
+	<string name="actionbar_title">MySyntaxNet</string>
+	<string name="actionbar_subtitle">SyntaxNet</string>
+
+	<string name="title_activity_main">My SyntaxNet</string>
+	<string name="title_activity_share">My SyntaxNet</string>
+
+	<string name="title_english">English</string>
+	<string name="title_french">French</string>
+
+	<string name="title_sample1">Test 1</string>
+	<string name="title_sample2">Test 2</string>
+	<string name="title_sample3">Test 3</string>
+	<string name="title_sample4">Test 4</string>
+	<string name="title_sample5">Test 5</string>
+
+	<string name="description_splash">Home</string>
+	<string name="description_fab">Run</string>
+	<string name="hint_query">Enter text</string>
+	<string name="powered_by">powered by</string>
+
+	<string name="obsolete_app">This app is no longer maintained.\nUse <b>GrammarScope</b> instead, which has taken up the code, does a better job of getting input and rendering results.</string>
+	<string name="obsolete_get_grammarscope">Get it free</string>
+</resources>

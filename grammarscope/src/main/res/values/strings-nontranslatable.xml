@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- package -->
+	<string name="app_package" translatable="false">org.grammarscope</string>
+	<string name="app_package_data" translatable="false">package:org.grammarscope</string>
+
+	<!-- provider -->
+	<string-array name="pref_providers_values" translatable="false">
+		<item>BOUND_SERVICE</item>
+		<item>ENGINE</item>
+	</string-array>
+
+	<!-- engine -->
+	<string name="engine_class" translatable="false">org.grammarscope.x.XEngine</string>
+
+	<!-- service -->
+	<string name="bound_service" translatable="false">org.grammarscope.service.server.bound.x.XBoundService</string>
+
+	<!-- labels -->
+	<string name="labels_file" translatable="false" />
+
+	<!-- model files -->
+	<string-array name="core_model_files" translatable="false" />
+	<string-array name="model_files" translatable="false" />
+
+	<string name="poskey" translatable="false">pos</string>
+	<string name="xposkey">xpos</string>
+
+</resources>

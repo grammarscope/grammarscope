@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="org.depparse.common.AboutFragment"
+	tools:keep="@layout/fragment_about">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="16dp"
+		android:paddingTop="16dp"
+		android:paddingRight="16dp"
+		android:paddingBottom="16dp"
+		android:weightSum="1">
+
+		<!-- App -->
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:contentDescription="@string/about_app_logo_description"
+			android:src="@mipmap/ic_launcher"
+			tools:src="@mipmap/ic_launcher" />
+
+		<TextView
+			style="@android:style/TextAppearance.Large.Inverse"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:background="?attr/colorAccent"
+			android:gravity="center"
+			android:text="@string/about_app_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_app_author"
+			android:textStyle="italic" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_app_copyright" />
+
+		<!-- UDPipe -->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_udpipe_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_udpipe_version" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_udpipe_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_udpipe_author"
+			android:textStyle="italic" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_udpipe_copyright" />
+
+		<!-- Universal dependencies-->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_universaldependencies_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_universaldependencies_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_universaldependencies_author"
+			android:textStyle="italic" />
+
+		<!-- Jung -->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_jung_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_jung_version" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_jung_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_jung_author"
+			android:textStyle="italic" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_jung_android" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_app_author"
+			android:textStyle="italic" />
+
+		<!-- OpenNlp -->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_opennlp_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_opennlp_version" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_opennlp_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_opennlp_author"
+			android:textStyle="italic" />
+
+	</LinearLayout>
+</ScrollView>

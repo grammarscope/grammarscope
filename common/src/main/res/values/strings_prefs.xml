@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2023. Bernard Bou
+  -->
+
+<resources>
+	<string name="pref_title_datapack_repo">Model repo</string>
+	<string name="pref_title_datapack_dir">Model directory</string>
+
+	<string name="pref_title_datapack_name">Model name</string>
+	<string name="pref_title_datapack_date">Model date</string>
+	<string name="pref_title_datapack_size">Model size</string>
+	<string name="pref_title_datapack_source">Model source</string>
+	<string name="pref_title_datapack_source_date">Model source date</string>
+	<string name="pref_title_datapack_source_size">Model source size</string>
+	<string name="pref_title_datapack_source_etag">Model source etag</string>
+	<string name="pref_title_datapack_source_version">Model source version</string>
+	<string name="pref_title_datapack_source_static_version">Model source static version</string>
+
+	<string name="pref_datapack_category">Model</string>
+
+	<string name="description_datapack_clear">Clear model info</string>
+
+	<string name="title_activity_settings">Settings</string>
+	<string name="title_settings">Settings</string>
+	<string name="title_clear_settings">Clear settings</string>
+
+</resources>

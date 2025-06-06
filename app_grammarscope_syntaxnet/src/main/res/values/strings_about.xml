@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="about_app_title" tools:keep="@string/about_app_title">GrammarScope</string>
+	<string name="about_app_logo_description" tools:keep="@string/about_app_logo_description">GrammarScope application</string>
+
+	<string name="about_syntaxnet_title" tools:keep="@string/about_syntaxnet_title">SyntaxNet</string>
+	<string name="about_syntaxnet_text" tools:keep="@string/about_syntaxnet_text">SyntaxNet™ is a TensorFlow™ toolkit for deep learning powered natural language understanding. It features a dependency parser.</string>
+	<string name="about_syntaxnet_author" tools:keep="@string/about_syntaxnet_author">Google</string>
+	<string name="about_syntaxnet_copyright" tools:keep="@string/about_syntaxnet_copyright">© 2016 – 2018</string>
+
+	<string name="about_tensorflow_title" tools:keep="@string/about_tensorflow_title">Tensorflow</string>
+	<string name="about_tensorflow_logo_description" tools:keep="@string/about_tensorflow_logo_description">Tensorflow framework</string>
+	<string name="about_tensorflow_text" tools:keep="@string/about_tensorflow_text">Tensorflow™ is a machine learning framework</string>
+	<string name="about_tensorflow_author" tools:keep="@string/about_tensorflow_author">Google Brain Team</string>
+	<string name="about_tensorflow_copyright" tools:keep="@string/about_tensorflow_copyright">© 2015 – 2018</string>
+
+	<string name="about_dragnn_title" tools:keep="@string/about_dragnn_title">DRAGNN</string>
+	<string name="about_dragnn_text" tools:keep="@string/about_dragnn_text">Dynamic Recurrent Acyclic Graphical Neural Network - TensorFlow DRAGNN is a toolbox to build and learn fully dynamic neural computation graphs in TensorFlow.</string>
+	<string name="about_dragnn_author" tools:keep="@string/about_dragnn_author">Lingpeng Kong, Chris Alberti, Daniel Andor, Ivan Bogatyy, David Weiss</string>
+
+	<string name="about_parseysaurus_title" tools:keep="@string/about_parseysaurus_title">ParseySaurus</string>
+	<string name="about_parseysaurus_text" tools:keep="@string/about_parseysaurus_text">ParseySaurus models are SyntaxNet models for the CoNLL17 shared task</string>
+
+</resources>

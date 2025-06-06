@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="about_app_title">GrammarScope</string>
+	<string name="about_app_logo_description">GrammarScope application</string>
+
+	<string name="about_jung_title">Jung</string>
+	<string name="about_jung_text">Jung™ the Java Universal Network/Graph Framework.</string>
+	<string name="about_jung_author">Jung Framework Development Team</string>
+	<string name="about_jung_android">Android library rework and extensions</string>
+	<string name="about_jung_version">3.0.0-android</string>
+
+	<string name="about_opennlp_title">OpenNlp</string>
+	<string name="about_opennlp_text">The Apache OpenNLP™ library is a machine learning based toolkit for the processing of natural language text.</string>
+	<string name="about_opennlp_author">OpenNlp Development Team</string>
+	<string name="about_opennlp_version">2.5.3</string>
+
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="17">
+      <module name="apps.app_grammarscope_syntaxnet" target="21" />
+      <module name="apps.app_grammarscope_udpipe" target="21" />
+      <module name="apps.app_mysyntaxnet" target="21" />
+      <module name="apps.capture" target="21" />
+      <module name="apps.color" target="21" />
+      <module name="apps.common" target="21" />
+      <module name="apps.core" target="21" />
+      <module name="apps.coroutines" target="21" />
+      <module name="apps.data" target="21" />
+      <module name="apps.deploy" target="21" />
+      <module name="apps.depparse_bound_client" target="21" />
+      <module name="apps.donate" target="21" />
+      <module name="apps.download" target="21" />
+      <module name="apps.download_common" target="21" />
+      <module name="apps.grammarscope" target="21" />
+      <module name="apps.graph" target="21" />
+      <module name="apps.livedata" target="21" />
+      <module name="apps.others" target="21" />
+      <module name="apps.provider" target="21" />
+      <module name="apps.rate" target="21" />
+      <module name="apps.result" target="21" />
+      <module name="apps.semantics" target="21" />
+      <module name="apps.sentence_detector" target="21" />
+      <module name="apps.service_bound_client" target="21" />
+      <module name="apps.service_bound_server" target="21" />
+      <module name="apps.service_client_iface" target="21" />
+      <module name="apps.service_iface" target="21" />
+      <module name="apps.syntaxnet1_jni" target="21" />
+      <module name="apps.syntaxnet2_jni" target="21" />
+      <module name="apps.syntaxnet_bound_server" target="21" />
+      <module name="apps.syntaxnet_engine" target="21" />
+      <module name="apps.text_getter" target="21" />
+      <module name="apps.udpipe_bound_server" target="21" />
+      <module name="apps.udpipe_engine" target="21" />
+      <module name="apps.udpipe_jni" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

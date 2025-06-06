@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="about_app_title" tools:keep="@string/about_app_title">GrammarScope</string>
+	<string name="about_app_logo_description" tools:keep="@string/about_app_logo_description">GrammarScope application</string>
+
+	<string name="about_udpipe_title" tools:keep="@string/about_udpipe_title">UDPipe</string>
+	<string name="about_udpipe_text" tools:keep="@string/about_udpipe_text">UDPipe is a trainable pipeline for tokenization, tagging, lemmatization and dependency parsing. UDPipe is language-agnostic and can be trained given annotated data in CoNLL-U format.</string>
+	<string name="about_udpipe_author" tools:keep="@string/about_udpipe_author">UDPipe team, Institute of Formal and Applied Linguistics, Faculty of Mathematics and Physics, Charles University, Czech Republic</string>
+	<string name="about_udpipe_copyright" tools:keep="@string/about_udpipe_copyright">© 2017 – 2025 Mozilla Public License 2.0</string>
+	<string name="about_udpipe_version" tools:keep="@string/about_udpipe_version">1.3.1</string>
+
+</resources>

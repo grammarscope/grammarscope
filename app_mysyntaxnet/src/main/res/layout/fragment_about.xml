@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="org.depparse.common.AboutFragment"
+	tools:keep="@layout/fragment_about">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="16dp"
+		android:paddingTop="16dp"
+		android:paddingRight="16dp"
+		android:paddingBottom="16dp"
+		android:weightSum="1">
+
+		<!-- App -->
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:contentDescription="@string/about_app_logo_description"
+			android:src="@mipmap/ic_launcher"
+			tools:src="@mipmap/ic_launcher" />
+
+		<TextView
+			style="@android:style/TextAppearance.Large.Inverse"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:background="?attr/colorAccent"
+			android:gravity="center"
+			android:text="@string/about_app_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_app_author"
+			android:textStyle="italic" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_app_copyright" />
+
+		<!-- SyntaxNet -->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_syntaxnet_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_syntaxnet_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_syntaxnet_author"
+			android:textStyle="italic" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_syntaxnet_copyright" />
+
+		<!-- Tensorflow -->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:contentDescription="@string/about_tensorflow_logo_description"
+			android:gravity="center"
+			android:src="@drawable/logo_tensorflow" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_tensorflow_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_tensorflow_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_tensorflow_author"
+			android:textStyle="italic" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_tensorflow_copyright" />
+
+		<!-- Dragnn-->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_dragnn_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_dragnn_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_dragnn_author"
+			android:textStyle="italic" />
+
+		<!-- ParseySaurus-->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_parseysaurus_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_parseysaurus_text" />
+
+		<!-- Universal dependencies-->
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="10dp" />
+
+		<TextView
+			style="@android:style/TextAppearance.Medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_universaldependencies_title"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_universaldependencies_text" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="@string/about_universaldependencies_author"
+			android:textStyle="italic" />
+
+	</LinearLayout>
+</ScrollView>

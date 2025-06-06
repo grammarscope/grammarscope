@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+	<string name="license_key" translatable="false" tools:keep="@string/license_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmBeDvVDJ28tHlEMyeixSH9DHHVqgry+CPh0Soaw9rzBMQ65sHkDD01dlRG0fDrYYRMpPz4wSN+7+qlXWa50I5bXzDQZyXy4cawcgTgOc4UbvbYl107XgAfQHalwt9+M5MhaTF/GyrrMUEWN8Dozv1vki1+tx9oiMuD7CO+eRCYmSuBmXX8AIhSgKJZnDRryBoA0HOj/0zSHqeByhS8xay/S+/wu4BIjfTMV/UV0vJuLs+i25W7C3CMinlPOqGxY5NSjLN+TVWdhUlhxnpvwWoJj+diwuC+XY+3eMUmkZv7o+wmH791ZR6c8K8xNQyde4O5eVXQwRUSX5kvf0ls4oaQIDAQAB</string>
+</resources>

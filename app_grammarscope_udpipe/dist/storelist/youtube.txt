@@ -1,0 +1,10 @@
+grammarscope udpipe graph mode
+Android grammarscope udpipe app with UDPipe engine
+https://youtu.be/zmOHILBI6NU
+grammarscope udpipe, grammarscope, udpipe,deep learning, dependency parsing, ia, universal dependencies, semantics
+
+grammarscope udpipe text mode
+Android grammarscope udpipe app with UDPipe engine
+https://youtu.be/yQQJCgIbG1M
+grammarscope udpipe, grammarscope, udpipe,deep learning, dependency parsing, ia, universal dependencies, semantics
+

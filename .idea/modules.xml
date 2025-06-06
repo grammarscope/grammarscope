@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GrammarScope.iml" filepath="$PROJECT_DIR$/.idea/modules/GrammarScope.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app_grammarscope_corenlp/GrammarScope.app_grammarscope_corenlp.iml" filepath="$PROJECT_DIR$/.idea/modules/app_grammarscope_corenlp/GrammarScope.app_grammarscope_corenlp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/GrammarScope.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/GrammarScope.core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/corenlp/GrammarScope.corenlp.iml" filepath="$PROJECT_DIR$/.idea/modules/corenlp/GrammarScope.corenlp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/syntaxnet1_jni/GrammarScope.syntaxnet1_jni.iml" filepath="$PROJECT_DIR$/.idea/modules/syntaxnet1_jni/GrammarScope.syntaxnet1_jni.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/syntaxnet2_jni/GrammarScope.syntaxnet2_jni.iml" filepath="$PROJECT_DIR$/.idea/modules/syntaxnet2_jni/GrammarScope.syntaxnet2_jni.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/udpipe_jni/GrammarScope.udpipe_jni.iml" filepath="$PROJECT_DIR$/.idea/modules/udpipe_jni/GrammarScope.udpipe_jni.iml" />
+    </modules>
+  </component>
+</project>

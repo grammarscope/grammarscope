@@ -1,0 +1,1643 @@
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app_grammarscope_syntaxnet/src/main/res/layout/activity_other.xml" value="0.16485507246376813" />
+        <entry key="app_grammarscope_udpipe/src/main/res/layout/activity_other.xml" value="0.16485507246376813" />
+        <entry key="app_mysyntaxnet/src/main/res/layout/activity_main.xml" value="0.16485507246376813" />
+        <entry key="donate/src/main/res/layout/activity_donate.xml" value="0.2526041666666667" />
+        <entry key="others/src/main/res/layout/activity_other.xml" value="0.16485507246376813" />
+      </map>
+    </option>
+  </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants ACTION_PROCESS" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.DirType APP_EXTERNAL_PRIMARY" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.DirType APP_EXTERNAL_SECONDARY" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.DirType APP_INTERNAL" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.DirType AUTO" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper BILLING_RESPONSE_RESULT_DEVELOPER_ERROR" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper BILLING_RESPONSE_RESULT_ERROR" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper BILLING_RESPONSE_RESULT_ITEM_ALREADY_OWNED" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper BILLING_RESPONSE_RESULT_ITEM_NOT_OWNED" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper BILLING_RESPONSE_RESULT_ITEM_UNAVAILABLE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper BILLING_RESPONSE_RESULT_SERVICE_UNAVAILABLE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper BILLING_RESPONSE_RESULT_USER_CANCELED" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Mention chain" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.result.ParcelableResult CREATOR" />
+      <entry_point TYPE="field" FQNAME="org.depparse.ParcelableSentence CREATOR" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage DEPPARSER_DIR" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage depparserStorage" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.MainActivity.ProviderType ENGINE" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage extStorage" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.Directory file" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.IabHelper GET_SKU_DETAILS_ITEM_TYPE_LIST" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Mention head" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Dependency idx" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Mention isRepresentative" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants KEY_RECEIVER" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.support.util.SkuDetails mItemType" />
+      <entry_point TYPE="field" FQNAME="org.depparse.common.ModelInfo name" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.server.BoundService parceler" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage PREF_DEPPARSER_STORAGE" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.StorageType PRIMARY_EMULATED" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.StorageType PRIMARY_PHYSICAL" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.TaskObserver.ProgressListener progress" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.DirType PUBLIC_EXTERNAL_PRIMARY" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.DirType PUBLIC_EXTERNAL_SECONDARY" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Mention.Chain representative" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.StorageType SECONDARY" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Dependency sentenceIdx" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Mention sentenceIdx" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.semantics.Relation sentenceIdx" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage TAG" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage.Directory type" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.ProviderManager.ProviderType ENGINE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.preference.Header CREATOR" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.TestsBind testRule" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.TestsQueriesGraph testRule" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.TestsQueriesText testRule" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants KEY_PARAMS" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants KEY_RESULT" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants MSG_REGISTER_CLIENT" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants MSG_REQUEST" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants MSG_RESULT" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.service.iface.IServiceConstants MSG_UNREGISTER_CLIENT" />
+      <entry_point TYPE="field" FQNAME="com.bbou.rate.StoreType AMAZON" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.Task$10 Result call()" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task cancelled" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task CORE_POOL_SIZE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task$4 count" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task defaultExecutor" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.Task$11 void done()" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task.Status FINISHED" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task future" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task handler" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task KEEP_ALIVE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task LOG_TAG" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task MAXIMUM_POOL_SIZE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task MESSAGE_POST_PROGRESS" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task MESSAGE_POST_RESULT" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.Task$4 java.lang.Thread newThread(java.lang.Runnable runnable)" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task.WorkerRunnable params" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task.Status PENDING" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task POOL_WORK_QUEUE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.TaskObserver.ProgressListener progress" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task.Status RUNNING" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task status" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task taskInvoked" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task THREAD_FACTORY" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task THREAD_POOL_EXECUTOR" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task worker" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.ConcurrencyInstrumentedTest$1 java.lang.Long doInBackground(java.lang.Integer... params)" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.ConcurrencyInstrumentedTest$1 void onPostExecute(java.lang.Long result)" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.ConcurrencyInstrumentedTest$1 void onProgressUpdate(java.lang.String... progresses)" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.concurrency.Task forward" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.Settings HINT_MODEL_ZIP" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.BaseDownloadFragment renameFrom" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.BaseDownloadFragment renameTo" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.BaseDownloadFragment sourceUrl" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.BaseDownloadFragment unzipDir" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.graph.SemanticSettings name" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.DoAsyncThen$7 R doInBackground(T[] params)" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.DoAsyncThen$1 java.lang.Void doInBackground(java.lang.Void[] params)" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.DoAsyncThen$7 void onPostExecute(R result)" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.concurrency.DoAsyncThen$1 void onPostExecute(java.lang.Void result)" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment COLOR_RESULT_KEY" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment COLOR_RESULT_KEY" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.Settings STORAGE_MODEL_DIR" />
+      <entry_point TYPE="method" FQNAME="org.grammarscope.download.BaseDownloadFragment$1 void taskFinish(boolean success)" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.BaseDownloadFragment TAG" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Storage PREFERENCES_DEVICE" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.download.AbstractDownloadFragment unzipDir" />
+      <entry_point TYPE="method" FQNAME="com.bbou.concurrency.DoAsyncThen$7 R doInBackground(T[] params)" />
+      <entry_point TYPE="method" FQNAME="com.bbou.concurrency.DoAsyncThen$1 java.lang.Void doInBackground(java.lang.Void[] params)" />
+      <entry_point TYPE="method" FQNAME="com.bbou.concurrency.DoAsyncThen$7 void onPostExecute(R result)" />
+      <entry_point TYPE="method" FQNAME="com.bbou.concurrency.DoAsyncThen$1 void onPostExecute(java.lang.Void result)" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.AbstractDownloadFragment renameFrom" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.AbstractDownloadFragment renameTo" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.AbstractDownloadFragment DOWNLOAD_RENAME_FROM_ARG" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.AbstractDownloadFragment DOWNLOAD_RENAME_TO_ARG" />
+      <entry_point TYPE="method" FQNAME="com.bbou.download.DownloadFragment$1 void taskFinish(boolean success)" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.DownloadFragment TAG" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.DownloadFragment toFile" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.DownloadFragment unzipDir" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.BaseDownloadFragment requestKill" />
+      <entry_point TYPE="method" FQNAME="com.bbou.concurrency.ConcurrencyInstrumentedTest$1 void onPostExecute(java.lang.Long result)" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.GraphBaseParseActivity assetManager" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.graph.GraphColors backColor" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.GraphBaseParseActivity colorSettings" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.GraphBaseParseActivity context" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.coroutines.utils.ContentDownloader exception" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.coroutines.utils.FileDataDownloader exception" />
+      <entry_point TYPE="field" FQNAME="com.bbou.download.coroutines.utils.MD5Downloader exception" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Token.BreakLevel LINE_BREAK" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Token.BreakLevel NO_BREAK" />
+      <entry_point TYPE="field" FQNAME="com.bbou.coroutines.Task observer" />
+      <entry_point TYPE="method" FQNAME="org.depparse.common.WebActivity$-1 void onReceivedError(android.webkit.WebView view, int errorCode, java.lang.String description, java.lang.String failingUrl)" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Token.BreakLevel SENTENCE_BREAK" />
+      <entry_point TYPE="method" FQNAME="org.depparse.common.WebActivity$-1 android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView view, java.lang.String url)" />
+      <entry_point TYPE="method" FQNAME="org.depparse.common.WebActivity$-1 boolean shouldOverrideUrlLoading(android.webkit.WebView view, java.lang.String url)" />
+      <entry_point TYPE="field" FQNAME="org.depparse.Token.BreakLevel SPACE_BREAK" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.BindTests testRule" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.QueriesGraphTests testRule" />
+      <entry_point TYPE="field" FQNAME="org.grammarscope.QueriesTextTests testRule" />
+    </entry_points>
+    <pattern value="org.depparse.common.AboutActivity" />
+    <pattern value="org.depparse.common.AboutFragment" />
+    <pattern value="org.depparse.common.AboutFragment" method="AboutFragment" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" />
+    <pattern value="org.depparse.common.PlainDecorator" method="append" />
+    <pattern value="org.depparse.common.Spanner" method="appendClickableImage" />
+    <pattern value="org.grammarscope.download.Report" method="appendImage" />
+    <pattern value="org.depparse.common.Spanner" method="appendImage" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment" />
+    <pattern value="org.depparse.common.BaseParseActivity" />
+    <pattern value="org.grammarscope.GeneralPreferenceFragment" method="bindPreferenceSummaryToValue" />
+    <pattern value="org.grammarscope.service.server.BoundService" />
+    <pattern value="org.grammarscope.service.server.BoundService" method="BoundService" />
+    <pattern value="org.grammarscope.semantics.Mention.Chain" />
+    <pattern value="org.depparse.Deploy" method="cleanupDir" />
+    <pattern value="org.depparse.common.Spanner" method="collapse" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserActivity" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserDialog" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserDialog" method="ColorChooserDialog" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreference" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreference" method="ColorChooserPreference" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="ColorChooserView" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="ColorCircleDrawable" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView.ColorItem" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView.ColorItem" method="ColorItem" />
+    <pattern value="org.grammarscope.colors.ColorPadView" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="ColorPadView" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreference" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreference" method="ColorPickerPreference" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView" method="ColorPickerView" />
+    <pattern value="org.grammarscope.colors.drawable.ColorUtil" />
+    <pattern value="org.depparse.Storage.DirType" method="compare" />
+    <pattern value="org.depparse.Storage.Directory" method="compareTo" />
+    <pattern value="org.grammarscope.service.iface.IClient" method="connect" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="consumeAsync" />
+    <pattern value="org.grammarscope.download.ContentDownloader" />
+    <pattern value="org.depparse.Deploy" method="copyFile" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" method="copyFromFile" />
+    <pattern value="org.grammarscope.download.StorageUtils" method="countToStorageString" />
+    <pattern value="org.grammarscope.colors.drawable.ColorUtil" method="darkerColor" />
+    <pattern value="org.grammarscope.semantics.Dependency" />
+    <pattern value="org.grammarscope.DependencyGraphParseActivity" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" />
+    <pattern value="org.grammarscope.DependencyParseActivity" />
+    <pattern value="org.depparse.Deploy" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="deploy" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="deploy" />
+    <pattern value="org.grammarscope.service.client.DepParseMessengerClient" />
+    <pattern value="org.grammarscope.service.client.DepParseMessengerClient" method="DepParseMessengerClient" />
+    <pattern value="org.grammarscope.SentenceDetector" method="detect" />
+    <pattern value="org.grammarscope.SentenceDetector" method="detectSpans" />
+    <pattern value="org.grammarscope.download.TaskObserver.DialogListener" />
+    <pattern value="org.grammarscope.download.TaskObserver.DialogListener" method="DialogListener" />
+    <pattern value="org.depparse.Storage.Directory" />
+    <pattern value="org.depparse.Storage.Directory" method="Directory" />
+    <pattern value="org.depparse.Storage.DirType" />
+    <pattern value="org.grammarscope.service.iface.IClient" method="disconnect" />
+    <pattern value="org.depparse.Storage" method="discoverAppStorage" />
+    <pattern value="org.depparse.Storage" method="discoverExternalStorage" />
+    <pattern value="org.depparse.Storage" method="discoverPrimaryEmulatedExternalStorage" />
+    <pattern value="org.depparse.Storage" method="discoverPrimaryPhysicalExternalStorage" />
+    <pattern value="org.depparse.Storage" method="discoverSecondaryExternalStorage" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="disposeWhenFinished" />
+    <pattern value="org.grammarscope.support.DonateActivity" />
+    <pattern value="org.grammarscope.download.DownloadActivity" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="enableDebugLogging" />
+    <pattern value="org.depparse.Storage.Directory" method="equals" />
+    <pattern value="org.grammarscope.support.util.Inventory" method="erasePurchase" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" />
+    <pattern value="org.grammarscope.download.FileData" />
+    <pattern value="org.grammarscope.download.StorageUtils.StorageDirectory" method="fitsIn" />
+    <pattern value="org.grammarscope.GeneralPreferenceFragment" />
+    <pattern value="org.grammarscope.download.StorageReports" method="get2StorageDirectoriesNamesValues" />
+    <pattern value="org.grammarscope.support.util.Inventory" method="getAllOwnedSkus" />
+    <pattern value="org.grammarscope.support.util.Inventory" method="getAllPurchases" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="getAlphaSliderText" />
+    <pattern value="org.depparse.Storage" method="getAppStorage" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="getBorderColor" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="getBorderColor" />
+    <pattern value="org.depparse.Storage" method="getCacheDir" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserDialog" method="getColor" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="getColor" />
+    <pattern value="org.grammarscope.download.FileData" method="getCurrent" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="getDescription" />
+    <pattern value="org.depparse.Storage" method="getDirectories" />
+    <pattern value="org.depparse.Storage" method="getDirectoriesTypesValues" />
+    <pattern value="org.grammarscope.download.ContentDownloader" method="getException" />
+    <pattern value="org.grammarscope.download.MD5Downloader" method="getException" />
+    <pattern value="org.depparse.Storage" method="getExternalStorage" />
+    <pattern value="org.grammarscope.download.StorageUtils" method="getExternalStorages" />
+    <pattern value="org.depparse.Storage.Directory" method="getFile" />
+    <pattern value="org.grammarscope.download.StorageUtils" method="getFree" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="getOrderId" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="getOriginalJson" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="getPackageName" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="getPrice" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="getPriceAmountMicros" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="getPriceCurrencyCode" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="getPurchaseState" />
+    <pattern value="org.grammarscope.support.util.IabResult" method="getResponse" />
+    <pattern value="org.depparse.ParcelableSentence" method="getSentence" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="getSignature" />
+    <pattern value="org.grammarscope.support.util.Inventory" method="getSkuDetails" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="getSliderTrackerColor" />
+    <pattern value="org.depparse.Storage" method="getStorageDirectories" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="getTitle" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="getType" />
+    <pattern value="org.depparse.Storage.Directory" method="getType" />
+    <pattern value="org.depparse.Storage" method="getUserId" />
+    <pattern value="org.depparse.Storage.Directory" method="getValue" />
+    <pattern value="org.grammarscope.GraphBaseParseActivity" />
+    <pattern value="org.grammarscope.GraphParseActivity" />
+    <pattern value="org.grammarscope.GraphsParseActivity" />
+    <pattern value="org.grammarscope.support.util.Inventory" method="hasDetails" />
+    <pattern value="org.depparse.Storage.Directory" method="hashCode" />
+    <pattern value="org.grammarscope.support.util.Inventory" method="hasPurchase" />
+    <pattern value="org.depparse.common.Spanner.HiddenSpanFactory" />
+    <pattern value="org.grammarscope.support.util.IabBroadcastReceiver" />
+    <pattern value="org.grammarscope.support.util.IabBroadcastReceiver" method="IabBroadcastReceiver" />
+    <pattern value="org.grammarscope.support.util.IabHelper" />
+    <pattern value="org.grammarscope.support.util.IabResult" />
+    <pattern value="org.depparse.IAsyncLoading" />
+    <pattern value="org.grammarscope.service.iface.IClient" />
+    <pattern value="org.depparse.IEngine" />
+    <pattern value="org.grammarscope.LabelsActivity" />
+    <pattern value="org.grammarscope.MainActivity" />
+    <pattern value="org.mysyntaxnet.MainActivity0" />
+    <pattern value="org.grammarscope.MainActivity0" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" />
+    <pattern value="org.depparse.common.OtherActivity" />
+    <pattern value="org.mysyntaxnet.ParseActivity" />
+    <pattern value="org.grammarscope.SemanticGraphParseActivity" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" />
+    <pattern value="org.grammarscope.SemanticParseActivity" />
+    <pattern value="org.grammarscope.SettingsActivity" />
+    <pattern value="org.depparse.common.TextBaseParseActivity" />
+    <pattern value="org.grammarscope.download.UpdateActivity" />
+    <pattern value="org.depparse.common.WebActivity" />
+    <pattern value="org.depparse.common.Spanner" method="insertTag" />
+    <pattern value="org.grammarscope.semantics.Instance" />
+    <pattern value="org.grammarscope.semantics.Instance" method="Instance" />
+    <pattern value="org.grammarscope.support.util.Inventory" />
+    <pattern value="org.grammarscope.service.IParceler" />
+    <pattern value="org.depparse.common.OtherActivity" method="isAppInstalled" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="isAutoRenewing" />
+    <pattern value="org.grammarscope.service.iface.IServiceConstants" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment.Status" method="isSuccess" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment.Killer" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment.Killer" method="Killer" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="launchPurchaseFlow" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="launchSubscriptionPurchaseFlow" />
+    <pattern value="org.depparse.IEngine" method="load" />
+    <pattern value="org.depparse.IAsyncLoading" method="loadAsync" />
+    <pattern value="org.grammarscope.MainActivity.MainFragment" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity.MainFragment" />
+    <pattern value="org.grammarscope.MainActivity.MainFragment" method="MainFragment" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity.MainFragment" method="MainFragment" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="make" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="make" />
+    <pattern value="org.grammarscope.semantics.SemanticAnalyzer" method="makeMap" />
+    <pattern value="org.grammarscope.semantics.SemanticAnalyzer" method="makePO" />
+    <pattern value="org.grammarscope.semantics.SemanticAnalyzer" method="makePS" />
+    <pattern value="org.depparse.common.Spanner.HiddenSpanFactory" method="makeSpans" />
+    <pattern value="org.grammarscope.download.MD5Downloader" />
+    <pattern value="org.grammarscope.semantics.Mention" />
+    <pattern value="org.grammarscope.service.server.MessengerService" />
+    <pattern value="org.grammarscope.service.server.MessengerService" method="MessengerService" />
+    <pattern value="org.depparse.common.ModelInfo" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onBuy1" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onBuy2" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onBuy3" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onBuy4" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onBuy5" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" method="onCancelClick" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" method="onCheck" />
+    <pattern value="org.grammarscope.MainActivity" method="onClickClear" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" method="onClickDependencies" />
+    <pattern value="org.grammarscope.MainActivity" method="onClickFABDependencies" />
+    <pattern value="org.grammarscope.MainActivity" method="onClickFABSemantics" />
+    <pattern value="org.depparse.common.Spanner.OnClickImage" />
+    <pattern value="org.depparse.common.Spanner.OnClickImage" method="onClickImage" />
+    <pattern value="org.grammarscope.MainActivity" method="onClickRequest" />
+    <pattern value="org.grammarscope.MainActivity" method="onClickStatus" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserDialog" method="onColorChanged" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView.OnColorSelectedListener" method="onColorSelected" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView.OnColorSelectedListener" />
+    <pattern value="org.grammarscope.support.util.IabHelper.OnConsumeMultiFinishedListener" method="onConsumeMultiFinished" />
+    <pattern value="org.grammarscope.support.util.IabHelper.OnConsumeMultiFinishedListener" />
+    <pattern value="org.depparse.common.AboutFragment" method="onCreateView" />
+    <pattern value="org.grammarscope.GraphsParseActivity" method="onFABNextClick" />
+    <pattern value="org.grammarscope.GraphsParseActivity" method="onFABPrevClick" />
+    <pattern value="org.grammarscope.GraphBaseParseActivity" method="onFABRefreshClick" />
+    <pattern value="org.depparse.common.OtherActivity" method="onMarketGrammarScope" />
+    <pattern value="org.depparse.common.OtherActivity" method="onMarketGrammarScopeUDPipe" />
+    <pattern value="org.depparse.common.OtherActivity" method="onMarketSemantikos" />
+    <pattern value="org.depparse.common.OtherActivity" method="onMarketSemantikosFn" />
+    <pattern value="org.depparse.common.OtherActivity" method="onMarketSemantikosVn" />
+    <pattern value="org.depparse.common.OtherActivity" method="onMarketSemantikosWn" />
+    <pattern value="org.depparse.common.OtherActivity" method="onMarketTreebolicWordNet" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" method="onOkClick" />
+    <pattern value="org.grammarscope.result.ParcelableResult" />
+    <pattern value="org.depparse.ParcelableSentence" />
+    <pattern value="org.depparse.ParcelableSentence" method="ParcelableSentence" />
+    <pattern value="org.depparse.common.PlainDecorator" />
+    <pattern value="org.grammarscope.semantics.PP" />
+    <pattern value="org.depparse.common.Preprocessor" />
+    <pattern value="org.depparse.common.Preprocessor" method="Preprocessor" />
+    <pattern value="org.depparse.common.Preprocessor" method="process" />
+    <pattern value="org.grammarscope.download.TaskObserver.ProgressListener" />
+    <pattern value="org.grammarscope.download.TaskObserver.ProgressListener" method="ProgressListener" />
+    <pattern value="org.grammarscope.MainActivity.ProviderType" />
+    <pattern value="org.grammarscope.semantics.PT" />
+    <pattern value="org.grammarscope.support.util.Purchase" />
+    <pattern value="org.depparse.Storage" method="qualifies" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="queryInventory" />
+    <pattern value="org.grammarscope.semantics.Relation" />
+    <pattern value="org.depparse.common.Preprocessor.Replacer" />
+    <pattern value="org.depparse.common.Preprocessor.Replacer" method="Replacer" />
+    <pattern value="org.grammarscope.download.Report" />
+    <pattern value="org.grammarscope.service.iface.IClient" method="request" />
+    <pattern value="org.grammarscope.download.StorageUtils" method="selectExternalStorage" />
+    <pattern value="org.grammarscope.semantics.SemanticAnalyzer" />
+    <pattern value="org.grammarscope.SentenceDetector" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="setAlphaSliderText" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserDialog" method="setAlphaSliderVisible" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="setBorderColor" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="setColor" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="setColor" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="setCrossed" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView" method="setFixedColumnCount" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="setOutlineAlpha" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="setOutlineColor" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="setOutlineWidth" />
+    <pattern value="org.depparse.common.Spanner" method="setSpan" />
+    <pattern value="org.grammarscope.ShareActivity" />
+    <pattern value="org.mysyntaxnet.ShareActivity" />
+    <pattern value="org.grammarscope.ShareActivity" method="ShareActivity" />
+    <pattern value="org.mysyntaxnet.ShareActivity" method="ShareActivity" />
+    <pattern value="org.grammarscope.download.SimpleDownloaderService" />
+    <pattern value="org.grammarscope.download.SimpleDownloaderService" method="SimpleDownloaderService" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="SkuDetails" />
+    <pattern value="org.depparse.common.Spanner" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment.Status" />
+    <pattern value="org.depparse.Storage" />
+    <pattern value="org.grammarscope.download.StorageUtils.StorageDirectory" />
+    <pattern value="org.grammarscope.download.StorageUtils" method="storageFreeAsString" />
+    <pattern value="org.grammarscope.download.StorageReports" />
+    <pattern value="org.depparse.Storage.StorageType" />
+    <pattern value="org.grammarscope.download.StorageUtils" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="subscriptionsSupported" />
+    <pattern value="org.grammarscope.service.server.bound.syntaxnet.SyntaxnetBoundService" />
+    <pattern value="org.grammarscope.service.server.bound.syntaxnet.SyntaxnetBoundService" method="SyntaxnetBoundService" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" />
+    <pattern value="org.grammarscope.service.server.messenger.syntaxnet.SyntaxnetMessengerService" />
+    <pattern value="org.grammarscope.service.server.messenger.syntaxnet.SyntaxnetMessengerService" method="SyntaxnetMessengerService" />
+    <pattern value="org.grammarscope.download.TaskObserver.ToastWithStatusListener" method="taskFinish" />
+    <pattern value="org.grammarscope.download.TaskObserver.ProgressListener" method="taskFinish" />
+    <pattern value="org.grammarscope.download.TaskObserver" />
+    <pattern value="org.grammarscope.download.TaskObserver.ToastWithStatusListener" method="taskStart" />
+    <pattern value="org.grammarscope.download.TaskObserver.ProgressListener" method="taskStart" />
+    <pattern value="org.grammarscope.download.TaskObserver.ProgressListener" method="taskUpdate" />
+    <pattern value="org.grammarscope.download.TaskObserver.ToastWithStatusListener" />
+    <pattern value="org.grammarscope.download.TaskObserver.ToastWithStatusListener" method="ToastWithStatusListener" />
+    <pattern value="org.depparse.Storage.DirType" method="toDisplay" />
+    <pattern value="org.grammarscope.download.StorageUtils.StorageDirectory" method="toLongString" />
+    <pattern value="org.grammarscope.service.IParceler" method="toResult" />
+    <pattern value="org.grammarscope.semantics.PP" method="toShortString" />
+    <pattern value="org.grammarscope.semantics.PT" method="toShortString" />
+    <pattern value="org.grammarscope.semantics.TP" method="toShortString" />
+    <pattern value="org.grammarscope.semantics.TP" />
+    <pattern value="org.grammarscope.service.server.bound.udpipe.UDPipeBoundService" />
+    <pattern value="org.grammarscope.service.server.bound.udpipe.UDPipeBoundService" method="UDPipeBoundService" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" />
+    <pattern value="org.grammarscope.service.server.messenger.udpipe.UDPipeMessengerService" />
+    <pattern value="org.grammarscope.service.server.messenger.udpipe.UDPipeMessengerService" method="UDPipeMessengerService" />
+    <pattern value="org.depparse.IEngine" method="unload" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" method="unzipEntryFromArchive" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" method="unzipFromArchive" />
+    <pattern value="org.grammarscope.download.UpdateFragment" />
+    <pattern value="org.grammarscope.download.UpdateFragment" method="UpdateFragment" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView" method="usesDarkCheckmark" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="addContentView" />
+    <pattern value="org.grammarscope.colors.drawable.AlphaPatternDrawable" />
+    <pattern value="org.grammarscope.colors.drawable.AlphaPatternDrawable" method="AlphaPatternDrawable" />
+    <pattern value="org.grammarscope.semantics.Analysis" />
+    <pattern value="org.grammarscope.semantics.Analysis" method="Analysis" />
+    <pattern value="org.grammarscope.download.TaskObserver.BaseListener" />
+    <pattern value="org.depparse.common.BaseParse" />
+    <pattern value="org.grammarscope.service.client.BoundClient" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="cancel" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="cleanup" />
+    <pattern value="org.grammarscope.colors.ColorPreference" />
+    <pattern value="org.grammarscope.download.StorageUtils.StorageDirectory" method="compareTo" />
+    <pattern value="org.grammarscope.download.ContentDownloader" method="ContentDownloader" />
+    <pattern value="org.grammarscope.semantics.Dependency" method="Dependency" />
+    <pattern value="org.grammarscope.graph.SettingsFragments.DependencyGraphPreferenceFragment" />
+    <pattern value="org.grammarscope.result.ParcelableResult" method="describeContents" />
+    <pattern value="org.depparse.ParcelableSentence" method="describeContents" />
+    <pattern value="org.grammarscope.download.ContentDownloader" method="doInBackground" />
+    <pattern value="org.grammarscope.syntaxnet.Loader" method="doInBackground" />
+    <pattern value="org.grammarscope.udpipe.Loader" method="doInBackground" />
+    <pattern value="org.grammarscope.download.MD5Downloader" method="doInBackground" />
+    <pattern value="org.depparse.common.BaseParse" method="doInBackground" />
+    <pattern value="org.grammarscope.download.DownloadActivity.Downloader" />
+    <pattern value="org.grammarscope.download.DownloadActivity.Downloader" method="Downloader" />
+    <pattern value="org.grammarscope.download.DownloadPreferenceFragment" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="draw" />
+    <pattern value="org.grammarscope.semantics.Instance" method="equals" />
+    <pattern value="org.grammarscope.download.StorageUtils.StorageDirectory" method="equals" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" method="FileAsyncTask" />
+    <pattern value="org.grammarscope.download.FileData" method="FileData" />
+    <pattern value="org.grammarscope.download.FileDataDownloader" />
+    <pattern value="org.grammarscope.download.FileDataDownloader" method="FileDataDownloader" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreference" method="getDialogLayoutResource" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreference" method="getDialogLayoutResource" />
+    <pattern value="org.grammarscope.colors.ColorPreference" method="getDialogLayoutResource" />
+    <pattern value="org.grammarscope.semantics.Relation" method="getLabel" />
+    <pattern value="org.grammarscope.LabelsActivity" method="getLabels" />
+    <pattern value="org.grammarscope.GraphParseActivity" method="getLayout" />
+    <pattern value="org.grammarscope.GraphsParseActivity" method="getLayout" />
+    <pattern value="org.depparse.common.TextBaseParseActivity" method="getLayout" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="getMenuInflater" />
+    <pattern value="org.grammarscope.colors.drawable.AlphaPatternDrawable" method="getOpacity" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="getOpacity" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="getReason" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="getStatus" />
+    <pattern value="org.grammarscope.semantics.PP" method="getTerm" />
+    <pattern value="org.grammarscope.semantics.PT" method="getTerm" />
+    <pattern value="org.grammarscope.semantics.TP" method="getTerm" />
+    <pattern value="org.grammarscope.semantics.Instance" method="hashCode" />
+    <pattern value="org.grammarscope.support.IABAdapter" />
+    <pattern value="org.grammarscope.support.util.IabHelper" method="IabHelper" />
+    <pattern value="org.grammarscope.support.util.IabResult" method="IabResult" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment.Observer" />
+    <pattern value="org.grammarscope.ProviderPreferenceFragment" />
+    <pattern value="org.grammarscope.graph.SettingsFragments.SemanticGraphPreferenceFragment" />
+    <pattern value="org.grammarscope.SemanticsPreferenceFragment" />
+    <pattern value="org.grammarscope.graph.SettingsFragments" />
+    <pattern value="org.grammarscope.SystemPreferenceFragment" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="invalidateOptionsMenu" />
+    <pattern value="org.grammarscope.support.util.Inventory" method="Inventory" />
+    <pattern value="org.grammarscope.SettingsActivity" method="isValidFragment" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="kill" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="kill" />
+    <pattern value="org.depparse.Unique" method="kill" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="load" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="load" />
+    <pattern value="org.grammarscope.syntaxnet.Loader" />
+    <pattern value="org.grammarscope.udpipe.Loader" />
+    <pattern value="org.grammarscope.DependencyGraphParseActivity" method="makeParse" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" method="makeParse" />
+    <pattern value="org.grammarscope.SemanticGraphParseActivity" method="makeParse" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" method="makeParse" />
+    <pattern value="org.grammarscope.DependencyGraphParseActivity" method="makeSettings" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" method="makeSettings" />
+    <pattern value="org.grammarscope.SemanticGraphParseActivity" method="makeSettings" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" method="makeSettings" />
+    <pattern value="org.grammarscope.download.MD5Downloader" method="MD5Downloader" />
+    <pattern value="org.depparse.common.ModelInfo" method="ModelInfo" />
+    <pattern value="org.grammarscope.MainActivity.MainFragment" method="onActivityCreated" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity.MainFragment" method="onActivityCreated" />
+    <pattern value="org.grammarscope.download.UpdateFragment" method="onActivityCreated" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onActivityResult" />
+    <pattern value="org.grammarscope.service.server.BoundService" method="onBind" />
+    <pattern value="org.grammarscope.service.server.MessengerService" method="onBind" />
+    <pattern value="org.grammarscope.colors.ColorPreference" method="onBindViewHolder" />
+    <pattern value="org.grammarscope.colors.drawable.AlphaPatternDrawable" method="onBoundsChange" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="onBoundsChange" />
+    <pattern value="org.grammarscope.SettingsActivity" method="onBuildHeaders" />
+    <pattern value="org.grammarscope.syntaxnet.Loader" method="onCancelled" />
+    <pattern value="org.grammarscope.udpipe.Loader" method="onCancelled" />
+    <pattern value="org.grammarscope.download.MD5Downloader" method="onCancelled" />
+    <pattern value="org.grammarscope.download.ContentDownloader" method="onCancelled" />
+    <pattern value="org.grammarscope.colors.ColorPreference" method="onClick" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment" method="onClick" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserActivity" method="onClick" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView.ColorItem" method="onClick" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserActivity" method="onColorChanged" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="onConfigurationChanged" />
+    <pattern value="org.grammarscope.service.server.bound.syntaxnet.SyntaxnetBoundService" method="onCreate" />
+    <pattern value="org.grammarscope.service.server.messenger.syntaxnet.SyntaxnetMessengerService" method="onCreate" />
+    <pattern value="org.grammarscope.service.server.bound.udpipe.UDPipeBoundService" method="onCreate" />
+    <pattern value="org.grammarscope.service.server.messenger.udpipe.UDPipeMessengerService" method="onCreate" />
+    <pattern value="org.depparse.common.AboutActivity" method="onCreate" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" method="onCreate" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserActivity" method="onCreate" />
+    <pattern value="org.grammarscope.DependencyGraphParseActivity" method="onCreate" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" method="onCreate" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onCreate" />
+    <pattern value="org.grammarscope.download.DownloadActivity" method="onCreate" />
+    <pattern value="org.grammarscope.MainActivity" method="onCreate" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" method="onCreate" />
+    <pattern value="org.depparse.common.OtherActivity" method="onCreate" />
+    <pattern value="org.grammarscope.SemanticGraphParseActivity" method="onCreate" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" method="onCreate" />
+    <pattern value="org.grammarscope.SemanticParseActivity" method="onCreate" />
+    <pattern value="org.grammarscope.SettingsActivity" method="onCreate" />
+    <pattern value="org.grammarscope.ShareActivity" method="onCreate" />
+    <pattern value="org.mysyntaxnet.ShareActivity" method="onCreate" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="onCreate" />
+    <pattern value="org.grammarscope.download.UpdateActivity" method="onCreate" />
+    <pattern value="org.depparse.common.WebActivity" method="onCreate" />
+    <pattern value="org.depparse.common.AboutActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.depparse.common.BaseParseActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.grammarscope.MainActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.depparse.common.WebActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.grammarscope.GeneralPreferenceFragment" method="onCreatePreferences" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment" method="onCreateView" />
+    <pattern value="org.grammarscope.MainActivity.MainFragment" method="onCreateView" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity.MainFragment" method="onCreateView" />
+    <pattern value="org.grammarscope.download.UpdateFragment" method="onCreateView" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="onDestroy" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onDestroy" />
+    <pattern value="org.grammarscope.MainActivity" method="onDestroy" />
+    <pattern value="org.grammarscope.download.SimpleDownloaderService" method="onDestroy" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="onDestroy" />
+    <pattern value="org.grammarscope.service.server.bound.syntaxnet.SyntaxnetBoundService" method="onDestroy" />
+    <pattern value="org.grammarscope.service.server.messenger.syntaxnet.SyntaxnetMessengerService" method="onDestroy" />
+    <pattern value="org.grammarscope.service.server.bound.udpipe.UDPipeBoundService" method="onDestroy" />
+    <pattern value="org.grammarscope.service.server.messenger.udpipe.UDPipeMessengerService" method="onDestroy" />
+    <pattern value="org.grammarscope.download.DownloadActivity" method="onDone" />
+    <pattern value="org.grammarscope.DependencyParseActivity" method="onDone" />
+    <pattern value="org.mysyntaxnet.ParseActivity" method="onDone" />
+    <pattern value="org.grammarscope.SemanticParseActivity" method="onDone" />
+    <pattern value="org.grammarscope.GraphsParseActivity" method="onDone" />
+    <pattern value="org.grammarscope.GraphParseActivity" method="onDone" />
+    <pattern value="org.depparse.common.BaseParseActivity" method="onDone" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="onDraw" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="onDraw" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" method="onFABNextClick" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" method="onFABNextClick" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" method="onFABPrevClick" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" method="onFABPrevClick" />
+    <pattern value="org.grammarscope.DependencyGraphParseActivity" method="onFABRefreshClick" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" method="onFABRefreshClick" />
+    <pattern value="org.grammarscope.SemanticGraphParseActivity" method="onFABRefreshClick" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" method="onFABRefreshClick" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onFinish" />
+    <pattern value="org.grammarscope.colors.ColorPreference" method="onGetDefaultValue" />
+    <pattern value="org.grammarscope.download.SimpleDownloaderService" method="onHandleIntent" />
+    <pattern value="org.grammarscope.SettingsActivity" method="onIsMultiPane" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="onLoaded" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="onLoaded" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="onMeasure" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="onMeasure" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView" method="onMeasure" />
+    <pattern value="org.depparse.common.BaseParseActivity" method="onNewIntent" />
+    <pattern value="org.grammarscope.MainActivity" method="onNewIntent" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" method="onNewIntent" />
+    <pattern value="org.grammarscope.ShareActivity" method="onNewIntent" />
+    <pattern value="org.mysyntaxnet.ShareActivity" method="onNewIntent" />
+    <pattern value="org.depparse.common.AboutActivity" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" method="onOptionsItemSelected" />
+    <pattern value="org.depparse.common.BaseParseActivity" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.GeneralPreferenceFragment" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.MainActivity" method="onOptionsItemSelected" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" method="onOptionsItemSelected" />
+    <pattern value="org.depparse.common.WebActivity" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="onPause" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="onPostCreate" />
+    <pattern value="org.grammarscope.MainActivity" method="onPostCreate" />
+    <pattern value="org.grammarscope.syntaxnet.Loader" method="onPostExecute" />
+    <pattern value="org.grammarscope.udpipe.Loader" method="onPostExecute" />
+    <pattern value="org.depparse.common.BaseParse" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.MD5Downloader" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.ContentDownloader" method="onPostExecute" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="onPostResume" />
+    <pattern value="org.grammarscope.MainActivity" method="onPrepareOptionsMenu" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" method="onPrepareOptionsMenu" />
+    <pattern value="org.depparse.common.BaseParse" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.support.util.IabBroadcastReceiver" method="onReceive" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment.Killer" method="onReceive" />
+    <pattern value="org.grammarscope.AbstractLabelsActivity" method="onResume" />
+    <pattern value="org.depparse.common.BaseParseActivity" method="onResume" />
+    <pattern value="org.grammarscope.MainActivity" method="onResume" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="onResume" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment" method="onSaveInstanceState" />
+    <pattern value="org.grammarscope.MainActivity.MainFragment" method="onSaveInstanceState" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView.ColorItem" method="onSelectedColorChanged" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerView" method="onSelectedColorChanged" />
+    <pattern value="org.grammarscope.colors.ColorPreference" method="onSetInitialValue" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="onSizeChanged" />
+    <pattern value="org.grammarscope.colors.ColorPadView" method="onSizeChanged" />
+    <pattern value="org.grammarscope.support.DonateActivity" method="onStart" />
+    <pattern value="org.grammarscope.GraphBaseParseActivity" method="onStart" />
+    <pattern value="org.grammarscope.MainActivity" method="onStart" />
+    <pattern value="org.mysyntaxnet.MySyntaxNetActivity" method="onStart" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="onStop" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="onTitleChanged" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="onTouchEvent" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserView" method="onTrackballEvent" />
+    <pattern value="org.grammarscope.result.ParcelableResult" method="ParcelableResult" />
+    <pattern value="org.grammarscope.GraphBaseParseActivity" method="pending" />
+    <pattern value="org.depparse.common.TextBaseParseActivity" method="pending" />
+    <pattern value="org.grammarscope.semantics.PO" />
+    <pattern value="org.grammarscope.semantics.PP" method="PP" />
+    <pattern value="org.grammarscope.DependencyGraphParseActivity" method="prepare" />
+    <pattern value="org.grammarscope.DependencyGraphsParseActivity" method="prepare" />
+    <pattern value="org.grammarscope.SemanticGraphParseActivity" method="prepare" />
+    <pattern value="org.grammarscope.SemanticGraphsParseActivity" method="prepare" />
+    <pattern value="org.syntaxnet1.Syntaxnet1Engine" method="process" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="process" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="process" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="process" />
+    <pattern value="org.grammarscope.semantics.PS" />
+    <pattern value="org.grammarscope.semantics.PT" method="PT" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="Purchase" />
+    <pattern value="org.grammarscope.support.IABAdapter" method="receivedBroadcast" />
+    <pattern value="org.grammarscope.semantics.Relation" method="Relation" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="request" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment.Observer" method="run" />
+    <pattern value="org.grammarscope.DependencyParseActivity" method="runParse" />
+    <pattern value="org.grammarscope.GraphBaseParseActivity" method="runParse" />
+    <pattern value="org.mysyntaxnet.ParseActivity" method="runParse" />
+    <pattern value="org.grammarscope.SemanticParseActivity" method="runParse" />
+    <pattern value="org.grammarscope.semantics.SemanticAnalyzer" method="SemanticAnalyzer" />
+    <pattern value="org.grammarscope.SentenceDetector" method="SentenceDetector" />
+    <pattern value="org.grammarscope.colors.drawable.AlphaPatternDrawable" method="setAlpha" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="setAlpha" />
+    <pattern value="org.grammarscope.colors.drawable.AlphaPatternDrawable" method="setColorFilter" />
+    <pattern value="org.grammarscope.colors.drawable.ColorCircleDrawable" method="setColorFilter" />
+    <pattern value="org.grammarscope.AppCompatPreferenceActivity" method="setContentView" />
+    <pattern value="org.grammarscope.download.SimpleDownloadServiceFragment" method="start" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment.Status" method="Status" />
+    <pattern value="org.grammarscope.download.StorageUtils.StorageDirectory" method="StorageDirectory" />
+    <pattern value="org.syntaxnet1.Syntaxnet1Engine" />
+    <pattern value="org.syntaxnet1.Syntaxnet1Engine" method="Syntaxnet1Engine" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="SyntaxnetEngine" />
+    <pattern value="org.grammarscope.download.TaskObserver.BaseListener" method="taskStart" />
+    <pattern value="org.grammarscope.download.TaskObserver.DialogListener" method="taskStart" />
+    <pattern value="org.grammarscope.download.TaskObserver.DialogListener" method="taskUpdate" />
+    <pattern value="org.grammarscope.semantics.PO" method="toShortString" />
+    <pattern value="org.grammarscope.semantics.PS" method="toShortString" />
+    <pattern value="org.grammarscope.semantics.Dependency" method="toString" />
+    <pattern value="org.grammarscope.support.util.IabResult" method="toString" />
+    <pattern value="org.grammarscope.semantics.Instance" method="toString" />
+    <pattern value="org.grammarscope.semantics.PO" method="toString" />
+    <pattern value="org.grammarscope.semantics.PP" method="toString" />
+    <pattern value="org.depparse.common.Preprocessor.Replacer" method="toString" />
+    <pattern value="org.grammarscope.semantics.PS" method="toString" />
+    <pattern value="org.grammarscope.support.util.Purchase" method="toString" />
+    <pattern value="org.grammarscope.support.util.SkuDetails" method="toString" />
+    <pattern value="org.grammarscope.download.StorageUtils.StorageDirectory" method="toString" />
+    <pattern value="org.grammarscope.semantics.TP" method="toString" />
+    <pattern value="org.grammarscope.semantics.PO" method="toStringBuilder" />
+    <pattern value="org.grammarscope.semantics.PP" method="toStringBuilder" />
+    <pattern value="org.grammarscope.semantics.PS" method="toStringBuilder" />
+    <pattern value="org.grammarscope.semantics.Relation" method="toStringBuilder" />
+    <pattern value="org.grammarscope.semantics.TP" method="toStringBuilder" />
+    <pattern value="org.grammarscope.semantics.TP" method="TP" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="UDPipeEngine" />
+    <pattern value="org.depparse.Unique" />
+    <pattern value="org.grammarscope.result.ParcelableResult" method="writeToParcel" />
+    <pattern value="org.depparse.ParcelableSentence" method="writeToParcel" />
+    <pattern value="org.grammarscope.download.TaskObserver.BaseListener" method="BaseListener" />
+    <pattern value="org.depparse.common.BaseParse" method="BaseParse" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="BoundClient" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment" />
+    <pattern value="org.grammarscope.colors.ColorPreference" method="ColorPreference" />
+    <pattern value="org.grammarscope.MainActivity" method="disconnect" />
+    <pattern value="org.grammarscope.download.FileDataDownloader" method="doInBackground" />
+    <pattern value="org.grammarscope.graph.SettingsFragments.DependencyGraphPreferenceFragment" method="getName" />
+    <pattern value="org.grammarscope.graph.SettingsFragments.SemanticGraphPreferenceFragment" method="getName" />
+    <pattern value="org.grammarscope.graph.GraphPreferenceFragment" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="kill" />
+    <pattern value="org.syntaxnet1.Syntaxnet1Engine" method="kill" />
+    <pattern value="org.grammarscope.syntaxnet.Loader" method="Loader" />
+    <pattern value="org.grammarscope.udpipe.Loader" method="Loader" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="onBindingDied" />
+    <pattern value="org.grammarscope.download.FileDataDownloader" method="onCancelled" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment" method="onColorChanged" />
+    <pattern value="org.grammarscope.download.DownloadPreferenceFragment" method="onCreatePreferences" />
+    <pattern value="org.grammarscope.graph.GraphPreferenceFragment" method="onCreatePreferences" />
+    <pattern value="org.grammarscope.ProviderPreferenceFragment" method="onCreatePreferences" />
+    <pattern value="org.grammarscope.SemanticsPreferenceFragment" method="onCreatePreferences" />
+    <pattern value="org.grammarscope.SystemPreferenceFragment" method="onCreatePreferences" />
+    <pattern value="org.grammarscope.graph.GraphPreferenceFragment" method="onDisplayPreferenceDialog" />
+    <pattern value="org.grammarscope.SemanticsPreferenceFragment" method="onDisplayPreferenceDialog" />
+    <pattern value="org.grammarscope.download.DownloadPreferenceFragment" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.graph.GraphPreferenceFragment" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.ProviderPreferenceFragment" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.SemanticsPreferenceFragment" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.SystemPreferenceFragment" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.download.FileDataDownloader" method="onPostExecute" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="onServiceConnected" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="onServiceDisconnected" />
+    <pattern value="org.grammarscope.semantics.PO" method="PO" />
+    <pattern value="org.grammarscope.semantics.PS" method="PS" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment" method="onActivityCreated" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment" method="onActivityCreated" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment" method="onBindDialogView" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment" method="onBindDialogView" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment" method="onColorSelected" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment" method="onDialogClosed" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment" method="onDialogClosed" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment" method="onPrepareDialogBuilder" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment" method="onPrepareDialogBuilder" />
+    <pattern value="org.grammarscope.colors.chooser.ColorChooserPreferenceDialogFragment" method="onSaveInstanceState" />
+    <pattern value="org.grammarscope.colors.picker.ColorPickerPreferenceDialogFragment" method="onSaveInstanceState" />
+    <pattern value="org.grammarscope.AppUnitTest" method="addition_isCorrect" />
+    <pattern value="org.mysyntaxnet.AppUnitTest" method="addition_isCorrect" />
+    <pattern value="org.grammarscope.AppInstrumentedTest" />
+    <pattern value="org.mysyntaxnet.AppInstrumentedTest" />
+    <pattern value="org.grammarscope.Application" />
+    <pattern value="org.grammarscope.AppUnitTest" />
+    <pattern value="org.mysyntaxnet.AppUnitTest" />
+    <pattern value="org.grammarscope.service.client.iface.IClient" method="bind" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="bind" />
+    <pattern value="org.grammarscope.ProviderManager" method="broadcastEvent" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="getStatus" />
+    <pattern value="org.syntaxnet1.Syntaxnet1Engine" method="getStatus" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine" method="getStatus" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine" method="getStatus" />
+    <pattern value="org.grammarscope.service.client.iface.IClient" />
+    <pattern value="org.grammarscope.service.client.iface.IResultSink" />
+    <pattern value="org.depparse.IEngine" method="isEmbedded" />
+    <pattern value="org.syntaxnet1.Syntaxnet1Engine" method="isEmbedded" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="onBindingDied" />
+    <pattern value="org.grammarscope.LabelsActivity" method="onCancelClick" />
+    <pattern value="org.grammarscope.LabelsActivity" method="onCheck" />
+    <pattern value="org.grammarscope.LabelsActivity" method="onCreate" />
+    <pattern value="org.grammarscope.LabelsActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.grammarscope.LabelsActivity" method="onOkClick" />
+    <pattern value="org.grammarscope.LabelsActivity" method="onOptionsItemSelected" />
+    <pattern value="org.grammarscope.service.client.iface.IResultSink" method="onResult" />
+    <pattern value="org.grammarscope.LabelsActivity" method="onResume" />
+    <pattern value="org.grammarscope.MainActivity" method="onSaveInstanceState" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="onServiceConnected" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="onServiceDisconnected" />
+    <pattern value="org.grammarscope.ProviderManager" method="providerIsEngineOrNull" />
+    <pattern value="org.grammarscope.ProviderManager" />
+    <pattern value="org.grammarscope.ProviderManager" method="ProviderManager" />
+    <pattern value="org.grammarscope.ProviderManager.ProviderType" />
+    <pattern value="org.grammarscope.service.client.iface.IClient" method="request" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="request" />
+    <pattern value="org.grammarscope.service.client.BoundClient" method="setResultSink" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="setResultSink" />
+    <pattern value="org.grammarscope.service.client.iface.IClient" method="startService" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="startService" />
+    <pattern value="org.grammarscope.service.client.iface.IClient" method="stopService" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="stopService" />
+    <pattern value="org.grammarscope.service.client.iface.IClient" method="unbind" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="unbind" />
+    <pattern value="org.grammarscope.AppInstrumentedTest" method="useAppContext" />
+    <pattern value="org.mysyntaxnet.AppInstrumentedTest" method="useAppContext" />
+    <pattern value="org.grammarscope.service.client.MessengerClient" method="MessengerClient" />
+    <pattern value="org.grammarscope.Application" method="onCreate" />
+    <pattern value="org.grammarscope.ProviderManager" method="onReceive" />
+    <pattern value="org.grammarscope.Application" method="onTerminate" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="getHeaders" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="getSelectedItemPosition" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="hasHeaders" />
+    <pattern value="org.grammarscope.preference.Header" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="invalidateHeaders" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="isMultiPane" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="loadHeadersFromResource" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompatDelegate" method="onRestoreInstanceState" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompatDelegate" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="setListFooter" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="switchToHeader" />
+    <pattern value="org.grammarscope.preference.Header" method="describeContents" />
+    <pattern value="org.grammarscope.preference.Header" method="Header" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="isValidFragment" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onBackPressed" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onBuildHeaders" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onCreate" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onDestroy" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onIsMultiPane" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onPreferenceStartFragment" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onRestoreInstanceState" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompat" method="onSaveInstanceState" />
+    <pattern value="org.grammarscope.preference.PreferenceActivityCompatDelegate" method="PreferenceActivityCompatDelegate" />
+    <pattern value="org.grammarscope.preference.Header" method="writeToParcel" />
+    <pattern value="org.grammarscope.Actions" />
+    <pattern value="org.grammarscope.DataUtils" method="arrayToString" />
+    <pattern value="org.grammarscope.TestsBind" method="before" />
+    <pattern value="org.grammarscope.TestsQueriesGraph" method="before" />
+    <pattern value="org.grammarscope.TestsQueriesText" method="before" />
+    <pattern value="org.grammarscope.TestsBind" method="bind_unbind" />
+    <pattern value="org.grammarscope.DataUtils" />
+    <pattern value="org.grammarscope.Actions" method="do_choose" />
+    <pattern value="org.grammarscope.Actions" method="do_ensure_menu_checked" />
+    <pattern value="org.grammarscope.Actions" method="do_options_menu" />
+    <pattern value="org.grammarscope.Actions" method="do_swipeUp" />
+    <pattern value="org.grammarscope.DrawableMatcher" />
+    <pattern value="org.grammarscope.TestsBind" />
+    <pattern value="org.grammarscope.TestsQueriesGraph" />
+    <pattern value="org.grammarscope.TestsQueriesText" />
+    <pattern value="org.grammarscope.Matchers" />
+    <pattern value="org.grammarscope.Matchers" method="noDrawable" />
+    <pattern value="org.grammarscope.TestsQueriesGraph" method="queries" />
+    <pattern value="org.grammarscope.TestsQueriesText" method="queries" />
+    <pattern value="org.grammarscope.DataUtils" method="readSentenceList" />
+    <pattern value="org.grammarscope.Tests" />
+    <pattern value="org.grammarscope.DrawableMatcher" method="toMonochrome" />
+    <pattern value="org.grammarscope.DrawableMatcher" method="describeTo" />
+    <pattern value="org.grammarscope.DrawableMatcher" method="matchesSafely" />
+    <pattern value="org.grammarscope.DrawableMatcher" method="toLumMask" />
+    <pattern value="org.grammarscope.DrawableMatcher" method="DrawableMatcher" />
+    <pattern value="org.grammarscope.service.IParceler" method="toParcelable" />
+    <pattern value="com.bbou.rate.AppRate" />
+    <pattern value="com.bbou.donate.billing.BillingManager" />
+    <pattern value="com.bbou.donate.billing.BillingManager.BillingUpdatesListener" />
+    <pattern value="com.bbou.rate.AppRate" method="clearAgreeShowDialog" />
+    <pattern value="com.bbou.rate.AppRate" method="clearSettingsParam" />
+    <pattern value="com.bbou.rate.DialogOptions" />
+    <pattern value="com.bbou.donate.DonateActivity" />
+    <pattern value="com.bbou.donate.billing.BillingManager" method="getBillingClientResponseCode" />
+    <pattern value="com.bbou.donate.billing.BillingManager" method="getContext" />
+    <pattern value="com.bbou.rate.DialogOptions" method="getMessageResId" />
+    <pattern value="com.bbou.donate.billing.Skus" method="getSubscriptionSkus" />
+    <pattern value="com.bbou.rate.DialogOptions" method="getTextNegativeResId" />
+    <pattern value="com.bbou.rate.DialogOptions" method="getTextNeutralResId" />
+    <pattern value="com.bbou.rate.DialogOptions" method="getTextPositiveResId" />
+    <pattern value="com.bbou.rate.DialogOptions" method="getTitleResId" />
+    <pattern value="org.mysyntaxnet.MainActivity" />
+    <pattern value="com.bbou.others.OthersActivity" />
+    <pattern value="com.bbou.others.OthersActivity" method="isAppInstalled" />
+    <pattern value="com.bbou.rate.AppRate" method="isDebug" />
+    <pattern value="org.mysyntaxnet.MainActivity.MainFragment" />
+    <pattern value="org.mysyntaxnet.MainActivity.MainFragment" method="MainFragment" />
+    <pattern value="org.mysyntaxnet.MainActivity" method="onClickDependencies" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onConsume" />
+    <pattern value="com.bbou.donate.billing.BillingManager.BillingUpdatesListener" method="onConsumeFinished" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketGrammarScope" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketGrammarScopeUDPipe" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketSemantikos" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketSemantikosEWn" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketSemantikosFn" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketSemantikosVn" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketSemantikosWn" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketTreebolicWordNet" />
+    <pattern value="com.bbou.donate.billing.BillingManager" method="querySkuDetails" />
+    <pattern value="com.bbou.rate.AppRate" method="setAgreeShowDialog" />
+    <pattern value="com.bbou.rate.AppRate" method="setCancelable" />
+    <pattern value="com.bbou.rate.AppRate" method="setLaunchTimes" />
+    <pattern value="com.bbou.rate.AppRate" method="setMessage" />
+    <pattern value="com.bbou.rate.AppRate" method="setPastInstallDays" />
+    <pattern value="com.bbou.rate.AppRate" method="setRemindInterval" />
+    <pattern value="com.bbou.rate.AppRate" method="setShowLaterButton" />
+    <pattern value="com.bbou.rate.AppRate" method="setShowNeverButton" />
+    <pattern value="com.bbou.rate.AppRate" method="setShowTitle" />
+    <pattern value="com.bbou.rate.AppRate" method="setTextLater" />
+    <pattern value="com.bbou.rate.AppRate" method="setTextNever" />
+    <pattern value="com.bbou.rate.AppRate" method="setTextRateNow" />
+    <pattern value="com.bbou.rate.AppRate" method="setTitle" />
+    <pattern value="com.bbou.rate.AppRate" method="setView" />
+    <pattern value="com.bbou.donate.billing.Skus" />
+    <pattern value="com.bbou.rate.StoreType" />
+    <pattern value="com.bbou.rate.AppRate" method="AppRate" />
+    <pattern value="com.bbou.donate.billing.BillingManager" method="BillingManager" />
+    <pattern value="com.bbou.rate.StoreType" method="getUri" />
+    <pattern value="org.mysyntaxnet.MainActivity.MainFragment" method="onActivityCreated" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onBillingClientSetupFinished" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onConsumeFinished" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onCreate" />
+    <pattern value="org.mysyntaxnet.MainActivity" method="onCreate" />
+    <pattern value="com.bbou.others.OthersActivity" method="onCreate" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.mysyntaxnet.MainActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.mysyntaxnet.MainActivity.MainFragment" method="onCreateView" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onDestroy" />
+    <pattern value="org.mysyntaxnet.MainActivity" method="onNewIntent" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onOptionsItemSelected" />
+    <pattern value="org.mysyntaxnet.MainActivity" method="onOptionsItemSelected" />
+    <pattern value="org.mysyntaxnet.MainActivity" method="onPrepareOptionsMenu" />
+    <pattern value="com.bbou.donate.DonateActivity" method="onPurchasesUpdated" />
+    <pattern value="org.mysyntaxnet.MainActivity" method="onStart" />
+    <pattern value="com.bbou.rate.StoreType" method="StoreType" />
+    <pattern value="org.grammarscope.result.Parceler" />
+    <pattern value="org.grammarscope.result.Parceler" method="toParcelable" />
+    <pattern value="org.grammarscope.result.Parceler" method="toResult" />
+    <pattern value="org.grammarscope.BaseSettingsActivity" />
+    <pattern value="com.bbou.textrecog.BaseTextRecognizer" />
+    <pattern value="com.bbou.textrecog.BaseTextRecognizer" method="BaseTextRecognizer" />
+    <pattern value="com.bbou.textrecog.TextRecognizeActivity" method="getBitmapFromAsset" />
+    <pattern value="com.bbou.textrecog.TextRecognizeActivity" />
+    <pattern value="com.bbou.textrecog.TextUtils" />
+    <pattern value="com.bbou.textrecog.TextUtils" method="join" />
+    <pattern value="com.bbou.textrecog.ResultTextRecognizer.TextListener" method="onText" />
+    <pattern value="com.bbou.textrecog.TextRecognizer" method="recog" />
+    <pattern value="com.bbou.textrecog.ResultTextRecognizer" />
+    <pattern value="com.bbou.textrecog.ResultTextRecognizer.TextListener" />
+    <pattern value="com.bbou.textrecog.TextRecognizer" />
+    <pattern value="com.bbou.textrecog.TextRecognizerAsyncTask" />
+    <pattern value="com.bbou.textrecog.TextRecognizerAsyncTask" method="TextRecognizerAsyncTask" />
+    <pattern value="com.bbou.textrecog.BaseTextRecognizer" method="recog" />
+    <pattern value="com.bbou.textgetter.GetTextActivity" method="getBitmapFromAsset" />
+    <pattern value="com.bbou.textgetter.GetTextActivity" />
+    <pattern value="com.bbou.textgetter.Copy" method="copyToFile" />
+    <pattern value="com.bbou.textgetter.GetTextActivity" method="getBitmapFromUri" />
+    <pattern value="com.bbou.textrecog.ImageUtils" method="getRotationFromMediaStore" />
+    <pattern value="com.bbou.textrecog.ImageUtils" method="getRotationForImage" />
+    <pattern value="org.grammarscope.download.SimpleDownloaderService" method="enqueueWork" />
+    <pattern value="org.grammarscope.MainActivity.SentenceDetect" method="onJobComplete" />
+    <pattern value="org.grammarscope.MainActivity.SentenceDetect" />
+    <pattern value="org.grammarscope.MainActivity" method="onClickGetText" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromFile" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromFile" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchive" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchive" />
+    <pattern value="org.grammarscope.BaseSentenceDetect" />
+    <pattern value="org.grammarscope.concurrency.Task" method="cancel" />
+    <pattern value="com.bbou.textgetter.Copy" />
+    <pattern value="org.grammarscope.DependencySettingsActivity" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.DialogListener" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.DialogListener" method="DialogListener" />
+    <pattern value="org.grammarscope.concurrency.Task" method="doInBackground" />
+    <pattern value="org.grammarscope.BaseSentenceDetect" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromFile" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchive" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchive" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromFile" method="doInBackground" />
+    <pattern value="org.grammarscope.concurrency.Task" method="execute" />
+    <pattern value="org.grammarscope.concurrency.Task" method="executeOnExecutor" />
+    <pattern value="org.grammarscope.concurrency.Task" method="get" />
+    <pattern value="org.grammarscope.concurrency.Task" method="getHandler" />
+    <pattern value="org.grammarscope.concurrency.Task" method="getStatus" />
+    <pattern value="org.grammarscope.concurrency.Task.MultiplexingHandler" method="handleMessage" />
+    <pattern value="com.bbou.textrecog.ImageUtils" />
+    <pattern value="org.grammarscope.SemanticSettingsActivity" />
+    <pattern value="org.grammarscope.concurrency.Task" method="isCancelled" />
+    <pattern value="org.grammarscope.concurrency.Task.MultiplexingHandler" />
+    <pattern value="org.grammarscope.concurrency.Task.MultiplexingHandler" method="MultiplexingHandler" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromFile" method="onCancelled" />
+    <pattern value="org.grammarscope.concurrency.Task" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchive" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchive" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromFile" method="onCancelled" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketGrammarScopePremium" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketGrammarScopeUDPipePremium" />
+    <pattern value="com.bbou.others.OthersActivity" method="onMarketSemantikosSn" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromFile" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchive" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchive" method="onPostExecute" />
+    <pattern value="org.grammarscope.concurrency.Task" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromFile" method="onPostExecute" />
+    <pattern value="org.grammarscope.MainActivity.SentenceDetect" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromFile" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchive" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchive" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromFile" method="onPreExecute" />
+    <pattern value="org.grammarscope.concurrency.Task" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromFile" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchive" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchive" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromFile" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.concurrency.Task" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.concurrency.Task" method="postResult" />
+    <pattern value="org.grammarscope.concurrency.Task" method="postResultIfNotInvoked" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ProgressListener" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ProgressListener" method="ProgressListener" />
+    <pattern value="org.grammarscope.concurrency.Task" method="publishProgress" />
+    <pattern value="org.grammarscope.concurrency.Task" method="setDefaultExecutor" />
+    <pattern value="org.grammarscope.concurrency.Task.Status" />
+    <pattern value="org.grammarscope.concurrency.Task" />
+    <pattern value="org.grammarscope.concurrency.Task" method="Task" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ToastWithStatusListener" method="taskFinish" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ProgressListener" method="taskFinish" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ToastWithStatusListener" method="taskStart" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ProgressListener" method="taskStart" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ProgressListener" method="taskUpdate" />
+    <pattern value="com.bbou.textgetter.TextFragment" />
+    <pattern value="com.bbou.textgetter.TextFragment" method="TextFragment" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ToastWithStatusListener" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.ToastWithStatusListener" method="ToastWithStatusListener" />
+    <pattern value="org.grammarscope.concurrency.Task.WorkerRunnable" />
+    <pattern value="org.grammarscope.concurrency.Task.WorkerRunnable" method="WorkerRunnable" />
+    <pattern value="org.grammarscope.concurrency.Task$11" />
+    <pattern value="org.grammarscope.concurrency.Task$4" />
+    <pattern value="org.grammarscope.concurrency.Task$10" />
+    <pattern value="org.grammarscope.concurrency.Task$10" method="call" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyInstrumentedTest" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyUnitTest" />
+    <pattern value="org.grammarscope.ContainerUtils" />
+    <pattern value="org.grammarscope.Seq" method="do_choose" />
+    <pattern value="org.grammarscope.Seq" method="do_longclick" />
+    <pattern value="org.grammarscope.Seq" method="do_menu_check" />
+    <pattern value="org.grammarscope.Seq" method="do_options_menu" />
+    <pattern value="org.grammarscope.Seq" method="do_swipeUp" />
+    <pattern value="org.grammarscope.concurrency.Task$11" method="done" />
+    <pattern value="org.grammarscope.ContainerUtils" method="getExpandableListViewItemCounts" />
+    <pattern value="org.grammarscope.ContainerUtils" method="getItemCount" />
+    <pattern value="org.grammarscope.ContainerUtils" method="getViewCount" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyUnitTest" method="newTask" />
+    <pattern value="org.grammarscope.concurrency.Task$4" method="newThread" />
+    <pattern value="org.grammarscope.Seq" />
+    <pattern value="org.grammarscope.concurrency.Task.Status" method="Status" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyInstrumentedTest" method="useTask" />
+    <pattern value="org.grammarscope.Matchers" method="withNoDrawable" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyInstrumentedTest$1" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyInstrumentedTest$1" method="doInBackground" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" method="doInBackground" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" method="getTask" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" />
+    <pattern value="org.grammarscope.concurrency.ObservedTask" />
+    <pattern value="org.grammarscope.concurrency.ObservedTask" method="ObservedTask" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" method="onCancelled" />
+    <pattern value="org.grammarscope.concurrency.ObservedTask" method="onCancelled" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyInstrumentedTest$1" method="onPostExecute" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" method="onPostExecute" />
+    <pattern value="org.grammarscope.concurrency.ObservedTask" method="onPostExecute" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" method="onPreExecute" />
+    <pattern value="org.grammarscope.concurrency.ObservedTask" method="onPreExecute" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.concurrency.ObservedTask" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.concurrency.ConcurrencyInstrumentedTest$1" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.concurrency.Task" method="setForward" />
+    <pattern value="org.grammarscope.GraphBaseParseActivity" method="darkerColor" />
+    <pattern value="org.grammarscope.CommonSettings" method="isNightMode" />
+    <pattern value="org.grammarscope.CommonSettings" />
+    <pattern value="org.depparse.Deploy" method="copyFromFile" />
+    <pattern value="org.grammarscope.download.FileData" method="getEtag" />
+    <pattern value="org.grammarscope.download.Settings" method="getModelSourceSize" />
+    <pattern value="org.grammarscope.download.FileData" method="getStaticVersion" />
+    <pattern value="org.grammarscope.download.FileData" method="getVersion" />
+    <pattern value="org.grammarscope.TextPreferenceFragment" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" method="launchCopy" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" method="launchMd5" />
+    <pattern value="org.grammarscope.download.FileAsyncTask" method="launchUnzip" />
+    <pattern value="org.depparse.Deploy" method="md5FromFile" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.Observer" />
+    <pattern value="org.grammarscope.concurrency.TaskDialogObserver.ProgressDialogFragment" />
+    <pattern value="org.grammarscope.concurrency.TaskDialogObserver.ProgressDialogFragment" method="ProgressDialogFragment" />
+    <pattern value="org.grammarscope.ResettablePreference" />
+    <pattern value="org.grammarscope.ResettablePreference" method="ResettablePreference" />
+    <pattern value="org.grammarscope.download.Settings" />
+    <pattern value="org.grammarscope.concurrency.TaskObserver.Observer" method="setTitle" />
+    <pattern value="org.grammarscope.concurrency.TaskDialogObserver" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver" method="taskFinish" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithProgress" method="taskProgress" />
+    <pattern value="org.grammarscope.concurrency.TaskProgressDialogObserver" />
+    <pattern value="org.grammarscope.concurrency.TaskProgressDialogObserver" method="TaskProgressDialogObserver" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver" method="taskStart" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver" />
+    <pattern value="org.depparse.Deploy" method="unzipEntryFromArchive" />
+    <pattern value="org.depparse.Deploy" method="unzipFromArchive" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithProgress" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithProgress" method="WithProgress" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithStatus" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithStatus" method="WithStatus" />
+    <pattern value="org.grammarscope.download.AbstractDownloadFragment.Status" method="isSuccess" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithStatus" method="taskFinish" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithProgress" method="taskFinish" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithStatus" method="taskStart" />
+    <pattern value="org.grammarscope.concurrency.TaskToastObserver.WithProgress" method="taskStart" />
+    <pattern value="org.grammarscope.Application" method="isNightMode" />
+    <pattern value="org.grammarscope.download.DownloadedPreferenceFragment" />
+    <pattern value="org.grammarscope.BaseMainActivity" method="onClickClear" />
+    <pattern value="org.grammarscope.BaseMainActivity" method="onClickStatus" />
+    <pattern value="org.grammarscope.download.MD5AsyncTaskChooser" method="md5" />
+    <pattern value="org.grammarscope.BaseMainActivity.SentenceDetect" method="onPostExecute" />
+    <pattern value="org.grammarscope.ColorSettings" method="clearPrefs" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen" method="doASync" />
+    <pattern value="com.bbou.rate.DialogBuilder" method="isLollipop" />
+    <pattern value="org.grammarscope.download.MD5AsyncTaskChooser" />
+    <pattern value="org.grammarscope.BaseMainActivity.SentenceDetect" />
+    <pattern value="org.grammarscope.ColorSettings" />
+    <pattern value="com.bbou.rate.DialogBuilder" />
+    <pattern value="org.grammarscope.download.AbstractDownloadFragment.Status" />
+    <pattern value="com.bbou.textgetter.TextFromFileViewModel.Factory" method="Factory" />
+    <pattern value="com.bbou.textgetter.TextFromFileViewModel" method="TextFromFileViewModel" />
+    <pattern value="org.grammarscope.download.StorageReports" method="getStorageDirectoriesNamesValues" />
+    <pattern value="org.grammarscope.download.StorageReports" method="getStyledCachesNamesValues" />
+    <pattern value="com.bbou.textgetter.SentencesViewModel.Factory" method="Factory" />
+    <pattern value="com.bbou.textrecog.RecognizedTextViewModel" method="RecognizedTextViewModel" />
+    <pattern value="com.bbou.textgetter.PagerAdapter" method="PagerAdapter" />
+    <pattern value="com.bbou.textrecog.LiveDataTextRecognizer" method="LiveDataTextRecognizer" />
+    <pattern value="com.bbou.textgetter.ImageFromFileViewModel" method="ImageFromFileViewModel" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromUri" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromUri" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveFile" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveUri" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveFile" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromUri" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromUri" method="doInBackground" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromUri" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveFile" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromUri" method="onCancelled" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromUri" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveFile" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromUri" method="onPostExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromUri" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveFile" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromUri" method="onPreExecute" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncCopyFromUri" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveFile" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onProgressUpdate" />
+    <pattern value="org.grammarscope.download.FileAsyncTask.AsyncMd5FromUri" method="onProgressUpdate" />
+    <pattern value="com.bbou.donate.billing.BillingManager" method="purchasesToProductIds" />
+    <pattern value="com.bbou.donate.billing.BillingManager" method="queryDetailsProductDetails" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen.Function1" method="apply" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen.Function" method="apply" />
+    <pattern value="com.bbou.textgetter.ImageFromFileViewModel.Factory" method="Factory" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment" method="deploy" />
+    <pattern value="org.grammarscope.graph.SettingsFragments.DependencyGraphPreferenceFragment" method="getPreferenceName" />
+    <pattern value="org.grammarscope.graph.SettingsFragments.SemanticGraphPreferenceFragment" method="getPreferenceName" />
+    <pattern value="org.grammarscope.DependencySettingsActivity" method="makeFragment" />
+    <pattern value="org.grammarscope.SemanticSettingsActivity" method="makeFragment" />
+    <pattern value="org.grammarscope.BaseMainActivity.SBDListener" method="onDone" />
+    <pattern value="com.bbou.others.OthersActivity" method="install" />
+    <pattern value="org.grammarscope.concurrency.ObservedDelegatingTask" method="ObservedDelegatingTask" />
+    <pattern value="org.grammarscope.download.AbstractDownloadFragment" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment$1" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen$1" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen$7" />
+    <pattern value="org.grammarscope.BaseMainActivity" />
+    <pattern value="org.grammarscope.download.Notifier" method="cancelNotification" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen$7" method="doInBackground" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen$1" method="doInBackground" />
+    <pattern value="org.grammarscope.download.DownloadCore" />
+    <pattern value="org.grammarscope.download.DownloadCore" method="DownloadCore" />
+    <pattern value="org.grammarscope.download.DownloadCore.DownloadData" />
+    <pattern value="org.grammarscope.download.DownloadCore.DownloadData" method="DownloadData" />
+    <pattern value="org.grammarscope.download.DownloadFragment" />
+    <pattern value="org.grammarscope.download.DownloadWork" />
+    <pattern value="org.grammarscope.download.DownloadWork.DownloadWorker" />
+    <pattern value="org.grammarscope.download.DownloadWork.DownloadWorker" method="DownloadWorker" />
+    <pattern value="org.grammarscope.download.DownloadZipCore" />
+    <pattern value="org.grammarscope.download.DownloadZipCore" method="DownloadZipCore" />
+    <pattern value="org.grammarscope.download.DownloadZipFragment" />
+    <pattern value="org.grammarscope.download.DownloadZipWork" />
+    <pattern value="org.grammarscope.download.DownloadZipWork.DownloadZipWorker" />
+    <pattern value="org.grammarscope.download.DownloadZipWork.DownloadZipWorker" method="DownloadZipWorker" />
+    <pattern value="com.bbou.textgetter.ImageFromFileViewModel.Factory" />
+    <pattern value="com.bbou.textgetter.SentencesViewModel.Factory" />
+    <pattern value="com.bbou.textgetter.TextFromFileViewModel.Factory" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen.Function" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen.Function1" />
+    <pattern value="com.bbou.textgetter.ImageFromFileViewModel" />
+    <pattern value="com.bbou.textgetter.SentencesFragment" />
+    <pattern value="com.bbou.textrecog.LiveDataTextRecognizer" />
+    <pattern value="org.grammarscope.BaseMainActivity.MainFragment" />
+    <pattern value="org.grammarscope.BaseMainActivity.MainFragment" method="MainFragment" />
+    <pattern value="org.grammarscope.download.Notifier" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen$7" method="onPostExecute" />
+    <pattern value="org.grammarscope.concurrency.DoAsyncThen$1" method="onPostExecute" />
+    <pattern value="com.bbou.textgetter.PagerAdapter" />
+    <pattern value="com.bbou.textrecog.RecognizedTextViewModel" />
+    <pattern value="org.grammarscope.download.DownloadFragment" method="requestCancel" />
+    <pattern value="org.grammarscope.download.DownloadFragment" method="requestPendingCancel" />
+    <pattern value="org.grammarscope.BaseMainActivity.SBDListener" />
+    <pattern value="com.bbou.textgetter.SentencesViewModel" />
+    <pattern value="org.grammarscope.download.AbstractDownloadFragment.Status" method="Status" />
+    <pattern value="org.grammarscope.download.BaseDownloadFragment$1" method="taskFinish" />
+    <pattern value="com.bbou.textgetter.TextFromFileViewModel" />
+    <pattern value="com.bbou.textgetter.SentencesFragment.SentencesAdapter" />
+    <pattern value="com.bbou.textgetter.SentencesFragment.SentencesAdapter" method="SentencesAdapter" />
+    <pattern value="com.bbou.textgetter.SentencesFragment.SentencesAdapter.SentenceViewHolder" />
+    <pattern value="com.bbou.textgetter.SentencesFragment.SentencesAdapter.SentenceViewHolder" method="SentenceViewHolder" />
+    <pattern value="com.bbou.download.AbstractDownloadFragment" />
+    <pattern value="com.bbou.download.Report" method="appendImage" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromFile" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromUri" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromFile" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromUri" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveFile" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveUri" />
+    <pattern value="com.bbou.download.BaseDownloadFragment" />
+    <pattern value="com.bbou.download.Notifier" method="cancelNotification" />
+    <pattern value="com.bbou.download.ContentDownloader" />
+    <pattern value="com.bbou.deploy.Deploy" method="copyFile" />
+    <pattern value="com.bbou.download.FileAsyncTaskChooser" method="copyFromFile" />
+    <pattern value="com.bbou.deploy.Deploy" method="copyFromFile" />
+    <pattern value="com.bbou.download.StorageUtils" method="countToStorageString" />
+    <pattern value="com.bbou.deploy.Deploy" />
+    <pattern value="com.bbou.download.StorageUtils.Directory" />
+    <pattern value="com.bbou.download.StorageUtils.Directory" method="Directory" />
+    <pattern value="com.bbou.concurrency.DoAsyncThen" method="doASync" />
+    <pattern value="com.bbou.concurrency.DoAsyncThen" />
+    <pattern value="com.bbou.download.ContentDownloader" method="doInBackground" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromFile" method="doInBackground" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="doInBackground" />
+    <pattern value="com.bbou.download.FileDataDownloader" method="doInBackground" />
+    <pattern value="com.bbou.download.ResourcesDownloader" method="doInBackground" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromUri" method="doInBackground" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="doInBackground" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="doInBackground" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromUri" method="doInBackground" />
+    <pattern value="com.bbou.download.DownloadActivity" />
+    <pattern value="com.bbou.download.DownloadedPreferenceFragment" />
+    <pattern value="com.bbou.download.DownloadFragment" />
+    <pattern value="com.bbou.download.DownloadPreferenceFragment" />
+    <pattern value="com.bbou.download.DownloadZipFragment" />
+    <pattern value="com.bbou.download.FileAsyncTask" />
+    <pattern value="com.bbou.download.FileAsyncTaskChooser" />
+    <pattern value="com.bbou.download.FileData" />
+    <pattern value="com.bbou.download.FileDataDownloader" />
+    <pattern value="com.bbou.download.StorageUtils.StorageDirectory" method="fitsIn" />
+    <pattern value="com.bbou.concurrency.Task" method="get" />
+    <pattern value="com.bbou.download.StorageReports" method="get2StorageDirectoriesNamesValues" />
+    <pattern value="com.bbou.download.FileData" method="getCurrent" />
+    <pattern value="com.bbou.download.ContentDownloader" method="getException" />
+    <pattern value="com.bbou.download.MD5Downloader" method="getException" />
+    <pattern value="com.bbou.download.ResourcesDownloader" method="getException" />
+    <pattern value="com.bbou.download.StorageUtils" method="getFree" />
+    <pattern value="com.bbou.concurrency.Task" method="getStatus" />
+    <pattern value="com.bbou.download.StorageReports" method="getStorageDirectoriesNamesValues" />
+    <pattern value="com.bbou.download.StorageReports" method="getStyledCachesNamesValues" />
+    <pattern value="com.bbou.concurrency.ObservedDelegatingTask" method="getTask" />
+    <pattern value="com.bbou.download.UpdateActivity" />
+    <pattern value="com.bbou.download.FileAsyncTask" method="launchCopy" />
+    <pattern value="com.bbou.download.FileAsyncTask" method="launchMd5" />
+    <pattern value="com.bbou.download.FileAsyncTask" method="launchUnzip" />
+    <pattern value="com.bbou.download.MD5AsyncTaskChooser" method="md5" />
+    <pattern value="com.bbou.download.MD5AsyncTaskChooser" />
+    <pattern value="com.bbou.download.MD5Downloader" />
+    <pattern value="com.bbou.download.FileAsyncTaskChooser" method="md5FromFile" />
+    <pattern value="com.bbou.deploy.Deploy" method="md5FromFile" />
+    <pattern value="com.bbou.download.Notifier" />
+    <pattern value="com.bbou.concurrency.ObservedDelegatingTask" />
+    <pattern value="com.bbou.concurrency.ObservedTask" />
+    <pattern value="com.bbou.concurrency.ObservedTask" method="ObservedTask" />
+    <pattern value="com.bbou.concurrency.TaskObserver.Observer" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromUri" method="onCancelled" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromFile" method="onCancelled" />
+    <pattern value="com.bbou.concurrency.ObservedTask" method="onCancelled" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onCancelled" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onCancelled" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onCancelled" />
+    <pattern value="com.bbou.download.ResourcesDownloader" method="onCancelled" />
+    <pattern value="com.bbou.download.FileDataDownloader" method="onCancelled" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromUri" method="onCancelled" />
+    <pattern value="com.bbou.download.ContentDownloader" method="onCancelled" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromUri" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromFile" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveFile" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onPostExecute" />
+    <pattern value="com.bbou.download.ResourcesDownloader" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileDataDownloader" method="onPostExecute" />
+    <pattern value="com.bbou.concurrency.ObservedDelegatingTask" method="onPostExecute" />
+    <pattern value="com.bbou.concurrency.ObservedTask" method="onPostExecute" />
+    <pattern value="com.bbou.concurrency.Task" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromFile" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromUri" method="onPostExecute" />
+    <pattern value="com.bbou.download.MD5Downloader" method="onPostExecute" />
+    <pattern value="com.bbou.download.ContentDownloader" method="onPostExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromUri" method="onPreExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromFile" method="onPreExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onPreExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onPreExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onPreExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromUri" method="onPreExecute" />
+    <pattern value="com.bbou.concurrency.ObservedTask" method="onPreExecute" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromUri" method="onProgressUpdate" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromFile" method="onProgressUpdate" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="onProgressUpdate" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="onProgressUpdate" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="onProgressUpdate" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromUri" method="onProgressUpdate" />
+    <pattern value="com.bbou.concurrency.ObservedTask" method="onProgressUpdate" />
+    <pattern value="com.bbou.download.ResourcesDownloader" method="populateRadioGroup" />
+    <pattern value="com.bbou.concurrency.TaskDialogObserver.ProgressDialogFragment" />
+    <pattern value="com.bbou.concurrency.TaskDialogObserver.ProgressDialogFragment" method="ProgressDialogFragment" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromUri" method="publish" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncCopyFromFile" method="publish" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipFromArchiveUri" method="publish" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveFile" method="publish" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncUnzipEntryFromArchiveUri" method="publish" />
+    <pattern value="com.bbou.download.FileAsyncTask.AsyncMd5FromUri" method="publish" />
+    <pattern value="com.bbou.download.Report" />
+    <pattern value="com.bbou.download.DownloadFragment" method="requestCancel" />
+    <pattern value="com.bbou.download.DownloadFragment" method="requestPendingCancel" />
+    <pattern value="com.bbou.download.ResourcesDownloader" />
+    <pattern value="com.bbou.concurrency.Task" method="setDefaultExecutor" />
+    <pattern value="com.bbou.concurrency.TaskObserver.Observer" method="setTitle" />
+    <pattern value="com.bbou.download.ResourcesDownloader" method="showResources" />
+    <pattern value="com.bbou.download.StorageUtils.StorageDirectory" />
+    <pattern value="com.bbou.download.StorageUtils.StorageDirectory" method="StorageDirectory" />
+    <pattern value="com.bbou.download.StorageUtils" method="storageFreeAsString" />
+    <pattern value="com.bbou.download.StorageReports" />
+    <pattern value="com.bbou.download.StorageUtils" />
+    <pattern value="com.bbou.concurrency.Task" />
+    <pattern value="com.bbou.concurrency.TaskDialogObserver" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver" method="taskFinish" />
+    <pattern value="com.bbou.concurrency.TaskObserver" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithProgress" method="taskProgress" />
+    <pattern value="com.bbou.concurrency.TaskProgressDialogObserver" />
+    <pattern value="com.bbou.concurrency.TaskProgressDialogObserver" method="TaskProgressDialogObserver" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver" method="taskStart" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver" method="TaskToastObserver" />
+    <pattern value="com.bbou.download.StorageUtils.StorageDirectory" method="toLongString" />
+    <pattern value="com.bbou.download.FileAsyncTaskChooser" method="unzipEntryFromArchive" />
+    <pattern value="com.bbou.deploy.Deploy" method="unzipEntryFromArchive" />
+    <pattern value="com.bbou.download.FileAsyncTaskChooser" method="unzipFromArchive" />
+    <pattern value="com.bbou.deploy.Deploy" method="unzipFromArchive" />
+    <pattern value="com.bbou.download.UpdateFragment" />
+    <pattern value="com.bbou.download.UpdateFragment" method="UpdateFragment" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithProgress" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithProgress" method="WithProgress" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithStatus" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithStatus" method="WithStatus" />
+    <pattern value="com.bbou.concurrency.DoAsyncThen.Function1" method="apply" />
+    <pattern value="com.bbou.concurrency.DoAsyncThen.Function" method="apply" />
+    <pattern value="com.bbou.download.DownloadFragment" method="deploy" />
+    <pattern value="com.bbou.download.DownloadCore" method="DownloadCore" />
+    <pattern value="com.bbou.download.DownloadCore.DownloadData" method="DownloadData" />
+    <pattern value="com.bbou.download.DownloadWork.DownloadWorker" method="DownloadWorker" />
+    <pattern value="com.bbou.download.DownloadZipCore" method="DownloadZipCore" />
+    <pattern value="com.bbou.download.DownloadZipWork.DownloadZipWorker" method="DownloadZipWorker" />
+    <pattern value="com.bbou.download.DownloadZipWork" />
+    <pattern value="com.bbou.download.FileDataDownloader.Listener" method="onDone" />
+    <pattern value="com.bbou.download.MD5Downloader.Listener" method="onDone" />
+    <pattern value="com.bbou.download.ContentDownloader.Listener" method="onDone" />
+    <pattern value="com.bbou.download.FileData" method="recordDatapackFile" />
+    <pattern value="com.bbou.download.BaseDownloadFragment" method="requestCancel" />
+    <pattern value="com.bbou.download.BaseDownloadFragment" method="requestPendingCancel" />
+    <pattern value="com.bbou.download.AbstractDownloadFragment.Status" method="Status" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithStatus" method="taskFinish" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithProgress" method="taskFinish" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithStatus" method="taskStart" />
+    <pattern value="com.bbou.concurrency.TaskToastObserver.WithProgress" method="taskStart" />
+    <pattern value="com.bbou.download.DownloadFragment$1" />
+    <pattern value="com.bbou.download.DownloadWork" />
+    <pattern value="com.bbou.download.OnComplete" />
+    <pattern value="com.bbou.concurrency.ObservedDelegatingTask" method="ObservedDelegatingTask" />
+    <pattern value="com.bbou.concurrency.DoAsyncThen$1" />
+    <pattern value="com.bbou.concurrency.DoAsyncThen$7" />
+    <pattern value="com.bbou.download.DownloadActivity" method="onComplete" />
+    <pattern value="org.mysyntaxnet.ParseActivity" method="onConfigurationChanged" />
+    <pattern value="org.mysyntaxnet.MainActivity.MainFragment" method="onViewCreated" />
+    <pattern value="org.grammarscope.GraphsParseActivity" method="accept" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineCopyFromFile" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineCopyFromUri" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineCopyFromUrl" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineMd5FromUri" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineMd5FromUrl" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipEntryFromArchiveFile" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipEntryFromArchiveUri" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipEntryFromArchiveUrl" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipFromArchiveUri" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipFromArchiveUrl" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="baseTaskCancelTest" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="baseTaskRepeatTest" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="baseTaskTest" />
+    <pattern value="org.grammarscope.BindTests" method="before" />
+    <pattern value="org.grammarscope.QueriesGraphTests" method="before" />
+    <pattern value="org.grammarscope.QueriesTextTests" method="before" />
+    <pattern value="org.grammarscope.BindTests" method="bind_unbind" />
+    <pattern value="org.grammarscope.BindTests" />
+    <pattern value="org.depparse.Token.BreakLevel" />
+    <pattern value="com.bbou.coroutines.Callbacks" />
+    <pattern value="com.bbou.capture.Capture" />
+    <pattern value="com.bbou.capture.CapturePreferenceFragment" />
+    <pattern value="com.bbou.capture.Capture" method="captureScreen" />
+    <pattern value="com.bbou.download.choose.Chooser" />
+    <pattern value="org.grammarscope.graph.CommonSettings" />
+    <pattern value="com.bbou.coroutines.observe.TaskDialogObserver.Companion" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.Companion" />
+    <pattern value="com.bbou.donate.billing.BillingManager.Companion" />
+    <pattern value="com.bbou.donate.DonateActivity.Companion" />
+    <pattern value="com.bbou.download.BaseDownloadFragment.Companion" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadCore.Companion" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadTask.Companion" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadZipCore.Companion" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadZipTask.Companion" />
+    <pattern value="com.bbou.download.coroutines.core.DummyTask.Companion" />
+    <pattern value="com.bbou.download.coroutines.DownloadActivity.Companion" />
+    <pattern value="com.bbou.download.coroutines.DownloadBaseFragment.Companion" />
+    <pattern value="com.bbou.download.coroutines.DownloadFragment.Companion" />
+    <pattern value="com.bbou.download.coroutines.DownloadZipFragment.Companion" />
+    <pattern value="com.bbou.download.coroutines.DummyFragment.Companion" />
+    <pattern value="com.bbou.download.coroutines.utils.FileDataDownloader.Companion" />
+    <pattern value="com.bbou.download.coroutines.utils.MD5Downloader.Companion" />
+    <pattern value="com.bbou.download.preference.DownloadedPreferenceFragment.Companion" />
+    <pattern value="com.bbou.download.preference.DownloadPreferenceFragment.Companion" />
+    <pattern value="com.bbou.download.ProbedDownloadFragment.Companion" />
+    <pattern value="com.bbou.download.storage.StorageUtils.DirType.Companion" />
+    <pattern value="com.bbou.download.storage.StorageUtils.StorageDirectory.Companion" />
+    <pattern value="com.bbou.download.utils.FileData.Companion" />
+    <pattern value="com.bbou.others.OthersActivity.Companion" />
+    <pattern value="com.bbou.rate.StoreType.Companion" />
+    <pattern value="com.bbou.textgetter.GetTextActivity.Companion" />
+    <pattern value="com.bbou.textgetter.ImageFromFileViewModel.Companion" />
+    <pattern value="com.bbou.textgetter.SentencesViewModel.Companion" />
+    <pattern value="com.bbou.textgetter.TextFromFileViewModel.Companion" />
+    <pattern value="com.bbou.textrecog.LiveDataTextRecognizer.Companion" />
+    <pattern value="com.bbou.textrecog.RecognizedTextViewModel.Companion" />
+    <pattern value="org.depparse.common.BaseParseActivity.Companion" />
+    <pattern value="org.depparse.ParcelableSentence.Companion" />
+    <pattern value="org.depparse.Token.BreakLevel.Companion" />
+    <pattern value="org.grammarscope.Application.Companion" />
+    <pattern value="org.grammarscope.BaseMainActivity.Companion" />
+    <pattern value="org.grammarscope.BaseMainActivity.MainFragment.Companion" />
+    <pattern value="org.grammarscope.BaseSettingsActivity.Companion" />
+    <pattern value="org.grammarscope.DependencyParseActivity.Companion" />
+    <pattern value="org.grammarscope.GeneralPreferenceFragment.Companion" />
+    <pattern value="org.grammarscope.graph.CommonSettings.Companion" />
+    <pattern value="org.grammarscope.graph.DependencyGraphParse.Companion" />
+    <pattern value="org.grammarscope.graph.DependencyGraphsParse.Companion" />
+    <pattern value="org.grammarscope.graph.SemanticGraphParse.Companion" />
+    <pattern value="org.grammarscope.graph.SemanticGraphsParse.Companion" />
+    <pattern value="org.grammarscope.GraphBaseParseActivity.Companion" />
+    <pattern value="org.grammarscope.GraphsParseActivity.Companion" />
+    <pattern value="org.grammarscope.LabelsActivity.Companion" />
+    <pattern value="org.grammarscope.ProviderPreferenceFragment.Companion" />
+    <pattern value="org.grammarscope.result.ParcelableResult.Companion" />
+    <pattern value="org.grammarscope.result.Parceler.Companion" />
+    <pattern value="org.grammarscope.SemanticParseActivity.Companion" />
+    <pattern value="org.grammarscope.semantics.Relation.Companion" />
+    <pattern value="org.grammarscope.semantics.SemanticAnalyzer.Companion" />
+    <pattern value="org.grammarscope.SemanticsPreferenceFragment.Companion" />
+    <pattern value="org.grammarscope.SentenceDetector.Companion" />
+    <pattern value="org.grammarscope.service.client.BoundClient.Companion" />
+    <pattern value="org.grammarscope.service.iface.IServiceConstants.Companion" />
+    <pattern value="org.grammarscope.service.server.BoundService.Companion" />
+    <pattern value="org.grammarscope.syntaxnet.Loader.Companion" />
+    <pattern value="org.grammarscope.syntaxnet.SyntaxnetEngine.Companion" />
+    <pattern value="org.grammarscope.TextPreferenceFragment.Companion" />
+    <pattern value="org.grammarscope.udpipe.Loader.Companion" />
+    <pattern value="org.grammarscope.udpipe.UDPipeEngine.Companion" />
+    <pattern value="org.mysyntaxnet.MainActivity.Companion" />
+    <pattern value="org.mysyntaxnet.ParseActivity.Companion" />
+    <pattern value="org.syntaxnet1.Syntaxnet1Engine.Companion" />
+    <pattern value="com.bbou.download.coroutines.utils.ContentDownloader" />
+    <pattern value="com.bbou.coroutines.ExecuteAsync.ContextScope" />
+    <pattern value="com.bbou.coroutines.ExecuteAsync.ContextScope" method="ContextScope" />
+    <pattern value="org.grammarscope.graph.DependencyGraphParse" />
+    <pattern value="org.grammarscope.graph.DependencyGraphsParse" />
+    <pattern value="com.bbou.download.storage.StorageUtils.Directory" />
+    <pattern value="com.bbou.download.storage.StorageUtils.Directory" method="Directory" />
+    <pattern value="com.bbou.download.storage.StorageUtils.DirType" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadTask" method="doJob" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadZipTask" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineCopyFromFile" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipEntryFromArchiveFile" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineCopyFromUri" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipFromArchiveUri" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipEntryFromArchiveUri" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineMd5FromUri" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineCopyFromUrl" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipFromArchiveUrl" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineUnzipEntryFromArchiveUrl" method="doJob" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks.AsyncCoroutineMd5FromUrl" method="doJob" />
+    <pattern value="com.bbou.download.coroutines.DownloadActivity" />
+    <pattern value="com.bbou.download.coroutines.DownloadBaseFragment" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadCore" />
+    <pattern value="com.bbou.download.preference.DownloadedPreferenceFragment" />
+    <pattern value="com.bbou.download.coroutines.DownloadFragment" />
+    <pattern value="com.bbou.download.preference.DownloadPreferenceFragment" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadTask" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadZipCore" />
+    <pattern value="com.bbou.download.coroutines.DownloadZipFragment" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadZipTask" />
+    <pattern value="com.bbou.download.coroutines.DummyFragment" />
+    <pattern value="com.bbou.download.coroutines.core.DummyTask" />
+    <pattern value="com.bbou.coroutines.ExecuteAsync" />
+    <pattern value="com.bbou.download.utils.FileData" />
+    <pattern value="com.bbou.download.coroutines.utils.FileDataDownloader" />
+    <pattern value="com.bbou.deploy.coroutines.FileTasks" />
+    <pattern value="com.bbou.coroutines.observe.Formatter" />
+    <pattern value="com.bbou.download.storage.FormatUtils" />
+    <pattern value="org.grammarscope.graph.GraphColors" />
+    <pattern value="org.grammarscope.BaseSettingsActivity.HeaderFragment" />
+    <pattern value="com.bbou.download.coroutines.core.DummyTask.Helpers" />
+    <pattern value="org.grammarscope.Application.Companion" method="isNightMode" />
+    <pattern value="org.grammarscope.ColorSettings" method="makeColor" />
+    <pattern value="com.bbou.deploy.coroutines.MD5" />
+    <pattern value="com.bbou.deploy.coroutines.MD5" method="md5" />
+    <pattern value="com.bbou.download.coroutines.utils.MD5Downloader" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" />
+    <pattern value="com.bbou.coroutines.task.MyTaskWithCallbacks" />
+    <pattern value="com.bbou.coroutines.ResultCallback" method="onDone" />
+    <pattern value="com.bbou.coroutines.task.MyTaskWithCallbacks" method="onProgress" />
+    <pattern value="com.bbou.coroutines.Callbacks" method="onProgress" />
+    <pattern value="com.bbou.download.ProbedDownloadFragment" />
+    <pattern value="com.bbou.coroutines.observe.TaskDialogObserver.ProgressDialogFragment" />
+    <pattern value="org.grammarscope.QueriesGraphTests" method="queries" />
+    <pattern value="org.grammarscope.QueriesTextTests" method="queries" />
+    <pattern value="org.grammarscope.QueriesGraphTests" />
+    <pattern value="org.grammarscope.QueriesTextTests" />
+    <pattern value="com.bbou.coroutines.ResultCallback" />
+    <pattern value="com.bbou.capture.Capture" method="saveBitmapToExternalCacheFile" />
+    <pattern value="com.bbou.capture.Capture" method="saveBitmapToFile" />
+    <pattern value="org.grammarscope.graph.SemanticGraphParse" />
+    <pattern value="org.grammarscope.graph.SemanticGraphsParse" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadZipTask.Companion" method="start" />
+    <pattern value="com.bbou.download.coroutines.core.DownloadTask.Companion" method="start" />
+    <pattern value="com.bbou.download.coroutines.core.DummyTask.Companion" method="start" />
+    <pattern value="com.bbou.download.BaseDownloadFragment.Status" />
+    <pattern value="com.bbou.download.BaseDownloadFragment.Status" method="Status" />
+    <pattern value="com.bbou.download.storage.StorageUtils.StorageDirectory" />
+    <pattern value="com.bbou.download.storage.StorageUtils.StorageDirectory" method="StorageDirectory" />
+    <pattern value="com.bbou.download.storage.StorageReports" />
+    <pattern value="com.bbou.download.storage.FormatUtils.StorageType" />
+    <pattern value="com.bbou.download.storage.StorageUtils" />
+    <pattern value="com.bbou.coroutines.Task" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="taskCancelTest" />
+    <pattern value="com.bbou.coroutines.observe.TaskDialogObserver" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="taskRepeatTest" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="taskTest" />
+    <pattern value="org.grammarscope.TextParseActivity" />
+    <pattern value="org.depparse.Token" />
+    <pattern value="org.depparse.IEngine" method="version" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="withCallbacksTaskCancelTest" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="withCallBacksTaskRepeatTest" />
+    <pattern value="com.bbou.coroutines.task.MyTaskTests" method="withCallbacksTaskTest" />
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="NullableNotNullManager">
+    <option name="myDefaultNullable" value="androidx.annotation.Nullable" />
+    <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
+    <option name="myNullables">
+      <value>
+        <list size="18">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
+          <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
+          <item index="3" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
+          <item index="4" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
+          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.Nullable" />
+          <item index="6" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
+          <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.Nullable" />
+          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
+          <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
+          <item index="10" class="java.lang.String" itemvalue="android.annotation.Nullable" />
+          <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.annotations.Nullable" />
+          <item index="14" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.Nullable" />
+          <item index="15" class="java.lang.String" itemvalue="org.jspecify.nullness.Nullable" />
+          <item index="16" class="java.lang.String" itemvalue="org.jspecify.annotations.Nullable" />
+          <item index="17" class="java.lang.String" itemvalue="jakarta.annotation.Nullable" />
+        </list>
+      </value>
+    </option>
+    <option name="myNotNulls">
+      <value>
+        <list size="18">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
+          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
+          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
+          <item index="4" class="java.lang.String" itemvalue="androidx.annotation.NonNull" />
+          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
+          <item index="6" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
+          <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
+          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
+          <item index="9" class="java.lang.String" itemvalue="android.annotation.NonNull" />
+          <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+          <item index="12" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="14" class="java.lang.String" itemvalue="lombok.NonNull" />
+          <item index="15" class="java.lang.String" itemvalue="org.jspecify.nullness.NonNull" />
+          <item index="16" class="java.lang.String" itemvalue="org.jspecify.annotations.NonNull" />
+          <item index="17" class="java.lang.String" itemvalue="jakarta.annotation.Nonnull" />
+        </list>
+      </value>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

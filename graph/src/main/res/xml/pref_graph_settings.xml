@@ -1,0 +1,432 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:title="@string/pref_header_graph_settings">
+
+	<!-- Layout -->
+
+	<PreferenceCategory
+        android:title="@string/title_category_layout"
+        app:icon="@drawable/ic_layout"
+		app:iconSpaceReserved="true">
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_layout_titles"
+			android:entryValues="@array/pref_layout_values"
+			android:key="layout"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_layout"
+			app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+   <!-- Vertices -->
+
+    <PreferenceCategory
+        android:title="@string/title_category_vertices"
+        app:icon="@drawable/ic_vertices"
+        app:iconSpaceReserved="true">
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_vertex_shape_titles"
+			android:entryValues="@array/pref_vertex_shape_values"
+			android:key="vertex_shape"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_vertex_shape"
+			app:iconSpaceReserved="false" />
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_icon_titles"
+			android:entryValues="@array/pref_icon_values"
+			android:key="vertex_icon"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_vertex_icon"
+			app:iconSpaceReserved="false" />
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_icon_set_titles"
+			android:entryValues="@array/pref_icon_set_values"
+			android:key="vertex_icon_set"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_vertex_icon_set"
+			app:iconSpaceReserved="false" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="vertex_size"
+			android:max="100"
+			android:summary="@string/pref_summary_vertex_size"
+			android:title="@string/pref_title_vertex_size"
+			app:iconSpaceReserved="false"
+			app:showSeekBarValue="true" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="vertex_aspect_ratio"
+			android:max="100"
+			android:summary="@string/pref_summary_vertex_aspect_ratio"
+			android:title="@string/pref_title_vertex_aspect_ratio"
+			app:iconSpaceReserved="false"
+			app:showSeekBarValue="true" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+			android:defaultValue="@null"
+			android:key="vertex_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_vertex_color"
+			android:title="@string/pref_title_vertex_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+            app:colors="@array/palette"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_vertex_shape_titles"
+			android:entryValues="@array/pref_vertex_shape_values"
+			android:key="root_vertex_shape"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_root_vertex_shape"
+			app:iconSpaceReserved="false" />
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_icon_titles"
+			android:entryValues="@array/pref_icon_values"
+			android:key="root_vertex_icon"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_root_vertex_icon"
+			app:iconSpaceReserved="false" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:defaultValue="@null"
+			android:key="root_vertex_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_root_vertex_color"
+			android:title="@string/pref_title_root_vertex_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+	</PreferenceCategory>
+
+	<!-- Vertex labels -->
+
+	<PreferenceCategory
+		android:title="@string/title_category_vertex_labels"
+		app:icon="@drawable/ic_vertex_labels"
+		app:iconSpaceReserved="true">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="vertex_label_visible"
+            android:summary="@string/pref_summary_vertex_label_visible"
+            android:title="@string/pref_title_vertex_label_visible"
+            app:iconSpaceReserved="false" />
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_vertex_label_position_titles"
+			android:entryValues="@array/pref_vertex_label_position_values"
+			android:key="vertex_label_position"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_vertex_label_position"
+			app:iconSpaceReserved="false" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="vertex_label_size"
+			android:max="50"
+			android:summary="@string/pref_summary_vertex_label_size"
+			android:title="@string/pref_title_vertex_label_size"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="vertex_label_offset"
+			android:max="50"
+			android:summary="@string/pref_summary_vertex_label_offset"
+			android:title="@string/pref_title_vertex_label_offset"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+		<SwitchPreferenceCompat
+			android:defaultValue="@null"
+			android:key="vertex_label_frame"
+			android:summary="@string/pref_summary_vertex_label_frame"
+			android:title="@string/pref_title_vertex_label_frame"
+			app:iconSpaceReserved="false" />
+
+        <org.jung.colors.chooser.ColorChooserPreference
+			android:defaultValue="@null"
+			android:key="vertex_label_back_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_vertex_label_back_color"
+			android:title="@string/pref_title_vertex_label_back_color"
+			app:allowNone="true"
+			app:alphaChannelText="Transparency"
+			app:alphaChannelVisible="true"
+			app:iconSpaceReserved="false" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+			android:defaultValue="@null"
+			android:key="vertex_label_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_vertex_label_color"
+			android:title="@string/pref_title_vertex_label_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+            app:colors="@array/palette"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:defaultValue="@null"
+			android:key="root_vertex_label_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_root_vertex_label_color"
+			android:title="@string/pref_title_root_vertex_label_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<org.jung.colors.picker.ColorPickerPreference
+			android:defaultValue="@null"
+			android:key="root_vertex_label_back_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_root_vertex_label_back_color"
+			android:title="@string/pref_title_root_vertex_label_back_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+			app:colors="@array/palette"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+	</PreferenceCategory>
+
+	<!-- Edges -->
+
+	<PreferenceCategory
+		android:title="@string/title_category_edges"
+		app:icon="@drawable/ic_edges"
+		app:iconSpaceReserved="true">
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_edge_shape_titles"
+			android:entryValues="@array/pref_edge_shape_values"
+			android:key="edge_shape"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_edge_shape"
+			app:iconSpaceReserved="false" />
+
+		<ListPreference
+			android:defaultValue="@null"
+			android:entries="@array/pref_edge_stroke_titles"
+			android:entryValues="@array/pref_edge_stroke_values"
+			android:key="edge_stroke"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:title="@string/pref_title_edge_stroke"
+			app:iconSpaceReserved="false" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+			android:defaultValue="@null"
+			android:key="edge_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_edge_color"
+			android:title="@string/pref_title_edge_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+            app:colors="@array/palette"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="edge_expand_base"
+			android:max="200"
+			android:title="@string/pref_title_edge_expand_base"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="edge_expand_inc"
+			android:max="100"
+			android:title="@string/pref_title_edge_expand_inc"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="edge_shift_inc"
+			android:max="50"
+			android:title="@string/pref_title_edge_shift_inc"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+	</PreferenceCategory>
+
+	<!-- Edge labels -->
+
+	<PreferenceCategory
+		android:title="@string/title_category_edge_labels"
+		app:icon="@drawable/ic_edge_labels"
+		app:iconSpaceReserved="true">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="edge_label_visible"
+            android:summary="@string/pref_summary_edge_label_visible"
+            android:title="@string/pref_title_edge_label_visible"
+            app:iconSpaceReserved="false" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="edge_label_size"
+			android:max="50"
+			android:summary="@string/pref_summary_edge_label_size"
+			android:title="@string/pref_title_edge_label_size"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="numberDecimal"
+			android:key="edge_label_position"
+			android:max="100"
+			android:summary="@string/pref_summary_edge_label_position"
+			android:title="@string/pref_title_edge_label_position"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+		<SeekBarPreference
+			android:defaultValue="@null"
+			android:inputType="number"
+			android:key="edge_label_offset"
+			android:max="50"
+			android:summary="@string/pref_summary_edge_label_offset"
+			android:title="@string/pref_title_edge_label_offset"
+			app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+		<SwitchPreferenceCompat
+			android:defaultValue="@null"
+			android:key="edge_label_rotate"
+			android:summary="@string/pref_summary_edge_label_rotate"
+			android:title="@string/pref_title_edge_label_rotate"
+			app:iconSpaceReserved="false" />
+
+		<SwitchPreferenceCompat
+			android:defaultValue="@null"
+			android:key="edge_label_frame"
+			android:summary="@string/pref_summary_edge_label_frame"
+			android:title="@string/pref_title_edge_label_frame"
+			app:iconSpaceReserved="false" />
+
+		<SwitchPreferenceCompat
+			android:defaultValue="@null"
+			android:key="edge_label_anchor"
+			android:summary="@string/pref_summary_edge_label_anchor"
+			android:title="@string/pref_title_edge_label_anchor"
+			app:iconSpaceReserved="false" />
+
+        <org.jung.colors.chooser.ColorChooserPreference
+			android:defaultValue="@null"
+			android:key="edge_label_back_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_edge_label_back_color"
+			android:title="@string/pref_title_edge_label_back_color"
+			app:allowNone="true"
+			app:alphaChannelText="Transparency"
+			app:alphaChannelVisible="true"
+			app:iconSpaceReserved="false" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+			android:defaultValue="@null"
+			android:key="edge_label_color"
+			android:negativeButtonText="@null"
+			android:positiveButtonText="@null"
+			android:summary="@string/pref_summary_edge_label_color"
+			android:title="@string/pref_title_edge_label_color"
+			app:allowNone="false"
+			app:closeOnSelected="true"
+            app:colors="@array/palette"
+			app:iconSpaceReserved="false"
+			app:outlineWidth="1.5dp" />
+
+	</PreferenceCategory>
+
+	<!-- Edge arrows -->
+
+	<PreferenceCategory
+		android:title="@string/title_category_arrows"
+		app:icon="@drawable/ic_arrows"
+		app:iconSpaceReserved="true">
+
+		<SwitchPreferenceCompat
+			android:defaultValue="@null"
+			android:key="edge_arrow_center"
+			android:summary="@string/pref_summary_edge_arrow_center"
+			android:title="@string/pref_title_edge_arrow_center"
+			app:iconSpaceReserved="false" />
+
+		<SwitchPreferenceCompat
+			android:defaultValue="false"
+			android:key="edge_reverse_direction"
+			android:summary="@string/pref_summary_edge_reverse_direction"
+			android:title="@string/pref_title_edge_reverse_direction"
+			app:iconSpaceReserved="false" />
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:title="@string/title_category_other"
+		app:icon="@drawable/ic_palette"
+		app:iconSpaceReserved="true">
+
+		<org.jung.colors.chooser.ColorChooserPreference
+			android:key="back_color"
+			android:summary="@string/pref_description_back_color"
+			android:title="@string/pref_title_back_color"
+			app:allowNone="true"
+			app:alphaChannelVisible="false"
+			app:iconSpaceReserved="false" />
+
+	</PreferenceCategory>
+
+</PreferenceScreen>

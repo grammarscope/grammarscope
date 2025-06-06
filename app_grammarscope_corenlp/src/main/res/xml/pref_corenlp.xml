@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:title="@string/pref_header_corenlp">
+
+	<SwitchPreferenceCompat
+		android:defaultValue="true"
+		android:key="neural"
+		android:summary="@string/pref_description_neural"
+		android:title="@string/pref_title_neural"
+		app:iconSpaceReserved="false"
+		app:singleLineTitle="false" />
+
+</PreferenceScreen>

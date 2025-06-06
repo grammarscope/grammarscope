@@ -1,0 +1,24 @@
+<resources>
+
+	<string name="p">P</string>
+	<string name="s">S</string>
+	<string name="o">O</string>
+	<string name="tp">tP</string>
+	<string name="pp">pP</string>
+	<!--
+	<string name="t">T→P</string>
+	<string name="p2">P→P</string>
+	-->
+	<string name="description_p">Predicate</string>
+	<string name="description_s">Subject</string>
+	<string name="description_o">Object</string>
+	<string name="description_tp">Term-modifier predicate</string>
+	<string name="description_pp">Predicate-modifier predicate</string>
+
+	<string name="description_p_check">Label %1$s is a predicate</string>
+	<string name="description_s_check">Label %1$s is a subject</string>
+	<string name="description_o_check">Label %1$s is an object</string>
+	<string name="description_tp_check">Label %1$s is a term-modifier predicate</string>
+	<string name="description_pp_check">Label %1$s is a predicate-modifier predicate</string>
+
+</resources>

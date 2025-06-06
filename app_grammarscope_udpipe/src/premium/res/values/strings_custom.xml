@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">GrammarScope+</string>
+
+	<string name="actionbar_title">GrammarScope+</string>
+
+	<string name="title_activity_main">GrammarScope+</string>
+	<string name="title_activity_share">GrammarScope+</string>
+	<string name="title_activity_web">GrammarScope+</string>
+
+</resources>

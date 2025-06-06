@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+	<!-- generic -->
+	<color name="backgroundColor">@android:color/white</color> <!-- generic window background -->
+	<color name="foregroundColor">@android:color/black</color> <!-- generic window foreground -->
+
+	<!-- primary -->
+	<color name="primaryColor">#EF94A4</color> <!-- app branding color for the app bar -->
+	<color name="primaryLightColor">#C17981</color> <!-- framework -->
+	<color name="primaryDarkColor">#B1395B</color> <!-- theme UI controls like checkboxes and text fields, status bar and contextual app bars -->
+	<color name="onPrimaryColor">#383838</color> <!-- title, home, menu overflow -->
+	<color name="highlightOnPrimaryColor">#000000</color> <!-- framework + nav, tabs-->
+
+	<!-- secondary -->
+	<color name="secondaryColor">#BA5959</color>
+	<color name="secondaryLightColor">#C71C1C</color> <!-- framework -->
+	<color name="onSecondaryColor">#CCCCCC</color> <!-- subtitle -->
+
+</resources>

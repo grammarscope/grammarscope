@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025. Bernard Bou <1313ou@gmail.com>.
+  -->
+<configuration>
+
+    <appender name="LOGCAT" class="ch.qos.logback.classic.android.LogcatAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{0} - %msg%n%ex{0}</pattern>
+        </encoder>
+        <tagEncoder>
+            <pattern>%logger{0}</pattern> <!-- Uses class name as Logcat tag -->
+        </tagEncoder>
+    </appender>
+
+    <!-- Control CoreNLP logging level -->
+    <logger name="edu.stanford.nlp" level="INFO" additivity="false">
+        <appender-ref ref="LOGCAT" />
+    </logger>
+
+    <!-- Set to DEBUG for more detail, WARN/ERROR for less -->
+    <root level="DEBUG"> <!-- Default for your app -->
+        <appender-ref ref="LOGCAT" />
+    </root>
+
+</configuration>

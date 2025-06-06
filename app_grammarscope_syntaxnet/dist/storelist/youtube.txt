@@ -1,0 +1,10 @@
+grammarscope syntaxnet graph
+https://youtu.be/u42kZY-guZc
+Android grammarscope app with SyntaxNet engine
+grammarscope syntaxnet, grammarscope, syntaxnet, deep learning,dependency parsing, ia, universal dependencies, semantics
+
+grammarscope-syntaxnet text mode
+https://youtu.be/x8f8Ti1YxLM
+Android grammarscope app with SyntaxNet engine
+grammarscope syntaxnet,deep learning,dependency parsing, ia, universal dependencies, semantics
+

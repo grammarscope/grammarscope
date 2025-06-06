@@ -1,0 +1,109 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:title="@string/pref_header_annotations">
+
+    <PreferenceCategory
+        android:title="@string/title_category_annotation_ignore_relations"
+        app:icon="@drawable/ic_settings_annotations"
+        app:iconSpaceReserved="true">
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/default_ignored_relations_keys"
+            android:entries="@array/relations_keys"
+            android:entryValues="@array/relations_keys"
+            android:key="ignore_relations"
+            android:summary="@string/pref_description_ignore_relations"
+            android:title="@string/pref_title_ignore_relations"
+            app:iconSpaceReserved="false"
+            app:singleLineTitle="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/title_category_annotation_boxes"
+        app:icon="@drawable/ic_settings_annotations"
+        app:iconSpaceReserved="true">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="box_words"
+            android:summary="@string/pref_description_box_words"
+            android:title="@string/pref_title_box_words"
+            app:iconSpaceReserved="false"
+            app:singleLineTitle="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="box_edges"
+            android:summary="@string/pref_description_extends_box_to_edges"
+            android:title="@string/pref_title_extends_box_to_edges"
+            app:iconSpaceReserved="false"
+            app:singleLineTitle="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/title_category_annotation_colors"
+        app:icon="@drawable/ic_settings_annotations"
+        app:iconSpaceReserved="true">
+
+        <org.grammarscope.annotations.paint.ColorMapPreference
+            android:key="relation_colors"
+            android:summary="@string/pref_description_annotation_relation_colors"
+            android:title="@string/pref_title_annotation_relation_colors"
+            app:iconSpaceReserved="false" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+            android:key="label_color"
+            android:summary="@string/pref_description_annotation_label_color"
+            android:title="@string/pref_title_annotation_label_color"
+            app:allowNone="false"
+            app:closeOnSelected="true"
+            app:colors="@array/palette_200_500_800"
+            app:iconSpaceReserved="false"
+            app:outlineWidth="1.5dp" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+            android:key="root_color"
+            android:summary="@string/pref_description_annotation_root_color"
+            android:title="@string/pref_title_annotation_root_color"
+            app:allowNone="false"
+            app:closeOnSelected="true"
+            app:colors="@array/palette_200_500_800"
+            app:iconSpaceReserved="false"
+            app:outlineWidth="1.5dp" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+            android:key="edge_color"
+            android:summary="@string/pref_description_annotation_edge_color"
+            android:title="@string/pref_title_annotation_edge_color"
+            app:allowNone="false"
+            app:closeOnSelected="true"
+            app:colors="@array/palette_200_500_800"
+            app:iconSpaceReserved="false"
+            app:outlineWidth="1.5dp" />
+
+
+        <org.jung.colors.picker.ColorPickerPreference
+            android:key="pos_color"
+            android:summary="@string/pref_description_pos_color"
+            android:title="@string/pref_title_pos_color"
+            app:allowNone="false"
+            app:closeOnSelected="true"
+            app:colors="@array/palette_200_500_800"
+            app:iconSpaceReserved="false"
+            app:outlineWidth="1.5dp" />
+
+        <org.jung.colors.picker.ColorPickerPreference
+            android:key="meta_color"
+            android:summary="@string/pref_description_annotation_meta_color"
+            android:title="@string/pref_title_annotation_meta_color"
+            app:allowNone="false"
+            app:closeOnSelected="true"
+            app:colors="@array/palette_200_500_800"
+            app:iconSpaceReserved="false"
+            app:outlineWidth="1.5dp" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

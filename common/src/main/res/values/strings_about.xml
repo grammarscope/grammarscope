@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="title_activity_about" tools:ignore="UnusedResources">About</string>
+
+	<string name="about_app_title">Dependency Parser</string>
+	<string name="about_app_logo_description">Dependency Parser application</string>
+
+	<string name="about_app_author">Bernard Bou</string>
+	<string name="about_app_copyright">© 2018 – 2025</string>
+
+	<string name="about_universaldependencies_title">Universal Dependencies</string>
+	<string name="about_universaldependencies_text">Universal Dependencies is a framework for cross-linguistically consistent grammatical annotation and an open community effort with over 200 contributors producing more than 100 treebanks in over 70 languages.</string>
+	<string name="about_universaldependencies_author">Universal Dependencies contributors</string>
+
+</resources>

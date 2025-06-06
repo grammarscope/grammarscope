@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
+
+	<!-- package -->
+	<string name="app_package" translatable="false" tools:keep="@string/app_package">org.grammarscope</string>
+	<string name="app_package_data" translatable="false" tools:keep="@string/app_package_data">package:org.grammarscope</string>
+
+	<!-- engine -->
+	<string name="engine_class" translatable="false" tools:keep="@string/engine_class">org.grammarscope.syntaxnet.SyntaxnetEngine</string>
+
+	<!-- service -->
+	<string name="bound_service" translatable="false" tools:keep="@string/bound_service">org.grammarscope.service.server.bound.syntaxnet.SyntaxnetBoundService</string>
+
+	<!-- search target override -->
+	<string name="search_target" translatable="false" tools:keep="@string/search_target">org.grammarscope.MainActivity</string>
+
+	<!-- labels -->
+	<string name="labels_file" translatable="false" tools:keep="@string/labels_file">assets.extra/resources/component_0_char_lstm/resource_7_label-map/part_0</string>
+
+	<!-- download -->
+	<string name="default_download_repo" translatable="false" tools:keep="@string/default_download_repo">https://sourceforge.net/projects/grammarscope-syntaxnet/files/current</string>
+
+	<!-- model files -->
+	<string-array name="core_model_files" translatable="false" tools:keep="@array/core_model_files">
+		<item>parser/graph.pb</item>
+		<item>segmenter/graph.pb</item>
+	</string-array>
+	<string-array name="model_files" translatable="false" tools:keep="@array/model_files">
+		<item>assets.extra/resources/component_0_char_lstm/resource_0_word-map/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_1_tag-map/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_2_tag-to-category/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_3_lcword-map/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_4_category-map/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_5_char-map/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_6_char-ngram-map/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_7_label-map/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_8_prefix-table/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_9_suffix-table/part_0</item>
+		<item>assets.extra/resources/component_0_char_lstm/resource_10_known-word-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_0_word-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_1_tag-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_2_tag-to-category/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_3_lcword-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_4_category-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_5_char-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_6_char-ngram-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_7_label-map/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_8_prefix-table/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_9_suffix-table/part_0</item>
+		<item>assets.extra/resources/component_0_lookahead/resource_10_known-word-map/part_0</item>
+	</string-array>
+
+	<string name="poskey">fPOS++0</string>
+	<string name="xposkey">fPOS++1</string>
+
+</resources>

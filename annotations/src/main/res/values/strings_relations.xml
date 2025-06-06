@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+    <string-array name="relations_keys">
+        <item>acl:relcl</item>
+        <item>acl</item>
+        <item>acomp</item>
+        <item>advcl</item>
+        <item>advmod</item>
+        <item>agent</item>
+        <item>amod</item>
+        <item>appos</item>
+        <item>arg</item>
+        <item>aux</item>
+        <item>auxpass</item>
+        <item>case</item>
+        <item>cc:preconj</item>
+        <item>cc</item>
+        <item>ccomp</item>
+        <item>comp</item>
+        <item>compound:prt</item>
+        <item>compound</item>
+        <item>conj</item>
+        <item>cop</item>
+        <item>csubj:xsubj</item>
+        <item>csubj</item>
+        <item>csubjpass:xsubj</item>
+        <item>csubjpass</item>
+        <item>dep</item>
+        <item>det:predet</item>
+        <item>det:qmod</item>
+        <item>det</item>
+        <item>discourse</item>
+        <item>dobj</item>
+        <item>expl</item>
+        <item>goeswith</item>
+        <item>gov</item>
+        <item>iobj</item>
+        <item>list</item>
+        <item>mark</item>
+        <item>mod</item>
+        <item>mwe</item>
+        <item>name</item>
+        <item>neg</item>
+        <item>nmod:npmod</item>
+        <item>nmod:poss</item>
+        <item>nmod:tmod</item>
+        <item>nmod</item>
+        <item>nn</item>
+        <item>npadvmod</item>
+        <item>nsubj:xsubj</item>
+        <item>nsubj</item>
+        <item>nsubjpass:xsubj</item>
+        <item>nsubjpass</item>
+        <item>num</item>
+        <item>number</item>
+        <item>nummod</item>
+        <item>obj</item>
+        <item>obl</item>
+        <item>obl:tmod</item>
+        <item>parataxis</item>
+        <item>pcomp</item>
+        <item>pobj</item>
+        <item>poss</item>
+        <item>possessive</item>
+        <item>preconj</item>
+        <item>pred</item>
+        <item>predet</item>
+        <item>prep</item>
+        <item>prt</item>
+        <item>punct</item>
+        <item>quantmod</item>
+        <item>rcmod</item>
+        <item>ref</item>
+        <item>rel</item>
+        <item>root</item>
+        <item>sdep</item>
+        <item>subj</item>
+        <item>tmod</item>
+        <item>vmod</item>
+        <item>xcomp</item>
+    </string-array>
+
+    <string-array name="default_ignored_relations_keys">
+        <item>punct</item>
+    </string-array>
+
+</resources>

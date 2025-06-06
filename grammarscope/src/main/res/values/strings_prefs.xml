@@ -1,0 +1,90 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<!-- General -->
+
+	<string name="pref_title_labels">Labels</string>
+	<string name="pref_description_labels">The labels dependencies are labeled with</string>
+
+	<string name="pref_title_as_graph">Render as graph</string>
+	<string name="pref_description_as_graph">Render results as graph (long press reverses this text/graph option)</string>
+
+	<string name="pref_title_as_graphs">Multiple graph</string>
+	<string name="pref_description_as_graphs">One graph per sentence</string>
+
+	<string name="pref_title_sentence_boundary_detection">Sentence boundary detection</string>
+	<string name="pref_description_sentence_boundary_detection">Sentence boundary detection before parsing (English, French only)</string>
+
+	<string name="pref_description_model_dir">Forces model location to be reassessed</string>
+
+	<string name="pref_title_reset">Reset</string>
+
+	<!-- Text -->
+
+	<string name="pref_title_root_color">Root color</string>
+	<string name="pref_description_root_color">Color for root</string>
+
+	<string name="pref_title_label_color">Label color</string>
+	<string name="pref_description_label_color">Color for label</string>
+
+	<string name="pref_title_enhanced_label_color">Enhanced label color</string>
+	<string name="pref_description_enhanced_label_color">Color for enhanced label</string>
+
+	<string name="pref_title_head_color">Head color</string>
+	<string name="pref_description_head_color">Color for head</string>
+
+	<string name="pref_title_dependent_color">Dependent color</string>
+	<string name="pref_description_dependent_color">Dependent for head</string>
+
+	<!-- Semantics -->
+
+	<string name="pref_title_predicate_color">Predicate color</string>
+	<string name="pref_description_predicate_color">Color for predicate</string>
+
+	<string name="pref_title_subject_color">Subject color</string>
+	<string name="pref_description_subject_color">Color for subject</string>
+
+	<string name="pref_title_object_color">Object color</string>
+	<string name="pref_description_object_color">Color for object</string>
+
+	<string name="pref_title_term_modifying_predicate_color">Term-modifying predicate color</string>
+	<string name="pref_description_term_modifying_predicate_color">Color for term-modifying subpredicate</string>
+
+	<string name="pref_title_predicate_modifying_predicate_color">Predicate-modifying predicate color</string>
+	<string name="pref_description_predicate_modifying_predicate_color">Color for predicate-modifying subpredicate</string>
+
+	<!-- Provider -->
+
+	<string name="pref_title_provider">Provider</string>
+	<string name="pref_title_system_app_detail_settings">Application</string>
+
+	<!-- System -->
+
+	<string name="pref_summary_system_app_detail_settings">Application settings details</string>
+	<string name="pref_title_system_arch">Processor architecture</string>
+	<string name="pref_header_general">General</string>
+
+	<!-- Headers -->
+
+	<string name="pref_header_summary_general">General settings</string>
+	<string name="pref_header_download">Download</string>
+	<string name="pref_header_provider">Provider</string>
+	<string name="pref_header_system">System</string>
+	<string name="pref_header_text" tools:keep="@string/pref_header_text">Dependency</string>
+	<string name="pref_header_semantics" tools:keep="@string/pref_header_semantics">Semantics</string>
+	<string name="pref_header_graph" tools:keep="@string/pref_header_graph">Dependency graph</string>
+	<string name="pref_header_semantic_graph" tools:keep="@string/pref_header_semantic_graph">Semantic graph</string>
+
+	<string name="pref_header_summary_download">Download settings</string>
+	<string name="pref_header_summary_downloaded">Downloaded model</string>
+	<string name="pref_header_summary_text">Settings for dependency textual rendering</string>
+	<string name="pref_header_summary_semantics">Settings for semantics textual rendering</string>
+	<string name="pref_header_summary_graph">Dependency graph settings</string>
+	<string name="pref_header_summary_semantic_graph">Semantic graph settings</string>
+	<string name="pref_header_summary_provider">Provider type</string>
+	<string name="pref_header_summary_system">System</string>
+	<string-array name="pref_providers_titles">
+		<item>Bound service</item>
+		<item>Engine (direct)</item>
+	</string-array>
+
+</resources>

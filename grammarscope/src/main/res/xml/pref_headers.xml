@@ -1,0 +1,69 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<Preference
+		app:fragment="org.grammarscope.GeneralPreferenceFragment"
+		app:icon="@drawable/ic_settings_general"
+		app:summary="@string/pref_header_summary_general"
+		app:title="@string/pref_header_general" />
+
+	<Preference
+		app:fragment="com.bbou.download.preference.DownloadPreferenceFragment"
+		app:icon="@drawable/ic_settings_download"
+		app:summary="@string/pref_header_summary_download"
+		app:title="@string/pref_header_download" />
+
+	<Preference
+		app:fragment="com.bbou.download.preference.DownloadedPreferenceFragment"
+		app:icon="@drawable/ic_settings_download"
+		app:summary="@string/pref_header_summary_downloaded"
+		app:title="@string/pref_header_downloaded" />
+
+	<Preference
+		app:fragment="org.grammarscope.TextPreferenceFragment"
+		app:icon="@drawable/ic_settings_text"
+		app:summary="@string/pref_header_summary_text"
+		app:title="@string/pref_header_text" />
+
+	<Preference
+		app:fragment="org.grammarscope.SemanticsPreferenceFragment"
+		app:icon="@drawable/ic_settings_semantics"
+		app:summary="@string/pref_header_summary_semantics"
+		app:title="@string/pref_header_semantics" />
+
+	<Preference
+		app:fragment="org.grammarscope.annotations.AnnotationsPreferenceFragment"
+		app:icon="@drawable/ic_settings_annotations"
+		app:summary="@string/pref_header_summary_annotations"
+		app:title="@string/pref_header_annotations" />
+
+	<Preference
+		app:fragment="org.grammarscope.graph.SettingsFragments$DependencyGraphPreferenceFragment"
+		app:icon="@drawable/ic_settings_graph"
+		app:summary="@string/pref_header_summary_graph"
+		app:title="@string/pref_header_graph_dependency" />
+
+	<Preference
+		app:fragment="org.grammarscope.graph.SettingsFragments$SemanticGraphPreferenceFragment"
+		app:icon="@drawable/ic_settings_provider"
+		app:summary="@string/pref_header_summary_semantic_graph"
+		app:title="@string/pref_header_graph_semantics" />
+
+	<Preference
+		app:fragment="com.bbou.capture.CapturePreferenceFragment"
+		app:icon="@drawable/ic_settings_capture"
+		app:summary="@string/pref_header_summary_capture"
+		app:title="@string/pref_header_capture" />
+
+	<Preference
+		app:fragment="org.grammarscope.ProviderPreferenceFragment"
+		app:icon="@drawable/ic_settings_provider"
+		app:summary="@string/pref_header_summary_provider"
+		app:title="@string/pref_header_provider" />
+
+	<Preference
+		app:fragment="org.grammarscope.SystemPreferenceFragment"
+		app:icon="@drawable/ic_settings_system"
+		app:summary="@string/pref_header_summary_system"
+		app:title="@string/pref_header_system" />
+
+</PreferenceScreen>

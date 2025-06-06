@@ -1,0 +1,17 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	app:title="@string/pref_header_system">
+
+	<Preference
+		android:summary="@string/pref_summary_system_app_detail_settings"
+		android:title="@string/pref_title_system_app_detail_settings">
+		<intent
+			android:action="android.settings.APPLICATION_DETAILS_SETTINGS"
+			android:data="@string/app_package_data" />
+	</Preference>
+
+	<Preference
+		android:key="pref_system_arch"
+		android:title="@string/pref_title_system_arch" />
+
+</PreferenceScreen>

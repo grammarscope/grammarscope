@@ -1,0 +1,89 @@
+#!/bin/bash
+
+PACKAGE="$1"
+APP="$2"
+FLAVOR="$3"
+RELEASE_NAME="$4"
+if [ -z "${RELEASE_NAME}" ]; then
+	RELEASE_NAME="Anew"
+	echo "Version name ${RELEASE_NAME}"
+fi
+RECENT_CHANGES="$5"
+if [ -z "${RECENT_CHANGES}" ]; then
+	RECENT_CHANGES="Fixes"
+fi
+
+DIR=dist/releases
+TODIR=dist/releases/mappings
+
+source ./define_colors.sh
+
+function get_version() {
+	local apk="$1"
+	local n=$(aapt l -a ${apk} | egrep versionCode | sed 's/^.*(type 0x10)/ /g')
+	n=$((${n}))
+	echo ${n}
+}
+
+function save() {
+	local from="$1"
+	local app="$2"
+	local flavor="$3"
+	local code="$4"
+	todir="${TODIR}/app_${app}/${flavor}"
+	mkdir -p ${todir}
+	to=${todir}/${code}-mapping.txt
+	if [ ! -e ${from} ]; then
+		echo -e "${from} ${RED}!EXISTS${RESET}"
+		continue
+	else
+		echo "${from} -> ${to}"
+	fi
+	cp -p ${from} ${to}
+	echo -en "${GREEN}"
+	stat -c '%n %s %y' ${to}
+	echo -en "${RESET}"
+}
+
+APK_ARM64=${DIR}/app_${APP}-${FLAVOR}-arm64-v8a-release.apk
+APK_ARMEABI=${DIR}/app_${APP}-${FLAVOR}-armeabi-v7a-release.apk
+APK_X86_64=${DIR}/app_${APP}-${FLAVOR}-x86_64-release.apk
+APK_X86=${DIR}/app_${APP}-${FLAVOR}-x86-release.apk
+APK_VERSION_CODE_ARM64=`get_version ${APK_ARM64}`
+APK_VERSION_CODE_ARMEABI=`get_version ${APK_ARMEABI}`
+APK_VERSION_CODE_X86_64=`get_version ${APK_X86_64}`
+APK_VERSION_CODE_X86=`get_version ${APK_X86}`
+echo -e "${MAGENTA}arm64  ${BLUE}${APK_VERSION_CODE_ARM64}${RESET} ${APK_ARM64}"
+echo -e "${MAGENTA}armABI ${BLUE}${APK_VERSION_CODE_ARMEABI}${RESET} ${APK_ARMEABI}"
+echo -e "${MAGENTA}x86_64 ${BLUE}${APK_VERSION_CODE_X86_64}${RESET} ${APK_X86_64}"
+echo -e "${MAGENTA}x86    ${BLUE}${APK_VERSION_CODE_X86}${RESET} ${APK_X86}"
+
+echo -e "${CYAN}Upload apks${RESET}"
+python2 googleplay_upload_apk.py \
+	${PACKAGE} \
+	"${RELEASE_NAME}" \
+	"${RECENT_CHANGES}" \
+	${APK_ARM64} \
+	${APK_ARMEABI} \
+	${APK_X86_64} \
+	${APK_X86}
+
+echo -e "${CYAN}Upload mappings${RESET}"
+DEOBFUSCATION_FILE=app_${APP}/build/outputs/mapping/${FLAVOR}Release/mapping.txt
+#echo "deobfuscation file=${DEOBFUSCATION_FILE}"
+if [ ! -e "${DEOBFUSCATION_FILE}" ]; then
+	echo -e "${DEOBFUSCATION_FILE} ${YELLOW}!EXISTS${RESET}"
+	exit
+fi
+python2 googleplay_upload_deobf.py \
+	--apk_version_code ${APK_VERSION_CODE_ARM64} \
+	--apk_version_code ${APK_VERSION_CODE_ARMEABI} \
+	--apk_version_code ${APK_VERSION_CODE_X86_64} \
+	--apk_version_code ${APK_VERSION_CODE_X86} \
+	${PACKAGE} \
+	"${DEOBFUSCATION_FILE}"
+
+echo -e "${CYAN}Save mappings${RESET}"
+CODE=${APK_VERSION_CODE_ARM64:2}
+save "${DEOBFUSCATION_FILE}" ${APP} ${FLAVOR} ${CODE}
+

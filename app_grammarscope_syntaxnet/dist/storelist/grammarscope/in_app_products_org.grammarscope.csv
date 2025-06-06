@@ -1,0 +1,6 @@
+Product ID,Published State,Purchase Type,Auto Translate,Locale; Title; Description,Auto Fill Prices,Price,Pricing Template ID
+donate_5,published,managed_by_android,false,en_GB; Donate Fifty; Donate (gold sponsor),false,,4634461986681341290
+donate_4,published,managed_by_android,false,en_GB; Donate Twenty;  Donate (major sponsor),false,,4637926091513811626
+donate_3,published,managed_by_android,false,en_GB; Donate Ten; Donate (important sponsor),false,,4637244378833595186
+donate_1,published,managed_by_android,false,en_GB; Donate One; Donate (base supporter),false,,4638115903346605430
+donate_2,published,managed_by_android,false,en_GB; Donate Five; Donate (regular supporter),false,,4635360227612921207

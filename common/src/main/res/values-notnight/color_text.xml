@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+	<color name="rootBackColor">#FFff0000</color> <!-- red -->
+	<color name="rootColor">#FFffffff</color> <!-- white -->
+
+	<color name="labelBackColor">#FFff00ff</color> <!-- magenta -->
+	<color name="labelColor">#FFffffff</color> <!-- white -->
+
+	<color name="enhancedLabelBackColor">#304FFE</color> <!-- blue -->
+	<color name="enhancedLabelColor">#FFffffff</color> <!-- white -->
+
+	<color name="headBackColor">#FFffffff</color> <!-- white -->
+	<color name="headColor">#FF43486E</color> <!-- blue -->
+
+	<color name="dependentBackColor">#FFffffff</color> <!-- white -->
+	<color name="dependentColor">#FF880E4F</color> <!-- wine -->
+
+
+	<color name="predicateBackColor">#FFff0000</color> <!-- red -->
+	<color name="predicateColor">#FFffffff</color> <!-- white -->
+
+	<color name="subjectBackColor">#BCDADA</color> <!-- light_blue -->
+	<color name="subjectColor">#FF000000</color> <!-- black -->
+
+	<color name="objectBackColor">#FFdd80dd</color> <!-- light_magenta -->
+	<color name="objectColor">#FF000000</color> <!-- black -->
+
+	<color name="termModifierPredicateBackColor">#FFffffbb</color> <!-- extra light yellow -->
+	<color name="termModifierPredicateColor">#FF000000</color> <!-- black -->
+
+	<color name="predicateModifierPredicateBackColor">#FFffc0c0</color> <!-- lt_pink -->
+	<color name="predicateModifierPredicateColor">#FF000000</color> <!-- black -->
+
+</resources>

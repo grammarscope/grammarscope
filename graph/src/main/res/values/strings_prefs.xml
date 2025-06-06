@@ -1,0 +1,55 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="pref_header_graph_settings">Graph settings</string>
+
+    <!-- Vertex -->
+
+    <string name="pref_title_root_vertex_shape">Root vertex shape</string>
+    <string name="pref_summary_root_vertex_shape">Shape for root vertex</string>
+    <string name="pref_title_root_vertex_icon">Root vertex icon</string>
+    <string name="pref_summary_root_vertex_icon">Icon for root vertex</string>
+
+    <string name="pref_title_root_vertex_color">Root vertex color</string>
+    <string name="pref_summary_root_vertex_color">Color for root vertex</string>
+    <string name="pref_title_root_vertex_label_color">Root vertex label color</string>
+    <string name="pref_summary_root_vertex_label_color">Text color for root vertex label</string>
+    <string name="pref_title_root_vertex_label_back_color">Root vertex label back color</string>
+    <string name="pref_summary_root_vertex_label_back_color">Background color for root vertex label</string>
+    <string name="pref_title_edge_reverse_direction">Reverse direction</string>
+    <string name="pref_summary_edge_reverse_direction">Reverse edge direction</string>
+
+    <!-- Icon -->
+
+    <string name="pref_title_vertex_icon">Icon</string>
+    <string name="pref_header_graph_dependency" tools:keep="@string/pref_header_graph_dependency">Dependency graph</string>
+
+    <!-- Headers -->
+
+    <string name="pref_header_graph_semantics" tools:keep="@string/pref_header_graph_semantics">Semantic graph</string>
+    <string-array name="pref_icon_titles">
+        <item>None</item>
+        <item>Gradient</item>
+        <item>Red bullet</item>
+        <item>Green bullet</item>
+        <item>Blue bullet</item>
+        <item>Asterisk</item>
+        <item>Flower 1</item>
+        <item>Flower 2</item>
+        <item>Flower 3</item>
+        <item>Flower 4</item>
+        <item>Flower 5</item>
+        <item>Flower 6</item>
+        <item>Flower 7</item>
+        <item>Flower 8</item>
+        <item>Sun 1</item>
+        <item>Sun 2</item>
+        <item>Blue sphere</item>
+        <item>Cyan sphere</item>
+        <item>Dark blue sphere</item>
+        <item>Gold sphere</item>
+        <item>Gray sphere</item>
+        <item>Magenta sphere</item>
+        <item>Red sphere</item>
+    </string-array>
+
+</resources>

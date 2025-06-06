@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.google.android.material.appbar.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<include layout="@layout/toolbar" />
+
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="top"
+			android:layout_marginStart="32dp"
+			android:layout_marginEnd="32dp"
+			android:layout_marginBottom="5dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="16dp"
+				android:layout_weight="5" />
+
+			<TextView
+				android:id="@+id/predicate_label"
+				android:layout_width="0dp"
+				android:layout_height="16dp"
+				android:layout_gravity="center"
+				android:layout_weight="1"
+				android:contentDescription="@string/description_p"
+				android:gravity="center_horizontal"
+				android:text="@string/p" />
+
+			<TextView
+				android:id="@+id/subject_label"
+				android:layout_width="0dp"
+				android:layout_height="16dp"
+				android:layout_gravity="center"
+				android:layout_weight="1"
+				android:contentDescription="@string/description_s"
+				android:gravity="center_horizontal"
+				android:text="@string/s" />
+
+			<TextView
+				android:id="@+id/object_label"
+				android:layout_width="0dp"
+				android:layout_height="16dp"
+				android:layout_gravity="center"
+				android:layout_weight="1"
+				android:contentDescription="@string/description_o"
+				android:gravity="center_horizontal"
+				android:text="@string/o" />
+
+			<TextView
+				android:id="@+id/term_modifier_predicate_label"
+				android:layout_width="0dp"
+				android:layout_height="16dp"
+				android:layout_gravity="center"
+				android:layout_weight="1"
+				android:contentDescription="@string/description_tp"
+				android:gravity="center_horizontal"
+				android:text="@string/tp" />
+
+			<TextView
+				android:id="@+id/predicate_modifier_predicate_label"
+				android:layout_width="0dp"
+				android:layout_height="16dp"
+				android:layout_gravity="center"
+				android:layout_weight="1"
+				android:contentDescription="@string/description_pp"
+				android:gravity="center_horizontal"
+				android:text="@string/pp" />
+
+		</LinearLayout>
+
+		<ListView
+			android:id="@android:id/list"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_marginStart="32dp"
+			android:layout_marginEnd="32dp"
+			android:layout_weight="1" />
+
+		<LinearLayout
+			style="?android:attr/buttonBarStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical|center_horizontal"
+			android:layout_marginStart="32dp"
+			android:layout_marginEnd="32dp"
+			android:orientation="horizontal">
+
+			<Button
+				style="@style/Widget.AppCompat.Button.Borderless.Colored"
+				android:id="@+id/cancel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@android:string/cancel"
+				tools:text="@android:string/cancel" />
+
+			<Button
+				style="@style/Widget.AppCompat.Button.Borderless.Colored"
+				android:id="@+id/ok"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:text="@android:string/ok"
+				tools:text="@android:string/ok" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

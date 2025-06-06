@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="samples_english" translatable="false">
+		<item>Bob gave me the pizza I am eating.</item>
+		<item>John, who had been reading about SyntaxNet, saw Bob in the hallway yesterday.</item>
+		<item>It is not the movie I saw.</item>
+		<item>The horse raced past the barn fell.</item>
+		<item>I want you to go.</item>
+	</string-array>
+
+</resources>

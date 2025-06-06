@@ -1,0 +1,2538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xmlns:xlink="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>flat</title>
+	<link rel="stylesheet" type="text/css" href="support/style.css"/>
+	<link rel="stylesheet" type="text/css" href="support/style-vis.css"/>
+</head>
+<body>
+<div id="main">
+	<div id="content">
+		<p>
+			<a id="al-u-dep/flat" class="al-dest"></a>
+		</p>
+		<h2 id="flat-flat-multiword-expression">
+			<code class='depname-head'>flat</code>
+		</h2>
+		<div class='gloss'>flat multiword expression</div>
+		<p>
+			The
+			<code class="depname">flat</code>
+			relation is one of three relations for multiword expressions multiword expressions (MWEs) in UD (the other two being <a href="fixed.html" class="doclink doclabel" title="fixed">fixed</a> and <a href="compound.html" class="doclink doclabel"
+			                                                                                                                                                                                                  title="compound">compound</a>). It is used for
+			exocentric (headless) semi-fixed MWEs like names (<em>Hillary Rodham Clinton</em>) and dates (<em>24 December</em>). It contrasts with <a href="fixed.html" class="doclink doclabel" title="fixed">fixed</a>, which applies to
+			completely fixed grammaticized (function word-like) MWEs (like <em>in spite of</em>), and with <a href="compound.html" class="doclink doclabel" title="compound">compound</a>, which applies to endocentric (headed) MWEs (like <em>apple pie</em>).
+		</p>
+		<p>
+			Flat MWEs are annotated with a flat structure, where all subsequent words in the expression are attached to the first one using the
+			<code class="depname">flat</code>
+			label. The assumption is that these expressions do not have any internal syntactic structure and that the structural annotation is in principle arbitrary. In practice, however, it is highly desirable to use a consistent annotation of all flat
+			MWEs in all languages.
+		</p>
+		<p>
+			Below we describe some of the most common uses of <a href="flat.html" class="doclink doclabel" title="flat">flat</a> across languages. Note that semantically equivalent expressions in different languages (or even in the same language) may
+			require a different analysis if sometimes there is and sometimes there is not a regular compositional syntactic structure.
+		</p>
+		<h2 id="names">
+			Names
+		</h2>
+		<p>
+			In many languages, there are multiword proper names with no clear internal syntactic structure and no clear evidence that one of the words is the syntactic head. Such names are annotated using the
+			<code class="depname">flat</code>
+			relation, with the optional subtype
+			<code class="depname">flat:name</code>
+			.
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="116">
+				<div id="embedded-116-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="33" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="71" y="47" width="48" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="123" y="47" width="40" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">Hilary</tspan>
+								<tspan x="71" y="58" data-chunk-id="1">Rodham</tspan>
+								<tspan x="123" y="58" data-chunk-id="2">Clinton</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="11.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-116-T1" data-fragment-id="0"></rect>
+									<text x="16.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 16.5,-11.5 16.5,-15.5C16.5,-11.5 33,-15.5 33,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(71, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="19.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-116-T2" data-fragment-id="0"></rect>
+									<text x="24.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 24.5,-11.5 24.5,-15.5C24.5,-11.5 48,-15.5 48,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(123, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="15.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-116-T3" data-fragment-id="0"></rect>
+									<text x="20.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 20.5,-11.5 20.5,-15.5C20.5,-11.5 40,-15.5 40,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-116-T1" data-to="embedded-116-T2">
+									<text x="73" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-116-T1" data-arc-target="embedded-116-T2" data-arc-ed="embedded-116-R1">flat</text>
+									<path d="M64.5,-28.5L63.5,-28.5Q59.5,-28.5 55.5,-23" style="stroke: black"></path>
+									<path d="M84.5,-28.5L85.5,-28.5Q88,-28.5 90.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-116-T1" data-to="embedded-116-T3">
+									<text x="97" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-116-T1" data-arc-target="embedded-116-T3" data-arc-ed="embedded-116-R2">flat</text>
+									<path d="M88.5,-40.5L70.5,-40.5Q63,-40.5 55.5,-23" style="stroke: black"></path>
+									<path d="M108.5,-40.5L123.5,-40.5Q131,-40.5 138.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">116</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="117">
+				<div id="embedded-117-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="23" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="75" y="47" width="22" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="101" y="47" width="39" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">Carl</tspan>
+								<tspan x="75" y="58" data-chunk-id="1">XVI</tspan>
+								<tspan x="101" y="58" data-chunk-id="2">Gustaf</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-117-T1" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 23,-15.5 23,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(75, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-117-T2" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 22,-15.5 22,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(101, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="14.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-117-T3" data-fragment-id="0"></rect>
+									<text x="19.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 19.5,-11.5 19.5,-15.5C19.5,-11.5 39,-15.5 39,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-117-T1" data-to="embedded-117-T2">
+									<text x="66" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-117-T1" data-arc-target="embedded-117-T2" data-arc-ed="embedded-117-R2">flat</text>
+									<path d="M57.5,-28.5L56.5,-28.5Q53.5,-28.5 50.5,-23" style="stroke: black"></path>
+									<path d="M77.5,-28.5L78.5,-28.5Q80,-28.5 81.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-117-T1" data-to="embedded-117-T3">
+									<text x="83" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-117-T1" data-arc-target="embedded-117-T3" data-arc-ed="embedded-117-R1">flat</text>
+									<path d="M74.5,-40.5L65.5,-40.5Q58,-40.5 50.5,-23" style="stroke: black"></path>
+									<path d="M94.5,-40.5L100.5,-40.5Q108,-40.5 115.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">117</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="118">
+				<div id="embedded-118-vis" style="display: block; height: 50px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 50px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="48" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="35" width="25" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="74" y="35" width="26" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="46" data-chunk-id="0">New</tspan>
+								<tspan x="74" y="46" data-chunk-id="1">York</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 46)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="7.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-118-T1" data-fragment-id="0"></rect>
+									<text x="12.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 12.5,-11.5 12.5,-15.5C12.5,-11.5 25,-15.5 25,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(74, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="8.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-118-T2" data-fragment-id="0"></rect>
+									<text x="13.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 13.5,-11.5 13.5,-15.5C13.5,-11.5 26,-15.5 26,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-118-T1" data-to="embedded-118-T2">
+									<text x="67" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-118-T1" data-arc-target="embedded-118-T2" data-arc-ed="embedded-118-R1">flat</text>
+									<path d="M58.5,-28.5L57.5,-28.5Q54.5,-28.5 51.5,-23" style="stroke: black"></path>
+									<path d="M78.5,-28.5L79.5,-28.5Q81,-28.5 82.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="46" data-sent="1" style="display: inline;">118</text>
+							</a>
+							<path d="M30,0L30,50" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>
+			Titles/honorifics are also analyzed using the
+			<code class="depname">flat</code>
+			relation. Note that some titles are complex and have their own internal syntactic structure. Such structure is shown with regular relations embedded under
+			<code class="depname">flat</code>
+			:
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="119">
+				<div id="embedded-119-vis" style="display: block; height: 50px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 50px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="48" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="35" width="18" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="67" y="35" width="34" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="46" data-chunk-id="0">Mr.</tspan>
+								<tspan x="67" y="46" data-chunk-id="1">Smith</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 46)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="4.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-119-T1" data-fragment-id="0"></rect>
+									<text x="9.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 9.5,-11.5 9.5,-15.5C9.5,-11.5 18,-15.5 18,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(67, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="12.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-119-T2" data-fragment-id="0"></rect>
+									<text x="17.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 17.5,-11.5 17.5,-15.5C17.5,-11.5 34,-15.5 34,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-119-T1" data-to="embedded-119-T2">
+									<text x="64" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-119-T1" data-arc-target="embedded-119-T2" data-arc-ed="embedded-119-R1">flat</text>
+									<path d="M55.5,-28.5L54.5,-28.5Q51.5,-28.5 48.5,-23" style="stroke: black"></path>
+									<path d="M75.5,-28.5L76.5,-28.5Q78,-28.5 79.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="46" data-sent="1" style="display: inline;">119</text>
+							</a>
+							<path d="M30,0L30,50" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="120">
+				<div id="embedded-120-vis" style="display: block; height: 50px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 50px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="48" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="35" width="55" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="93" y="35" width="42" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="46" data-chunk-id="0">President</tspan>
+								<tspan x="93" y="46" data-chunk-id="1">Obama</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 46)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="22.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-120-T1" data-fragment-id="0"></rect>
+									<text x="27.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 27.5,-11.5 27.5,-15.5C27.5,-11.5 55,-15.5 55,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(93, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="16.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-120-T2" data-fragment-id="0"></rect>
+									<text x="21.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 21.5,-11.5 21.5,-15.5C21.5,-11.5 42,-15.5 42,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-120-T1" data-to="embedded-120-T2">
+									<text x="88" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-120-T1" data-arc-target="embedded-120-T2" data-arc-ed="embedded-120-R1">flat</text>
+									<path d="M79.5,-28.5L78.5,-28.5Q72.5,-28.5 66.5,-23" style="stroke: black"></path>
+									<path d="M99.5,-28.5L100.5,-28.5Q105,-28.5 109.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="46" data-sent="1" style="display: inline;">120</text>
+							</a>
+							<path d="M30,0L30,50" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="121">
+				<div id="embedded-121-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="40" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="92" y="47" width="29" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="125" y="47" width="49" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="178" y="47" width="28" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">French</tspan>
+								<tspan x="92" y="58" data-chunk-id="1">actor</tspan>
+								<tspan x="125" y="58" data-chunk-id="2">Gaspard</tspan>
+								<tspan x="178" y="58" data-chunk-id="3">Ulliel</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="15.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-121-T1" data-fragment-id="0"></rect>
+									<text x="20.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 20.5,-11.5 20.5,-15.5C20.5,-11.5 40,-15.5 40,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(92, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="9.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-121-T2" data-fragment-id="0"></rect>
+									<text x="14.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 14.5,-11.5 14.5,-15.5C14.5,-11.5 29,-15.5 29,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(125, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="19.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-121-T3" data-fragment-id="0"></rect>
+									<text x="24.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 24.5,-11.5 24.5,-15.5C24.5,-11.5 49,-15.5 49,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(178, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="9.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-121-T4" data-fragment-id="0"></rect>
+									<text x="14.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 14.5,-11.5 14.5,-15.5C14.5,-11.5 28,-15.5 28,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-121-T2" data-to="embedded-121-T1">
+									<text x="80.5" y="-25.25" fill="black" data-arc-role="amod" data-arc-origin="embedded-121-T2" data-arc-target="embedded-121-T1" data-arc-ed="embedded-121-R1">amod</text>
+									<path d="M63.5,-28.5L62.5,-28.5Q61,-28.5 59.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M94.5,-28.5L95.5,-28.5Q98.5,-28.5 101.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-121-T2" data-to="embedded-121-T3">
+									<text x="128" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-121-T2" data-arc-target="embedded-121-T3" data-arc-ed="embedded-121-R2">flat</text>
+									<path d="M119.5,-28.5L118.5,-28.5Q115,-28.5 111.5,-23" style="stroke: black"></path>
+									<path d="M139.5,-28.5L140.5,-28.5Q142.5,-28.5 144.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-121-T2" data-to="embedded-121-T4">
+									<text x="149.5" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-121-T2" data-arc-target="embedded-121-T4" data-arc-ed="embedded-121-R3">flat</text>
+									<path d="M141,-40.5L126.5,-40.5Q119,-40.5 111.5,-23" style="stroke: black"></path>
+									<path d="M161,-40.5L172.5,-40.5Q180,-40.5 187.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">121</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="122">
+				<div id="embedded-122-vis" style="display: block; height: 109px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 109px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+							<rect x="0" y="64" width="970" height="47" class="background1"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="52" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="90" y="47" width="30" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="124" y="47" width="31" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="38" y="94" width="54" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="96" y="94" width="30" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="130" y="94" width="31" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">Milliardär</tspan>
+								<tspan x="90" y="58" data-chunk-id="1">Ross</tspan>
+								<tspan x="124" y="58" data-chunk-id="2">Perot
+								</tspan>
+							</text>
+							<text x="0" y="0">
+								<tspan x="38" y="105" data-chunk-id="3">billionaire</tspan>
+								<tspan x="96" y="105" data-chunk-id="4">Ross</tspan>
+								<tspan x="130" y="105" data-chunk-id="5">Perot</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="21.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-122-T1" data-fragment-id="0"></rect>
+									<text x="26.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 26.5,-11.5 26.5,-15.5C26.5,-11.5 52,-15.5 52,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(90, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="10.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-122-T2" data-fragment-id="0"></rect>
+									<text x="15.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 15.5,-11.5 15.5,-15.5C15.5,-11.5 30,-15.5 30,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(124, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="10.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-122-T3" data-fragment-id="0"></rect>
+									<text x="15.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 15.5,-11.5 15.5,-15.5C15.5,-11.5 31,-15.5 31,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-122-T1" data-to="embedded-122-T2">
+									<text x="83" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-122-T1" data-arc-target="embedded-122-T2" data-arc-ed="embedded-122-R1">flat</text>
+									<path d="M74.5,-28.5L73.5,-28.5Q69.5,-28.5 65.5,-23" style="stroke: black"></path>
+									<path d="M94.5,-28.5L95.5,-28.5Q98,-28.5 100.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-122-T1" data-to="embedded-122-T3">
+									<text x="100" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-122-T1" data-arc-target="embedded-122-T3" data-arc-ed="embedded-122-R2">flat</text>
+									<path d="M91.5,-40.5L80.5,-40.5Q73,-40.5 65.5,-23" style="stroke: black"></path>
+									<path d="M111.5,-40.5L119.5,-40.5Q127,-40.5 134.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<g transform="translate(0, 105)">
+							<g></g>
+							<g transform="translate(38, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="22.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-122-T5" data-fragment-id="0"></rect>
+									<text x="27.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 27.5,-11.5 27.5,-15.5C27.5,-11.5 54,-15.5 54,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(96, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="10.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-122-T6" data-fragment-id="0"></rect>
+									<text x="15.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 15.5,-11.5 15.5,-15.5C15.5,-11.5 30,-15.5 30,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(130, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="10.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-122-T7" data-fragment-id="0"></rect>
+									<text x="15.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 15.5,-11.5 15.5,-15.5C15.5,-11.5 31,-15.5 31,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs"></g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">122</text>
+							</a>
+							<a xlink:href="#undefined?focus=sent~2">
+								<text x="28" y="105" data-sent="2">2</text>
+							</a>
+							<path d="M30,0L30,109" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>
+			However if the two halves of a descriptive title and a name appear to be two separate nominals, then analysis with
+			<code class="depname">flat</code>
+			is not appropriate, and <a href="appos.html" class="doclink doclabel" title="appos">appos</a> is appropriate. These cases are often set off by punctuation, such as a comma, but no punctuation may appear in more informal text. You can generally
+			test for such examples by asking if the two halves can be reversed; if they can, it is probably an
+			<code class="depname">appos</code>
+			; see the examples there.
+		</p>
+		<p>
+			In contrast to the above, names that have a regular syntactic structure, like <em>The Lord of the Rings</em> and <em>Captured By Aliens</em>, should be annotated with regular syntactic relations.
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="123">
+				<div id="embedded-123-vis" style="display: block; height: 71px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 71px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="69" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="56" width="22" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="74" y="56" width="25" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="103" y="56" width="11" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="118" y="56" width="18" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="152" y="56" width="33" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="67" data-chunk-id="0">The</tspan>
+								<tspan x="74" y="67" data-chunk-id="1">Lord</tspan>
+								<tspan x="103" y="67" data-chunk-id="2">of</tspan>
+								<tspan x="118" y="67" data-chunk-id="3">the</tspan>
+								<tspan x="152" y="67" data-chunk-id="4">Rings</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 67)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-123-T1" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 22,-15.5 22,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(74, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="7.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-123-T2" data-fragment-id="0"></rect>
+									<text x="12.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 12.5,-11.5 12.5,-15.5C12.5,-11.5 25,-15.5 25,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(103, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-123-T3" data-fragment-id="0"></rect>
+									<text x="5.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 5.5,-11.5 5.5,-15.5C5.5,-11.5 11,-15.5 11,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(118, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="4.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-123-T4" data-fragment-id="0"></rect>
+									<text x="9.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 9.5,-11.5 9.5,-15.5C9.5,-11.5 18,-15.5 18,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(152, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="11.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-123-T5" data-fragment-id="0"></rect>
+									<text x="16.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 16.5,-11.5 16.5,-15.5C16.5,-11.5 33,-15.5 33,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-123-T2" data-to="embedded-123-T1">
+									<text x="66" y="-25.25" fill="black" data-arc-role="det" data-arc-origin="embedded-123-T2" data-arc-target="embedded-123-T1" data-arc-ed="embedded-123-R1">det</text>
+									<path d="M54.5,-28.5L53.5,-28.5Q52,-28.5 50.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M74.5,-28.5L75.5,-28.5Q78.5,-28.5 81.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-123-T5" data-to="embedded-123-T4">
+									<text x="148" y="-25.25" fill="black" data-arc-role="det" data-arc-origin="embedded-123-T5" data-arc-target="embedded-123-T4" data-arc-ed="embedded-123-R4">det</text>
+									<path d="M136.5,-28.5L135.5,-28.5Q134,-28.5 132.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M156.5,-28.5L157.5,-28.5Q160.5,-28.5 163.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-123-T5" data-to="embedded-123-T3">
+									<text x="138.5" y="-37.25" fill="black" data-arc-role="case" data-arc-origin="embedded-123-T5" data-arc-target="embedded-123-T3" data-arc-ed="embedded-123-R3">case</text>
+									<path d="M125,-40.5L124,-40.5Q118.75,-40.5 113.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M149,-40.5L150,-40.5Q156.75,-40.5 163.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-123-T2" data-to="embedded-123-T5">
+									<text x="127.5" y="-46.25" fill="black" data-arc-role="nmod" data-arc-origin="embedded-123-T2" data-arc-target="embedded-123-T5" data-arc-ed="embedded-123-R2">nmod</text>
+									<path d="M113,-49.5L106.5,-49.5Q99,-49.5 91.5,-23" style="stroke: black"></path>
+									<path d="M145,-49.5L148.5,-49.5Q156,-49.5 163.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="67" data-sent="1" style="display: inline;">123</text>
+							</a>
+							<path d="M30,0L30,71" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="124">
+				<div id="embedded-124-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="22" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="74" y="47" width="24" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="102" y="47" width="11" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="129" y="47" width="46" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">The</tspan>
+								<tspan x="74" y="58" data-chunk-id="1">king</tspan>
+								<tspan x="102" y="58" data-chunk-id="2">of</tspan>
+								<tspan x="129" y="58" data-chunk-id="3">Sweden</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-124-T1" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 22,-15.5 22,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(74, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="7.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-124-T2" data-fragment-id="0"></rect>
+									<text x="12.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 12.5,-11.5 12.5,-15.5C12.5,-11.5 24,-15.5 24,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(102, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-124-T3" data-fragment-id="0"></rect>
+									<text x="5.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 5.5,-11.5 5.5,-15.5C5.5,-11.5 11,-15.5 11,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(129, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="18.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-124-T4" data-fragment-id="0"></rect>
+									<text x="23.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 23.5,-11.5 23.5,-15.5C23.5,-11.5 46,-15.5 46,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-124-T2" data-to="embedded-124-T1">
+									<text x="66" y="-25.25" fill="black" data-arc-role="det" data-arc-origin="embedded-124-T2" data-arc-target="embedded-124-T1" data-arc-ed="embedded-124-R1">det</text>
+									<path d="M54.5,-28.5L53.5,-28.5Q52,-28.5 50.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M74.5,-28.5L75.5,-28.5Q78.5,-28.5 81.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-124-T4" data-to="embedded-124-T3">
+									<text x="130" y="-25.25" fill="black" data-arc-role="case" data-arc-origin="embedded-124-T4" data-arc-target="embedded-124-T3" data-arc-ed="embedded-124-R3">case</text>
+									<path d="M116.5,-28.5L115.5,-28.5Q114,-28.5 112.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M140.5,-28.5L141.5,-28.5Q144.5,-28.5 147.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-124-T2" data-to="embedded-124-T4">
+									<text x="119.5" y="-37.25" fill="black" data-arc-role="nmod" data-arc-origin="embedded-124-T2" data-arc-target="embedded-124-T4" data-arc-ed="embedded-124-R2">nmod</text>
+									<path d="M105,-40.5L104,-40.5Q97.75,-40.5 91.5,-23" style="stroke: black"></path>
+									<path d="M137,-40.5L138,-40.5Q142.75,-40.5 147.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">124</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>For organization names with clear syntactic modification structure, the dependencies should also reflect the syntactic modification structure using regular syntactic relations, as in:</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="125">
+				<div id="embedded-125-vis" style="display: block; height: 50px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 50px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="48" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="35" width="41" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="79" y="35" width="62" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="148" y="35" width="76" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="240" y="35" width="44" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="46" data-chunk-id="0">Natural</tspan>
+								<tspan x="79" y="46" data-chunk-id="1">Resources</tspan>
+								<tspan x="148" y="46" data-chunk-id="2">Conservation</tspan>
+								<tspan x="240" y="46" data-chunk-id="3">Service</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 46)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="15.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-125-T1" data-fragment-id="0"></rect>
+									<text x="20.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 20.5,-11.5 20.5,-15.5C20.5,-11.5 41,-15.5 41,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(79, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="26.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-125-T2" data-fragment-id="0"></rect>
+									<text x="31.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 31.5,-11.5 31.5,-15.5C31.5,-11.5 62,-15.5 62,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(148, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="33.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-125-T3" data-fragment-id="0"></rect>
+									<text x="38.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 38.5,-11.5 38.5,-15.5C38.5,-11.5 76,-15.5 76,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(240, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="17.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-125-T4" data-fragment-id="0"></rect>
+									<text x="22.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 22.5,-11.5 22.5,-15.5C22.5,-11.5 44,-15.5 44,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-125-T2" data-to="embedded-125-T1">
+									<text x="82.5" y="-25.25" fill="black" data-arc-role="amod" data-arc-origin="embedded-125-T2" data-arc-target="embedded-125-T1" data-arc-ed="embedded-125-R1">amod</text>
+									<path d="M65.5,-28.5L64.5,-28.5Q62,-28.5 59.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M96.5,-28.5L97.5,-28.5Q101.5,-28.5 105.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-125-T4" data-to="embedded-125-T3">
+									<text x="224.5" y="-25.25" fill="black" data-arc-role="compound" data-arc-origin="embedded-125-T4" data-arc-target="embedded-125-T3" data-arc-ed="embedded-125-R3">compound</text>
+									<path d="M195.5,-28.5L194.5,-28.5Q193,-28.5 191.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M250.5,-28.5L251.5,-28.5Q254.5,-28.5 257.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-125-T3" data-to="embedded-125-T2">
+									<text x="148.5" y="-25.25" fill="black" data-arc-role="compound" data-arc-origin="embedded-125-T3" data-arc-target="embedded-125-T2" data-arc-ed="embedded-125-R2">compound</text>
+									<path d="M119.5,-28.5L118.5,-28.5Q117,-28.5 115.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M174.5,-28.5L175.5,-28.5Q178.5,-28.5 181.5,-23" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="46" data-sent="1" style="display: inline;">125</text>
+							</a>
+							<path d="M30,0L30,50" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>In addition, regular syntactic relations are used: (i) for a modifying determiner or similar function word and (ii) to connect together the words of a description or name which involve embedded prepositional phrases, sentences, etc., when these
+			relations are (i) recognized in the language being annotated (i.e., the analyses below are for French, German, and Spanish, not English) and (ii) deemed not to be grammaticalized to the extent that the original role of the function words has
+			been lost.</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="126">
+				<div id="embedded-126-vis" style="display: block; height: 50px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 50px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="48" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="35" width="14" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="65" y="35" width="35" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="46" data-chunk-id="0">Le</tspan>
+								<tspan x="65" y="46" data-chunk-id="1">Japon</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 46)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-126-T1" data-fragment-id="0"></rect>
+									<text x="7.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 7.5,-11.5 7.5,-15.5C7.5,-11.5 14,-15.5 14,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(65, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="12.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-126-T2" data-fragment-id="0"></rect>
+									<text x="17.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 17.5,-11.5 17.5,-15.5C17.5,-11.5 35,-15.5 35,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-126-T2" data-to="embedded-126-T1">
+									<text x="62" y="-25.25" fill="black" data-arc-role="det" data-arc-origin="embedded-126-T2" data-arc-target="embedded-126-T1" data-arc-ed="embedded-126-R1">det</text>
+									<path d="M50.5,-28.5L49.5,-28.5Q48,-28.5 46.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M70.5,-28.5L71.5,-28.5Q74.5,-28.5 77.5,-23" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="46" data-sent="1" style="display: inline;">126</text>
+							</a>
+							<path d="M30,0L30,50" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="127">
+				<div id="embedded-127-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="40" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="78" y="47" width="21" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="103" y="47" width="62" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">Ludwig</tspan>
+								<tspan x="78" y="58" data-chunk-id="1">van</tspan>
+								<tspan x="103" y="58" data-chunk-id="2">Beethoven</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="15.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-127-T1" data-fragment-id="0"></rect>
+									<text x="20.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 20.5,-11.5 20.5,-15.5C20.5,-11.5 40,-15.5 40,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(78, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="5.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-127-T2" data-fragment-id="0"></rect>
+									<text x="10.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 10.5,-11.5 10.5,-15.5C10.5,-11.5 21,-15.5 21,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(103, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="26.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-127-T3" data-fragment-id="0"></rect>
+									<text x="31.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 31.5,-11.5 31.5,-15.5C31.5,-11.5 62,-15.5 62,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-127-T3" data-to="embedded-127-T2">
+									<text x="111.5" y="-25.25" fill="black" data-arc-role="case" data-arc-origin="embedded-127-T3" data-arc-target="embedded-127-T2" data-arc-ed="embedded-127-R1">case</text>
+									<path d="M98,-28.5L97,-28.5Q95.25,-28.5 93.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M122,-28.5L123,-28.5Q126.25,-28.5 129.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-127-T1" data-to="embedded-127-T3">
+									<text x="94.5" y="-37.25" fill="black" data-arc-role="nmod" data-arc-origin="embedded-127-T1" data-arc-target="embedded-127-T3" data-arc-ed="embedded-127-R2">nmod</text>
+									<path d="M80,-40.5L74.5,-40.5Q67,-40.5 59.5,-23" style="stroke: black"></path>
+									<path d="M112,-40.5L114.5,-40.5Q122,-40.5 129.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">127</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="128">
+				<div id="embedded-128-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="38" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="76" y="47" width="14" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="99" y="47" width="59" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="162.5" y="47" width="7" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="176" y="47" width="55" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">Miguel</tspan>
+								<tspan x="76" y="58" data-chunk-id="1">de</tspan>
+								<tspan x="99" y="58" data-chunk-id="2">Cervantes</tspan>
+								<tspan x="162.5" y="58" data-chunk-id="3">y</tspan>
+								<tspan x="176" y="58" data-chunk-id="4">Saavedra</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="14.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-128-T1" data-fragment-id="0"></rect>
+									<text x="19.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 19.5,-11.5 19.5,-15.5C19.5,-11.5 38,-15.5 38,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(76, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-128-T2" data-fragment-id="0"></rect>
+									<text x="7.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 7.5,-11.5 7.5,-15.5C7.5,-11.5 14,-15.5 14,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(99, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="24.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-128-T3" data-fragment-id="0"></rect>
+									<text x="29.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 29.5,-11.5 29.5,-15.5C29.5,-11.5 59,-15.5 59,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(162.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-128-T4" data-fragment-id="0"></rect>
+									<text x="3.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 3.5,-11.5 3.5,-15.5C3.5,-11.5 7,-15.5 7,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(176, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="22.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-128-T5" data-fragment-id="0"></rect>
+									<text x="27.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 27.5,-11.5 27.5,-15.5C27.5,-11.5 55,-15.5 55,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-128-T5" data-to="embedded-128-T4">
+									<text x="185.25" y="-25.25" fill="black" data-arc-role="cc" data-arc-origin="embedded-128-T5" data-arc-target="embedded-128-T4" data-arc-ed="embedded-128-R2">cc</text>
+									<path d="M176.25,-28.5L175.25,-28.5Q173.625,-28.5 172,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M191.25,-28.5L192.25,-28.5Q195.375,-28.5 198.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-128-T3" data-to="embedded-128-T2">
+									<text x="106" y="-25.25" fill="black" data-arc-role="case" data-arc-origin="embedded-128-T3" data-arc-target="embedded-128-T2" data-arc-ed="embedded-128-R3">case</text>
+									<path d="M92.5,-28.5L91.5,-28.5Q90,-28.5 88.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M116.5,-28.5L117.5,-28.5Q120.5,-28.5 123.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-128-T3" data-to="embedded-128-T5">
+									<text x="166" y="-37.25" fill="black" data-arc-role="conj" data-arc-origin="embedded-128-T3" data-arc-target="embedded-128-T5" data-arc-ed="embedded-128-R1">conj</text>
+									<path d="M155,-40.5L148.5,-40.5Q141,-40.5 133.5,-23" style="stroke: black"></path>
+									<path d="M180,-40.5L183.5,-40.5Q191,-40.5 198.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-128-T1" data-to="embedded-128-T3">
+									<text x="91" y="-37.25" fill="black" data-arc-role="nmod" data-arc-origin="embedded-128-T1" data-arc-target="embedded-128-T3" data-arc-ed="embedded-128-R4">nmod</text>
+									<path d="M76.5,-40.5L73.5,-40.5Q66,-40.5 58.5,-23" style="stroke: black"></path>
+									<path d="M108.5,-40.5L109.5,-40.5Q116.5,-40.5 123.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">128</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="129">
+				<div id="embedded-129-vis" style="display: block; height: 71px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 71px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="69" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="56" width="20" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="58" y="56" width="14" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="76" y="56" width="10" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="107" y="56" width="30" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="67" data-chunk-id="0">Río</tspan>
+								<tspan x="58" y="67" data-chunk-id="1">de</tspan>
+								<tspan x="76" y="67" data-chunk-id="2">la</tspan>
+								<tspan x="107" y="67" data-chunk-id="3">Plata</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 67)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="5.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-129-T1" data-fragment-id="0"></rect>
+									<text x="10.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 10.5,-11.5 10.5,-15.5C10.5,-11.5 20,-15.5 20,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(58, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-129-T2" data-fragment-id="0"></rect>
+									<text x="7.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 7.5,-11.5 7.5,-15.5C7.5,-11.5 14,-15.5 14,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(76, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-129-T3" data-fragment-id="0"></rect>
+									<text x="5.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 5.5,-11.5 5.5,-15.5C5.5,-11.5 10,-15.5 10,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(107, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="10.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-129-T4" data-fragment-id="0"></rect>
+									<text x="15.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 15.5,-11.5 15.5,-15.5C15.5,-11.5 30,-15.5 30,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-129-T4" data-to="embedded-129-T3">
+									<text x="102" y="-25.25" fill="black" data-arc-role="det" data-arc-origin="embedded-129-T4" data-arc-target="embedded-129-T3" data-arc-ed="embedded-129-R2">det</text>
+									<path d="M90.5,-28.5L89.5,-28.5Q88,-28.5 86.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M110.5,-28.5L111.5,-28.5Q114.5,-28.5 117.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-129-T4" data-to="embedded-129-T2">
+									<text x="94" y="-37.25" fill="black" data-arc-role="case" data-arc-origin="embedded-129-T4" data-arc-target="embedded-129-T2" data-arc-ed="embedded-129-R1">case</text>
+									<path d="M80.5,-40.5L79.5,-40.5Q75,-40.5 70.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M104.5,-40.5L105.5,-40.5Q111.5,-40.5 117.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-129-T1" data-to="embedded-129-T4">
+									<text x="83.5" y="-46.25" fill="black" data-arc-role="nmod" data-arc-origin="embedded-129-T1" data-arc-target="embedded-129-T4" data-arc-ed="embedded-129-R3">nmod</text>
+									<path d="M69,-49.5L64.5,-49.5Q57,-49.5 49.5,-23" style="stroke: black"></path>
+									<path d="M101,-49.5L102.5,-49.5Q110,-49.5 117.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="67" data-sent="1" style="display: inline;">129</text>
+							</a>
+							<path d="M30,0L30,71" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>
+			The above analyses of <em>Ludwig van Beethoven</em> and <em>Miguel de Cervantes y Saavedra</em> assume that <em>van</em> resp. <em>de</em> are prepositions. This is true in the languages of the names’ origin, but it can be expected to change
+			when the name is used in foreign text or when sufficient grammaticalization has taken place. For example, when names like this are annotated in English, the appropriate analysis is as a
+			<code class="depname">flat</code>
+			name:
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="130">
+				<div id="embedded-130-vis" style="display: block; height: 89px;" class="visualization">
+					<svg version="1.1" style="width: 500px; height: 89px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="87" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="74" width="40" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="85" y="74" width="21" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="110" y="74" width="62" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="176" y="74" width="23" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="203.5" y="74" width="7" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="217" y="74" width="43" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="264" y="74" width="46" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="314" y="74" width="57" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="395.5" y="74" width="4" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="85" data-chunk-id="0">Ludwig</tspan>
+								<tspan x="85" y="85" data-chunk-id="1">van</tspan>
+								<tspan x="110" y="85" data-chunk-id="2">Beethoven</tspan>
+								<tspan x="176" y="85" data-chunk-id="3">was</tspan>
+								<tspan x="203.5" y="85" data-chunk-id="4">a</tspan>
+								<tspan x="217" y="85" data-chunk-id="5">famous</tspan>
+								<tspan x="264" y="85" data-chunk-id="6">German</tspan>
+								<tspan x="314" y="85" data-chunk-id="7">composer</tspan>
+								<tspan x="395.5" y="85" data-chunk-id="8">.</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 85)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="15.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T1" data-fragment-id="0"></rect>
+									<text x="20.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 20.5,-11.5 20.5,-15.5C20.5,-11.5 40,-15.5 40,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(85, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="5.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T2" data-fragment-id="0"></rect>
+									<text x="10.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 10.5,-11.5 10.5,-15.5C10.5,-11.5 21,-15.5 21,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(110, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="26.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T3" data-fragment-id="0"></rect>
+									<text x="31.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 31.5,-11.5 31.5,-15.5C31.5,-11.5 62,-15.5 62,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(176, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T4" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 23,-15.5 23,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(203.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T5" data-fragment-id="0"></rect>
+									<text x="3.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 3.5,-11.5 3.5,-15.5C3.5,-11.5 7,-15.5 7,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(217, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="16.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T6" data-fragment-id="0"></rect>
+									<text x="21.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 21.5,-11.5 21.5,-15.5C21.5,-11.5 43,-15.5 43,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(264, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="18.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T7" data-fragment-id="0"></rect>
+									<text x="23.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 23.5,-11.5 23.5,-15.5C23.5,-11.5 46,-15.5 46,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(314, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="23.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T8" data-fragment-id="0"></rect>
+									<text x="28.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 28.5,-11.5 28.5,-15.5C28.5,-11.5 57,-15.5 57,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(395.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-130-T9" data-fragment-id="0"></rect>
+									<text x="2.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 2.5,-11.5 2.5,-15.5C2.5,-11.5 4,-15.5 4,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-130-T1" data-to="embedded-130-T2">
+									<text x="75" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-130-T1" data-arc-target="embedded-130-T2" data-arc-ed="embedded-130-R1">flat</text>
+									<path d="M66.5,-28.5L65.5,-28.5Q62.5,-28.5 59.5,-23" style="stroke: black"></path>
+									<path d="M86.5,-28.5L87.5,-28.5Q89,-28.5 90.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-130-T8" data-to="embedded-130-T9">
+									<text x="370.25" y="-25.25" fill="black" data-arc-role="punct" data-arc-origin="embedded-130-T8" data-arc-target="embedded-130-T9" data-arc-ed="embedded-130-R8">punct</text>
+									<path d="M355.75,-28.5L354.75,-28.5Q351.125,-28.5 347.5,-23" style="stroke: black"></path>
+									<path d="M387.75,-28.5L388.75,-28.5Q390.875,-28.5 393,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-130-T8" data-to="embedded-130-T7">
+									<text x="315" y="-25.25" fill="black" data-arc-role="amod" data-arc-origin="embedded-130-T8" data-arc-target="embedded-130-T7" data-arc-ed="embedded-130-R5">amod</text>
+									<path d="M298,-28.5L297,-28.5Q294.75,-28.5 292.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M329,-28.5L330,-28.5Q333.75,-28.5 337.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-130-T1" data-to="embedded-130-T3">
+									<text x="98" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-130-T1" data-arc-target="embedded-130-T3" data-arc-ed="embedded-130-R2">flat</text>
+									<path d="M89.5,-40.5L74.5,-40.5Q67,-40.5 59.5,-23" style="stroke: black"></path>
+									<path d="M109.5,-40.5L121.5,-40.5Q129,-40.5 136.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-130-T8" data-to="embedded-130-T6">
+									<text x="290.5" y="-37.25" fill="black" data-arc-role="amod" data-arc-origin="embedded-130-T8" data-arc-target="embedded-130-T6" data-arc-ed="embedded-130-R4">amod</text>
+									<path d="M273.5,-40.5L258.5,-40.5Q251,-40.5 243.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M304.5,-40.5L322.5,-40.5Q330,-40.5 337.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-130-T8" data-to="embedded-130-T5">
+									<text x="275.25" y="-46.25" fill="black" data-arc-role="det" data-arc-origin="embedded-130-T8" data-arc-target="embedded-130-T5" data-arc-ed="embedded-130-R3">det</text>
+									<path d="M263.75,-49.5L228,-49.5Q220.5,-49.5 213,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M283.75,-49.5L322.5,-49.5Q330,-49.5 337.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-130-T8" data-to="embedded-130-T4">
+									<text x="265" y="-55.25" fill="black" data-arc-role="cop" data-arc-origin="embedded-130-T8" data-arc-target="embedded-130-T4" data-arc-ed="embedded-130-R6">cop</text>
+									<path d="M252.5,-58.5L207.5,-58.5Q200,-58.5 192.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M274.5,-58.5L322.5,-58.5Q330,-58.5 337.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-130-T8" data-to="embedded-130-T1">
+									<text x="198.5" y="-64.25" fill="black" data-arc-role="nsubj" data-arc-origin="embedded-130-T8" data-arc-target="embedded-130-T1" data-arc-ed="embedded-130-R7">nsubj</text>
+									<path d="M182,-67.5L74.5,-67.5Q67,-67.5 59.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M212,-67.5L322.5,-67.5Q330,-67.5 337.5,-23" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="85" data-sent="1" style="display: inline;">130</text>
+							</a>
+							<path d="M30,0L30,89" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="131">
+				<div id="embedded-131-vis" style="display: block; height: 71px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 71px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="69" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="56" width="20" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="78" y="56" width="14" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="96" y="56" width="10" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="110.5" y="56" width="30" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="67" data-chunk-id="0">Río</tspan>
+								<tspan x="78" y="67" data-chunk-id="1">de</tspan>
+								<tspan x="96" y="67" data-chunk-id="2">la</tspan>
+								<tspan x="110.5" y="67" data-chunk-id="3">Plata</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 67)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="5.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-131-T1" data-fragment-id="0"></rect>
+									<text x="10.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 10.5,-11.5 10.5,-15.5C10.5,-11.5 20,-15.5 20,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(78, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-131-T2" data-fragment-id="0"></rect>
+									<text x="7.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 7.5,-11.5 7.5,-15.5C7.5,-11.5 14,-15.5 14,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(96, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-131-T3" data-fragment-id="0"></rect>
+									<text x="5.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 5.5,-11.5 5.5,-15.5C5.5,-11.5 10,-15.5 10,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(110.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="10.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-131-T4" data-fragment-id="0"></rect>
+									<text x="15.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 15.5,-11.5 15.5,-15.5C15.5,-11.5 30,-15.5 30,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-131-T1" data-to="embedded-131-T2">
+									<text x="65" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-131-T1" data-arc-target="embedded-131-T2" data-arc-ed="embedded-131-R1">flat</text>
+									<path d="M56.5,-28.5L55.5,-28.5Q52.5,-28.5 49.5,-23" style="stroke: black"></path>
+									<path d="M76.5,-28.5L77.5,-28.5Q79,-28.5 80.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-131-T1" data-to="embedded-131-T3">
+									<text x="73" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-131-T1" data-arc-target="embedded-131-T3" data-arc-ed="embedded-131-R2">flat</text>
+									<path d="M64.5,-40.5L63.5,-40.5Q56.5,-40.5 49.5,-23" style="stroke: black"></path>
+									<path d="M84.5,-40.5L85.5,-40.5Q91,-40.5 96.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-131-T1" data-to="embedded-131-T4">
+									<text x="85.25" y="-46.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-131-T1" data-arc-target="embedded-131-T4" data-arc-ed="embedded-131-R3">flat</text>
+									<path d="M76.75,-49.5L64.5,-49.5Q57,-49.5 49.5,-23" style="stroke: black"></path>
+									<path d="M96.75,-49.5L106,-49.5Q113.5,-49.5 121,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="67" data-sent="1" style="display: inline;">131</text>
+							</a>
+							<path d="M30,0L30,71" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="132">
+				<div id="embedded-132-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="12" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="59" y="47" width="44" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="107" y="47" width="10" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="122" y="47" width="7" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="135.5" y="47" width="74" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="213.5" y="47" width="30" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="247.5" y="47" width="70" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">Al</tspan>
+								<tspan x="59" y="58" data-chunk-id="1">Arabiya</tspan>
+								<tspan x="107" y="58" data-chunk-id="2">is</tspan>
+								<tspan x="122" y="58" data-chunk-id="3">a</tspan>
+								<tspan x="135.5" y="58" data-chunk-id="4">Saudi-owned</tspan>
+								<tspan x="213.5" y="58" data-chunk-id="5">news</tspan>
+								<tspan x="247.5" y="58" data-chunk-id="6">organization</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="1.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-132-T1" data-fragment-id="0"></rect>
+									<text x="6.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 6.5,-11.5 6.5,-15.5C6.5,-11.5 12,-15.5 12,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(59, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="17.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-132-T2" data-fragment-id="0"></rect>
+									<text x="22.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 22.5,-11.5 22.5,-15.5C22.5,-11.5 44,-15.5 44,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(107, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-132-T3" data-fragment-id="0"></rect>
+									<text x="5.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 5.5,-11.5 5.5,-15.5C5.5,-11.5 10,-15.5 10,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(122, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-132-T4" data-fragment-id="0"></rect>
+									<text x="3.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 3.5,-11.5 3.5,-15.5C3.5,-11.5 7,-15.5 7,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(135.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="32.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-132-T5" data-fragment-id="0"></rect>
+									<text x="37.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 37.5,-11.5 37.5,-15.5C37.5,-11.5 74,-15.5 74,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(213.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="10.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-132-T6" data-fragment-id="0"></rect>
+									<text x="15.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 15.5,-11.5 15.5,-15.5C15.5,-11.5 30,-15.5 30,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(247.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="30.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-132-T7" data-fragment-id="0"></rect>
+									<text x="35.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 35.5,-11.5 35.5,-15.5C35.5,-11.5 70,-15.5 70,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-132-T1" data-to="embedded-132-T2">
+									<text x="61" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-132-T1" data-arc-target="embedded-132-T2" data-arc-ed="embedded-132-R1">flat</text>
+									<path d="M52.5,-28.5L51.5,-28.5Q48.5,-28.5 45.5,-23" style="stroke: black"></path>
+									<path d="M72.5,-28.5L73.5,-28.5Q75,-28.5 76.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-132-T7" data-to="embedded-132-T1">
+									<text x="161.75" y="-37.25" fill="black" data-arc-role="nsubj" data-arc-origin="embedded-132-T7" data-arc-target="embedded-132-T1" data-arc-ed="embedded-132-R2">nsubj</text>
+									<path d="M145.25,-40.5L60.5,-40.5Q53,-40.5 45.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M175.25,-40.5L263,-40.5Q270.5,-40.5 278,-23" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">132</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>
+			And in Modern German or French, these prepositions have generally just become a fossilized part of a family name and regularly appear without the given name. Again, here, analysis as
+			<code class="depname">flat</code>
+			seems correct:
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="133">
+				<div id="embedded-133-vis" style="display: block; height: 109px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 109px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+							<rect x="0" y="64" width="970" height="47" class="background1"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="22" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="60" y="47" width="61" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="125" y="47" width="44" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="173" y="47" width="21" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="198" y="47" width="44" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="248.5" y="47" width="4" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="38" y="94" width="22" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="64" y="94" width="61" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="129" y="94" width="23" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="156" y="94" width="18" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="178" y="94" width="25" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="209.5" y="94" width="4" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">Von</tspan>
+								<tspan x="60" y="58" data-chunk-id="1">Hohenlohe</tspan>
+								<tspan x="125" y="58" data-chunk-id="2">gewann</tspan>
+								<tspan x="173" y="58" data-chunk-id="3">das</tspan>
+								<tspan x="198" y="58" data-chunk-id="4">Rennen</tspan>
+								<tspan x="248.5" y="58" data-chunk-id="5">.
+								</tspan>
+							</text>
+							<text x="0" y="0">
+								<tspan x="38" y="105" data-chunk-id="6">Von</tspan>
+								<tspan x="64" y="105" data-chunk-id="7">Hohenlohe</tspan>
+								<tspan x="129" y="105" data-chunk-id="8">won</tspan>
+								<tspan x="156" y="105" data-chunk-id="9">the</tspan>
+								<tspan x="178" y="105" data-chunk-id="10">race</tspan>
+								<tspan x="209.5" y="105" data-chunk-id="11">.</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T1" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 22,-15.5 22,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(60, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="25.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T2" data-fragment-id="0"></rect>
+									<text x="30.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 30.5,-11.5 30.5,-15.5C30.5,-11.5 61,-15.5 61,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(125, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="17.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T3" data-fragment-id="0"></rect>
+									<text x="22.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 22.5,-11.5 22.5,-15.5C22.5,-11.5 44,-15.5 44,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(173, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="5.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T4" data-fragment-id="0"></rect>
+									<text x="10.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 10.5,-11.5 10.5,-15.5C10.5,-11.5 21,-15.5 21,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(198, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="17.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T5" data-fragment-id="0"></rect>
+									<text x="22.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 22.5,-11.5 22.5,-15.5C22.5,-11.5 44,-15.5 44,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(248.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T6" data-fragment-id="0"></rect>
+									<text x="2.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 2.5,-11.5 2.5,-15.5C2.5,-11.5 4,-15.5 4,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-133-T1" data-to="embedded-133-T2">
+									<text x="68" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-133-T1" data-arc-target="embedded-133-T2" data-arc-ed="embedded-133-R1">flat</text>
+									<path d="M59.5,-28.5L58.5,-28.5Q54.5,-28.5 50.5,-23" style="stroke: black"></path>
+									<path d="M79.5,-28.5L80.5,-28.5Q83,-28.5 85.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-133-T3" data-to="embedded-133-T1">
+									<text x="96.5" y="-37.25" fill="black" data-arc-role="nsubj" data-arc-origin="embedded-133-T3" data-arc-target="embedded-133-T1" data-arc-ed="embedded-133-R2">nsubj</text>
+									<path d="M80,-40.5L65.5,-40.5Q58,-40.5 50.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M110,-40.5L127.5,-40.5Q135,-40.5 142.5,-23" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<g transform="translate(0, 105)">
+							<g></g>
+							<g transform="translate(38, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T8" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 22,-15.5 22,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(64, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="25.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T9" data-fragment-id="0"></rect>
+									<text x="30.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 30.5,-11.5 30.5,-15.5C30.5,-11.5 61,-15.5 61,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(129, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T10" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 23,-15.5 23,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(156, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="4.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T11" data-fragment-id="0"></rect>
+									<text x="9.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 9.5,-11.5 9.5,-15.5C9.5,-11.5 18,-15.5 18,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(178, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="7.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T12" data-fragment-id="0"></rect>
+									<text x="12.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 12.5,-11.5 12.5,-15.5C12.5,-11.5 25,-15.5 25,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(209.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-133-T13" data-fragment-id="0"></rect>
+									<text x="2.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 2.5,-11.5 2.5,-15.5C2.5,-11.5 4,-15.5 4,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs"></g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">133</text>
+							</a>
+							<a xlink:href="#undefined?focus=sent~2">
+								<text x="28" y="105" data-sent="2">2</text>
+							</a>
+							<path d="M30,0L30,109" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>
+			In the case of proper entities named after people, e.g. <em>Leland Stanford Jr. University</em>, the
+			<code class="depname">flat</code>
+			relation should only be used inside the person name, with the rest of the construction analyzed compositionally using normal syntactic relations:
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="134">
+				<div id="embedded-134-vis" style="display: block; height: 71px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 71px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="69" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="56" width="38" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="76" y="56" width="49" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="129" y="56" width="14" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="147" y="56" width="58" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="67" data-chunk-id="0">Leland</tspan>
+								<tspan x="76" y="67" data-chunk-id="1">Stanford</tspan>
+								<tspan x="129" y="67" data-chunk-id="2">Jr.</tspan>
+								<tspan x="147" y="67" data-chunk-id="3">University</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 67)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="14.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-134-T1" data-fragment-id="0"></rect>
+									<text x="19.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 19.5,-11.5 19.5,-15.5C19.5,-11.5 38,-15.5 38,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(76, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="19.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-134-T2" data-fragment-id="0"></rect>
+									<text x="24.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 24.5,-11.5 24.5,-15.5C24.5,-11.5 49,-15.5 49,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(129, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-134-T3" data-fragment-id="0"></rect>
+									<text x="7.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 7.5,-11.5 7.5,-15.5C7.5,-11.5 14,-15.5 14,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(147, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="24.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-134-T4" data-fragment-id="0"></rect>
+									<text x="29.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 29.5,-11.5 29.5,-15.5C29.5,-11.5 58,-15.5 58,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-134-T1" data-to="embedded-134-T2">
+									<text x="77" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-134-T1" data-arc-target="embedded-134-T2" data-arc-ed="embedded-134-R2">flat</text>
+									<path d="M68.5,-28.5L67.5,-28.5Q63,-28.5 58.5,-23" style="stroke: black"></path>
+									<path d="M88.5,-28.5L89.5,-28.5Q92.5,-28.5 95.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-134-T1" data-to="embedded-134-T3">
+									<text x="95" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-134-T1" data-arc-target="embedded-134-T3" data-arc-ed="embedded-134-R3">flat</text>
+									<path d="M86.5,-40.5L73.5,-40.5Q66,-40.5 58.5,-23" style="stroke: black"></path>
+									<path d="M106.5,-40.5L116.5,-40.5Q124,-40.5 131.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-134-T1" data-to="embedded-134-T4">
+									<text x="115" y="-46.25" fill="black" data-arc-role="compound" data-arc-origin="embedded-134-T1" data-arc-target="embedded-134-T4" data-arc-ed="embedded-134-R1">compound</text>
+									<path d="M89,-49.5L73.5,-49.5Q66,-49.5 58.5,-23" style="stroke: black"></path>
+									<path d="M144,-49.5L156.5,-49.5Q164,-49.5 171.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="67" data-sent="1" style="display: inline;">134</text>
+							</a>
+							<path d="M30,0L30,71" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<h3 id="some-further-notes-on-relations-for-names">
+			Some further notes on relations for names
+		</h3>
+		<p>
+			<em>This paragraph briefly records some of the arguments that have been made in the past on relations for name structure. It is an issue over which there has historically been variation and about which there is some continuing debate.</em>
+			Examples like <em>French actor Gaspard Ulliel:</em> Some treebanks have used
+			<code class="depname">nmod</code>
+			for titles and honorifics like <em>Mr.</em> or <em>French actor</em>. Most people think this is inappropriate, since an
+			<code class="depname">nmod</code>
+			dependent should be a full phrase, which will typically take its own case as a modifier in a cased language. In contrast, these titles seem to be part of the same phrase as the name that follows them; they show case agreement concord in a
+			cased language. Some grammatical traditions, descending from Latin, call <em>French actor</em> in such cases a “fixed (or close) apposition” and take the name as the head. UD has restricted the
+			<code class="depname">appos</code>
+			relation to following appositives (corresponding to “loose (or wide) apposition” in the Latin tradition). The relation
+			<code class="depname">appos</code>
+			is only used when you have two full nominals, typically joined loosely, and often separated by a punctuation mark like a comma. So
+			<code class="depname">appos</code>
+			is not correct for these cases. Sometimes the relation
+			<code class="depname">compound</code>
+			has been used, but this does not seem right. It implies headedness, and titles do not usually behave like compounds: in German, they are not joined to the following words, as compounds are normally joined in German, and they appear at the
+			beginning of names in both German and Hebrew, even though German compounds are head last and Hebrew compounds are head first. So
+			<code class="depname">compound</code>
+			does not seem appropriate either. Some UDv1 treebanks used
+			<code class="depname">flat</code>
+			for honorifics like <em>Mr.</em>, although some felt that was wrong and
+			<code class="depname">flat</code>
+			should be restricted to joining the proper nouns of multi-word names. In UDv2,
+			<code class="depname">flat</code>
+			was removed and replaced by
+			<code class="depname">flat</code>
+			, which allowed a broader notion of a chunk of unheaded material. In the UDv2 guidelines, cases of both titles and honorifics are joined to names with
+			<code class="depname">flat</code>
+			.
+		</p>
+		<h2 id="dates-and-complex-numerals">
+			Dates and Complex Numerals
+		</h2>
+		<p>
+			Date expressions come in many shapes and forms across languages. In some cases, they have a very clear syntactic structure, as in <em>the 4th of July</em>, and should be annotated with regular dependency relations. In other cases, they have a
+			flat structure with no clearly discernible head, as in <em>1 December 2016</em>, in which case the
+			<code class="depname">flat</code>
+			relation should be used.
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="135">
+				<div id="embedded-135-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="18" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="75" y="47" width="18" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="97" y="47" width="11" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="135" y="47" width="24" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">the</tspan>
+								<tspan x="75" y="58" data-chunk-id="1">4th</tspan>
+								<tspan x="97" y="58" data-chunk-id="2">of</tspan>
+								<tspan x="135" y="58" data-chunk-id="3">July</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="4.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-135-T1" data-fragment-id="0"></rect>
+									<text x="9.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 9.5,-11.5 9.5,-15.5C9.5,-11.5 18,-15.5 18,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(75, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="4.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-135-T2" data-fragment-id="0"></rect>
+									<text x="9.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 9.5,-11.5 9.5,-15.5C9.5,-11.5 18,-15.5 18,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(97, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-135-T3" data-fragment-id="0"></rect>
+									<text x="5.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 5.5,-11.5 5.5,-15.5C5.5,-11.5 11,-15.5 11,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(135, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="7.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-135-T4" data-fragment-id="0"></rect>
+									<text x="12.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 12.5,-11.5 12.5,-15.5C12.5,-11.5 24,-15.5 24,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-135-T2" data-to="embedded-135-T1">
+									<text x="64" y="-25.25" fill="black" data-arc-role="det" data-arc-origin="embedded-135-T2" data-arc-target="embedded-135-T1" data-arc-ed="embedded-135-R1">det</text>
+									<path d="M52.5,-28.5L51.5,-28.5Q50,-28.5 48.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M72.5,-28.5L73.5,-28.5Q76.5,-28.5 79.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-135-T4" data-to="embedded-135-T3">
+									<text x="125" y="-25.25" fill="black" data-arc-role="case" data-arc-origin="embedded-135-T4" data-arc-target="embedded-135-T3" data-arc-ed="embedded-135-R3">case</text>
+									<path d="M111.5,-28.5L110.5,-28.5Q109,-28.5 107.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+									<path d="M135.5,-28.5L136.5,-28.5Q139.5,-28.5 142.5,-23" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-135-T2" data-to="embedded-135-T4">
+									<text x="116" y="-37.25" fill="black" data-arc-role="nmod" data-arc-origin="embedded-135-T2" data-arc-target="embedded-135-T4" data-arc-ed="embedded-135-R2">nmod</text>
+									<path d="M101.5,-40.5L100.5,-40.5Q95,-40.5 89.5,-23" style="stroke: black"></path>
+									<path d="M133.5,-40.5L134.5,-40.5Q138.5,-40.5 142.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">135</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="136">
+				<div id="embedded-136-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34.5" y="47" width="7" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="50.5" y="47" width="59" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="113.5" y="47" width="28" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34.5" y="58" data-chunk-id="0">1</tspan>
+								<tspan x="50.5" y="58" data-chunk-id="1">December</tspan>
+								<tspan x="113.5" y="58" data-chunk-id="2">2016</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-0.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-136-T1" data-fragment-id="0"></rect>
+									<text x="3.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 3.5,-11.5 3.5,-15.5C3.5,-11.5 7,-15.5 7,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(50.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="24.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-136-T2" data-fragment-id="0"></rect>
+									<text x="29.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 29.5,-11.5 29.5,-15.5C29.5,-11.5 59,-15.5 59,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(113.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="9.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-136-T3" data-fragment-id="0"></rect>
+									<text x="14.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 14.5,-11.5 14.5,-15.5C14.5,-11.5 28,-15.5 28,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-136-T1" data-to="embedded-136-T2">
+									<text x="59.5" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-136-T1" data-arc-target="embedded-136-T2" data-arc-ed="embedded-136-R1">flat</text>
+									<path d="M51,-28.5L50,-28.5Q47,-28.5 44,-23" style="stroke: black"></path>
+									<path d="M71,-28.5L72,-28.5Q73.5,-28.5 75,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-136-T1" data-to="embedded-136-T3">
+									<text x="83.5" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-136-T1" data-arc-target="embedded-136-T3" data-arc-ed="embedded-136-R2">flat</text>
+									<path d="M75,-40.5L59,-40.5Q51.5,-40.5 44,-23" style="stroke: black"></path>
+									<path d="M95,-40.5L108,-40.5Q115.5,-40.5 123,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">136</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<p>
+			The
+			<code class="depname">flat</code>
+			relation can also be used for other numerals and other numerical expressions that lack phrasal structure.
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="137">
+				<div id="embedded-137-vis" style="display: block; height: 50px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 50px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="48" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="35" width="22" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="60" y="35" width="53" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="46" data-chunk-id="0">four</tspan>
+								<tspan x="60" y="46" data-chunk-id="1">thousand</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 46)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-137-T1" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 22,-15.5 22,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(60, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="21.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-137-T2" data-fragment-id="0"></rect>
+									<text x="26.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 26.5,-11.5 26.5,-15.5C26.5,-11.5 53,-15.5 53,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-137-T1" data-to="embedded-137-T2">
+									<text x="66" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-137-T1" data-arc-target="embedded-137-T2" data-arc-ed="embedded-137-R1">flat</text>
+									<path d="M57.5,-28.5L56.5,-28.5Q53.5,-28.5 50.5,-23" style="stroke: black"></path>
+									<path d="M77.5,-28.5L78.5,-28.5Q80,-28.5 81.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="46" data-sent="1" style="display: inline;">137</text>
+							</a>
+							<path d="M30,0L30,50" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<h2 id="foreign-phrases">
+			Foreign Phrases
+		</h2>
+		<p>
+			The
+			<code class="depname">flat</code>
+			relation, with the optional subtype
+			<code class="depname">flat:foreign</code>
+			should also be used when a foreign phrase cannot be given a compositional analysis. In this case, it replaces the
+			<code class="depname">foreign</code>
+			relation, which was used in v1 but is no longer part of the relation taxonomy.
+		</p>
+		<div class="pre embedding">
+			<div class="code embedded-wrapper" style="display: inline;" data-embednum="138">
+				<div id="embedded-138-vis" style="display: block; height: 62px;" class="visualization">
+					<svg version="1.1" style="width: 400px; height: 60px;">
+						<!-- document: undefined/undefined -->
+						<defs>
+							<filter id="Gaussian_Blur">
+								<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+							</filter>
+							<marker id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill">
+								<polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_5_black" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 5,2.5 0,5 0.4166666666666667,2.5"></polyline>
+							</marker>
+							<marker id="arrow_triangle_3_5_black" refX="3" refY="2.5" markerWidth="3" markerHeight="5" orient="auto" markerUnits="strokeWidth" fill="black">
+								<polyline points="0,0 3,2.5 0,5 0.25,2.5"></polyline>
+							</marker>
+						</defs>
+						<g class="background">
+							<rect x="0" y="4" width="970" height="60" class="background0"></rect>
+						</g>
+						<g class="glow"></g>
+						<g class="highlight">
+							<rect x="34" y="47" width="23" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="61" y="47" width="25" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="90" y="47" width="21" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="115" y="47" width="27" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="159" y="47" width="4" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="181" y="47" width="27" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="224" y="47" width="22" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="250" y="47" width="21" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+							<rect x="277.5" y="47" width="4" height="14" fill="#e5ecfe" rx="3" ry="3"></rect>
+						</g>
+						<g class="text">
+							<text x="0" y="0">
+								<tspan x="34" y="58" data-chunk-id="0">And</tspan>
+								<tspan x="61" y="58" data-chunk-id="1">then</tspan>
+								<tspan x="90" y="58" data-chunk-id="2">she</tspan>
+								<tspan x="115" y="58" data-chunk-id="3">went</tspan>
+								<tspan x="159" y="58" data-chunk-id="4">:</tspan>
+								<tspan x="181" y="58" data-chunk-id="5">gjiko</tspan>
+								<tspan x="224" y="58" data-chunk-id="6">frac</tspan>
+								<tspan x="250" y="58" data-chunk-id="7">zen</tspan>
+								<tspan x="277.5" y="58" data-chunk-id="8">.</tspan>
+							</text>
+						</g>
+						<g transform="translate(0, 58)">
+							<g></g>
+							<g transform="translate(34, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T1" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 23,-15.5 23,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(61, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="7.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T2" data-fragment-id="0"></rect>
+									<text x="12.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 12.5,-11.5 12.5,-15.5C12.5,-11.5 25,-15.5 25,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(90, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="5.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T3" data-fragment-id="0"></rect>
+									<text x="10.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 10.5,-11.5 10.5,-15.5C10.5,-11.5 21,-15.5 21,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(115, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="8.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T4" data-fragment-id="0"></rect>
+									<text x="13.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 13.5,-11.5 13.5,-15.5C13.5,-11.5 27,-15.5 27,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(159, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T5" data-fragment-id="0"></rect>
+									<text x="2.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 2.5,-11.5 2.5,-15.5C2.5,-11.5 4,-15.5 4,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(181, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="8.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T6" data-fragment-id="0"></rect>
+									<text x="13.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 13.5,-11.5 13.5,-15.5C13.5,-11.5 27,-15.5 27,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(224, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="6.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T7" data-fragment-id="0"></rect>
+									<text x="11.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 11.5,-11.5 11.5,-15.5C11.5,-11.5 22,-15.5 22,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(250, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="5.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T8" data-fragment-id="0"></rect>
+									<text x="10.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 10.5,-11.5 10.5,-15.5C10.5,-11.5 21,-15.5 21,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g transform="translate(277.5, 0)">
+								<g></g>
+								<g class="span">
+									<rect x="-2.5" y="-29.5" width="10" height="13" class="span_token span_default" fill="#7fa2ff" stroke="#002998" rx="2" ry="1" data-span-id="embedded-138-T9" data-fragment-id="0"></rect>
+									<text x="2.5" y="-19" fill="#000000">&nbsp;&nbsp;</text>
+									<path d="M0,-11.5C0,-15.5 2.5,-11.5 2.5,-15.5C2.5,-11.5 4,-15.5 4,-11.5" class="curly" stroke="#000000"></path>
+								</g>
+							</g>
+							<g class="arcs">
+								<g data-from="embedded-138-T6" data-to="embedded-138-T7">
+									<text x="215" y="-25.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-138-T6" data-arc-target="embedded-138-T7" data-arc-ed="embedded-138-R2">flat</text>
+									<path d="M206.5,-28.5L205.5,-28.5Q202.5,-28.5 199.5,-23" style="stroke: black"></path>
+									<path d="M226.5,-28.5L227.5,-28.5Q229,-28.5 230.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-138-T4" data-to="embedded-138-T6">
+									<text x="161.5" y="-37.25" fill="black" data-arc-role="parataxis" data-arc-origin="embedded-138-T4" data-arc-target="embedded-138-T6" data-arc-ed="embedded-138-R1">parataxis</text>
+									<path d="M140.5,-40.5L139.5,-40.5Q136.5,-40.5 133.5,-23" style="stroke: black"></path>
+									<path d="M185.5,-40.5L186.5,-40.5Q188,-40.5 189.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+								<g data-from="embedded-138-T6" data-to="embedded-138-T8">
+									<text x="227.5" y="-37.25" fill="black" data-arc-role="flat" data-arc-origin="embedded-138-T6" data-arc-target="embedded-138-T8" data-arc-ed="embedded-138-R3">flat</text>
+									<path d="M219,-40.5L214.5,-40.5Q207,-40.5 199.5,-23" style="stroke: black"></path>
+									<path d="M239,-40.5L240.5,-40.5Q248,-40.5 255.5,-28.5" marker-end="url(#arrow_triangle_5_black)" marker-start="url(#arrow_triangle_3_5_black)" style="stroke: black"></path>
+								</g>
+							</g>
+						</g>
+						<path marker-end="url(#drag_arrow)" class="drag_stroke" fill="none" visibility="hidden"></path>
+						<g class="sentnum">
+							<a xlink:href="#undefined?focus=sent~1">
+								<text x="28" y="58" data-sent="1" style="display: inline;">138</text>
+							</a>
+							<path d="M30,0L30,62" style="display: inline;"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<!-- DEP flat -->
+	</div>
+	<div id="footer">
+		<p class="footer-text">
+			© 2014–2017<br/>
+			<a class="footer-link" href="https://universaldependencies.org/introduction.html#contributors">Contributors</a>.
+			<br/>
+			<a class="footer-link" href="https://universaldependencies.org/u/dep/all.html">Universal Dependencies</a>.
+		</p>
+	</div>
+</div>
+</body>
+</html>

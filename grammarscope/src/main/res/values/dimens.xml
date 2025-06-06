@@ -1,0 +1,10 @@
+<resources>
+
+	<!-- Default surface view padding -->
+	<dimen name="surface_padding">10dp</dimen>
+
+	<!-- Action button -->
+	<dimen name="action_button_diameter">50dp</dimen>
+	<dimen name="action_button_shadow_offset">10dp</dimen>
+
+</resources>

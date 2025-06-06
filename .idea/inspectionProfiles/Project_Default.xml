@@ -1,0 +1,57 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="data-embednum" />
+            <item index="1" class="java.lang.String" itemvalue="xlink:href" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="17">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="svg" />
+            <item index="7" class="java.lang.String" itemvalue="defs" />
+            <item index="8" class="java.lang.String" itemvalue="filter" />
+            <item index="9" class="java.lang.String" itemvalue="fegaussianblur" />
+            <item index="10" class="java.lang.String" itemvalue="marker" />
+            <item index="11" class="java.lang.String" itemvalue="polyline" />
+            <item index="12" class="java.lang.String" itemvalue="g" />
+            <item index="13" class="java.lang.String" itemvalue="rect" />
+            <item index="14" class="java.lang.String" itemvalue="text" />
+            <item index="15" class="java.lang.String" itemvalue="tspan" />
+            <item index="16" class="java.lang.String" itemvalue="path" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="UnstableApiUsage" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="unstableApiAnnotations">
+        <set>
+          <option value="io.reactivex.annotations.Beta" />
+          <option value="io.reactivex.annotations.Experimental" />
+          <option value="org.apache.http.annotation.Beta" />
+          <option value="org.gradle.api.Incubating" />
+          <option value="org.jetbrains.annotations.ApiStatus.Experimental" />
+          <option value="org.jetbrains.annotations.ApiStatus.Internal" />
+          <option value="org.jetbrains.annotations.ApiStatus.ScheduledForRemoval" />
+          <option value="rx.annotations.Beta" />
+          <option value="rx.annotations.Experimental" />
+        </set>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

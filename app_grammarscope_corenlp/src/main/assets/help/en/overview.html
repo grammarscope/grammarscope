@@ -1,0 +1,52 @@
+<!--suppress CheckEmptyScriptTag -->
+<HTML lang="en">
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<TITLE>Help</TITLE>
+	<LINK rel="stylesheet" type="text/css" href="style.css"/>
+</HEAD>
+<BODY>
+
+<DIV class='section'>
+	<DIV class='sectionhead'>Overview</DIV>
+
+	<ul>
+		<li class='note'>GrammarScope uses CoreNlp as its parse engine.</li>
+		<li class='note'>GrammarScope is not meant to parse texts beyond sentence boundaries.</li>
+		<li class='note'>Sentence boundaries are not detected. Use <b>newline</b> to manually force a new sentence, or use
+			GrammarScope's OpenNLP sentence boundary detector, for English and French only, which will do just that.
+		</li>
+		<li class='note'>Semantic features are meant to simplify dependency structures and retain only 5 types of relations.
+			<div class='panel'>
+				<TABLE class='center'>
+					<TR>
+						<TD class='from'>Predicate</TD>
+						<TD class='to'>Predicates or relations</TD>
+					</TR>
+					<TR>
+						<TD class='from'>Subject</TD>
+						<TD class='to'>Subjects in a relation</TD>
+					</TR>
+					<TR>
+						<TD class='from'>Object</TD>
+						<TD class='to'>Objects of a relation</TD>
+					</TR>
+					<TR>
+						<TD class='from'>Term-modifying<BR/>Predicate</TD>
+						<TD class='to'>Sub-predicate that modifies a term</TD>
+					</TR>
+					<TR>
+						<TD class='from'>Predicate-modifying<BR/>Predicate</TD>
+						<TD class='to'>Sub-predicate that modifies a predicate</TD>
+					</TR>
+				</TABLE>
+			</div>
+		</li>
+	</ul>
+
+</DIV>
+
+<BR/>
+
+</BODY>
+</HTML>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+	<string name="license_key" translatable="false">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtzD9BIHzK1PsruwqS3hDUpd+TJfJMrvTPW6fdrqJ8Et8OYbVBPBZ2BgNhqaIIUsFCtfihSO80CiNyN65KuQWLvQi7pMO9crrqy8GR9qm2mEva4Uwzg1AmRYXQ3egq9K0cyGQpANgdvXyH93Ovzx5pUSMSVU8rr+CeGxlAWyacX+io3Q4ACK1cJrPphXLj09i5b2zvGaJ1B2KNU6wJmk2pt9ThT9ROS90E3En3sZeCf+6ch7YvKzUYF4zupoTYnndNj8pp2mCE8aC/vtsHyIlDZAR2almXQTk27Azcwi1bMJrXjm3Ogkc/3cUOdqeNkrmyCSwYfeCrTDWvWlx1dmflQIDAQAB</string>
+</resources>

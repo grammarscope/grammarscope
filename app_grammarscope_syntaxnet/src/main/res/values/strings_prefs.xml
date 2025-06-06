@@ -1,0 +1,17 @@
+<!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="default_download_mode">DOWNLOAD_ZIP</string>
+	<string-array name="download_mode_values" tools:ignore="InconsistentArrays">
+		<item>@string/default_download_mode</item>
+		<item>DOWNLOAD_ZIP_THEN_UNZIP</item>
+	</string-array>
+	<string-array name="download_mode_titles" tools:ignore="InconsistentArrays">
+		<item>Download and unzip zipped stream</item>
+		<item>Download zipped file then unzip</item>
+	</string-array>
+
+</resources>
