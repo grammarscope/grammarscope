@@ -5,6 +5,7 @@
 
 	<string name="about_app_title">Dependency Parser</string>
 	<string name="about_app_logo_description">Dependency Parser application</string>
+	<string name="about_app_license">GNU General Public License version 3</string>
 
 	<string name="about_app_author">Bernard Bou</string>
 	<string name="about_app_copyright">© 2018 – 2025</string>
