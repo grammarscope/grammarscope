@@ -109,6 +109,17 @@
 		</activity>
 
 		<activity
+			android:name="org.grammarscope.history.HistoryActivity"
+			android:exported="false"
+			android:label="@string/title_activity_history"
+			android:launchMode="singleTop"
+			android:parentActivityName="org.grammarscope.MainActivity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="org.grammarscope.MainActivity" />
+		</activity>
+
+		<activity
 			android:name="org.grammarscope.LabelsActivity"
 			android:exported="false"
 			android:label="@string/title_activity_labels"
@@ -228,6 +239,11 @@
 				android:name="android.support.FILE_PROVIDER_PATHS"
 				android:resource="@xml/file_paths" />
 		</provider>
+
+		<provider
+			android:name="org.grammarscope.history.HistoryProvider"
+			android:authorities="@string/history_provider_authority"
+			android:exported="false" />
 
 		<!--
 		<receiver

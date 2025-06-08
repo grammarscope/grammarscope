@@ -9,9 +9,9 @@ icon_list="ic_error.svg"
 button_list="ic_dependency.svg ic_semantics.svg"
 settings_list="ic_settings_general.svg ic_settings_download.svg ic_settings_graph.svg ic_settings_text.svg ic_settings_semantics.svg ic_settings_system.svg ic_settings_provider.svg ic_settings_palette.svg"
 lang_list="english.svg french.svg"
-provider_list="ic_bind.svg ic_unbind.svg ic_bound.svg ic_pending.svg ic_ok.svg ic_warn.svg"
+provider_list="ic_bind.svg ic_unbind.svg ic_bound.svg ic_ok.svg ic_warn.svg"
 tips_list="tip_*.svg"
-item_list="item.svg"
+item_list="item.svg ic_history.svg"
 
 make_mipmap "${launch_list}" 48
 make_res "${logo_list}" 48

@@ -139,6 +139,7 @@ dependencies {
     implementation(project(":grammarscope"))
     implementation(project(":syntaxnet_bound_server")) // strictly runtimeOnly but needed for manifest validation
     implementation(project(":common")) // strictly not a dependency but for resources validation
+    implementation(project(":annotations")) // strictly not a dependency but for resources validation
     implementation(project(":download")) // strictly not a dependency but for manifest validation
     implementation(project(":download_common")) // strictly not a dependency but for manifest validation
     implementation(project(":others")) // strictly not a dependency but for manifest validation

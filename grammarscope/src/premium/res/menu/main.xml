@@ -82,14 +82,13 @@
 		app:showAsAction="never" />
 
 	<item
-		android:id="@+id/sentence_detect"
-		android:title="@string/action_sentence_detect"
+		android:id="@+id/history"
+		android:title="@string/action_history"
 		app:showAsAction="never" />
 
 	<item
-		android:id="@+id/strip_accents"
-		android:checkable="true"
-		android:title="@string/action_strip_accents"
+		android:id="@+id/sentence_detect"
+		android:title="@string/action_sentence_detect"
 		app:showAsAction="never" />
 
 	<item
@@ -152,6 +151,12 @@
 	<item
 		android:id="@+id/about"
 		android:title="@string/title_about"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/strip_accents"
+		android:checkable="true"
+		android:title="@string/action_strip_accents"
 		app:showAsAction="never" />
 
 	<item

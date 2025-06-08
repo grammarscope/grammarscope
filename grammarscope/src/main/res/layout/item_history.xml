@@ -1,0 +1,26 @@
+<!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<TextView
+		android:id="@android:id/text1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:drawablePadding="10sp"
+		android:paddingEnd="32sp"
+		android:paddingLeft="32sp"
+		android:paddingRight="32sp"
+		android:paddingStart="32sp"
+		android:maxLines="1"
+		android:textSize="24sp"
+		app:drawableLeftCompat="@drawable/ic_history"
+		app:drawableStartCompat="@drawable/ic_history" />
+
+</RelativeLayout>

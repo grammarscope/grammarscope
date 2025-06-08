@@ -70,6 +70,8 @@ import org.depparse.common.WebActivity
 import org.depparse.common.showSnackbar
 import org.grammarscope.annotations.AnnotatedTextActivity
 import org.grammarscope.common.R
+import org.grammarscope.history.History.Companion.recordQuery
+import org.grammarscope.history.HistoryActivity
 import java.util.Locale
 import java.util.function.Consumer
 
@@ -409,6 +411,10 @@ abstract class BaseMainActivity : AppCompatActivity() {
                 return true
             }
 
+            R.id.history -> {
+                startActivity(Intent(this, HistoryActivity::class.java))
+            }
+
             R.id.download -> {
                 val downloader = object : BaseTask<Void?, Unit>() {
 
@@ -584,6 +590,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
     private fun onClickFABDependencies(longClick: Boolean) {
         queryEdit?.let {
             val query: CharSequence = it.text
+            recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
             if (sentenceBoundaryDetection) {
@@ -597,6 +604,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
     private fun onClickFABSemantics(longClick: Boolean) {
         queryEdit?.let {
             val query: CharSequence = it.text
+            recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
             if (sentenceBoundaryDetection) {
@@ -818,6 +826,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
     private fun handleIntent(intent: Intent): Boolean {
         val action = intent.action
         Log.d(TAG, intent.toString())
+
         if (Intent.ACTION_SEARCH == action) {
             val text = intent.getStringExtra(SearchManager.QUERY)
             query = text
@@ -832,9 +841,9 @@ abstract class BaseMainActivity : AppCompatActivity() {
         Log.d(TAG, "Event $e")
         when (e) {
             Broadcast.EventType.CONNECTED -> {
-                updateControl(false, clear=true)
+                updateControl(false, clear = true)
                 updateLoading()
-             }
+            }
 
             Broadcast.EventType.CONNECTED_FAILURE, Broadcast.EventType.DISCONNECTED -> {
                 updateControl(false)
@@ -1006,6 +1015,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
     companion object {
 
         private const val TAG = "Main"
+        const val QUERY_ARG = "query"
         private const val SENTENCE_ID_OFFSET = 1000
         private const val FLAG_WIDTH = 24
         private const val FLAG_HEIGHT = 16

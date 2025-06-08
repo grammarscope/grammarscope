@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+    <string name="history_provider_authority" translatable="false">org.grammarscope.history.provider</string>
+
+    <string name="title_activity_history">History</string>
+
+    <string name="title_history">History</string>
+    <string name="title_history_export">Export history</string>
+    <string name="title_history_import">Import history</string>
+    <string name="title_history_clear">Clear history</string>
+    <string name="title_history_delete">History deleted</string>
+
+    <string name="action_history">History</string>
+
+    <string name="error_import">Error importing from</string>
+    <string name="error_export">Error exporting to</string>
+</resources>

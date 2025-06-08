@@ -57,6 +57,8 @@
 			</intent-filter>
 		</activity>
 
+		<activity android:name="org.grammarscope.history.HistoryActivity" />
+
 		<activity android:name="org.grammarscope.LabelsActivity" />
 
 		<activity android:name="org.grammarscope.SettingsActivity" />
@@ -78,6 +80,11 @@
 		<activity android:name="com.bbou.download.coroutines.DownloadActivity" />
 
 		<activity android:name="com.bbou.download.UpdateActivity" />
+
+		<provider
+			android:name="org.grammarscope.history.HistoryProvider"
+			android:authorities="@string/history_provider_authority"
+			android:exported="false" />
 
 		<!--
 		<receiver
