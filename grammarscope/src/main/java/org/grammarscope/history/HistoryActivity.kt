@@ -348,7 +348,7 @@ class HistoryActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Curso
         /**
          * Export/import text file
          */
-        private const val HISTORY_FILE = "treebolic-wordnet_search_history.txt"
+        private const val HISTORY_FILE = "grammarscope_history.txt"
 
         /**
          * Cursor loader id
