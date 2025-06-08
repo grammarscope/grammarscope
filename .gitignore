@@ -4,7 +4,6 @@
 **/.externalNativeBuild
 
 /.gradle
-/gradle
 /gradlew*
 
 /.idea/caches
@@ -16,6 +15,7 @@
 **/*.aab
 **/*.apk
 **/*.zip
+**/*.jar
 **/*.webm
 
 /release
