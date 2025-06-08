@@ -326,8 +326,7 @@ class HistoryActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Curso
             contentResolver.openInputStream(uri).use { input ->
                 InputStreamReader(input).use { reader ->
                     BufferedReader(reader).use { bufferedReader ->
-                        var line: String
-                        while ((bufferedReader.readLine().also { line = it }) != null) {
+                        bufferedReader.forEachLine { line ->
                             recordQuery(this, line.trim { it <= ' ' })
                         }
                         Log.i(TAG, "Imported from $uri")
