@@ -7,4 +7,7 @@
 	<string name="app_package" translatable="false">org.grammarscope.premium</string>
 	<string name="app_package_data" translatable="false">package:org.grammarscope.premium</string>
 
+	<!-- history -->
+	<string name="history_provider_authority" translatable="false">org.grammarscope.syntaxnet.premium.history.provider</string>
+
 </resources>

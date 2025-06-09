@@ -53,7 +53,11 @@
 		<item>assets.extra/resources/component_0_lookahead/resource_10_known-word-map/part_0</item>
 	</string-array>
 
+	<!-- pos keys -->
 	<string name="poskey">fPOS++0</string>
 	<string name="xposkey">fPOS++1</string>
+
+	<!-- history -->
+	<string name="history_provider_authority" translatable="false">org.grammarscope.syntaxnet.history.provider</string>
 
 </resources>

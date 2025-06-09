@@ -3,8 +3,6 @@
   -->
 
 <resources>
-    <string name="history_provider_authority" translatable="false">org.grammarscope.history.provider</string>
-
     <string name="title_activity_history">History</string>
 
     <string name="title_history">History</string>

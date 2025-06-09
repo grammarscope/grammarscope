@@ -7,4 +7,7 @@
 	<string name="app_package" translatable="false">org.grammarscope.corenlp.premium</string>
 	<string name="app_package_data" translatable="false">package:org.grammarscope.corenlp.premium</string>
 
+	<!-- history -->
+	<string name="history_provider_authority" translatable="false">org.grammarscope.corenlp.premium.history.provider</string>
+
 </resources>

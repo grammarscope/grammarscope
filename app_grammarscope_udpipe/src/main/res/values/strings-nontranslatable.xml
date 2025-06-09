@@ -24,7 +24,11 @@
 		<item>model.udpipe</item>
 	</string-array>
 
+	<!-- pos keys -->
 	<string name="poskey">upostag</string>
 	<string name="xposkey">xpostag</string>
+
+	<!-- history -->
+	<string name="history_provider_authority" translatable="false">org.grammarscope.udpipe.history.provider</string>
 
 </resources>

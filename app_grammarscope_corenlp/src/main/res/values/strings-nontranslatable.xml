@@ -19,7 +19,7 @@
     <!-- download -->
     <string name="default_download_repo" translatable="false" tools:keep="@string/default_download_repo">https://sourceforge.net/projects/grammarscope-corenlp/files/4.5.9</string>
 
- 	<!-- model files -->
+    <!-- model files -->
     <string-array name="core_model_files" translatable="false" tools:keep="@array/core_model_files">
         <item>.+.tagger</item>
         <item>.+.gz</item>
@@ -32,5 +32,8 @@
 	<!-- pos key -->
 	<string name="poskey">postag</string>
 	<string name="xposkey">xpostag</string>
+
+    <!-- history -->
+    <string name="history_provider_authority" translatable="false">org.grammarscope.corenlp.history.provider</string>
 
 </resources>

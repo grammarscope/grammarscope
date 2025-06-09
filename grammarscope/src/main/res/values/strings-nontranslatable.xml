@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!-- package -->
-	<string name="app_package" translatable="false">org.grammarscope</string>
-	<string name="app_package_data" translatable="false">package:org.grammarscope</string>
+    <!-- package -->
+    <string name="app_package" translatable="false">org.grammarscope</string>
+    <string name="app_package_data" translatable="false">package:org.grammarscope</string>
 
-	<!-- provider -->
-	<string-array name="pref_providers_values" translatable="false">
-		<item>BOUND_SERVICE</item>
-		<item>ENGINE</item>
-	</string-array>
+    <!-- engine -->
+    <string name="engine_class" translatable="false">org.grammarscope.x.XEngine</string>
 
-	<!-- engine -->
-	<string name="engine_class" translatable="false">org.grammarscope.x.XEngine</string>
+    <!-- service -->
+    <string name="bound_service" translatable="false">org.grammarscope.service.server.bound.x.XBoundService</string>
 
-	<!-- service -->
-	<string name="bound_service" translatable="false">org.grammarscope.service.server.bound.x.XBoundService</string>
+    <!-- labels -->
+    <string name="labels_file" translatable="false" />
 
-	<!-- labels -->
-	<string name="labels_file" translatable="false" />
+    <!-- pos -->
+    <string name="poskey" translatable="false">pos</string>
 
-	<!-- model files -->
-	<string-array name="core_model_files" translatable="false" />
-	<string-array name="model_files" translatable="false" />
+    <!-- model files -->
+    <string name="xposkey">xpos</string>
+    <string-array name="pref_providers_values" translatable="false">
+        <item>BOUND_SERVICE</item>
+        <item>ENGINE</item>
+    </string-array>
 
-	<string name="poskey" translatable="false">pos</string>
-	<string name="xposkey">xpos</string>
+    <string-array name="core_model_files" translatable="false" />
+    <string-array name="model_files" translatable="false" />
+
+    <!-- history -->
+    <string name="history_provider_authority" translatable="false">org.grammarscope.x.history.provider</string>
 
 </resources>
