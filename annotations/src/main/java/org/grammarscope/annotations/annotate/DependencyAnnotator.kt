@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.Log
 import android.widget.TextView
+import androidx.core.text.BidiFormatter
 import org.depparse.HasIndex
 import org.depparse.HasSegment
 import org.depparse.Segment
@@ -53,6 +54,11 @@ class DependencyAnnotator<N>(
     private val tagPaint: Paint = Paint().apply { textSize = EDGE_TAG_TEXT_SIZE }
 
     /**
+     * Bidi formatter
+     */
+    private val bidiFormatter: BidiFormatter = BidiFormatter.getInstance(false)
+
+    /**
      * Annotate
      *
      * @param document document to annotate from
@@ -64,7 +70,6 @@ class DependencyAnnotator<N>(
         if (document.sentenceCount == 0) return null
 
         val wordSegments = document.wordSegments
-
         // dumpLines()
         Log.d(TAG, "Annotating")
 
@@ -93,6 +98,7 @@ class DependencyAnnotator<N>(
         val n: Int = document.sentenceCount
         for (sentenceIdx in 0..<n) {
             val graph: Graph<N> = document.getGraph(sentenceIdx)
+            val isRtl = bidiFormatter.isRtl(document.getSentence(sentenceIdx).text)
 
             // NODES
             for (node in graph.nodes) {
@@ -142,7 +148,7 @@ class DependencyAnnotator<N>(
             // EDGES
 
             // height and anchor allocator
-            val allocator = Allocator<N>(graph.nodes, graph.edges)
+            val allocator = Allocator<N>(graph.nodes, graph.edges, isRtl)
 
             // build edges
             for (gEdge in graph.edges) {
@@ -156,8 +162,16 @@ class DependencyAnnotator<N>(
                 val toWord = document.getTextSegment(sentenceIdx, gEdge.target.segment)
 
                 val isBackwards = fromWord.first > toWord.first
-                val leftSegment = if (isBackwards) toWord else fromWord
-                val rightSegment = if (isBackwards) fromWord else toWord
+                val leftSegment = if (isRtl) {
+                    if (!isBackwards) toWord else fromWord
+                } else {
+                    if (isBackwards) toWord else fromWord
+                }
+                val rightSegment = if (isRtl) {
+                    if (!isBackwards) fromWord else toWord
+                } else {
+                    if (isBackwards) fromWord else toWord
+                }
 
                 // location
                 val leftRectangle = textView.segmentToViewRectF(leftSegment)
@@ -177,8 +191,8 @@ class DependencyAnnotator<N>(
                     val xEdge1 = leftRectangle.left + leftRectangle.width() / 2F
                     val xEdge2 = rightRectangle.left + rightRectangle.width() / 2F
                     val yEdge = leftRectangle.top + manager.lineHeight + padTopOffset + firstEdgeBase + edgeYOffset
-                    val xAnchor1 = (allocator.getLeftAnchor(gEdge) * X_SHIFT)
-                    val xAnchor2 = (allocator.getRightAnchor(gEdge) * X_SHIFT)
+                    val xAnchor1 = allocator.getLeftAnchor(gEdge) * X_SHIFT
+                    val xAnchor2 = allocator.getRightAnchor(gEdge) * X_SHIFT
                     val yAnchor: Float = leftRectangle.top + manager.lineHeight + padTopOffset + PAD_TOP_INSET
                     val yBottom = leftRectangle.top + bottom
 
@@ -217,8 +231,8 @@ class DependencyAnnotator<N>(
                             // line break before this segment
                             val xEdge1 = xLeft + xLeftOfs - (if (isFirst) 0 else X_MARGIN)
                             val xEdge2 = xRight + X_MARGIN
-                            val xAnchor1 = (allocator.getLeftAnchor(gEdge) * X_SHIFT)
-                            val xAnchor2 = (allocator.getRightAnchor(gEdge) * X_SHIFT)
+                            val xAnchor1 = allocator.getLeftAnchor(gEdge) * X_SHIFT
+                            val xAnchor2 = allocator.getRightAnchor(gEdge) * X_SHIFT
                             val yEdge = y + manager.lineHeight + padTopOffset + firstEdgeBase + edgeYOffset
                             val yAnchor: Float = y + manager.lineHeight + padTopOffset + PAD_TOP_INSET
                             val yBottom = y + bottom
@@ -257,6 +271,16 @@ class DependencyAnnotator<N>(
             }
         }
         return mapOf(AnnotationType.EDGE to edges, AnnotationType.BOX to boxes)
+    }
+
+    /**
+     * Is RTL
+     *
+     * @param string string
+     * @return true if RTL text
+     */
+    private fun isRtl(string: String): Boolean {
+        return bidiFormatter.isRtl(string)
     }
 
     companion object {

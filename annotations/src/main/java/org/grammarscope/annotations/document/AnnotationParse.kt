@@ -80,6 +80,10 @@ class ParsedDocument(val sentences: Array<Sentence>, val sentenceStarts: Array<I
     override val sentenceCount: Int
         get() = sentences.size
 
+    override fun getSentence(sentenceIdx: Int): Sentence {
+        return sentences[sentenceIdx]
+    }
+
     override fun getTextSegment(sentenceIdx: Int, segment: Segment): Segment {
         val start = sentenceStarts[sentenceIdx]
         return start + segment.first to start + segment.second

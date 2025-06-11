@@ -20,7 +20,7 @@ import kotlin.math.abs
  *
  * @see AnchorAllocator
  */
-class Allocator<N>(nodes: Collection<N>, edges: Collection<GraphEdge<N>>) where N : HasIndex, N : HasSegment {
+class Allocator<N>(nodes: Collection<N>, edges: Collection<GraphEdge<N>>, val isRtl: Boolean) where N : HasIndex, N : HasSegment {
 
     /**
      * Slot allocator
@@ -30,7 +30,7 @@ class Allocator<N>(nodes: Collection<N>, edges: Collection<GraphEdge<N>>) where 
     /**
      * Anchor allocator
      */
-    private val anchorAllocator = AnchorAllocator<N>()
+    private val anchorAllocator = AnchorAllocator<N>(isRtl)
 
     /**
      * Edge comparator based on edge's low index

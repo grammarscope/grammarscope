@@ -4,6 +4,7 @@ import org.depparse.HasIndex
 import org.depparse.HasIndices
 import org.depparse.HasSegment
 import org.depparse.Segment
+import org.depparse.Sentence
 
 /**
  * Graph edge
@@ -36,6 +37,8 @@ interface Document<N> where N : HasIndex, N : HasSegment {
     val sentenceCount: Int
 
     val wordSegments: List<Segment>
+
+    fun getSentence(sentenceIdx: Int): Sentence
 
     fun getTextSegment(sentenceIdx: Int, segment: Segment): Segment
 

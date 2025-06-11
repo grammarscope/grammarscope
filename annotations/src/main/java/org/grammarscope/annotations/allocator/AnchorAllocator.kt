@@ -13,7 +13,7 @@ import org.grammarscope.annotations.document.GraphEdge
  *
  * @author Bernard Bou
  */
-class AnchorAllocator<N> where N : HasIndex, N : HasSegment {
+class AnchorAllocator<N>(val isRtl: Boolean) where N : HasIndex, N : HasSegment {
 
     /**
      * Cache of allocated anchors
@@ -145,7 +145,7 @@ class AnchorAllocator<N> where N : HasIndex, N : HasSegment {
      * @return whether this edge is backwards
      */
     private fun isBackwards(edge: GraphEdge<N>): Boolean {
-        return edge.target.ith < edge.source.ith
+        return if (isRtl) edge.target.ith > edge.source.ith else edge.target.ith < edge.source.ith
     }
 
     /**
