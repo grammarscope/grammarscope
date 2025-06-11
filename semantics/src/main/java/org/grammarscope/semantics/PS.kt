@@ -2,7 +2,6 @@ package org.grammarscope.semantics
 
 import android.text.SpannableStringBuilder
 import org.depparse.Token
-import org.depparse.common.BaseSpanner
 import org.depparse.common.BaseSpanner.SpanFactory
 import org.depparse.common.BaseSpanner.append
 

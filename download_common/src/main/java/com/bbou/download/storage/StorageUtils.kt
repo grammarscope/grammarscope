@@ -738,7 +738,7 @@ object StorageUtils {
      * @return pair of names and values
      */
     @Suppress("unused")
-    fun ergeNamesValues(nameValues1: Pair<Array<out CharSequence>, Array<String>>, nameValues2: Pair<Array<out CharSequence>, Array<String>>): Pair<Array<out CharSequence>, Array<String>> {
+    fun mergeNamesValues(nameValues1: Pair<Array<out CharSequence>, Array<String>>, nameValues2: Pair<Array<out CharSequence>, Array<String>>): Pair<Array<out CharSequence>, Array<String>> {
         val names: MutableList<CharSequence> = ArrayList()
         val values: MutableList<String> = ArrayList()
         names.addAll(nameValues1.first)

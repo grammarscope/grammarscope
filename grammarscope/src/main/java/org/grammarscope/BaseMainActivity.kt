@@ -1015,7 +1015,6 @@ abstract class BaseMainActivity : AppCompatActivity() {
     companion object {
 
         private const val TAG = "Main"
-        const val QUERY_ARG = "query"
         private const val SENTENCE_ID_OFFSET = 1000
         private const val FLAG_WIDTH = 24
         private const val FLAG_HEIGHT = 16
