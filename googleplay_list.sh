@@ -12,7 +12,9 @@ org.mysyntaxnet
 
 source ./define_colors.sh
 
-echo -e "${M}build.gradle\n$(grep 'version[CN]' build.gradle.kts)${Z}"
+echo -en "${M}"
+./find-version.sh
+echo -en "${Z}"
 
 for p in ${packages}; do
 	echo -e "${Y}${p}${Z}"
