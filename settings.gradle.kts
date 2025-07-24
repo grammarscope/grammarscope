@@ -62,7 +62,7 @@ include("app_grammarscope_corenlp")
 
 include(":service_iface")
 include(":service_client_iface")
-//include ":service_common_client")
+//include(":service_common_client")
 
 include(":service_bound_server")
 include(":service_bound_client")
