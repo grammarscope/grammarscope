@@ -294,8 +294,8 @@ class HistoryActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Curso
                 FileOutputStream(fd!!.fileDescriptor).use { output ->
                     OutputStreamWriter(output).use { writer ->
                         BufferedWriter(writer).use { bufferedWriter ->
-                            val suggestions = History(this, HistoryProvider.MODE)
-                            val cursor = suggestions.cursor()!!
+                            val history = History(this, HistoryProvider.MODE)
+                            val cursor = history.cursor()!!
                             if (cursor.moveToFirst()) {
                                 do {
                                     val dataIdx = cursor.getColumnIndex(History.SuggestionColumns.DISPLAY1)
