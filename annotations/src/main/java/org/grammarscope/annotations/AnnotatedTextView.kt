@@ -338,7 +338,7 @@ fun TextView.segmentToViewRectF(segment: Segment): RectF {
  */
 fun TextView.offsetToViewRect(offset: Int): Rect {
     if (offset < 0 || offset > text.length) {
-        return throw IllegalArgumentException("Invalid position: $offset")
+        throw IllegalArgumentException("Invalid position: $offset")
     }
     val line = layout.getLineForOffset(offset)
     val baseline = layout.getLineBaseline(line)
@@ -373,7 +373,7 @@ fun TextView.offsetToViewRect(offset: Int): Rect {
  */
 fun TextView.modelToViewF(offset: Int): RectF {
     if (offset < 0 || offset > text.length) {
-        return throw IllegalArgumentException("Invalid position: $offset")
+        throw IllegalArgumentException("Invalid position: $offset")
     }
     val line = layout.getLineForOffset(offset)
     val baseline = layout.getLineBaseline(line)

@@ -875,7 +875,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
             val isEmbedded = status and IProvider.STATUS_EMBEDDED != 0
             val isBound = status and IProvider.STATUS_BOUND != 0
             val isLoaded = status and IProvider.STATUS_LOADED != 0
-            return if (isEmbedded) isBound && isLoaded else isLoaded
+            if (isEmbedded) isBound && isLoaded else isLoaded
         } ?: false
     }
 
