@@ -91,7 +91,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
                     val sharedPrefs = AnnotationsSettings(this@AnnotatedTextActivity).sharedPrefs
                     val boxWords = sharedPrefs.getBoolean(PREF_BOX_WORDS, false)
                     val boxEdges = sharedPrefs.getBoolean(PREF_BOX_EDGES, false)
-                    var ignoreRelations = sharedPrefs.getStringSet(PREF_IGNORE_RELATIONS, null) ?: resources.getStringArray(R.array.default_ignored_relations_keys).toSet()
+                    val ignoreRelations = sharedPrefs.getStringSet(PREF_IGNORE_RELATIONS, null) ?: resources.getStringArray(R.array.default_ignored_relations_keys).toSet()
                     val manager = AnnotationManager(textView)
                     val depAnnotator = DependencyAnnotator<Token>(textView, manager, boxWords = boxWords, boxEdges = boxEdges, ignoreRelations = ignoreRelations)
                     val depAnnotations = depAnnotator.annotate(document!!)!!
@@ -149,7 +149,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
     }
 
     private fun capturedView(activity: AppCompatActivity): View? {
-        var view = activity.findViewById<View>(textView.id)
+        val view = activity.findViewById<View>(textView.id)
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }

@@ -181,7 +181,7 @@ object CoreNlp {
 
                         val deps: String = enhancedDependency(constituencyEnhancedDeps, dependentIndex + 1)
 
-                        val token = Token(sentenceIndex, dependentIndex, dependentWord, dependentStart, dependentEnd, "", if (dependentPos.isEmpty()) "?" else dependentPos, head = headIndex, label, breakLevel = breakLevel, deps = deps)
+                        val token = Token(sentenceIndex, dependentIndex, dependentWord, dependentStart, dependentEnd, "", dependentPos.ifEmpty { "?" }, head = headIndex, label, breakLevel = breakLevel, deps = deps)
                         token
                     }
                     .sortedBy { it.index }

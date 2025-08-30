@@ -103,23 +103,18 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
 
         private fun openColorPickerDialog(holder: ViewHolder, item: ColorItem) {
 
-            var newColor = item.color
+            var color = item.color
 
             val colorChooserDialog = ColorChooserDialog(holder.itemView.context, item.color, object : OnColorChangedListener {
-                override fun onColorChanged(color: Int) {
-                    newColor = color
+                override fun onColorChanged(newColor: Int) {
+                    color = newColor
                 }
             })
-            colorChooserDialog.setButton(AlertDialog.BUTTON_NEGATIVE, holder.itemView.context.getString(android.R.string.cancel), object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, p: Int) {
-                }
-            })
-            colorChooserDialog.setButton(AlertDialog.BUTTON_POSITIVE, holder.itemView.context.getString(android.R.string.ok), object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, p: Int) {
-                    item.color = newColor
-                    holder.colorView.setValue(newColor)
-                }
-            })
+            colorChooserDialog.setButton(AlertDialog.BUTTON_NEGATIVE, holder.itemView.context.getString(android.R.string.cancel)) { dialog, p -> }
+            colorChooserDialog.setButton(AlertDialog.BUTTON_POSITIVE, holder.itemView.context.getString(android.R.string.ok)) { dialog, p ->
+                item.color = color
+                holder.colorView.setValue(color)
+            }
             colorChooserDialog.show()
         }
     }

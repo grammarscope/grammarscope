@@ -131,7 +131,7 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
     }
 
     private fun capturedView(activity: AppCompatActivity): View? {
-        var view = activity.findViewById<View>(R.id.visualization_viewer)
+        val view = activity.findViewById<View>(R.id.visualization_viewer)
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }

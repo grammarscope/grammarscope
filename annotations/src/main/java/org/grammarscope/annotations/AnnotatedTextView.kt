@@ -285,7 +285,7 @@ class AnnotatedTextView @JvmOverloads constructor(
          */
         fun TextView.lineBounds(): List<Rect> {
             return (0..layout.lineCount).map {
-                var r = Rect()
+                val r = Rect()
                 layout.getLineBounds(it, r)
                 r
             }.toList()

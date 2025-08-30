@@ -68,7 +68,5 @@ fun Segment.charSegment(text: String): Segment {
  */
 fun unicodeSegments(text: String, vararg segments: Segment): Map<Segment, Segment> {
     val byteToCharIndex: IntArray = getCharIndices(text)
-    return segments.associate {
-        it to it.charSegment(byteToCharIndex)
-    }
+    return segments.associateWith { it.charSegment(byteToCharIndex) }
 }

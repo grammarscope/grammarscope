@@ -40,7 +40,7 @@ abstract class TextParseActivity : TextBaseParseActivity() {
     }
 
     private fun capturedView(activity: AppCompatActivity): View? {
-        var view = activity.findViewById<View>(R.id.parsed)
+        val view = activity.findViewById<View>(R.id.parsed)
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
