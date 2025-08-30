@@ -18,7 +18,7 @@ abstract class GraphParseActivity<V : Token, E : Label> : GraphBaseParseActivity
         if (result != null && result.network.nodes().isNotEmpty() && result.network.edges().isNotEmpty()) {
 
             // attach graph to view
-            Visualizer.visualize<V, E>(
+            Visualizer.visualize(
                 viewer,
                 configurator,
                 graph as AugmentedGraph<V, E>,

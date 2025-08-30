@@ -165,7 +165,7 @@ object Palette : (String?) -> Int {
     fun toProperties(): Properties {
         val properties: Properties = object : Properties() {
             override fun keys(): Enumeration<Any> {
-                return enumeration<Any>(colorMap.keys.sorted())
+                return enumeration(colorMap.keys.sorted())
             }
         }
         for (id in colorMap.keys) {

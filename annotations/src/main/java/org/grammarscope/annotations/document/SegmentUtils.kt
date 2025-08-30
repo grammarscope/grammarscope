@@ -45,7 +45,7 @@ object SegmentUtils {
      * @return list of word segments
      */
     fun split(segment: Segment, wordSegments: List<Segment>): MutableList<Segment> {
-        val list: MutableList<Segment> = ArrayList<Segment>()
+        val list: MutableList<Segment> = ArrayList()
         for (wordSegment in wordSegments) {
             val l = wordSegment.first.compareTo(segment.first)
             val r = wordSegment.second.compareTo(segment.second)

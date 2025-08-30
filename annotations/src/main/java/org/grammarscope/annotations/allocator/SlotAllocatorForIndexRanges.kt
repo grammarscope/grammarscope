@@ -46,7 +46,7 @@ open class SlotAllocatorForIndexRanges<T : HasIndices> : SlotAllocatorForSequenc
         val hi = element.highIndex
 
         // each range is represented by sequence [low, low+1, ..., hi-1]
-        val elements: MutableList<Int> = ArrayList<Int>()
+        val elements: MutableList<Int> = ArrayList()
         for (i in low..<hi) {
             elements.add(i)
         }

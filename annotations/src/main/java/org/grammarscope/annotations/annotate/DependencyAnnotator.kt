@@ -148,7 +148,7 @@ class DependencyAnnotator<N>(
             // EDGES
 
             // height and anchor allocator
-            val allocator = Allocator<N>(graph.nodes, graph.edges, isRtl)
+            val allocator = Allocator(graph.nodes, graph.edges, isRtl)
 
             // build edges
             for (gEdge in graph.edges) {

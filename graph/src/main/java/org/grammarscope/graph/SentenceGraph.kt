@@ -27,10 +27,10 @@ class SentenceGraph<V : Token, E : Label>(@Suppress("unused") private val senten
         }
 
         // edge
-        parallelEdgeIndexFunction = DefaultParallelEdgeIndexFunction<V, E>()
+        parallelEdgeIndexFunction = DefaultParallelEdgeIndexFunction()
         parallelEdgeIndexFunction.reset()
-        edgeExpandFunction = EdgeExpandFunction<V, E>(network, vertexToIndexFunction)
-        edgeShiftFunctions = EdgeShiftFunctions<V, E>(edgeExpandFunction, vertexToIndexFunction)
+        edgeExpandFunction = EdgeExpandFunction(network, vertexToIndexFunction)
+        edgeShiftFunctions = EdgeShiftFunctions(edgeExpandFunction, vertexToIndexFunction)
     }
 
     override fun toString(): String {

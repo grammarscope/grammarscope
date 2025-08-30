@@ -48,7 +48,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
 
         // access text view
         val textControl = findViewById<AnnotatedTextControl>(R.id.annotated_text_control)
-        textView = findViewById<AnnotatedTextView>(textControl.textView.id)
+        textView = findViewById(textControl.textView.id)
 
         // set text
         textView.text = query + '\n'

@@ -148,7 +148,7 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
             configurator = configurator()
 
             // attach graph to view
-            Visualizer.visualize<V, E>(
+            Visualizer.visualize(
                 viewer,
                 configurator,
                 graph as AugmentedGraph<V, E>,

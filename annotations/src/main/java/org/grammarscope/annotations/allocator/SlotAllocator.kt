@@ -17,7 +17,7 @@ class SlotAllocator<E : HasIndices> : SlotAllocatorForIndexRanges<E>() {
      */
     fun allocate(elements0: Collection<E>, comparator: Comparator<E>) {
         // sort elements
-        val elements: MutableList<E> = ArrayList<E>(elements0)
+        val elements: MutableList<E> = ArrayList(elements0)
         elements.sortWith(comparator)
 
         // allocate

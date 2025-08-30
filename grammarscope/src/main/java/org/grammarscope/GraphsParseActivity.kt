@@ -46,7 +46,7 @@ abstract class GraphsParseActivity<V : Token, E : Label> : GraphBaseParseActivit
         if (this.graph != null && graph!!.network.nodes().isNotEmpty() && graph!!.network.edges().isNotEmpty()) {
 
             // attach graph to view
-            Visualizer.visualize<V, E>(
+            Visualizer.visualize(
                 viewer,
                 configurator,
                 graph as AugmentedGraph<V, E>,

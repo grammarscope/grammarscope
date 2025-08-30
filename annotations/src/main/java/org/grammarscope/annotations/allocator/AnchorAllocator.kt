@@ -30,11 +30,11 @@ class AnchorAllocator<N>(val isRtl: Boolean) where N : HasIndex, N : HasSegment 
     fun allocate(nodes: Collection<N>, edges: Collection<GraphEdge<N>>, leftComparator: Comparator<GraphEdge<N>>, rightComparator: Comparator<GraphEdge<N>>) {
         for (node in nodes) {
 
-            val nodeIndices: MutableMap<GraphEdge<N>, Int> = HashMap<GraphEdge<N>, Int>()
+            val nodeIndices: MutableMap<GraphEdge<N>, Int> = HashMap()
 
             // sort into right / left incident
-            val leftEdges: MutableList<GraphEdge<N>> = ArrayList<GraphEdge<N>>()
-            val rightEdges: MutableList<GraphEdge<N>> = ArrayList<GraphEdge<N>>()
+            val leftEdges: MutableList<GraphEdge<N>> = ArrayList()
+            val rightEdges: MutableList<GraphEdge<N>> = ArrayList()
 
             edges
                 .filter { node == it.source || node == it.target }
