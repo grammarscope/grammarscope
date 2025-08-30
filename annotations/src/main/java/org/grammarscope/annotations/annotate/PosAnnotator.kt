@@ -100,7 +100,7 @@ class PosAnnotator<N>(
                 val annotationTop = wordBox.top + manager.lineHeight
                 val annotationBottom = annotationTop + padHeight
                 val annotationBox = RectF(wordBox.left, annotationTop + padTopOffset + PAD_TOP_INSET, wordBox.right, annotationBottom - PAD_BOTTOM_INSET)
-                boxes.add(LabelAnnotation(annotationBox, pos.toString(), backColor = null, foreColor = Palette.posColor))
+                boxes.add(LabelAnnotation(annotationBox, pos, backColor = null, foreColor = Palette.posColor))
             }
         }
         return mapOf(AnnotationType.LABEL to boxes)

@@ -86,7 +86,7 @@ object Utils {
 
         // truncate
         return if (n >= 3) {
-            label.substring(0, min(n - 2, label.length).toInt()) + ELLIPSIS
+            label.substring(0, min(n - 2, label.length)) + ELLIPSIS
         } else {
             label.substring(0, min(n, label.length))
         }
