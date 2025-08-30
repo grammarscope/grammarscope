@@ -17,11 +17,11 @@ buildscript {
 allprojects {
 
     ext {
-        set("versionCode", 6090)
-        set("versionName", "6.90")
+        set("versionCode", 6091)
+        set("versionName", "6.91")
         set("minSdk", 24)
-        set("targetSdk", 35)
-        set("compileSdk", 35)
+        set("targetSdk", 36)
+        set("compileSdk", 36)
     }
 
     gradle.projectsEvaluated {
