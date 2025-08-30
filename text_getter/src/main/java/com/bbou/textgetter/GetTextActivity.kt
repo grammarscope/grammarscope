@@ -117,7 +117,7 @@ class GetTextActivity : AppCompatActivity() {
 
         // tabs
         val tabs = findViewById<TabLayout>(R.id.tabs)
-        TabLayoutMediator(tabs, pager) { tab: TabLayout.Tab, position: Int -> tab.setText(tabTitles[position]) }.attach()
+        TabLayoutMediator(tabs, pager) { tab: TabLayout.Tab, position: Int -> tab.text = tabTitles[position] }.attach()
         val fabRecog = findViewById<FloatingActionButton>(R.id.fab_recog)
         fabRecog.setOnClickListener {
             tryTakePicture()

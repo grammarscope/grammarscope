@@ -38,7 +38,7 @@ object ImageUtils {
         val path = uri.path
         if (path != null) {
             val exif = ExifInterface(path)
-            return exif.getRotationDegrees()
+            return exif.rotationDegrees
         }
         return 0
     }
@@ -50,7 +50,7 @@ object ImageUtils {
                 return 0
             }
             val exif = ExifInterface(`is`)
-            return exif.getRotationDegrees()
+            return exif.rotationDegrees
         }
     }
 
@@ -77,7 +77,7 @@ object ImageUtils {
         val degrees: Int = try {
             `is`.reset()
             val exif = ExifInterface(`is`)
-            exif.getRotationDegrees()
+            exif.rotationDegrees
         } catch (_: Exception) {
             90
         }
@@ -93,7 +93,7 @@ object ImageUtils {
     fun makeBitmap(filePath: String): Bitmap {
         val bitmap = BitmapFactory.decodeFile(filePath)
         val exif = ExifInterface(filePath)
-        val degrees = exif.getRotationDegrees()
+        val degrees = exif.rotationDegrees
         if (degrees == 0) {
             return bitmap
         }
