@@ -67,3 +67,5 @@ target_link_libraries(
         z
         #${log-lib}                 # the library included in the NDK to link the target library to
 )
+add_link_options("-Wl,-z,max-page-size=16384")
+target_link_options(udpipe_jni PRIVATE "-Wl,-z,max-page-size=16384")
