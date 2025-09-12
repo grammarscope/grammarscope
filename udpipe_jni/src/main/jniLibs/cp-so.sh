@@ -28,7 +28,7 @@ where=`readlink -m ${where}`
 echo "Source dir is ${where}"
 if [ ! -e ${where} ]; then
 	echo -e "${R}Source dir does not exist ${where}${Z}"
-pwd
+	pwd
 	exit 1
 fi
 echo -e "${M}${where}${Z}"
