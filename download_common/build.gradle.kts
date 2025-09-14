@@ -53,5 +53,6 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.preference.ktx)
+    implementation(libs.constraintlayout)
     implementation(libs.material)
 }
