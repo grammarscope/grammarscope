@@ -83,8 +83,8 @@ class PosAnnotator<N>(
                 val token = node as Token
 
                 // relation that labels edge
-                val label: String? = node.label
-                if (label != null && ignoreRelations.contains(label))
+                val label: String = node.label
+                if (ignoreRelations.contains(label))
                     continue
 
                 // pos

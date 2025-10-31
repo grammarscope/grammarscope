@@ -300,7 +300,6 @@ data class Edge(
                 // tag width
                 val tagFontHeight = tagPaint.fontMetrics.height()
                 val tagFontDescent = tagPaint.fontMetrics.descent
-                val tagWidth = tagFontHeight
 
                 // tag position
                 val xa1 = x1 + x1Anchor
@@ -316,7 +315,7 @@ data class Edge(
                 val w = tagFontHeight + 2 * LABEL_INFLATE
                 val tagRectangle = RectF(x, y, x + w, y + h)
 
-                return Triple(tagPosition, tagWidth, tagRectangle)
+                return Triple(tagPosition, tagFontHeight, tagRectangle)
             } else {
 
                 // tag width

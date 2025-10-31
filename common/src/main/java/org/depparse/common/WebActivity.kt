@@ -98,7 +98,7 @@ class WebActivity : AppCompatActivity() {
                 return false
             }
 
-            @Deprecated("Deprecated in Java", ReplaceWith("shouldInterceptRequest(view: WebView, request: WebResourceRequest)"))
+            @Deprecated("Deprecated in Java")
             override fun shouldInterceptRequest(view: WebView, url: String): WebResourceResponse? {
                 return if (assetLoader != null) {
                     assetLoader.shouldInterceptRequest(url.toUri())

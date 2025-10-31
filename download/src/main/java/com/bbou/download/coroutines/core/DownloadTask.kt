@@ -10,11 +10,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 import java.util.function.Consumer
 import kotlin.coroutines.cancellation.CancellationException
-import kotlin.coroutines.coroutineContext
 
 /**
  * Download result
@@ -51,7 +51,7 @@ class DownloadTask : Task<DownloadTask.Parameters, Pair<Long, Long>, DownloadRes
 
         // do the work
         return try {
-            val job = coroutineContext[Job] ?: return null
+            val job = currentCoroutineContext()[Job] ?: return null
             job.ensureActive() // checks for cancellation
             println("Job> $fromUrl $toFile ${where()}")
             val outData = delegate.work(fromUrl, toFile, renameFrom, renameTo, null)

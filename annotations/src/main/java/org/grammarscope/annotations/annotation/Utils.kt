@@ -58,7 +58,7 @@ object Utils {
             else {
                 result = label
                 if (result.length > LABEL_VERTICAL_TRUNCATE)
-                    result = label.substring(0, min(LABEL_VERTICAL_TRUNCATE, label.length)) + ELLIPSIS
+                    result = label.take(min(LABEL_VERTICAL_TRUNCATE, label.length)) + ELLIPSIS
                 isVertical = true
             }
         }
@@ -86,9 +86,9 @@ object Utils {
 
         // truncate
         return if (n >= 3) {
-            label.substring(0, min(n - 2, label.length)) + ELLIPSIS
+            label.take(min(n - 2, label.length)) + ELLIPSIS
         } else {
-            label.substring(0, min(n, label.length))
+            label.take(min(n, label.length))
         }
     }
 }

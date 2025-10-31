@@ -28,7 +28,7 @@ object SentenceDetectorFactory {
     }
 
     private fun getTag(lang: String): String {
-        return when (val tag = lang.substring(0, 2).lowercase(Locale.getDefault())) {
+        return when (val tag = lang.take(2).lowercase(Locale.getDefault())) {
             "en", "fr" -> tag
             else -> throw UnsupportedOperationException(tag)
         }

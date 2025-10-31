@@ -35,7 +35,7 @@ class SentenceGraph<V : Token, E : Label>(@Suppress("unused") private val senten
 
     override fun toString(): String {
         val sb = StringBuilder()
-        network.nodes().sortedBy { it.index }.forEach { it ->
+        network.nodes().sortedBy { it.index }.forEach {
             sb.append(it)
                 .append(' ')
                 .append(it.index)

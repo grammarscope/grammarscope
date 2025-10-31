@@ -31,20 +31,20 @@ class DependencyGraphConfiguration(settings: Settings) :
 
     val nodeShape: VertexShapeFactory = settings.makeVertexShape(PREF_VERTEX_SHAPE)
     val nodeIcon: Icon? = settings.makeIcon(PREF_VERTEX_ICON)
-    val nodeColor: Color? = settings.makeColor(PREF_VERTEX_COLOR, GraphColors.vertexColor)
+    val nodeColor: Color = settings.makeColor(PREF_VERTEX_COLOR, GraphColors.vertexColor)
     val nodeSize = settings.makeInt(PREF_VERTEX_SIZE, settings.defaultVertexSize)
     val nodeLabelFillColor: Color? = settings.makeColorOrNull(PREF_VERTEX_LABEL_BACK_COLOR)
-    val nodeLabelDrawColor: Color? = settings.makeColor(PREF_VERTEX_LABEL_COLOR, GraphColors.vertexLabelColor)
+    val nodeLabelDrawColor: Color = settings.makeColor(PREF_VERTEX_LABEL_COLOR, GraphColors.vertexLabelColor)
     val nodeLabelSize = vertexLabelSize
 
     val edgeColor: Color? = edgeDrawColor
 
     val rootShape: VertexShapeFactory = settings.makeVertexShape(PREF_ROOT_VERTEX_SHAPE)
     val rootIcon: Icon? = settings.makeIcon(PREF_ROOT_VERTEX_ICON)
-    val rootColor: Color? = settings.makeColor(PREF_ROOT_VERTEX_COLOR, GraphColors.rootVertexColor)
+    val rootColor: Color = settings.makeColor(PREF_ROOT_VERTEX_COLOR, GraphColors.rootVertexColor)
     val rootSize = (nodeSize * 1.5f).toInt()
     val rootLabelSize = (nodeLabelSize * 1.5f).toInt()
-    val rootLabelDrawColor: Color? = settings.makeColor(PREF_ROOT_VERTEX_LABEL_COLOR, GraphColors.vertexLabelColor)
+    val rootLabelDrawColor: Color = settings.makeColor(PREF_ROOT_VERTEX_LABEL_COLOR, GraphColors.vertexLabelColor)
     val rootLabelFillColor: Color? = settings.makeColorOrNull(PREF_ROOT_VERTEX_LABEL_BACK_COLOR)
 
     init {

@@ -20,6 +20,6 @@ object Samples {
     fun ellipsize(str: String, max: Int): String {
         return if (str.length <= max) {
             str
-        } else str.substring(0, max) + '…'
+        } else str.take(max) + '…'
     }
 }

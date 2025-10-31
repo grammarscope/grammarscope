@@ -212,7 +212,7 @@ class LabelsActivity : AppCompatActivity() {
         var label = view.text.toString()
         val split = label.lastIndexOf(':')
         if (split != -1) {
-            label = label.substring(0, split)
+            label = label.take(split)
         }
         val pathInAssets = "reference/$label.html"
         // check if openable

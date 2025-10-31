@@ -41,7 +41,7 @@ open class SlotAllocatorForSequences<T> {
             val slots = this.slotMaps[element]
             var bitMap = slots ?: 0
             bitMap = bitMap or mask
-            this.slotMaps.put(element, bitMap)
+            this.slotMaps[element] = bitMap
         }
         return slot
     }
@@ -72,8 +72,7 @@ open class SlotAllocatorForSequences<T> {
     private fun mergeAllSlots(): Long {
         var mergedBitMap = 0L
         for (slots in this.slotMaps.values) {
-            val bitMap = slots
-            mergedBitMap = mergedBitMap or bitMap
+            mergedBitMap = mergedBitMap or slots
         }
         return mergedBitMap
     }

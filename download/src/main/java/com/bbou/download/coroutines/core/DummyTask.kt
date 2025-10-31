@@ -9,12 +9,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
 import java.util.function.Consumer
 import kotlin.coroutines.cancellation.CancellationException
-import kotlin.coroutines.coroutineContext
 
 /**
  * Dummy download task : does not download anything
@@ -34,7 +34,7 @@ class DummyTask : Task<DummyTask.Parameters, Pair<Long, Long>, Boolean?>() {
 
     private suspend fun jobBody(emitter: ProgressEmitter<Pair<Long, Long>>, params: Parameters): Boolean? {
 
-        val job = coroutineContext[Job] ?: return null
+        val job = currentCoroutineContext()[Job] ?: return null
         val from = params.fromUrl
         val to = params.toFile
         println("Job> $from $to ${where()}")

@@ -42,7 +42,7 @@ class SemanticGraphConfiguration(settings: Settings) :
 
     val nodeShape: VertexShapeFactory = settings.makeVertexShape(PREF_VERTEX_SHAPE)
     val nodeIcon: Icon? = settings.makeIcon(PREF_VERTEX_ICON)
-    val nodeColor: Color? = settings.makeColor(PREF_VERTEX_COLOR, GraphColors.vertexColor)
+    val nodeColor: Color = settings.makeColor(PREF_VERTEX_COLOR, GraphColors.vertexColor)
     val nodeSize = settings.makeInt(PREF_VERTEX_SIZE, settings.defaultVertexSize)
     val nodeLabelFillColor: Color? = settings.makeColorOrNull(PREF_VERTEX_LABEL_BACK_COLOR)
     val nodeLabelDrawColor: Color? = settings.makeColorOrNull(PREF_VERTEX_LABEL_COLOR)
@@ -50,17 +50,17 @@ class SemanticGraphConfiguration(settings: Settings) :
 
     val rootShape: VertexShapeFactory = settings.makeVertexShape(PREF_ROOT_VERTEX_SHAPE)
     val rootIcon: Icon? = settings.makeIcon(PREF_ROOT_VERTEX_ICON)
-    val rootColor: Color? = settings.makeColor(PREF_ROOT_VERTEX_COLOR, GraphColors.rootVertexColor)
+    val rootColor: Color = settings.makeColor(PREF_ROOT_VERTEX_COLOR, GraphColors.rootVertexColor)
     val rootSize = (vertexSize * 1.5f).toInt()
     val rootLabelSize = (nodeLabelSize * 1.5f).toInt()
     val rootLabelDrawColor: Color? = settings.makeColorOrNull(PREF_ROOT_VERTEX_LABEL_COLOR)
     val rootLabelFillColor: Color? = settings.makeColorOrNull(PREF_ROOT_VERTEX_LABEL_BACK_COLOR)
 
-    val predicateColor: Color? = settings.makeColor(PREF_PREDICATE_COLOR, GraphColors.predicateColor)
-    val subjectColor: Color? = settings.makeColor(PREF_SUBJECT_COLOR, GraphColors.subjectColor)
-    val objectColor: Color? = settings.makeColor(PREF_OBJECT_COLOR, GraphColors.objectColor)
-    val termModifyingPredicateColor: Color? = settings.makeColor(PREF_TERM_MODIFYING_SUBPREDICATE_COLOR, GraphColors.termModifyingPredicateColor)
-    val predicateModifyingPredicateColor: Color? = settings.makeColor(PREF_PREDICATE_MODIFYING_SUBPREDICATE_COLOR, GraphColors.predicateModifyingPredicateColor)
+    val predicateColor: Color = settings.makeColor(PREF_PREDICATE_COLOR, GraphColors.predicateColor)
+    val subjectColor: Color = settings.makeColor(PREF_SUBJECT_COLOR, GraphColors.subjectColor)
+    val objectColor: Color = settings.makeColor(PREF_OBJECT_COLOR, GraphColors.objectColor)
+    val termModifyingPredicateColor: Color = settings.makeColor(PREF_TERM_MODIFYING_SUBPREDICATE_COLOR, GraphColors.termModifyingPredicateColor)
+    val predicateModifyingPredicateColor: Color = settings.makeColor(PREF_PREDICATE_MODIFYING_SUBPREDICATE_COLOR, GraphColors.predicateModifyingPredicateColor)
 
     init {
         layoutAlgorithm = settings.makeLayoutAlgorithm()

@@ -161,7 +161,7 @@ object CoreNlp {
                 val parseTree = sentence.constituencyParse()
                 val gs: GrammaticalStructure = gsf.newGrammaticalStructure(parseTree)
                 val constituencyDeps: Collection<CoreNlpConstituencyDependency> = gs.typedDependencies()
-                val constituencyEnhancedDeps: Collection<CoreNlpConstituencyDependency> = gs.typedDependenciesEnhancedPlusPlus() - constituencyDeps
+                val constituencyEnhancedDeps: Collection<CoreNlpConstituencyDependency> = gs.typedDependenciesEnhancedPlusPlus() - constituencyDeps.toSet()
                 val tokens = constituencyDeps
                     .map { dependency: CoreNlpConstituencyDependency ->
                         val head = dependency.gov()

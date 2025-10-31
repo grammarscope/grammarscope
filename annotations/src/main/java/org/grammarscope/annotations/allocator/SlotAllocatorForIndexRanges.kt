@@ -52,6 +52,6 @@ open class SlotAllocatorForIndexRanges<T : HasIndices> : SlotAllocatorForSequenc
         }
 
         val slot = super.allocateSlot(elements)
-        this.slots.put(element, slot)
+        this.slots[element] = slot
     }
 }

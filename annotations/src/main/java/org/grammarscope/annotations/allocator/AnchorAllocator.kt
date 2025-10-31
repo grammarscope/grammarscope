@@ -53,13 +53,13 @@ class AnchorAllocator<N>(val isRtl: Boolean) where N : HasIndex, N : HasSegment 
             // iterate on node's edges and allocate edge's anchors
             var left = 0
             for (edge in leftEdges) {
-                nodeIndices.put(edge, --left)
+                nodeIndices[edge] = --left
             }
             var right = 0
             for (edge in rightEdges) {
-                nodeIndices.put(edge, ++right)
+                nodeIndices[edge] = ++right
             }
-            this.anchors.put(node, Triple(left, right, nodeIndices))
+            this.anchors[node] = Triple(left, right, nodeIndices)
         }
     }
 

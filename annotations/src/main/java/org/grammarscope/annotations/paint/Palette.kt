@@ -60,7 +60,7 @@ object Palette : (String?) -> Int {
             return color
         if (id.contains(':')) {
             // subrelation
-            val id2 = id.substring(0, id.indexOf(':'))
+            val id2 = id.substringBefore(':')
             color = colorMap[id2]
         }
         if (color == null) {
@@ -141,10 +141,7 @@ object Palette : (String?) -> Int {
     override fun toString(): String {
         val sb = StringBuilder()
         for (id in colorMap.keys.sorted()) {
-            val color: Int? = colorMap[id]
-            if (color == null) {
-                continue
-            }
+            val color: Int = colorMap[id] ?: continue
             val key = "color-$id"
             val value = "${red(color)}, ${green(color)}, ${blue(color)}"
             sb.append(key)
@@ -169,10 +166,7 @@ object Palette : (String?) -> Int {
             }
         }
         for (id in colorMap.keys) {
-            val color: Int? = colorMap[id]
-            if (color == null) {
-                continue
-            }
+            val color: Int = colorMap[id] ?: continue
             val key = "color-$id"
             val value = "${red(color)}, ${green(color)}, ${blue(color)}"
             properties.setProperty(key, value)

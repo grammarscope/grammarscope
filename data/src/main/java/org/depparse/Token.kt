@@ -52,7 +52,7 @@ open class Token(
             while (matcher.find()) {
                 val name = matcher.group(1)!!
                 val value = matcher.group(2)!!
-                result.put(name, value)
+                result[name] = value
             }
             return result
         }

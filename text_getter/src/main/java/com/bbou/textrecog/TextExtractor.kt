@@ -33,7 +33,7 @@ internal object TextExtractor {
                     val hyphenated = str.endsWith("-")
                     inWord = hyphenated
                     if (hyphenated) {
-                        str = str.substring(0, str.length - 1)
+                        str = str.dropLast(1)
                     }
                     sb.append(str)
                     // end of element
