@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context="org.depparse.common.TextBaseParseActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.depparse.common.TextBaseParseActivity">
 
-	<com.google.android.material.appbar.AppBarLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:scrollbars="none">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-		<include layout="@layout/toolbar" />
+        <TextView
+            android:id="@+id/parsed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/parsing" />
 
-	</com.google.android.material.appbar.AppBarLayout>
+    </ScrollView>
 
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_marginLeft="@dimen/activity_horizontal_margin"
-		android:fillViewport="true"
-		android:layout_marginTop="@dimen/activity_vertical_margin"
-		android:layout_marginRight="@dimen/activity_horizontal_margin"
-		android:layout_marginBottom="@dimen/activity_vertical_margin"
-		android:scrollbars="vertical"
-		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
 
-		<TextView
-			android:id="@+id/parsed"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/parsing" />
+        <include layout="@layout/toolbar" />
 
-	</ScrollView>
+    </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context="org.grammarscope.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.grammarscope.MainActivity">
 
-	<com.google.android.material.appbar.AppBarLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:scrollbars="none">
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-		<include layout="@layout/toolbar_main" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
 
-	</com.google.android.material.appbar.AppBarLayout>
+        <include layout="@layout/toolbar_main" />
 
-	<FrameLayout
-		android:id="@+id/container"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-	<com.google.android.material.floatingactionbutton.FloatingActionButton
-		android:id="@+id/fab_dependencies"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginBottom="10dp"
-		android:clickable="true"
-		android:contentDescription="@string/description_main_fab_dependencies"
-		android:focusable="true"
-		app:layout_anchor="@+id/container"
-		app:layout_anchorGravity="left|bottom"
-		app:srcCompat="@drawable/ic_dependency"
-		app:tint="@android:color/white"
-		tools:srcCompat="@drawable/ic_dependency" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_dependencies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:contentDescription="@string/description_main_fab_dependencies"
+        android:focusable="true"
+        app:layout_anchor="@+id/container"
+        app:layout_anchorGravity="left|bottom"
+        app:srcCompat="@drawable/ic_dependency"
+        app:tint="@android:color/white"
+        tools:srcCompat="@drawable/ic_dependency" />
 
-	<com.google.android.material.floatingactionbutton.FloatingActionButton
-		android:id="@+id/fab_semantics"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginEnd="10dp"
-		android:layout_marginBottom="10dp"
-		android:clickable="true"
-		android:contentDescription="@string/description_main_fab_semantics"
-		android:focusable="true"
-		app:layout_anchor="@+id/container"
-		app:layout_anchorGravity="right|bottom"
-		app:srcCompat="@drawable/ic_semantics"
-		app:tint="@android:color/white"
-		tools:srcCompat="@drawable/ic_semantics" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_semantics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:contentDescription="@string/description_main_fab_semantics"
+        android:focusable="true"
+        app:layout_anchor="@+id/container"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@drawable/ic_semantics"
+        app:tint="@android:color/white"
+        tools:srcCompat="@drawable/ic_semantics" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

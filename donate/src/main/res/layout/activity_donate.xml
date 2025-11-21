@@ -3,153 +3,154 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-	<com.google.android.material.appbar.AppBarLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-		<include layout="@layout/toolbar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-	</com.google.android.material.appbar.AppBarLayout>
+            <Button
+                android:id="@+id/consume"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/title_consume"
+                android:padding="10dp"
+                android:text="@string/title_consume"
+                android:visibility="visible" />
 
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/title_donate"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:src="@drawable/logo_app"
+                android:visibility="visible" />
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/text_donate"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="@string/text_donate"
+                android:visibility="visible" />
 
-			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:contentDescription="@string/title_donate"
-				android:gravity="center_horizontal"
-				android:padding="5dp"
-				android:src="@drawable/logo_app"
-				android:visibility="visible" />
+            <!-- 1 -->
 
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:contentDescription="@string/title_donate"
-				android:gravity="center_horizontal"
-				android:padding="5dp"
-				android:text="@string/title_donate"
-				android:textStyle="bold"
-				android:visibility="visible" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/title_donate"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="@string/title_donate"
+                android:textStyle="bold"
+                android:visibility="visible" />
 
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:contentDescription="@string/text_donate"
-				android:gravity="center_horizontal"
-				android:padding="5dp"
-				android:text="@string/text_donate"
-				android:visibility="visible" />
+            <!-- 2 -->
 
-			<!-- 1 -->
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buyButton2"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_button_donate"
+                android:contentDescription="@string/title_donate_2"
+                android:src="@drawable/ic_donate2"
+                android:tag="1"
+                android:visibility="visible"
+                app:backgroundTint="@color/donate2Color"
+                app:elevation="6dp" />
 
-			<androidx.appcompat.widget.AppCompatImageButton
-				android:id="@+id/buyButton1"
-				android:layout_width="56dp"
-				android:layout_height="56dp"
-				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="5dp"
-				android:background="@drawable/bg_button_donate"
-				android:contentDescription="@string/title_donate_1"
-				android:src="@drawable/ic_donate1"
-				android:tag="0"
-				android:visibility="visible"
-				app:backgroundTint="@color/donate1Color"
-				app:elevation="6dp" />
+            <!-- 3 -->
 
-			<!-- 2 -->
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buyButton3"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_button_donate"
+                android:contentDescription="@string/title_donate_3"
+                android:src="@drawable/ic_donate3"
+                android:tag="2"
+                android:visibility="visible"
+                app:backgroundTint="@color/donate3Color"
+                app:elevation="6dp" />
 
-			<androidx.appcompat.widget.AppCompatImageButton
-				android:id="@+id/buyButton2"
-				android:layout_width="56dp"
-				android:layout_height="56dp"
-				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="5dp"
-				android:background="@drawable/bg_button_donate"
-				android:contentDescription="@string/title_donate_2"
-				android:src="@drawable/ic_donate2"
-				android:tag="1"
-				android:visibility="visible"
-				app:backgroundTint="@color/donate2Color"
-				app:elevation="6dp" />
+            <!-- 4 -->
 
-			<!-- 3 -->
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buyButton4"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_button_donate"
+                android:contentDescription="@string/title_donate_4"
+                android:src="@drawable/ic_donate4"
+                android:tag="3"
+                android:visibility="visible"
+                app:backgroundTint="@color/donate4Color"
+                app:elevation="6dp" />
 
-			<androidx.appcompat.widget.AppCompatImageButton
-				android:id="@+id/buyButton3"
-				android:layout_width="56dp"
-				android:layout_height="56dp"
-				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="5dp"
-				android:background="@drawable/bg_button_donate"
-				android:contentDescription="@string/title_donate_3"
-				android:src="@drawable/ic_donate3"
-				android:tag="2"
-				android:visibility="visible"
-				app:backgroundTint="@color/donate3Color"
-				app:elevation="6dp" />
+            <!-- 5 -->
 
-			<!-- 4 -->
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buyButton5"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_button_donate"
+                android:contentDescription="@string/title_donate_5"
+                android:src="@drawable/ic_donate5"
+                android:tag="4"
+                android:visibility="visible"
+                app:backgroundTint="@color/donate5Color"
+                app:elevation="6dp" />
 
-			<androidx.appcompat.widget.AppCompatImageButton
-				android:id="@+id/buyButton4"
-				android:layout_width="56dp"
-				android:layout_height="56dp"
-				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="5dp"
-				android:background="@drawable/bg_button_donate"
-				android:contentDescription="@string/title_donate_4"
-				android:src="@drawable/ic_donate4"
-				android:tag="3"
-				android:visibility="visible"
-				app:backgroundTint="@color/donate4Color"
-				app:elevation="6dp" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buyButton1"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_button_donate"
+                android:contentDescription="@string/title_donate_1"
+                android:src="@drawable/ic_donate1"
+                android:tag="0"
+                android:visibility="visible"
+                app:backgroundTint="@color/donate1Color"
+                app:elevation="6dp" />
 
-			<!-- 5 -->
+        </LinearLayout>
 
-			<androidx.appcompat.widget.AppCompatImageButton
-				android:id="@+id/buyButton5"
-				android:layout_width="56dp"
-				android:layout_height="56dp"
-				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="5dp"
-				android:background="@drawable/bg_button_donate"
-				android:contentDescription="@string/title_donate_5"
-				android:src="@drawable/ic_donate5"
-				android:tag="4"
-				android:visibility="visible"
-				app:backgroundTint="@color/donate5Color"
-				app:elevation="6dp" />
+    </ScrollView>
 
-			<Button
-				style="@style/Widget.AppCompat.Button.Borderless.Colored"
-				android:id="@+id/consume"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="20dp"
-				android:contentDescription="@string/title_consume"
-				android:padding="10dp"
-				android:text="@string/title_consume"
-				android:visibility="visible" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
-		</LinearLayout>
+        <include layout="@layout/toolbar" />
 
-	</ScrollView>
+    </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
