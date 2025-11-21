@@ -10,7 +10,8 @@ import org.udpipe.JNI
 class Loader : Task<String?, Void?, Long?>() {
 
     init {
-        Log.d(TAG, "JNI version " + Integer.toHexString(JNI.version()))
+        val v = JNI.version()
+        Log.d(TAG, "JNI version ${Integer.toHexString(v)}" )
     }
 
     override suspend fun doJob(params: String?): Long? {
