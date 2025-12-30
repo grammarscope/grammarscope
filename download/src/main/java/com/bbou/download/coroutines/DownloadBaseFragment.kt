@@ -15,7 +15,12 @@ import java.util.concurrent.atomic.AtomicBoolean
 import java.util.function.Consumer
 
 /**
- * Storage fragment
+ * Base download fragment. Handles
+ * - status
+ * - notification
+ * - cancel intent receiver
+ * - kill and new data emitter
+ * - work info livedata observer that observes work info status and data change
  *
  * @author [Bernard Bou](mailto:1313ou@gmail.com)
  */
@@ -57,7 +62,7 @@ abstract class DownloadBaseFragment : BaseDownloadFragment() {
 
         // notification
         val progressPercent = progress!!.first.toFloat() / progress!!.second
-        fireNotification(requireContext(), notificationId, Notifier.NotificationType.UPDATE, progressPercent)
+        fireNotification(appContext, notificationId, Notifier.NotificationType.UPDATE, progressPercent)
     }
 
     // E V E N T S
@@ -70,7 +75,7 @@ abstract class DownloadBaseFragment : BaseDownloadFragment() {
 
         status = Status.STATUS_PENDING
 
-        fireNotification(requireContext(), notificationId, Notifier.NotificationType.START)
+        fireNotification(appContext, notificationId, Notifier.NotificationType.START)
     }
 
     /**
@@ -86,17 +91,17 @@ abstract class DownloadBaseFragment : BaseDownloadFragment() {
         when (status) {
             Status.STATUS_SUCCEEDED -> {
                 if (downloadData != null) {
-                    Settings.recordDatapackSource(requireContext(), downloadData, mode?.toString())
+                    Settings.recordDatapackSource(appContext, downloadData, mode?.toString())
                 }
-                fireNotification(requireContext(), notificationId, Notifier.NotificationType.FINISH, true)
+                fireNotification(appContext, notificationId, Notifier.NotificationType.FINISH, true)
             }
 
             Status.STATUS_FAILED -> {
-                fireNotification(requireContext(), notificationId, Notifier.NotificationType.FINISH, false)
+                fireNotification(appContext, notificationId, Notifier.NotificationType.FINISH, false)
             }
 
             Status.STATUS_CANCELLED -> {
-                fireNotification(requireContext(), notificationId, Notifier.NotificationType.CANCEL, false)
+                fireNotification(appContext, notificationId, Notifier.NotificationType.CANCEL, false)
             }
 
             else -> {}

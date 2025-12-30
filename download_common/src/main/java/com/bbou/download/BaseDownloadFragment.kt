@@ -54,6 +54,10 @@ import kotlin.properties.Delegates
  */
 abstract class BaseDownloadFragment : Fragment() {
 
+    // C O N T E X T
+
+    protected lateinit var appContext: Context
+
     // S T A T U S
 
     /**
@@ -164,7 +168,7 @@ abstract class BaseDownloadFragment : Fragment() {
         // download source arg
         downloadUrl = arguments?.getString(DOWNLOAD_FROM_ARG)
         if (downloadUrl == null || downloadUrl!!.isEmpty()) {
-            val message = requireContext().getString(R.string.status_download_error_null_download_url)
+            val message = appContext.getString(R.string.status_download_error_null_download_url)
             warn(message)
         }
 
@@ -238,6 +242,9 @@ abstract class BaseDownloadFragment : Fragment() {
 
         super.onCreate(savedInstanceState)
 
+        // store app context
+        appContext = requireContext().applicationContext
+
         // unmarshal arguments
         unmarshal()
 
@@ -246,10 +253,10 @@ abstract class BaseDownloadFragment : Fragment() {
         val intentFilter = IntentFilter()
         intentFilter.addAction(ACTION_DOWNLOAD_CANCEL)
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT)
-        ContextCompat.registerReceiver(requireContext(), cancelReceiver, intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED)
+        ContextCompat.registerReceiver(appContext, cancelReceiver, intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED)
 
         // notifications
-        Notifier.initChannels(requireContext())
+        Notifier.initChannels(appContext)
     }
 
     /**
@@ -389,7 +396,7 @@ abstract class BaseDownloadFragment : Fragment() {
 
         // main receiver
         Log.d(TAG, "Unregister cancel receiver")
-        requireContext().unregisterReceiver(cancelReceiver)
+        appContext.unregisterReceiver(cancelReceiver)
     }
 
     // C A N C E L   R E C E I V E R
@@ -459,7 +466,7 @@ abstract class BaseDownloadFragment : Fragment() {
      * @return message
      */
     private fun buildStatusString(status: Status?): String {
-        val statusStr = status?.toString(requireContext()) ?: "unknown"
+        val statusStr = status?.toString(appContext) ?: "unknown"
         if (status != Status.STATUS_SUCCEEDED) {
             if (reason != null) {
                 return """
@@ -620,7 +627,7 @@ abstract class BaseDownloadFragment : Fragment() {
         if (arguments != null) {
             val target = arguments.getString(DOWNLOAD_TARGET_FILE_ARG)
             if (target != null) {
-                Settings.recordDatapackFile(requireContext(), File(target))
+                Settings.recordDatapackFile(appContext, File(target))
                 Log.d(TAG, "Recorded $target")
             }
         }

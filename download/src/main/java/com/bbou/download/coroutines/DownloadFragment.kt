@@ -170,7 +170,7 @@ class DownloadFragment : DownloadBaseFragment() {
 
         // guard against no unzip dir
         if (unzipDir == null) {
-            val datapackDir = Settings.getDatapackDir(requireContext())
+            val datapackDir = Settings.getDatapackDir(appContext)
             unzipDir = if (datapackDir == null) null else File(datapackDir)
         }
         if (unzipDir == null) {
@@ -193,9 +193,9 @@ class DownloadFragment : DownloadBaseFragment() {
         val activity: FragmentActivity? = activity
         val task = FileTasks(1000).unzipFromArchiveFile(unzipDir!!.absolutePath)
         val observer = if (activity != null) TaskDialogObserver<Pair<Number, Number>>(activity.supportFragmentManager, task)
-            .setTitle(requireContext().getString(R.string.action_unzip_datapack_from_archive))
+            .setTitle(appContext.getString(R.string.action_unzip_datapack_from_archive))
             .setMessage(toFile!!.absolutePath)
-            .setStatus(requireContext().getString(R.string.status_unzipping))
+            .setStatus(appContext.getString(R.string.status_unzipping))
             .show()
         else
             Consumer { p -> Log.d(TAG, p.toString()) }
