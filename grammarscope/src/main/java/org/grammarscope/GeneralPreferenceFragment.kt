@@ -5,6 +5,7 @@ import androidx.preference.PreferenceFragmentCompat
 import com.bbou.download.preference.Settings.getDatapackDir
 import com.bbou.download.preference.Settings.setDatapackDir
 import org.depparse.Storage.getAppStorage
+import org.depparse.common.AppContext
 import org.grammarscope.common.R
 
 /**
@@ -17,9 +18,8 @@ class GeneralPreferenceFragment : PreferenceFragmentCompat() {
         val prefModelDir = findPreference<ResettablePreference>(PREF_MODEL_DIR)!!
         prefModelDir.setSummary(getDatapackDir(prefModelDir.context))
         prefModelDir.setClickListener {
-            val context = requireContext()
-            val newValue = getAppStorage(context).absolutePath
-            setDatapackDir(context, newValue)
+            val newValue = getAppStorage(AppContext.context).absolutePath
+            setDatapackDir(AppContext.context, newValue)
             prefModelDir.setSummary(newValue)
         }
     }

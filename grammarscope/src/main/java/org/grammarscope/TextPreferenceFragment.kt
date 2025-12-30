@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.preference.Preference
 import androidx.preference.PreferenceDialogFragmentCompat
 import androidx.preference.PreferenceFragmentCompat
+import org.depparse.common.AppContext
 import org.depparse.common.Colors
 import org.depparse.common.Colors.computeForeColor
 import org.depparse.common.Colors.getColors
@@ -25,7 +26,7 @@ class TextPreferenceFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         // Define the settings file to use by this settings fragment
         val manager = preferenceManager
-        manager.setSharedPreferencesName(getPreferenceFile(requireContext()))
+        manager.setSharedPreferencesName(getPreferenceFile(AppContext.context))
         manager.setSharedPreferencesMode(Context.MODE_PRIVATE)
 
         // Add the preferences defined from resources

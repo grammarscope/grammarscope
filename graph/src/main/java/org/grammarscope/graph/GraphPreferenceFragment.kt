@@ -15,6 +15,7 @@ import edu.uci.ics.jung.settings.BaseSettings.Companion.PREF_VALUE_LAYOUT_RRADIA
 import edu.uci.ics.jung.settings.BaseSettings.Companion.PREF_VALUE_LAYOUT_RTREE
 import edu.uci.ics.jung.settings.BaseSettings.Companion.PREF_VALUE_LAYOUT_TREE
 import edu.uci.ics.jung.settings.GraphSettingsPreferenceFragment
+import org.depparse.common.AppContext
 import org.grammarscope.graph.CommonSettings.Companion.PREF_EDGE_REVERSE_DIRECTION
 import org.grammarscope.graph.CommonSettings.Companion.PREF_ROOT_VERTEX_COLOR
 import org.grammarscope.graph.CommonSettings.Companion.PREF_ROOT_VERTEX_ICON
@@ -32,7 +33,7 @@ abstract class GraphPreferenceFragment : GraphSettingsPreferenceFragment() {
     override lateinit var preferenceFile: String
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceFile = getPreferenceFile(requireContext())
+        preferenceFile = getPreferenceFile(AppContext.context)
 
         super.onCreatePreferences(savedInstanceState, rootKey)
 

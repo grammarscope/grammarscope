@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.bbou.deploy.coroutines.Deploy.deploy
 import com.bbou.deploy.coroutines.Deploy.emptyDirectory
@@ -24,22 +25,23 @@ import com.bbou.download.preference.Settings.setDatapackDir
 import com.bbou.download.preference.Settings.setRepoPref
 import org.depparse.Broadcast
 import org.depparse.Storage.getAppStorage
+import org.depparse.common.AppContext
+import org.depparse.common.AppValues
 import org.depparse.common.Colors
+import org.grammarscope.annotations.AnnotationsSettings
+import org.grammarscope.annotations.paint.Palette
 import org.grammarscope.common.BuildConfig
 import org.grammarscope.common.R
 import org.grammarscope.graph.DependencySettings
 import org.grammarscope.graph.GraphColors
 import org.grammarscope.graph.SemanticSettings
 import kotlin.system.exitProcess
-import androidx.core.content.edit
-import org.depparse.common.AppValues
-import org.grammarscope.annotations.AnnotationsSettings
-import org.grammarscope.annotations.paint.Palette
 
 class Application : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        AppContext.init(this)
         Log.i(TAG, "Application $this")
         if (BuildConfig.DEBUG) {
             StrictMode.setVmPolicy(VmPolicy.Builder().detectLeakedClosableObjects().penaltyLog().build())
@@ -132,7 +134,7 @@ class Application : Application() {
     private fun setAllColorsFromPreferences(context: Context) {
         ColorSettings.setColorsFromPreferences(context)
         Palette.setColorsFromPreferences(context)
-     }
+    }
 
     companion object {
 

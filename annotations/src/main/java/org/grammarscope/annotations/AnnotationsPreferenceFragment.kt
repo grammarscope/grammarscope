@@ -14,6 +14,7 @@ import androidx.preference.Preference
 import androidx.preference.Preference.SummaryProvider
 import androidx.preference.PreferenceDialogFragmentCompat
 import androidx.preference.PreferenceFragmentCompat
+import org.depparse.common.AppContext
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_EDGE_COLOR
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_IGNORE_RELATIONS
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_LABEL_COLOR
@@ -39,7 +40,7 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         // Define the settings file to use by this settings fragment
         preferenceManager.apply {
-            setSharedPreferencesName(getPreferenceFile(requireContext()))
+            setSharedPreferencesName(getPreferenceFile(AppContext.context))
             setSharedPreferencesMode(Context.MODE_PRIVATE)
         }
 
@@ -52,7 +53,7 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
             val selectedValues = preference.values // This is a Set<String>
             Log.d(TAG, "Selected values: $selectedValues")
             if (selectedValues.isNullOrEmpty()) {
-                requireContext().getString(R.string.pref_description_ignore_relations_none)
+                AppContext.context.getString(R.string.pref_description_ignore_relations_none)
             } else {
                 val entries = preference.entries ?: arrayOf<CharSequence>() // Handle null entries
                 val entryValues = preference.entryValues ?: arrayOf<CharSequence>() // Handle null entryValues
@@ -70,9 +71,9 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
                     // values were selected but none matched entryValues
                     "${selectedValues.size} raw item(s) selected"
                 } else if (selectedEntries.isEmpty()) {
-                    requireContext().getString(R.string.pref_description_ignore_relations_none)
+                    AppContext.context.getString(R.string.pref_description_ignore_relations_none)
                 } else {
-                    requireContext().getString(R.string.pref_description_ignore_relations, selectedEntries)
+                    AppContext.context.getString(R.string.pref_description_ignore_relations, selectedEntries)
                 }
             }
         }
