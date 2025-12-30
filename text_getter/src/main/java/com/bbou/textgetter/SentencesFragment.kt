@@ -40,9 +40,9 @@ class SentencesFragment : Fragment() {
         listView.setHasFixedSize(true)
 
         // Use a linear layout manager
-        val lm = LinearLayoutManager(requireContext())
-        val orientation = lm.orientation
-        listView.setLayoutManager(lm)
+        val layoutManager = LinearLayoutManager(requireContext())
+        val orientation = layoutManager.orientation
+        listView.setLayoutManager(layoutManager)
 
         // Decoration
         val dividerItemDecoration = DividerItemDecoration(requireContext(), orientation)
