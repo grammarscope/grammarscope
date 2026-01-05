@@ -54,7 +54,9 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
         viewer = findViewById(R.id.visualization_viewer)
 
         GraphColors.setColorsFromResources(this)

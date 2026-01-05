@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("CommitTransaction") // BUG
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         // input getter
@@ -103,9 +104,6 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
 
-        // rate
-        invoke(this)
-
         // handle window insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -114,6 +112,9 @@ class MainActivity : AppCompatActivity() {
         }
         val controller = WindowInsetsControllerCompat(window, window.decorView)
         controller.isAppearanceLightStatusBars = false
+
+        // rate
+        invoke(this)
     }
 
     @SuppressLint("MissingSuperCall")

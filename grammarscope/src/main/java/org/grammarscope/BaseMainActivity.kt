@@ -108,6 +108,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate()")
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         // create an intent filter to listen to the broadcast sent forActivity the action "ENGINE" and map it to the receiver
@@ -147,9 +148,6 @@ abstract class BaseMainActivity : AppCompatActivity() {
         // set up UI
         setupUI()
 
-        // rate
-        AppRate.invoke(this)
-
         // handle window insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -158,6 +156,9 @@ abstract class BaseMainActivity : AppCompatActivity() {
         }
         val controller = WindowInsetsControllerCompat(window, window.decorView)
         controller.isAppearanceLightStatusBars = false
+
+        // rate
+        AppRate.invoke(this)
     }
 
     public override fun onDestroy() {
