@@ -2,18 +2,16 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coord_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     tools:context="org.grammarscope.MainActivity">
-
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
         android:fitsSystemWindows="true"
         android:scrollbars="none">
 
@@ -21,35 +19,40 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dependencies"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/description_main_fab_dependencies"
         android:focusable="true"
-        app:layout_anchor="@+id/container"
-        app:layout_anchorGravity="left|bottom"
+        app:layout_anchor="@id/container"
+        app:layout_anchorGravity="bottom|start"
         app:srcCompat="@drawable/ic_dependency"
         app:tint="@android:color/white"
         tools:srcCompat="@drawable/ic_dependency" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_semantics"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/description_main_fab_semantics"
         android:focusable="true"
-        app:layout_anchor="@+id/container"
-        app:layout_anchorGravity="right|bottom"
+        app:layout_anchor="@id/container"
+        app:layout_anchorGravity="bottom|end"
         app:srcCompat="@drawable/ic_semantics"
         app:tint="@android:color/white"
         tools:srcCompat="@drawable/ic_semantics" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
