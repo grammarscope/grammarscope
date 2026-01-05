@@ -22,6 +22,10 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.bbou.deploy.coroutines.Deploy.InputStreamGetter
 import com.bbou.deploy.coroutines.Deploy.deploy
@@ -54,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("CommitTransaction") // BUG
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         // input getter
         getter = InputStreamGetter { path: String? ->
@@ -100,6 +105,15 @@ class MainActivity : AppCompatActivity() {
 
         // rate
         invoke(this)
+
+        // handle window insets
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(0, 0, 0, systemBars.bottom)
+            insets
+        }
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = false
     }
 
     @SuppressLint("MissingSuperCall")
