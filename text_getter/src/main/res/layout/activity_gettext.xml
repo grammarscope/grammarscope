@@ -2,20 +2,20 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coord_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     tools:context="com.bbou.textgetter.GetTextActivity">
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
+
+        <include layout="@layout/toolbar_gettext" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -23,17 +23,23 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary" />
 
-        <include layout="@layout/toolbar_gettext" />
-
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_document"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_anchor="@+id/view_pager"
+        app:layout_anchorGravity="left|bottom"
         android:contentDescription="@string/description_from_document"
         android:tint="@android:color/white"
         app:srcCompat="@drawable/ic_textdocument" />
@@ -43,10 +49,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_anchor="@+id/view_pager"
+        app:layout_anchorGravity="right|bottom"
+        android:clickable="true"
         android:contentDescription="@string/description_from_camera"
+        android:focusable="true"
         android:tint="@android:color/white"
         app:srcCompat="@drawable/ic_camera" />
 
@@ -55,16 +65,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_anchor="@+id/view_pager"
+        app:layout_anchorGravity="center|bottom"
+        android:clickable="true"
         android:contentDescription="@string/description_from_image"
+        android:focusable="true"
         android:tint="@android:color/white"
         app:srcCompat="@drawable/ic_image" />
-
-    <!--
-    app:layout_anchor="@id/fab_recog"
-    app:layout_anchorGravity="left"
-    -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
