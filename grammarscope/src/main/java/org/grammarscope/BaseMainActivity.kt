@@ -154,8 +154,9 @@ abstract class BaseMainActivity : AppCompatActivity() {
             view.setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
+        val isNightMode = Application.isNightMode(this)
         val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = false
+        controller.isAppearanceLightStatusBars = !isNightMode
 
         // rate
         AppRate.invoke(this)
