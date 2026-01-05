@@ -21,6 +21,10 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bbou.textrecog.ImageUtils
@@ -51,6 +55,9 @@ class GetTextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        // layout
         setContentView(R.layout.activity_gettext)
         var lang = intent.getStringExtra(ARG_LANG)
         if (lang == null) {
@@ -126,6 +133,15 @@ class GetTextActivity : AppCompatActivity() {
         fabDocument.setOnClickListener { trySelectDocument() }
         val fabImage = findViewById<FloatingActionButton>(R.id.fab_image)
         fabImage.setOnClickListener { trySelectImage() }
+
+        // handle window insets
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(0, 0, 0, systemBars.bottom)
+            insets
+        }
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = false
     }
 
     /**
