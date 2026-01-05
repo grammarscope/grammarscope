@@ -4,7 +4,7 @@
 
 <resources>
 
-	<style name="MyBaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar" />
+	<style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
 	<style name="MyXBaseTheme" parent="MyBaseTheme" />
 
@@ -53,6 +53,10 @@
 		<!-- dropdowns -->
 		<!-- <item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>-->
 		<!-- <item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>-->
+
+        <!-- transparent statusbar and navigation bar -->
+		<item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
 
 	</style>
 
