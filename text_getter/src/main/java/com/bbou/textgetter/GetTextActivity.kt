@@ -7,6 +7,7 @@ import android.app.SearchManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -55,7 +56,11 @@ class GetTextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // statusbar
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        val isNightMode = isNightMode(this)
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = !isNightMode
 
         // layout
         setContentView(R.layout.activity_gettext)
@@ -140,8 +145,6 @@ class GetTextActivity : AppCompatActivity() {
             view.setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = false
     }
 
     /**
@@ -224,6 +227,21 @@ class GetTextActivity : AppCompatActivity() {
     }
 
     // H E L P E R S
+
+    /**
+     * Test whether in night mode.
+     *
+     * @param context context
+     * @return true if in night mode, false otherwise
+     */
+    private fun isNightMode(context: Context): Boolean {
+        val nightModeFlags = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return when (nightModeFlags) {
+            Configuration.UI_MODE_NIGHT_YES -> true
+            Configuration.UI_MODE_NIGHT_NO -> false
+            else -> false
+        }
+    }
 
     /**
      * Close keyboard

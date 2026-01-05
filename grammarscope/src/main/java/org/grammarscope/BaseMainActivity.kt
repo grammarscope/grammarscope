@@ -109,7 +109,11 @@ abstract class BaseMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate()")
 
+        // statusbar
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        val isNightMode = Application.isNightMode(this)
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = !isNightMode
 
         // create an intent filter to listen to the broadcast sent forActivity the action "ENGINE" and map it to the receiver
         ContextCompat.registerReceiver(this, receiver, IntentFilter(Broadcast.BROADCAST_LISTEN), ContextCompat.RECEIVER_NOT_EXPORTED)
@@ -154,9 +158,6 @@ abstract class BaseMainActivity : AppCompatActivity() {
             view.setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
-        val isNightMode = Application.isNightMode(this)
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = !isNightMode
 
         // rate
         AppRate.invoke(this)

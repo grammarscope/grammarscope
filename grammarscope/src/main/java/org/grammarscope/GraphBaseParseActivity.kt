@@ -55,7 +55,11 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // statusbar
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        val isNightMode = Application.isNightMode(this)
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = !isNightMode
 
         viewer = findViewById(R.id.visualization_viewer)
 
@@ -69,8 +73,6 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
             view.setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = false
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
