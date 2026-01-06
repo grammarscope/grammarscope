@@ -181,7 +181,7 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
     }
 
     private fun Context.getColorFromAttr(
-        @AttrRes attrColor: Int,
+        @Suppress("SameParameterValue") @AttrRes attrColor: Int,
         typedValue: TypedValue = TypedValue(),
         resolveRefs: Boolean = true
     ): Int {

@@ -16,6 +16,7 @@ class AnnotationsSettings @JvmOverloads constructor(val context: Context, nightM
 
     internal val sharedPrefs = getSharedPreferences(context)
 
+    @Suppress("SameReturnValue")
     fun initializePrefs(): Boolean {
         // initialize
         sharedPrefs.edit(commit = true) {
