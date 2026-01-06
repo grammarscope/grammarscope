@@ -26,6 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.Label
 import org.depparse.Token
+import org.depparse.common.AppMode.isNightMode
 import org.depparse.common.BaseParse
 import org.depparse.common.BaseParseActivity
 import org.grammarscope.common.R
@@ -57,7 +58,7 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
 
         // statusbar
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        val isNightMode = Application.isNightMode(this)
+        val isNightMode = isNightMode(this)
         val controller = WindowInsetsControllerCompat(window, window.decorView)
         controller.isAppearanceLightStatusBars = !isNightMode
 
