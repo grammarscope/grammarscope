@@ -58,7 +58,7 @@ class GetTextActivity : AppCompatActivity() {
 
         // statusbar
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        val isNightMode = isNightMode(this)
+        val isNightMode = (this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
         val controller = WindowInsetsControllerCompat(window, window.decorView)
         controller.isAppearanceLightStatusBars = !isNightMode
 
@@ -227,21 +227,6 @@ class GetTextActivity : AppCompatActivity() {
     }
 
     // H E L P E R S
-
-    /**
-     * Test whether in night mode.
-     *
-     * @param context context
-     * @return true if in night mode, false otherwise
-     */
-    private fun isNightMode(context: Context): Boolean {
-        val nightModeFlags = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        return when (nightModeFlags) {
-            Configuration.UI_MODE_NIGHT_YES -> true
-            Configuration.UI_MODE_NIGHT_NO -> false
-            else -> false
-        }
-    }
 
     /**
      * Close keyboard

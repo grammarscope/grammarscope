@@ -4,6 +4,7 @@
 package com.bbou.donate
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
@@ -21,6 +22,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.android.billingclient.api.Purchase
 import com.bbou.donate.billing.BillingManager
 import com.bbou.donate.billing.BillingManager.BillingListener
@@ -55,6 +58,12 @@ class DonateActivity : AppCompatActivity(), BillingListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // statusbar
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val isNightMode = (this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = !isNightMode
 
         // content view
         setContentView(R.layout.activity_donate)
