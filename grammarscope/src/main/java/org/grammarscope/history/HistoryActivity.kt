@@ -30,8 +30,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
+import org.depparse.common.AppMode.isNightMode
 import org.grammarscope.MainActivity
 import org.grammarscope.common.R
 import org.grammarscope.history.History.Companion.recordQuery
@@ -63,6 +66,12 @@ class HistoryActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Curso
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // statusbar
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val isNightMode = isNightMode(this)
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = !isNightMode
 
         // layout
         setContentView(R.layout.activity_history)

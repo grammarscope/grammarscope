@@ -13,10 +13,13 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.edit
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import org.depparse.common.AppMode.isNightMode
 
 abstract class BaseSettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
@@ -31,6 +34,12 @@ abstract class BaseSettingsActivity : AppCompatActivity(), PreferenceFragmentCom
     override fun onCreate(savedInstanceState: Bundle?) {
         // super
         super.onCreate(savedInstanceState)
+
+        // statusbar
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val isNightMode = isNightMode(this)
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+        controller.isAppearanceLightStatusBars = !isNightMode
 
         // content view
         setContentView(R.layout.activity_settings)
