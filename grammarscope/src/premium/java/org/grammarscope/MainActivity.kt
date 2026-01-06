@@ -40,7 +40,7 @@ class MainActivity : BaseMainActivity() {
             val intent = Intent(this, GetTextActivity::class.java)
             val info = ModelInfo.read(this)
             if (info != null) {
-                intent.putExtra(GetTextActivity.ARG_LANG, info.lang.substring(0, 2).lowercase(Locale.getDefault()))
+                intent.putExtra(GetTextActivity.ARG_LANG, info.lang.take(2).lowercase(Locale.getDefault()))
             }
             startActivity(intent)
         }
