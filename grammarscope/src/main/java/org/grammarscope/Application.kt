@@ -208,21 +208,6 @@ class Application : Application() {
         }
 
         /**
-         * Test whether in night mode.
-         *
-         * @param context context
-         * @return true if in night mode, false otherwise
-         */
-        fun isNightMode(context: Context): Boolean {
-            val nightModeFlags = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-            return when (nightModeFlags) {
-                Configuration.UI_MODE_NIGHT_YES -> true
-                Configuration.UI_MODE_NIGHT_NO -> false
-                else -> false
-            }
-        }
-
-        /**
          * Get night mode.
          *
          * @param context context
