@@ -8,11 +8,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.bbou.capture.Capture.captureAndSave
 import com.bbou.capture.Capture.captureAndShare
@@ -26,7 +25,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.Label
 import org.depparse.Token
-import org.depparse.common.AppMode.isNightMode
 import org.depparse.common.BaseParse
 import org.depparse.common.BaseParseActivity
 import org.grammarscope.common.R
@@ -56,11 +54,8 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // statusbar
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val isNightMode = isNightMode(this)
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = !isNightMode
+        // edge to edge
+        enableEdgeToEdge()
 
         viewer = findViewById(R.id.visualization_viewer)
 

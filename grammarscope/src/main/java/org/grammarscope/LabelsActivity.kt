@@ -12,13 +12,11 @@ import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import org.depparse.Storage.getAppStorage
-import org.depparse.common.AppMode.isNightMode
 import org.depparse.common.WebActivity.Companion.tryStart
 import org.grammarscope.common.R
 import org.grammarscope.semantics.SemanticRelations.ObjectRelations
@@ -51,11 +49,8 @@ class LabelsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // statusbar
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val isNightMode = isNightMode(this)
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = !isNightMode
+        // edge to edge
+        enableEdgeToEdge()
 
         // layout
         setContentView(R.layout.activity_labels)

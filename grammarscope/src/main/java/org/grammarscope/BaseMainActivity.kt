@@ -22,6 +22,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -32,9 +33,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
@@ -62,7 +61,6 @@ import org.depparse.Broadcast
 import org.depparse.IProvider
 import org.depparse.Storage
 import org.depparse.common.AboutActivity
-import org.depparse.common.AppMode.isNightMode
 import org.depparse.common.BaseParseActivity.Companion.tryStartParse
 import org.depparse.common.Colors
 import org.depparse.common.LanguageFlag
@@ -110,11 +108,8 @@ abstract class BaseMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate()")
 
-        // statusbar
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val isNightMode = isNightMode(this)
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = !isNightMode
+        // edge to edge
+        enableEdgeToEdge()
 
         // create an intent filter to listen to the broadcast sent forActivity the action "ENGINE" and map it to the receiver
         ContextCompat.registerReceiver(this, receiver, IntentFilter(Broadcast.BROADCAST_LISTEN), ContextCompat.RECEIVER_NOT_EXPORTED)

@@ -9,14 +9,12 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.bbou.deploy.coroutines.Deploy.fastCheck
 import org.depparse.Storage
-import org.depparse.common.AppMode.isNightMode
 import java.text.Normalizer
 import java.util.function.Consumer
 
@@ -29,11 +27,8 @@ abstract class BaseParseActivity<T> : AppCompatActivity(), Consumer<T> {
         Log.d(TAG, "onCreate")
         super.onCreate(savedInstanceState)
 
-        // statusbar
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val isNightMode = isNightMode(this)
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = !isNightMode
+        // edge to edge
+        enableEdgeToEdge()
 
         // init
         fastCheck(Storage.getAppStorage(this))

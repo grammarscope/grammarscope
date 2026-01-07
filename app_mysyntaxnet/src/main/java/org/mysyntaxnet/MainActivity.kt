@@ -19,13 +19,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.bbou.deploy.coroutines.Deploy.InputStreamGetter
 import com.bbou.deploy.coroutines.Deploy.deploy
@@ -41,7 +40,6 @@ import org.depparse.Sentence
 import org.depparse.Storage.getAppStorage
 import org.depparse.Unique
 import org.depparse.common.AboutActivity
-import org.depparse.common.AppMode.isNightMode
 import org.depparse.common.BaseParseActivity.Companion.tryStartParse
 import org.depparse.common.ModelInfo.Companion.read
 import org.depparse.common.UniqueProvider
@@ -60,12 +58,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // statusbar
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val isNightMode = isNightMode(this)
-        val controller = WindowInsetsControllerCompat(window, window.decorView)
-        controller.isAppearanceLightStatusBars = !isNightMode
-
+        // edge to edge
+        enableEdgeToEdge()
 
         // input getter
         getter = InputStreamGetter { path: String? ->
