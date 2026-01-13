@@ -10,4 +10,9 @@
 	<cache-path
 		name="capture"
 		path="." />
+
+    <!-- Paths for mediadata files -->
+    <external-media-path
+        name="external_media"
+        path="." />
 </paths>
