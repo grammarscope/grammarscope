@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.kotlinAndroid)
 }
 
 private val vCompileSdk by lazy { rootProject.extra["compileSdk"] as Int }
@@ -36,10 +35,10 @@ android {
 
     sourceSets {
         getByName("base") {
-            assets.srcDirs("src/base/")
+            assets.directories.add("src/base/")
         }
         getByName("premium") {
-            assets.srcDirs("src/premium/")
+            assets.directories.add("src/premium/")
         }
     }
 

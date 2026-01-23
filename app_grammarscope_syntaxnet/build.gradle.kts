@@ -10,7 +10,6 @@ fun getProps(file: File): Properties {
 
 plugins {
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.kotlinAndroid)
 }
 
 private val vCode by lazy { rootProject.extra["versionCode"] as Int }
@@ -95,18 +94,14 @@ android {
 
     sourceSets {
         getByName("base") {
-            assets.srcDirs("src/base/")
+            assets.directories.add("src/base/")
         }
         getByName("premium") {
-            assets.srcDirs("src/premium/")
+            assets.directories.add("src/premium/")
         }
         getByName("androidTest") {
-            assets.srcDirs("src/main/assets/", "src/debug/assets/")
+            assets.directories.addAll(listOf("src/main/assets/", "src/debug/assets/"))
         }
-    }
-
-    packagingOptions.jniLibs {
-        useLegacyPackaging = true
     }
 
     lint {
@@ -121,7 +116,7 @@ android {
 // }
 
 androidComponents.onVariants { variant ->
-    if (variant.flavorName?.contains("premiumm") == true) {
+    if (variant.flavorName?.contains("premium") == true) {
 
         pluginManager.apply(libs.plugins.googleServices.get().pluginId)
         //project.plugins.apply("your.plugin.id")
