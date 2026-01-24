@@ -50,7 +50,9 @@
 
 	<string name="action_semantics_reset">Reset semantics</string>
 
-	<string name="description_splash">powered by SyntaxNet</string>
+    <string name="action_cancel">Cancel</string>
+
+    <string name="description_splash">powered by SyntaxNet</string>
 	<string name="description_graph">Graph</string>
 	<string name="description_main_fab_dependencies">Run dependencies</string>
 	<string name="description_main_fab_semantics">Run semantics</string>
@@ -85,7 +87,7 @@
 	<string name="provider_not_ready">not ready</string>
 	<string name="provider_pending">pending</string>
 
-	<plurals name="sentences_found">
+    <plurals name="sentences_found">
 		<item quantity="zero">No sentence found.</item>
 		<item quantity="one">%1$d sentence found.</item>
 		<item quantity="other">%1$d sentences found.</item>

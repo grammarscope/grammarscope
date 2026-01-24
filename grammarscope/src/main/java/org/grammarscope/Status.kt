@@ -20,7 +20,12 @@ import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 import kotlin.math.ln
 import kotlin.math.pow
+import org.depparse.common.R as CommonR
+import com.google.android.material.R as MaterialR
 
+/**
+ * Status
+ */
 object Status {
 
     private fun format(text: CharSequence, vararg factories: SpanFactory): SpannableStringBuilder {
@@ -53,7 +58,7 @@ object Status {
             alert.setIcon(R.drawable.ic_error)
             alert.setMessage(R.string.model_none)
         } else {
-            val colors = getColorAttrs(activity, R.style.MyTheme, intArrayOf(R.attr.colorAccent, R.attr.colorOnPrimary, R.attr.colorOnSecondary))
+            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorAccent, MaterialR.attr.colorOnPrimary, MaterialR.attr.colorOnSecondary))
             val langFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.BOLD)) }
             val nameFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
             val moreFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.ITALIC)) }

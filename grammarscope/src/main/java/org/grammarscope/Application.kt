@@ -36,6 +36,8 @@ import org.grammarscope.graph.DependencySettings
 import org.grammarscope.graph.GraphColors
 import org.grammarscope.graph.SemanticSettings
 import kotlin.system.exitProcess
+import com.bbou.download.common.R as DownloadR
+import org.depparse.common.R as CommonR
 
 class Application : Application() {
 
@@ -174,7 +176,7 @@ class Application : Application() {
             }
 
             // download repo
-            val defaultSource = context.getString(R.string.default_download_repo)
+            val defaultSource = context.getString(DownloadR.string.default_download_repo)
             setRepoPref(context, defaultSource)
         }
 
@@ -186,7 +188,7 @@ class Application : Application() {
             //newConfig.uiMode &= ~Configuration.UI_MODE_NIGHT_MASK; // clear
             //newConfig.uiMode |= toConfigurationUiMode(mode) & Configuration.UI_MODE_NIGHT_MASK; // set
             val newContext = context.createConfigurationContext(newConfig)
-            return ContextThemeWrapper(newContext, R.style.MyTheme)
+            return ContextThemeWrapper(newContext, CommonR.style.MyTheme)
         }
 
         fun createOverrideConfigurationForDayNight(context: Context, mode: Int): Configuration {

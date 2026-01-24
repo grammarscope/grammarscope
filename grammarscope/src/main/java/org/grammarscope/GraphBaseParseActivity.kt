@@ -30,6 +30,7 @@ import org.depparse.common.BaseParseActivity
 import org.grammarscope.common.R
 import org.grammarscope.graph.GraphColors
 import org.grammarscope.graph.SentenceGraph
+import com.bbou.capture.R as CaptureR
 
 abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivity<G>() {
 
@@ -148,7 +149,7 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
-        Toast.makeText(activity, R.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, CaptureR.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
         return null
     }
 

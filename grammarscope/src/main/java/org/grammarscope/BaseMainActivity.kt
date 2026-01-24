@@ -77,6 +77,8 @@ import org.grammarscope.history.History.Companion.recordQuery
 import org.grammarscope.history.HistoryActivity
 import java.util.Locale
 import java.util.function.Consumer
+import org.depparse.common.R as CommonR
+import com.google.android.material.R as MaterialR
 
 abstract class BaseMainActivity : AppCompatActivity() {
 
@@ -128,7 +130,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
         // set up the action bar
         val actionBar = supportActionBar!!
         actionBar.setTitle(R.string.actionbar_title)
-        actionBar.setSubtitle(R.string.actionbar_subtitle)
+        actionBar.setSubtitle(CommonR.string.actionbar_subtitle)
         actionBar.elevation = 0f
         actionBar.displayOptions = ActionBar.DISPLAY_SHOW_TITLE or ActionBar.DISPLAY_USE_LOGO
 
@@ -289,7 +291,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
                     val builder = AlertDialog.Builder(requireContext())
                     builder
                         .setTitle(R.string.title_sentences)
-                        .setItems(sentences) { dialog, which ->
+                        .setItems(sentences) { _, which ->
                             val selected = sentences[which]
                             queryEdit.setText(selected)
                         }
@@ -916,7 +918,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
         } else {
             val title = if (bound) R.string.action_unbind else R.string.action_bind
             val drawable = AppCompatResources.getDrawable(this, if (bound) R.drawable.ic_unbind else R.drawable.ic_bind)!!
-            val tints = Colors.getColorAttrs(this, R.style.MyTheme, intArrayOf(R.attr.colorOnPrimary, R.attr.colorAccent))
+            val tints = Colors.getColorAttrs(this, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorOnPrimary, MaterialR.attr.colorAccent))
             val tint = tints[if (bound) 0 else 1]
             DrawableCompat.setTint(drawable, tint)
             controlMenuItem?.let {
@@ -939,7 +941,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
         controlMenuItem?.let {
             it.setTitle(R.string.provider_pending)
             val animatedDrawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animated_pending)!!
-            val tint = Colors.getColorAttr(this, R.style.MyTheme, R.attr.colorOnPrimary)
+            val tint = Colors.getColorAttr(this, CommonR.style.MyTheme, MaterialR.attr.colorOnPrimary)
             DrawableCompat.setTint(animatedDrawable, tint)
             it.icon = animatedDrawable
             animatedDrawable.start()
@@ -950,7 +952,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
         Log.d(TAG, "UPDATE loaded: $loaded")
         if (loaded) {
             try {
-                val tint = Colors.getColorAttr(this, R.style.MyTheme, R.attr.colorOnPrimary)
+                val tint = Colors.getColorAttr(this, CommonR.style.MyTheme, MaterialR.attr.colorOnPrimary)
                 loadedIndicator.setColorFilter(tint)
                 val animatedDrawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animated_bound)!!
                 loadedIndicator.setImageDrawable(animatedDrawable)

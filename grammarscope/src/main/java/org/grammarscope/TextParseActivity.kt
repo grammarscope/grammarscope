@@ -9,6 +9,8 @@ import com.bbou.capture.Capture.captureAndShare
 import com.bbou.capture.Capture.getBackgroundFromTheme
 import org.depparse.common.TextBaseParseActivity
 import org.grammarscope.common.R
+import com.bbou.capture.R as CaptureR
+import org.depparse.common.R as CommonR
 
 abstract class TextParseActivity : TextBaseParseActivity() {
 
@@ -22,7 +24,7 @@ abstract class TextParseActivity : TextBaseParseActivity() {
                 if (view != null) {
                     val bg = getBackgroundFromTheme(this)
                     captureAndSave(view, this, backGround = bg)
-                 }
+                }
                 return true
             }
 
@@ -40,11 +42,11 @@ abstract class TextParseActivity : TextBaseParseActivity() {
     }
 
     private fun capturedView(activity: AppCompatActivity): View? {
-        val view = activity.findViewById<View>(R.id.parsed)
+        val view = activity.findViewById<View>(CommonR.id.parsed)
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
-        Toast.makeText(activity, R.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, CaptureR.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
         return null
     }
 }

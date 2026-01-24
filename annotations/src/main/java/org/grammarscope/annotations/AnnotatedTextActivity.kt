@@ -28,6 +28,7 @@ import org.grammarscope.annotations.annotate.DependencyAnnotator
 import org.grammarscope.annotations.annotate.PosAnnotator
 import org.grammarscope.annotations.document.AnnotationParse
 import org.grammarscope.annotations.document.Document
+import com.bbou.capture.R as CaptureR
 
 class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
 
@@ -153,7 +154,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
-        Toast.makeText(activity, R.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, CaptureR.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
         return null
     }
 

@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.common.Parse
 import org.depparse.common.TextBaseParseActivity
+import org.depparse.common.R as CommonR
 
 class ParseActivity : TextBaseParseActivity() {
 
@@ -24,7 +25,7 @@ class ParseActivity : TextBaseParseActivity() {
     }
 
     override fun accept(result: CharSequence?) {
-        val textView = findViewById<TextView>(R.id.parsed)
+        val textView = findViewById<TextView>(CommonR.id.parsed)
         if (textView != null) {
             textView.text = result ?: ""
         }

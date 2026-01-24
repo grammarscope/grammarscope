@@ -17,6 +17,7 @@ import org.jung.colors.chooser.ColorChooserPreference
 import org.jung.colors.chooser.ColorChooserPreferenceDialogFragment
 import org.jung.colors.picker.ColorPickerPreference
 import org.jung.colors.picker.ColorPickerPreferenceDialogFragment
+import org.depparse.common.R as CommonR
 
 /**
  * This fragment shows text preferences only.
@@ -40,7 +41,7 @@ class TextPreferenceFragment : PreferenceFragmentCompat() {
                 Colors.rootBackColor = color
                 Colors.rootColor = computeForeColor(color)
             } else {
-                val colors = getColors(requireContext(), R.color.rootColor, R.color.rootBackColor)
+                val colors = getColors(requireContext(), CommonR.color.rootColor, CommonR.color.rootBackColor)
                 Colors.rootBackColor = colors[1]
                 Colors.rootColor = colors[0]
             }
@@ -53,7 +54,7 @@ class TextPreferenceFragment : PreferenceFragmentCompat() {
                 Colors.labelBackColor = color
                 Colors.labelColor = computeForeColor(color)
             } else {
-                val colors = getColors(requireContext(), R.color.labelColor, R.color.labelBackColor)
+                val colors = getColors(requireContext(), CommonR.color.labelColor, CommonR.color.labelBackColor)
                 Colors.labelBackColor = colors[1]
                 Colors.labelColor = colors[0]
             }
@@ -66,7 +67,7 @@ class TextPreferenceFragment : PreferenceFragmentCompat() {
                 Colors.enhancedLabelBackColor = color
                 Colors.enhancedLabelColor = computeForeColor(color)
             } else {
-                val colors = getColors(requireContext(), R.color.enhancedLabelColor, R.color.enhancedLabelBackColor)
+                val colors = getColors(requireContext(), CommonR.color.enhancedLabelColor, CommonR.color.enhancedLabelBackColor)
                 Colors.enhancedLabelBackColor = colors[1]
                 Colors.enhancedLabelColor = colors[0]
             }
@@ -79,7 +80,7 @@ class TextPreferenceFragment : PreferenceFragmentCompat() {
                 Colors.headBackColor = color
                 Colors.headColor = computeForeColor(color)
             } else {
-                val colors = getColors(requireContext(), R.color.headColor, R.color.headBackColor)
+                val colors = getColors(requireContext(), CommonR.color.headColor, CommonR.color.headBackColor)
                 Colors.headBackColor = colors[1]
                 Colors.headColor = colors[0]
             }
@@ -92,7 +93,7 @@ class TextPreferenceFragment : PreferenceFragmentCompat() {
                 Colors.dependentBackColor = color
                 Colors.dependentColor = computeForeColor(color)
             } else {
-                val colors = getColors(requireContext(), R.color.dependentColor, R.color.dependentBackColor)
+                val colors = getColors(requireContext(), CommonR.color.dependentColor, CommonR.color.dependentBackColor)
                 Colors.dependentBackColor = colors[1]
                 Colors.dependentColor = colors[0]
             }

@@ -46,6 +46,8 @@ import org.depparse.common.UniqueProvider
 import org.depparse.common.showSwipableSnackbar
 import org.syntaxnet1.Syntaxnet1Engine
 import java.io.File
+import com.bbou.others.R as OthersR
+import org.depparse.common.R as CommonR
 
 class MainActivity : AppCompatActivity() {
 
@@ -80,15 +82,15 @@ class MainActivity : AppCompatActivity() {
         // warning
         val parentLayout = findViewById<View>(R.id.coord_layout)
         showSwipableSnackbar(this, parentLayout, R.string.obsolete_app, android.R.color.holo_red_light, android.R.color.white, R.string.obsolete_get_grammarscope) {
-            install(this.getString(org.depparse.common.R.string.grammarscope_uri), this)
+            install(getString(OthersR.string.grammarscope_uri), this)
         }
 
         // toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(CommonR.id.toolbar)
         setSupportActionBar(toolbar)
 
         // set up the action bar
-        @SuppressLint("InflateParams") val actionBarView = layoutInflater.inflate(R.layout.actionbar_custom, null)
+        @SuppressLint("InflateParams") val actionBarView = layoutInflater.inflate(CommonR.layout.actionbar_custom, null)
         val actionBar = supportActionBar!!
         actionBar.setTitle(R.string.actionbar_title)
         actionBar.setSubtitle(R.string.actionbar_subtitle)
