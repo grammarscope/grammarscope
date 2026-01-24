@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.R as MaterialR
 
 @Suppress("unused")
 fun showSnackbar(context: Context, parentLayout: View, @StringRes textId: Int, @ColorRes backColor: Int = 0, @ColorRes foreColor: Int = 0, duration: Int = Snackbar.LENGTH_LONG) {
@@ -21,7 +22,7 @@ fun showSnackbar(context: Context, parentLayout: View, @StringRes textId: Int, @
 
 fun showSnackbar(context: Context, parentLayout: View, text: CharSequence, @ColorRes backColor: Int = 0, @ColorRes foreColor: Int = 0, duration: Int = Snackbar.LENGTH_LONG) {
     val colors: IntArray = if (backColor == 0 || foreColor == 0)
-        Colors.getColorAttrs(context, R.style.MyTheme, intArrayOf(R.attr.colorPrimary, R.attr.colorOnPrimary)) else
+        Colors.getColorAttrs(context, R.style.MyTheme, intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary)) else
         arrayOf(ContextCompat.getColor(context, backColor), ContextCompat.getColor(context, foreColor)).toIntArray()
     val snackbar = Snackbar.make(parentLayout, text, duration)
     snackbar.setTextMaxLines(8)
@@ -38,7 +39,7 @@ fun showSwipableSnackbar(context: Context, parentLayout: View, @StringRes textId
 
 fun showSwipableSnackbar(context: Context, parentLayout: View, text: CharSequence, @ColorRes backColor: Int = 0, @ColorRes foreColor: Int = 0, action: CharSequence, listener: View.OnClickListener) {
     val colors: IntArray = if (backColor == 0 || foreColor == 0)
-        Colors.getColorAttrs(context, R.style.MyTheme, intArrayOf(R.attr.colorSecondary, R.attr.colorOnSecondary)) else
+        Colors.getColorAttrs(context, R.style.MyTheme, intArrayOf(MaterialR.attr.colorSecondary, MaterialR.attr.colorOnSecondary)) else
         arrayOf(ContextCompat.getColor(context, backColor), ContextCompat.getColor(context, foreColor)).toIntArray()
     val behavior = BaseTransientBottomBar.Behavior()
     behavior.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY)
