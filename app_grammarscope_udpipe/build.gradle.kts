@@ -10,6 +10,7 @@ fun getProps(file: File): Properties {
 
 plugins {
     alias(libs.plugins.androidApplication)
+    alias(libs.plugins.googleServices)
 }
 
 private val vCode by lazy { rootProject.extra["versionCode"] as Int }
@@ -114,10 +115,11 @@ android {
 }
 
 androidComponents.onVariants { variant ->
-    if (variant.flavorName?.contains("premiumm") == true) {
-
-        pluginManager.apply(libs.plugins.googleServices.get().pluginId)
-        //project.plugins.apply("your.plugin.id")
+    if (variant.flavorName == "base") {
+        val taskName = "process${variant.name.replaceFirstChar { it.uppercase() }}GoogleServices"
+        project.tasks.named(taskName).configure {
+            enabled = false
+        }
     }
 }
 
