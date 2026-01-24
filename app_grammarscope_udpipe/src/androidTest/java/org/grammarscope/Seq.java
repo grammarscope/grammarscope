@@ -82,7 +82,7 @@ class Seq
 	static void do_menu_check(@SuppressWarnings("SameParameterValue") final @StringRes int resId, boolean mustBeChecked)
 	{
 		openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
-		Matcher<View> v = Matchers.checkboxWithMenuItem(R.string.action_as_graph);
+		Matcher<View> v = Matchers.checkboxWithMenuItem(org.grammarscope.common.R.string.action_as_graph);
 		boolean wasChecked = ToBoolean.test(v, isChecked());
 		if ((mustBeChecked && !wasChecked) || (!mustBeChecked && wasChecked))
 		{
@@ -90,7 +90,7 @@ class Seq
 			openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
 		}
 
-		Matcher<View> v2 = Matchers.checkboxWithMenuItem(R.string.action_as_graph);
+		Matcher<View> v2 = Matchers.checkboxWithMenuItem(org.grammarscope.common.R.string.action_as_graph);
 		onView(v2).check(matches(mustBeChecked ? isChecked() : isNotChecked()));
 		do_pressBack();
 	}

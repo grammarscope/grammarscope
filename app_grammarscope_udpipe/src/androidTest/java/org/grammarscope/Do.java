@@ -6,10 +6,10 @@ package org.grammarscope;
 
 import android.view.View;
 
-import org.grammarscope.udpipe.R;
-import org.hamcrest.Matcher;
-
 import androidx.annotation.IdRes;
+
+import org.grammarscope.common.R;
+import org.hamcrest.Matcher;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -64,11 +64,11 @@ class Do
 			Seq.do_click(R.id.fab_dependencies);
 			Wait.pause(3); // snackbar
 
-			Wait.until(R.id.parsed, 3);
-			onView(withId(R.id.parsed)) //
+			Wait.until(org.depparse.common.R.id.parsed, 3);
+			onView(withId(org.depparse.common.R.id.parsed)) //
 					.check(matches(isDisplayed())) //
 			;
-			onView(withId(R.id.parsed)) //
+			onView(withId(org.depparse.common.R.id.parsed)) //
 					.perform(swipeUp()) //
 					.perform(swipeDown()) //
 			;
@@ -79,10 +79,10 @@ class Do
 			Seq.do_click(R.id.fab_semantics);
 			Wait.pause(3); // snackbar
 
-			Wait.until(R.id.parsed, 10);
-			onView(withId(R.id.parsed)) //
+			Wait.until(org.depparse.common.R.id.parsed, 10);
+			onView(withId(org.depparse.common.R.id.parsed)) //
 					.check(matches(isDisplayed()));
-			onView(withId(R.id.parsed)) //
+			onView(withId(org.depparse.common.R.id.parsed)) //
 					.perform(swipeUp()) //
 					.perform(swipeDown()) //
 			;
