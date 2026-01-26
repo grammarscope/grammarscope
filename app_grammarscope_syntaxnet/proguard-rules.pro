@@ -86,4 +86,10 @@
 -keep class com.google.android.gms.** { *; }
 -keep class com.google.firebase.** { *; }
 
+# A N D R O I D X   S T A R T U P   /   W O R K M A N A G E R
+
+-keep class androidx.startup.InitializationProvider { *; }
+-keep class androidx.work.impl.WorkDatabase_Impl { *; }
+-keep class androidx.work.impl.** { *; }
+
 #-dontwarn **
