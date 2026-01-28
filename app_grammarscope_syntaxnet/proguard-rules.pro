@@ -92,4 +92,9 @@
 -keep class androidx.work.impl.WorkDatabase_Impl { *; }
 -keep class androidx.work.impl.** { *; }
 
+# ML Kit
+-keep class com.google.mlkit.** { *; }
+-keep class com.google.android.gms.internal.mlkit_* { *; }
+-keep class com.google.android.odml.image.** { *; }
+
 #-dontwarn **
