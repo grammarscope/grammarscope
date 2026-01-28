@@ -91,10 +91,10 @@
 -keep class androidx.work.impl.WorkDatabase_Impl { *; }
 -keep class androidx.work.impl.** { *; }
 
-# A N D R O I D X   S T A R T U P   /   W O R K M A N A G E R
+# M L  K I T
 
--keep class androidx.startup.InitializationProvider { *; }
--keep class androidx.work.impl.WorkDatabase_Impl { *; }
--keep class androidx.work.impl.** { *; }
+-keep class com.google.mlkit.** { *; }
+-keep class com.google.android.gms.internal.mlkit_* { *; }
+-keep class com.google.android.odml.image.** { *; }
 
 #-dontwarn **

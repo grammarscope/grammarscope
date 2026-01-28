@@ -129,9 +129,11 @@
 # -dontwarn org.osgi.util.tracker.ServiceTracker
 
 # O T H E R
+
 -dontwarn com.google.android.material.snackbar.**
 
 # F I R E B A S E
+
 -keep class com.google.android.gms.** { *; }
 -keep class com.google.firebase.** { *; }
 
@@ -140,5 +142,11 @@
 -keep class androidx.startup.InitializationProvider { *; }
 -keep class androidx.work.impl.WorkDatabase_Impl { *; }
 -keep class androidx.work.impl.** { *; }
+
+# M L  K I T
+
+-keep class com.google.mlkit.** { *; }
+-keep class com.google.android.gms.internal.mlkit_* { *; }
+-keep class com.google.android.odml.image.** { *; }
 
 #-dontwarn **
