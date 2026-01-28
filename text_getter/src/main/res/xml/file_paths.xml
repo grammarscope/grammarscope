@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  ~ Copyright (c) 2026. Bernard Bou <1313ou@gmail.com>.
   -->
 
 <paths>
+    <!-- internal storage -->
+    <files-path
+        name="capture_to_files"
+        path="." />
+
+    <!-- internal cache -->
     <cache-path
-        name="capture"
+        name="capture_to_cache"
         path="." />
 
+    <!-- root of external storage -->
+    <external-path
+        name="capture_to_external"
+        path="." />
+
+    <!-- app's private directory on external storage -->
+    <external-files-path
+        name="capture_to_external_files"
+        path="." />
+
+    <!-- app's external cache -->
     <external-cache-path
-        name="external_capture"
+        name="capture_to_external_cache"
         path="." />
 
-    <!-- Paths for mediadata files -->
+    <!-- mediadata files on external media directories -->
     <external-media-path
-        name="external_media"
+        name="capture_to_external_media"
         path="." />
+
 </paths>
