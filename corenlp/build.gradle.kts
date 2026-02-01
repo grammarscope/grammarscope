@@ -47,7 +47,6 @@ dependencies {
 
     implementation(platform(libs.kotlin.bom))
     implementation(kotlin("stdlib"))
-    implementation(kotlin("stdlib-jdk8"))
 
     implementation(project(":data"))
 
