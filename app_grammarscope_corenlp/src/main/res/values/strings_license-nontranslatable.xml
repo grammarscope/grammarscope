@@ -3,5 +3,5 @@
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-	<string name="license_key" translatable="false" tools:keep="@string/license_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmBeDvVDJ28tHlEMyeixSH9DHHVqgry+CPh0Soaw9rzBMQ65sHkDD01dlRG0fDrYYRMpPz4wSN+7+qlXWa50I5bXzDQZyXy4cawcgTgOc4UbvbYl107XgAfQHalwt9+M5MhaTF/GyrrMUEWN8Dozv1vki1+tx9oiMuD7CO+eRCYmSuBmXX8AIhSgKJZnDRryBoA0HOj/0zSHqeByhS8xay/S+/wu4BIjfTMV/UV0vJuLs+i25W7C3CMinlPOqGxY5NSjLN+TVWdhUlhxnpvwWoJj+diwuC+XY+3eMUmkZv7o+wmH791ZR6c8K8xNQyde4O5eVXQwRUSX5kvf0ls4oaQIDAQAB</string>
+	<string name="license_key" translatable="false" tools:keep="@string/license_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyd7ORllPUqbYGeD+mR8h1/T3nRPXOVyywtFUWiK0vucmamtLnDShmEcxDD2IqcPrFVgKCCgrvSr05O8TLipRY7Ovo1ledZtmyqvHUq/qbFW+fo86lGoRxa3J+5/OMXQN4UsJD+q/vW8IfJrWdd63qkWYWmkj+wLvGeKeGDx1JvyWa11JRF970A6ZXtpOe7ntK9Z76+zIseQeuiObjqIxZZk1286UCk4nWD6wIV887hw+YadgDtqQYA1ZsbepiEsXXBW5XMD/MNINYwc1bc+FRQ3G6fSxxd1WEoK/Eg/xHEFpUoxt2AavLJL6WsIxVR424+4OBw2EQEDi2rBzd81pywIDAQAB</string>
 </resources>
