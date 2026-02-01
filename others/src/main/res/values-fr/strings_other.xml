@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<string name="title_others" tools:keep="@string/title_others">Autres</string>
+	<string name="title_activity_others">Autres</string>
+
+	<string name="title_grammarscope_syntaxnet">GrammarScope (SyntaxNet)</string>
+	<string name="text_grammarscope_syntaxnet">GrammarScope (SyntaxNet) est un analyseur de dépendances. Il analyse les phrases, leurs structures syntaxiques (sous la forme de dépendances étiquetées) et affiche ses résultats. Il est alimenté par Google SyntaxNet.</string>
+	<string name="description_logo_grammarscope_syntaxnet">Logo GrammarScope (SyntaxNet)</string>
+	<string name="description_googleplay_grammarscope_syntaxnet">GrammarScope (SyntaxNet) sur GooglePlay</string>
+
+	<string name="title_grammarscope_udpipe">GrammarScope (UDPipe)</string>
+	<string name="text_grammarscope_udpipe">GrammarScope (UDPipe) est un analyseur de dépendances. Il analyse les phrases, leurs structures syntaxiques (sous la forme de dépendances étiquetées) et affiche ses résultats. Il est alimenté par le système d’apprentissage machine UDPipe.</string>
+	<string name="description_logo_grammarscope_udpipe">Logo GrammarScope UDPipe</string>
+	<string name="description_googleplay_grammarscope_udpipe">GrammarScope UDPipe sur GooglePlay</string>
+
+    <string name="title_grammarscope_corenlp">GrammarScope (CoreNLP)</string>
+    <string name="text_grammarscope_corenlp">GrammarScope (CoreNLP) est un analyseur de dépendances. Il analyse les phrases, leurs structures syntaxiques (sous la forme de dépendances étiquetées) et affiche ses résultats. Il est alimenté par le système d’apprentissage machine CoreNLP.</string>
+    <string name="description_logo_grammarscope_corenlp">Logo GrammarScope CoreNLP</string>
+    <string name="description_googleplay_grammarscope_corenlp">GrammarScope CoreNLP sur GooglePlay</string>
+
+	<string name="title_grammarscope_syntaxnet_premium">GrammarScope (SyntaxNet) Premium</string>
+	<string name="title_grammarscope_udpipe_premium">GrammarScope (UDPipe) Premium</string>
+    <string name="title_grammarscope_corenlp_premium">GrammarScope (CoreNLP) Premium</string>
+    <string name="text_grammarscope_premium">GrammarScope Premium permet l\'acquisition de texte et la reconnaissance optique.</string>
+    <string name="description_googleplay_grammarscope_syntaxnet_premium">GrammarScope (SyntaxNet) Premium</string>
+    <string name="description_googleplay_grammarscope_udpipe_premium">GrammarScope (UDPipe) Premium</string>
+    <string name="description_googleplay_grammarscope_corenlp_premium">GrammarScope (CoreNLP) Premium</string>
+
+    <string name="title_treebolicwordnet">Treebolic WordNet</string>
+	<string name="text_treebolicwordnet">Pour chaque mot, une arborescence graphique est créé, sur la base des données WordNet®, qui capture les relations du mot avec d’autres mots. Les types de relation sont ceux qui se trouvent dans la base de données WordNet et comprennent: \'plus spécifique\', \'plus générique\', \'causalité\', \'implication\', \'similaire à\', \'contraire\', \'partie\', \'tout\', etc…
+Treebolic WordNet affiche ce graphique et lui donne un rendu hyperbolique dans lequel l’espace d’affichage est soumis à une courbure particulière: plus d’espace est alloué au nœud central tandis que son nœud parent et ses nœuds  enfants, toujours dans le contexte visuel immédiat, apparaissent légèrement plus petits. Les grands-parents et les petits-enfants sont encore visibles mais apparaissent plus petits. Au fur et à mesure qu\'on s\'éloigne du noeud central, les noeuds, qui disparaissent progressivement vers la bordure de l’affichage, prennent un espace de moins en moins important.
+Les nœuds de mots peuvent être déplacés en les touchant ce qui permet à l’utilisateur d’interagir avec l’affichage et de parcourir l’espace du graphe en déplaçant le focus..</string>
+	<string name="description_logo_treebolicwordnet">Logo Treebolic WordNet</string>
+	<string name="description_googleplay_treebolicwordnet">Treebolic WordNet sur GooglePlay</string>
+
+	<string name="title_semantikos">Semantikos</string>
+	<string name="text_semantikos">Semantikos explore les sens et les rôles sémantiques de l\'anglais. Données linguistiques provenant de WordNet, VerbNet, PropBank, FrameNet, données statistiques BNC, Predicate Matrix. Recherche textuelle sur examples, définitions et occurrences textuelles.</string>
+	<string name="description_logo_semantikos">Logo Semantikos</string>
+	<string name="description_googleplay_semantikos">Semantikos sur GooglePlay</string>
+
+	<string name="title_semantikos_wn">Semantikos WordNet</string>
+	<string name="text_semantikos_wn">Semantikos WordNet explore les sens et les rôles sémantiques de l\'anglais. Données linguistiques provenant de WordNet, données statistiques BNC. Recherche textuelle sur examples et définitions. Source: base de données Princeton\'s WordNet.</string>
+	<string name="description_logo_semantikos_wn">Logo Semantikos WordNet</string>
+	<string name="description_googleplay_semantikos_wn">Semantikos WordNet sur GooglePlay</string>
+
+	<string name="title_semantikos_ewn">Semantikos Open English Wordnet</string>
+	<string name="text_semantikos_ewn">Semantikos Open English Wordnet explore les sens et les rôles sémantiques de l\'anglais. Données linguistiques provenant de Open English Wordnet, données statistiques BNC. Recherche textuelle sur examples et définitions. Source:  base de données Open English Wordnet.</string>
+	<string name="description_logo_semantikos_ewn">Logo Semantikos Open English Wordnet</string>
+	<string name="description_googleplay_semantikos_ewn">Semantikos Open English Wordnet sur GooglePlay</string>
+
+	<string name="title_semantikos_vn">Semantikos VerbNet</string>
+	<string name="text_semantikos_vn">Semantikos VerbNet explore les sens et les rôles sémantiques de l\'anglais. Données linguistiques provenant de VerbNet, PropBank and WordNet. Recherche textuelle sur examples.</string>
+	<string name="description_logo_semantikos_vn">Logo Semantikos VerbNet</string>
+	<string name="description_googleplay_semantikos_vn">Semantikos VerbNet sur GooglePlay</string>
+
+	<string name="title_semantikos_fn">Semantikos FrameNet</string>
+	<string name="text_semantikos_fn">Semantikos FrameNet explore les sens et les rôles sémantiques de l\'anglais. Données linguistiques provenant de FrameNet. Recherche textuelle sur occurences.</string>
+	<string name="description_logo_semantikos_fn">Semantikos FrameNet</string>
+	<string name="description_googleplay_semantikos_fn">Semantikos FrameNet sur GooglePlay</string>
+
+	<string name="title_semantikos_sn">Semantikos SyntagNet</string>
+	<string name="text_semantikos_sn">Semantikos SyntagNet explore les sens et les collocations de l\'anglais. Données linguistiques provenant de WordNet et SyntagNet. Recherche textuelle sur examples et définitions.</string>
+	<string name="description_logo_semantikos_sn">Semantikos SyntagNet</string>
+	<string name="description_googleplay_semantikos_sn">Semantikos SyntagNet sur GooglePlay</string>
+
+	<string name="market_fail_1">Échec de la requête à Google Play pour %s</string>
+
+</resources>
