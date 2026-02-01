@@ -132,7 +132,7 @@ function make_app(){
 
 function check(){
 	local d=../src/main
-	#check_dir ${d}
+	check_dir ${d}
 }
 
 function check_dir(){
