@@ -65,6 +65,10 @@ val premiumImplementation by configurations
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
+    implementation(kotlin("reflect"))
+
     implementation(project(":data"))
     implementation(project(":provider"))
     implementation(project(":core"))
@@ -87,7 +91,6 @@ dependencies {
     implementation(project(":depparse_bound_client"))
 
     implementation(libs.core.ktx)
-    implementation(libs.kotlin.reflect)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
     implementation(libs.preference.ktx)

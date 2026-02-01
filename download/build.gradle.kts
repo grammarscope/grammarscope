@@ -49,6 +49,9 @@ kotlin {
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
+
     implementation(project(":download_common"))
     implementation(project(":deploy"))
     implementation(project(":coroutines"))

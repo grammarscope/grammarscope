@@ -44,6 +44,9 @@ kotlin {
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
+
     implementation(project(":service_iface"))
     implementation(project(":data"))
     implementation(project(":provider"))

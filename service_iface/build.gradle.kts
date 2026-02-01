@@ -44,6 +44,9 @@ kotlin {
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
+
     implementation(libs.core.ktx)
     implementation(libs.annotation)
 }

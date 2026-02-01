@@ -40,9 +40,11 @@ kotlin {
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
+    implementation(kotlin("stdlib-jdk8"))
+
     implementation(libs.core.ktx)
     implementation(libs.preference.ktx)
-    implementation(libs.kotlin.stdlib.jdk8)
 
-    androidTestImplementation(libs.kotlin.stdlib)
 }

@@ -44,13 +44,14 @@ kotlin {
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
+    implementation(kotlin("stdlib-jdk8"))
+
     implementation(project(":service_iface"))
     implementation(project(":data"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.annotation)
-
-    androidTestImplementation(libs.kotlin.stdlib)
-    implementation(libs.kotlin.stdlib.jdk8)
 }

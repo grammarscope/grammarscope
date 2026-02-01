@@ -147,6 +147,9 @@ val premiumImplementation by configurations
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
+
     implementation(project(":grammarscope"))
     implementation(project(":corenlp_bound_server")) // strictly runtimeOnly but needed for manifest validation
     implementation(project(":common")) // strictly not a dependency but for resources validation
