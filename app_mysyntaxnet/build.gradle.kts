@@ -99,9 +99,6 @@ android {
         getByName("premium") {
             assets.directories.add("src/premium/")
         }
-        getByName("androidTest") {
-            assets.directories.add("src/debug/assets/")
-        }
     }
 
     packaging.jniLibs {
