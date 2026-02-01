@@ -100,7 +100,7 @@ android {
             assets.directories.add("src/premium/")
         }
         getByName("androidTest") {
-            assets.directories.addAll(listOf("src/main/assets/", "src/debug/assets/"))
+            assets.directories.add("src/debug/assets/")
         }
     }
 
