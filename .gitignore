@@ -20,9 +20,12 @@
 
 /release
 /premium
+
 /dist/releases/*.apk
 /dist/releases/*.aab
 /dist/log
+/dist/keystore
+/dist/keystore-upload
 
 /captures
 /grammarscope-deps
@@ -31,8 +34,7 @@
 app_grammarscope_syntaxnet/src/main/res/values/strings_license-nontranslatable.xml
 app_grammarscope_udpipe/src/main/res/values/strings_license-nontranslatable.xml
 app_mysyntaxnet/src/main/res/values/strings_license-nontranslatable.xml
-/dist/keystore
-/dist/keystore-upload
+
 **/keystore.properties
 **/keystore_upload.properties
 **/androidpublisher.dat
