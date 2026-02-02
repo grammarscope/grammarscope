@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         // warning
         val parentLayout = findViewById<View>(R.id.coord_layout)
         showSwipableSnackbar(this, parentLayout, R.string.obsolete_app, android.R.color.holo_red_light, android.R.color.white, R.string.obsolete_get_grammarscope) {
-            install(getString(OthersR.string.grammarscope_uri), this)
+            install(getString(OthersR.string.grammarscope_syntaxnet_uri), this)
         }
 
         // toolbar
