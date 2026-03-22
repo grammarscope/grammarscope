@@ -1,0 +1,4 @@
+#EF94A4
+#BA5959
+#FFB5B0  Mid green
+#59BA5A  Mid green
