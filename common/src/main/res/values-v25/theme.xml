@@ -4,7 +4,7 @@
 
 <resources>
 
-	<style name="MyXBaseTheme" parent="MyBaseTheme">
+	<style name="MyTheme25" parent="MyCommonTheme">
 
 		<item name="android:colorPrimary">?attr/colorPrimary</item>
 		<item name="android:colorPrimaryDark">?attr/colorPrimaryDark</item>

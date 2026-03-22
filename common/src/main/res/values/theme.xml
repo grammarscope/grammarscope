@@ -4,11 +4,7 @@
 
 <resources>
 
-	<style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
-
-	<style name="MyXBaseTheme" parent="MyBaseTheme" />
-
-	<style name="MyCommonTheme" parent="MyXBaseTheme">
+	<style name="MyCommonTheme" parent="AppTheme">
 
 		<!-- framework colors -->
 		<!-- colorSurface MDC-->
@@ -60,6 +56,10 @@
 
 	</style>
 
-	<style name="MyTheme" parent="MyCommonTheme" />
+	<style name="MyTheme25" parent="MyCommonTheme" />
+
+	<style name="MyTheme29" parent="MyTheme25" />
+
+	<style name="MyTheme" parent="MyTheme29" />
 
 </resources>
