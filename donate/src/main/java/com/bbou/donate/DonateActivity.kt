@@ -14,28 +14,27 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import com.android.billingclient.api.Purchase
 import com.bbou.donate.billing.BillingManager
 import com.bbou.donate.billing.BillingManager.BillingListener
-import com.bbou.donate.billing.Products
 import com.bbou.donate.billing.Products.inappProducts
 import com.bbou.donate.billing.Products.init
+import com.google.android.material.button.MaterialButton
+import org.sqlunet.browser.BaseActivity
 import java.util.Date
+import org.sqlunet.core.R as CoreR
 
 /**
  * Donate
  *
  * @author [Bernard Bou](mailto:1313ou@gmail.com)
  */
-class DonateActivity : AppCompatActivity(), BillingListener {
+class DonateActivity : BaseActivity(), BillingListener {
 
     /**
      * Adapter to in-app billing
@@ -45,72 +44,62 @@ class DonateActivity : AppCompatActivity(), BillingListener {
     /**
      * Product id to buttons
      */
-    private val buttonsByProductId: MutableMap<String, ImageButton?> = HashMap()
-
-    /**
-     * Overlay drawable
-     */
-    private var overlay: Drawable? = null
+    private val buttonsByProductId: MutableMap<String, MaterialButton> = HashMap()
 
     // L I F E C Y C L E   A N D   S E T U P
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // edge to edge
-        enableEdgeToEdge()
-
         // content view
         setContentView(R.layout.activity_donate)
 
-        // overlay drawable
-        val overlay = (getDrawable(this, R.drawable.ic_overlay) as BitmapDrawable?)!!
-        overlay.gravity = Gravity.TOP or Gravity.END
-        this.overlay = overlay
-
         // init product ids from resources
         init(this)
-        val inappProducts = inappProducts!!
         val n = inappProducts.size
 
         // image buttons
         val buttons = Array(n) {
-            val button: ImageButton = findViewById(BUTTON_IDS[it])!!
+            val button: MaterialButton = findViewById(BUTTON_IDS[it])!!
+            // click: donate
             button.setOnClickListener { button2: View ->
                 val tag = (button2.tag as String).toInt()
                 Log.d(TAG, "clicked $tag")
                 donate(inappProducts[tag])
             }
+            // long click: info
             button.setOnLongClickListener { button2: View ->
                 val tag = (button2.tag as String).toInt()
                 Log.d(TAG, "long clicked $tag")
                 val productId = inappProducts[tag]
                 val sb = StringBuilder()
-                val purchase = if (billingManager == null) null else billingManager!!.productIdToPurchase(productId)
-                if (purchase != null) {
-                    Log.i(TAG, purchase.toString())
-                    sb.append("Order ID: ")
-                    sb.append(purchase.orderId)
-                    sb.append('\n')
-                    sb.append("Products: ")
-                    for (productId2 in purchase.products) {
-                        sb.append(productId2)
-                        sb.append(' ')
+                    .apply {
+                        val purchase = if (billingManager == null) null else billingManager!!.productIdToPurchase(productId)
+                        if (purchase != null) {
+                            Log.i(TAG, purchase.toString())
+                            append("Order ID: ")
+                            append(purchase.orderId)
+                            append('\n')
+                            append("Products: ")
+                            for (productId2 in purchase.products) {
+                                append(productId2)
+                                append(' ')
+                            }
+                            append('\n')
+                            append("Date: ")
+                            append(Date(purchase.purchaseTime))
+                            append('\n')
+                            append("Token: ")
+                            append(purchase.purchaseToken)
+                            if (purchase.isAcknowledged) {
+                                append('\n')
+                                append("Acknowledged")
+                            }
+                        } else {
+                            append("ProductId: ")
+                            append(productId)
+                        }
                     }
-                    sb.append('\n')
-                    sb.append("Date: ")
-                    sb.append(Date(purchase.purchaseTime))
-                    sb.append('\n')
-                    sb.append("Token: ")
-                    sb.append(purchase.purchaseToken)
-                    if (purchase.isAcknowledged) {
-                        sb.append('\n')
-                        sb.append("Acknowledged")
-                    }
-                } else {
-                    sb.append("ProductId: ")
-                    sb.append(productId)
-                }
                 inform(sb.toString())
                 true
             }
@@ -120,12 +109,11 @@ class DonateActivity : AppCompatActivity(), BillingListener {
         // image buttons per product
         buttonsByProductId.clear()
         for (i in 0 until n) {
-            buttonsByProductId[Products.inappProducts!![i]] = buttons[i]
+            buttonsByProductId[inappProducts[i]] = buttons[i]
         }
 
         // consume button
-        val btn = findViewById<Button>(R.id.consume)
-        btn.setOnClickListener { onConsume() }
+        findViewById<Button>(R.id.consume).setOnClickListener { onConsume() }
 
         // setup manager
         if (billingManager == null) {
@@ -133,12 +121,17 @@ class DonateActivity : AppCompatActivity(), BillingListener {
         }
 
         // toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(CoreR.id.toolbar)
         setSupportActionBar(toolbar)
 
         // set up the action bar
         val actionBar = supportActionBar!!
         actionBar.displayOptions = ActionBar.DISPLAY_SHOW_HOME or ActionBar.DISPLAY_HOME_AS_UP or ActionBar.DISPLAY_SHOW_TITLE
+    }
+
+    override fun onResume() {
+        super.onResume()
+        billingManager?.queryPurchases()
     }
 
     override fun onDestroy() {
@@ -152,37 +145,37 @@ class DonateActivity : AppCompatActivity(), BillingListener {
         }
     }
 
+    // S E T U P   C O M P L E T E   L I S T E N E R
+
     override fun onBillingClientSetupFinished() {
         Log.d(TAG, "onBillingClientSetupFinished()")
+        // Trigger initial query as soon as connection is ready
+        billingManager?.queryPurchases()
     }
 
     // P U R C H A S E  L I S T E N E R
 
-    override fun onPurchaseFinished(purchase: Purchase) {
-        Log.d(TAG, "New purchase $purchase")
-        for (productId in purchase.products) {
-            update(productId, true)
+    override fun onPurchaseList(purchases: List<Purchase>) {
+        Log.d(TAG, "onPurchaseList() count=${purchases.size}")
+        runOnUiThread {
+            // reset all buttons and overlays
+            for (productId in inappProducts) {
+                update(productId, false)
+            }
+
+            // set buttons and overlays
+            for (purchase in purchases) {
+                Log.d(TAG, "Owned $purchase")
+                for (productId in purchase.products) {
+                    update(productId, true)
+                }
+            }
         }
     }
 
-    @Synchronized
-    override fun onPurchaseList(purchases: List<Purchase>) {
-        Log.d(TAG, "onPurchaseList()")
-
-        // reset all buttons and overlays
-        val productIds = inappProducts
-        if (productIds != null) {
-            for (productId in productIds) {
-                update(productId, false)
-            }
-        }
-
-        // update buttons and overlays with purchases
-        Log.d(TAG, "Purchase count " + purchases.size)
-
-        // set buttons and overlays
-        for (purchase in purchases) {
-            Log.d(TAG, "Owned $purchase")
+    override fun onPurchaseFinished(purchase: Purchase) {
+        Log.d(TAG, "New purchase $purchase")
+        runOnUiThread {
             for (productId in purchase.products) {
                 update(productId, true)
             }
@@ -197,16 +190,20 @@ class DonateActivity : AppCompatActivity(), BillingListener {
         }
     }
 
-    override fun onConsumeFinished(purchase: Purchase) {
-        Log.d(TAG, "onConsumeFinished() $purchase")
-        for (productId in purchase.products) {
-            update(productId, false)
+    private fun onConsume() {
+        Log.d(TAG, "onConsume()")
+        if (billingManager != null) {
+            billingManager!!.consumeAll()
         }
     }
 
-    private fun onConsume() {
-        Log.d(TAG, "onConsume()")
-        consumeAll()
+    override fun onConsumeFinished(purchase: Purchase) {
+        Log.d(TAG, "onConsumeFinished() $purchase")
+        runOnUiThread {
+            for (productId in purchase.products) {
+                update(productId, false)
+            }
+        }
     }
 
     // D O N A T E
@@ -220,19 +217,21 @@ class DonateActivity : AppCompatActivity(), BillingListener {
     // H E L P E R
 
     private fun update(productId: String, isOwned: Boolean) {
-        val imageButton = buttonsByProductId[productId]
-        if (imageButton != null) {
-            val tag = (imageButton.tag as String).toInt()
-            val drawable = getDrawable(this, DRAWABLE_IDS[tag])
-            if (isOwned) {
-                val layers = arrayOfNulls<Drawable>(2)
-                layers[0] = drawable
-                layers[1] = overlay
-                val layerDrawable = LayerDrawable(layers)
-                imageButton.setImageDrawable(layerDrawable)
-            } else {
-                imageButton.setImageDrawable(drawable)
+        val button = buttonsByProductId[productId] ?: return
+        val tag = (button.tag as String).toIntOrNull() ?: return
+        val baseDrawable = getDrawable(this, DRAWABLE_IDS[tag]) ?: return
+        
+        if (isOwned) {
+            // Fresh overlay instance to avoid sharing between buttons
+            val overlayDrawable = AppCompatResources.getDrawable(this, R.drawable.ic_overlay)?.mutate()
+            if (overlayDrawable is BitmapDrawable) {
+                overlayDrawable.gravity = Gravity.TOP or Gravity.END
             }
+            
+            val layerDrawable = LayerDrawable(arrayOf(baseDrawable, overlayDrawable!!))
+            button.icon = layerDrawable
+        } else {
+            button.icon = baseDrawable
         }
     }
 
