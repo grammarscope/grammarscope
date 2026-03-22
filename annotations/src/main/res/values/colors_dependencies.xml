@@ -1,170 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  ~ Copyright (c) 2025. Bernard Bou <1313ou@gmail.com>.
   -->
 
 <resources>
-    <!-- keys are string-array relations_keys, alphabetical order -->
-    <array name="palette_relations_values">
-        <item>@color/color_acl</item>
-        <item>@color/color_acl_relcl</item>
-        <item>@color/color_acomp</item>
-        <item>@color/color_advcl</item>
-        <item>@color/color_advmod</item>
-        <item>@color/color_agent</item>
-        <item>@color/color_amod</item>
-        <item>@color/color_appos</item>
-        <item>@color/color_arg</item>
-        <item>@color/color_aux</item>
-        <item>@color/color_auxpass</item>
-        <item>@color/color_case</item>
-        <item>@color/color_cc</item>
-        <item>@color/color_cc_preconj</item>
-        <item>@color/color_ccomp</item>
-        <item>@color/color_comp</item>
-        <item>@color/color_compound</item>
-        <item>@color/color_compound_prt</item>
-        <item>@color/color_conj</item>
-        <item>@color/color_cop</item>
-        <item>@color/color_csubj</item>
-        <item>@color/color_csubj_xsubj</item>
-        <item>@color/color_csubjpass</item>
-        <item>@color/color_csubjpass_xsubj</item>
-        <item>@color/color_dep</item>
-        <item>@color/color_det</item>
-        <item>@color/color_det_predet</item>
-        <item>@color/color_det_qmod</item>
-        <item>@color/color_discourse</item>
-        <item>@color/color_dobj</item>
-        <item>@color/color_expl</item>
-        <item>@color/color_goeswith</item>
-        <item>@color/color_gov</item>
-        <item>@color/color_iobj</item>
-        <item>@color/color_list</item>
-        <item>@color/color_mark</item>
-        <item>@color/color_mod</item>
-        <item>@color/color_mwe</item>
-        <item>@color/color_name</item>
-        <item>@color/color_neg</item>
-        <item>@color/color_nmod</item>
-        <item>@color/color_nmod_npmod</item>
-        <item>@color/color_nmod_poss</item>
-        <item>@color/color_nmod_tmod</item>
-        <item>@color/color_nn</item>
-        <item>@color/color_npadvmod</item>
-        <item>@color/color_nsubj</item>
-        <item>@color/color_nsubj_xsubj</item>
-        <item>@color/color_nsubjpass</item>
-        <item>@color/color_nsubjpass_xsubj</item>
-        <item>@color/color_num</item>
-        <item>@color/color_number</item>
-        <item>@color/color_nummod</item>
-        <item>@color/color_obj</item>
-        <item>@color/color_obl</item>
-        <item>@color/color_obl_tmod</item>
-        <item>@color/color_parataxis</item>
-        <item>@color/color_pcomp</item>
-        <item>@color/color_pobj</item>
-        <item>@color/color_poss</item>
-        <item>@color/color_possessive</item>
-        <item>@color/color_preconj</item>
-        <item>@color/color_pred</item>
-        <item>@color/color_predet</item>
-        <item>@color/color_prep</item>
-        <item>@color/color_prt</item>
-        <item>@color/color_punct</item>
-        <item>@color/color_quantmod</item>
-        <item>@color/color_rcmod</item>
-        <item>@color/color_ref</item>
-        <item>@color/color_rel</item>
-        <item>@color/color_root</item>
-        <item>@color/color_sdep</item>
-        <item>@color/color_subj</item>
-        <item>@color/color_tmod</item>
-        <item>@color/color_vmod</item>
-        <item>@color/color_xcomp</item>
-    </array>
-
-	<color name="color_clf">#000000</color>
-	<color name="color_fixed">#000000</color>
-	<color name="color_flat">#000000</color>
-	<color name="color_orphan">#000000</color>
-	<color name="color_reparandum">#000000</color>
-    <color name="color_acl">#000000</color>
-    <color name="color_acl_relcl">#000000</color>
-    <color name="color_acomp">#000000</color>
-    <color name="color_advcl">#000000</color>
-    <color name="color_advmod">#000000</color>
-    <color name="color_agent">#000000</color>
-    <color name="color_amod">#000000</color>
-    <color name="color_appos">#000000</color>
-    <color name="color_arg">#000000</color>
-    <color name="color_aux">#000000</color>
-    <color name="color_auxpass">#000000</color>
-    <color name="color_case">#000000</color>
-    <color name="color_cc">#000000</color>
-    <color name="color_cc_preconj">#000000</color>
-    <color name="color_ccomp">#000000</color>
-    <color name="color_comp">#000000</color>
-    <color name="color_compound">#000000</color>
-    <color name="color_compound_prt">#000000</color>
-    <color name="color_conj">#000000</color>
-    <color name="color_cop">#000000</color>
-    <color name="color_csubj">#000000</color>
-    <color name="color_csubj_xsubj">#000000</color>
-    <color name="color_csubjpass">#000000</color>
-    <color name="color_csubjpass_xsubj">#000000</color>
-    <color name="color_dep">#000000</color>
-    <color name="color_det">#000000</color>
-    <color name="color_det_predet">#000000</color>
-    <color name="color_det_qmod">#000000</color>
-    <color name="color_discourse">#000000</color>
-    <color name="color_dobj">#000000</color>
-    <color name="color_expl">#000000</color>
-    <color name="color_goeswith">#000000</color>
-    <color name="color_gov">#000000</color>
-    <color name="color_iobj">#000000</color>
-    <color name="color_list">#000000</color>
-    <color name="color_mark">#000000</color>
-    <color name="color_mod">#000000</color>
-    <color name="color_mwe">#000000</color>
-    <color name="color_name">#000000</color>
-    <color name="color_neg">#000000</color>
-    <color name="color_nmod">#000000</color>
-    <color name="color_nmod_npmod">#000000</color>
-    <color name="color_nmod_poss">#000000</color>
-    <color name="color_nmod_tmod">#000000</color>
-    <color name="color_nn">#000000</color>
-    <color name="color_npadvmod">#000000</color>
-    <color name="color_nsubj">#000000</color>
-    <color name="color_nsubj_xsubj">#000000</color>
-    <color name="color_nsubjpass">#000000</color>
-    <color name="color_nsubjpass_xsubj">#000000</color>
-    <color name="color_num">#000000</color>
-    <color name="color_number">#000000</color>
-    <color name="color_nummod">#000000</color>
-    <color name="color_obj">#000000</color>
-    <color name="color_obl">#000000</color>
-    <color name="color_obl_tmod">#000000</color>
-    <color name="color_parataxis">#000000</color>
-    <color name="color_pcomp">#000000</color>
-    <color name="color_pobj">#000000</color>
-    <color name="color_poss">#000000</color>
-    <color name="color_possessive">#000000</color>
-    <color name="color_preconj">#000000</color>
-    <color name="color_pred">#000000</color>
-    <color name="color_predet">#000000</color>
-    <color name="color_prep">#000000</color>
-    <color name="color_prt">#000000</color>
-    <color name="color_punct">#000000</color>
-    <color name="color_quantmod">#000000</color>
-    <color name="color_rcmod">#000000</color>
-    <color name="color_ref">#000000</color>
-    <color name="color_rel">#000000</color>
-    <color name="color_root">#000000</color>
-    <color name="color_sdep">#000000</color>
-    <color name="color_subj">#000000</color>
-    <color name="color_tmod">#000000</color>
-    <color name="color_vmod">#000000</color>
-    <color name="color_xcomp">#000000</color>
-
+	<color name="color_gov">#618163</color>
+	<color name="color_dep">#65A269</color>
+	<color name="color_sdep">#568059</color>
+	<color name="color_comp">#7DA980</color>
+	<color name="color_mod">#409846</color>
+	<color name="color_pred">#3C8B41</color>
+	<color name="color_arg">#4C884F</color>
+	<color name="color_agent">#93AA95</color>
+	<color name="color_root">#C91C1C</color>
+	<color name="color_subj">#F1BFA4</color>
+	<color name="color_nsubj">#E59B73</color>
+	<color name="color_nsubj_xsubj">#DA9874</color>
+	<color name="color_nsubjpass">#EA9E75</color>
+	<color name="color_nsubjpass_xsubj">#F29B6C</color>
+	<color name="color_csubj">#F0A983</color>
+	<color name="color_csubj_xsubj">#EDC9B5</color>
+	<color name="color_csubjpass">#EB7130</color>
+	<color name="color_csubjpass_xsubj">#F5AC85</color>
+	<color name="color_obj">#9093CA</color>
+	<color name="color_dobj">#8287CA</color>
+	<color name="color_iobj">#7171C8</color>
+	<color name="color_pobj">#8392BA</color>
+	<color name="color_obl">#00B8D4</color>
+	<color name="color_obl_tmod">#0F90A4</color>
+	<color name="color_pcomp">#DA2DDA</color>
+	<color name="color_ccomp">#ED30ED</color>
+	<color name="color_xcomp">#E878E8</color>
+	<color name="color_acomp">#EA4FEA</color>
+	<color name="color_cop">#F0C164</color>
+	<color name="color_aux">#F2DBAE</color>
+	<color name="color_auxpass">#F2D9A6</color>
+	<color name="color_acl">#E2CEF6</color>
+	<color name="color_acl_relcl">#B16DF4</color>
+	<color name="color_advcl">#DBC4F2</color>
+	<color name="color_tmod">#FF43A7</color>
+	<color name="color_nmod_tmod">#D20D76</color>
+	<color name="color_nmod_npmod">#C81072</color>
+	<color name="color_rcmod">#EC2D93</color>
+	<color name="color_vmod">#FF309E</color>
+	<color name="color_amod">#D80877</color>
+	<color name="color_advmod">#CC1677</color>
+	<color name="color_npadvmod">#EF5BAA</color>
+	<color name="color_rel">#C48B51</color>
+	<color name="color_ref">#D6A777</color>
+	<color name="color_mark">#DC8C3C</color>
+	<color name="color_prep">#D8A471</color>
+	<color name="color_neg">#DD9E5E</color>
+	<color name="color_expl">#E7B078</color>
+	<color name="color_case">#D89B5E</color>
+	<color name="color_det">#E7D4D4</color>
+	<color name="color_det_predet">#D4A4A4</color>
+	<color name="color_det_qmod">#D59090</color>
+	<color name="color_predet">#EAC3C3</color>
+	<color name="color_number">#E0BABA</color>
+	<color name="color_num">#D59898</color>
+	<color name="color_nummod">#E9D2D2</color>
+	<color name="color_quantmod">#BB8080</color>
+	<color name="color_poss">#E6CFCF</color>
+	<color name="color_nmod_poss">#D79C9C</color>
+	<color name="color_possessive">#D29696</color>
+	<color name="color_nn">#ECC1C1</color>
+	<color name="color_appos">#D6ACAC</color>
+	<color name="color_nmod">#DA8E8E</color>
+	<color name="color_name">#E49E9E</color>
+	<color name="color_clf">#C78686</color>
+	<color name="color_conj">#41DEE3</color>
+	<color name="color_cc">#13C9CF</color>
+	<color name="color_preconj">#36C6CB</color>
+	<color name="color_cc_preconj">#32D9DF</color>
+	<color name="color_fixed">#5A5A5A</color>
+	<color name="color_flat">#A19191</color>
+	<color name="color_compound">#727272</color>
+	<color name="color_compound_prt">#7A7A7A</color>
+	<color name="color_mwe">#989898</color>
+	<color name="color_list">#635959</color>
+	<color name="color_parataxis">#AA9696</color>
+	<color name="color_orphan">#866464</color>
+	<color name="color_goeswith">#737373</color>
+	<color name="color_reparandum">#9B9B9B</color>
+	<color name="color_discourse">#9E9696</color>
+	<color name="color_prt">#A3A3A3</color>
+	<color name="color_punct">#A28E8E</color>
 </resources>

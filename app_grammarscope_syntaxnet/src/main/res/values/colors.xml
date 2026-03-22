@@ -20,4 +20,7 @@
 	<color name="secondaryLightColor">#EF9449</color> <!-- framework -->
 	<color name="onSecondaryColor">#DDDDDD</color> <!-- subtitle -->
 
+	<!-- shadow -->
+	<color name="shadow">#80202020</color>
+
 </resources>
