@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+	<array name="palette">
+		<item>@color/rootBackColor</item>
+		<item>@color/rootColor</item>
+		<item>@color/labelBackColor</item>
+		<item>@color/labelColor</item>
+		<item>@color/enhancedLabelBackColor</item>
+		<item>@color/enhancedLabelColor</item>
+		<item>@color/headBackColor</item>
+		<item>@color/headColor</item>
+		<item>@color/dependentBackColor</item>
+		<item>@color/dependentColor</item>
+
+		<item>@color/predicateBackColor</item>
+		<item>@color/predicateColor</item>
+		<item>@color/subjectBackColor</item>
+		<item>@color/subjectColor</item>
+		<item>@color/objectBackColor</item>
+		<item>@color/objectColor</item>
+		<item>@color/termModifierPredicateBackColor</item>
+		<item>@color/termModifierPredicateColor</item>
+		<item>@color/predicateModifierPredicateBackColor</item>
+		<item>@color/predicateModifierPredicateColor</item>
+	</array>
+
+</resources>
