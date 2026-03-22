@@ -17,6 +17,7 @@ import android.widget.Button
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import com.android.billingclient.api.Purchase
@@ -25,16 +26,14 @@ import com.bbou.donate.billing.BillingManager.BillingListener
 import com.bbou.donate.billing.Products.inappProducts
 import com.bbou.donate.billing.Products.init
 import com.google.android.material.button.MaterialButton
-import org.sqlunet.browser.BaseActivity
 import java.util.Date
-import org.sqlunet.core.R as CoreR
 
 /**
  * Donate
  *
  * @author [Bernard Bou](mailto:1313ou@gmail.com)
  */
-class DonateActivity : BaseActivity(), BillingListener {
+class DonateActivity : AppCompatActivity(), BillingListener {
 
     /**
      * Adapter to in-app billing
@@ -121,7 +120,7 @@ class DonateActivity : BaseActivity(), BillingListener {
         }
 
         // toolbar
-        val toolbar = findViewById<Toolbar>(CoreR.id.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         // set up the action bar
