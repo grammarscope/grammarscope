@@ -53,7 +53,6 @@ include(":corenlp")
 
 // APP
 
-include(":app_mysyntaxnet")
 include(":app_grammarscope_syntaxnet")
 include("app_grammarscope_udpipe")
 include("app_grammarscope_corenlp")
