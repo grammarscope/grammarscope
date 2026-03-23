@@ -40,11 +40,13 @@
         android:layout_gravity="bottom|start"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:contentDescription="@string/description_from_document"
+        app:backgroundTint="?attr/colorPrimary"
         app:layout_anchor="@+id/view_pager"
         app:layout_anchorGravity="left|bottom"
-        android:contentDescription="@string/description_from_document"
-        android:tint="@android:color/white"
-        app:srcCompat="@drawable/ic_textdocument" />
+        app:srcCompat="@drawable/ic_textdocument"
+        app:tint="?attr/colorOnPrimary" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_recog"
@@ -54,13 +56,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_anchor="@+id/view_pager"
-        app:layout_anchorGravity="right|bottom"
+        android:background="@null"
         android:clickable="true"
         android:contentDescription="@string/description_from_camera"
         android:focusable="true"
-        android:tint="@android:color/white"
-        app:srcCompat="@drawable/ic_camera" />
+        app:backgroundTint="?attr/colorPrimary"
+        app:layout_anchor="@+id/view_pager"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@drawable/ic_camera"
+        app:tint="?attr/colorOnPrimary" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_image"
@@ -70,12 +74,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_anchor="@+id/view_pager"
-        app:layout_anchorGravity="center|bottom"
+        android:background="@null"
         android:clickable="true"
         android:contentDescription="@string/description_from_image"
         android:focusable="true"
-        android:tint="@android:color/white"
-        app:srcCompat="@drawable/ic_image" />
+        app:backgroundTint="?attr/colorPrimary"
+        app:layout_anchor="@+id/view_pager"
+        app:layout_anchorGravity="center|bottom"
+        app:srcCompat="@drawable/ic_image"
+        app:tint="?attr/colorOnPrimary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

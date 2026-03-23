@@ -43,15 +43,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
+        android:background="@null"
         android:clickable="true"
         android:contentDescription="@string/description_graph_fab_refresh"
         android:focusable="true"
+        app:backgroundTint="?attr/colorPrimary"
         app:fabSize="mini"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="center|bottom"
         app:srcCompat="@drawable/ic_refresh"
-        app:tint="@android:color/white"
-        tools:srcCompat="@drawable/ic_refresh" />
+        app:tint="?attr/colorOnPrimary" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_prev"
@@ -60,15 +61,16 @@
         android:layout_gravity="bottom|start"
         android:layout_marginStart="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
+        android:background="@null"
         android:clickable="true"
         android:contentDescription="@string/description_graph_fab_prev"
         android:focusable="true"
+        app:backgroundTint="?attr/colorPrimary"
         app:fabSize="mini"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="left|bottom"
         app:srcCompat="@drawable/ic_navigate_prev"
-        app:tint="@android:color/white"
-        tools:srcCompat="@drawable/ic_navigate_prev" />
+        app:tint="?attr/colorOnPrimary" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_next"
@@ -77,14 +79,15 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
+        android:background="@null"
         android:clickable="true"
         android:contentDescription="@string/description_graph_fab_next"
         android:focusable="true"
+        app:backgroundTint="?attr/colorPrimary"
         app:fabSize="mini"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="right|bottom"
         app:srcCompat="@drawable/ic_navigate_next"
-        app:tint="@android:color/white"
-        tools:srcCompat="@drawable/ic_navigate_next" />
+        app:tint="?attr/colorOnPrimary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
