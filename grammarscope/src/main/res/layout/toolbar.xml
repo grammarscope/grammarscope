@@ -12,8 +12,7 @@
 	android:layout_height="?attr/actionBarSize"
 	android:elevation="4dp"
 	android:theme="?attr/actionBarTheme"
-	app:popupTheme="?attr/actionBarPopupTheme"
-	tools:ignore="UnusedAttribute|InconsistentLayout">
+	app:popupTheme="?attr/actionBarPopupTheme">
 
 	<ImageButton
 		android:id="@+id/loaded_indicator"

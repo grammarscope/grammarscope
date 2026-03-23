@@ -54,6 +54,16 @@
 		<item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
 
+		<!--app bar -->
+		<item name="appBarLayoutStyle">@style/MyAppBarLayout</item>
+
+		<!-- menu dropdown -->
+		<item name="popupMenuBackground">?attr/colorCustom</item>
+
+		<!-- dropdowns -->
+		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
+		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
+
 	</style>
 
 	<style name="MyTheme25" parent="MyCommonTheme" />
