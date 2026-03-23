@@ -6,53 +6,25 @@
 
 	<style name="MyCommonTheme" parent="AppTheme">
 
-		<!-- framework colors -->
-		<!-- colorSurface MDC-->
-		<!-- colorOnSurface MDC-->
-		<!-- android:colorBackground Platform-->
-		<!-- colorOnBackground MDC-->
-		<item name="android:colorBackground">@color/backgroundColor</item>
-		<item name="android:colorForeground">@color/foregroundColor</item>
+		<!-- O V E R R I D E S -->
 
-		<!-- colorPrimary AppCompat-->
-		<!-- colorPrimaryVariant MDC-->
-		<!-- colorOnPrimary MDC-->
-		<item name="colorPrimary">@color/primaryColor</item>
-		<item name="colorPrimaryVariant">@color/primaryLightColor</item>
-		<item name="colorPrimaryDark">@color/primaryDarkColor</item>
-		<item name="colorOnPrimary">@color/onPrimaryColor</item>
-
-		<!-- colorSecondary MDC-->
-		<!-- colorSecondaryVariant MDC-->
-		<!-- colorOnSecondary MDC-->
-		<item name="colorSecondary">@color/secondaryColor</item>
-		<item name="colorSecondaryVariant">@color/secondaryLightColor</item>
-		<item name="colorOnSecondary">@color/onSecondaryColor</item>
-
-		<!-- colorError AppCompat-->
-		<!-- colorOnError MDC-->
-
-		<item name="colorAccent">@color/secondaryColor</item>
-
-		<!-- extras color attrs -->
-		<item name="colorHighlightOnPrimary">@color/highlightOnPrimaryColor</item>
-
-		<!-- action bar theme UI -->
-		<item name="actionBarTheme">@style/MyActionBarTheme</item>
-
-		<!-- action bar popup theme UI -->
-		<item name="actionBarPopupTheme">@style/MyActionBarPopupTheme</item>
-
-		<!-- action bar style -->
-		<item name="android:actionBarStyle">@style/MyActionBarStyle</item>
-
-		<!-- dropdowns -->
-		<!-- <item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>-->
-		<!-- <item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>-->
-
-        <!-- transparent statusbar and navigation bar -->
+		<!-- transparent statusbar and navigation bar -->
 		<item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+		<item name="android:navigationBarColor">@android:color/transparent</item>
+
+		<!-- whether this Window is responsible for drawing the background for the system bars.
+		     if true and the window is not floating, the system bars are drawn with a
+             transparent background and the corresponding areas in this window are filled with the
+             colors specified in android.R.attr#statusBarColor and android.R.attr#navigationBarColor-->
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+		<!-- Force drawing behind system bars -->
+		<!-- whether this window requests a translucent status bar -->
+		<item name="android:windowTranslucentStatus">false</item>
+		<!-- whether this window requests a translucent navigation bar -->
+		<item name="android:windowTranslucentNavigation">false</item>
+
+		<!-- S T Y L E S -->
 
 		<!--app bar -->
 		<item name="appBarLayoutStyle">@style/MyAppBarLayout</item>
@@ -63,6 +35,9 @@
 		<!-- dropdowns -->
 		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
 		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
+
+		<!-- autocomplete text view -->
+		<item name="android:autoCompleteTextViewStyle">@style/MyAutoCompleteTextViewStyle</item>
 
 	</style>
 

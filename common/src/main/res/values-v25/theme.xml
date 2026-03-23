@@ -6,14 +6,6 @@
 
 	<style name="MyTheme25" parent="MyCommonTheme">
 
-		<item name="android:colorPrimary">?attr/colorPrimary</item>
-		<item name="android:colorPrimaryDark">?attr/colorPrimaryDark</item>
-		<item name="android:colorAccent">?attr/colorSecondary</item>
-		<item name="android:colorSecondary">?attr/colorSecondary</item>
-
-		<!-- toolbar/action bar -->
-		<item name="toolbarStyle">@style/MyToolbarStyle</item>
-
 	</style>
 
 </resources>
