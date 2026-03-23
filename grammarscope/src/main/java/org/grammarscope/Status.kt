@@ -58,7 +58,7 @@ object Status {
             alert.setIcon(R.drawable.ic_error)
             alert.setMessage(R.string.model_none)
         } else {
-            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorAccent, MaterialR.attr.colorOnPrimary, MaterialR.attr.colorOnSecondary))
+            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary, MaterialR.attr.colorOnSecondary))
             val langFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.BOLD)) }
             val nameFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
             val moreFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.ITALIC)) }

@@ -175,7 +175,7 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
             // Set icon
             setImageResource(icon)
 
-            imageTintList = ColorStateList.valueOf(context.getColorFromAttr(android.R.attr.colorAccent))
+            imageTintList = ColorStateList.valueOf(context.getColorFromAttr(android.R.attr.colorPrimary))
         }
         return fab
     }

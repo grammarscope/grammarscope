@@ -941,7 +941,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
         controlMenuItem?.let {
             it.setTitle(R.string.provider_pending)
             val animatedDrawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animated_pending)!!
-            val tint = Colors.getColorAttr(this, CommonR.style.MyTheme, MaterialR.attr.colorOnPrimary)
+            val tint = Colors.getColorAttr(this, CommonR.style.MyTheme, CommonR.attr.colorOnCustom)
             DrawableCompat.setTint(animatedDrawable, tint)
             it.icon = animatedDrawable
             animatedDrawable.start()
@@ -952,7 +952,7 @@ abstract class BaseMainActivity : AppCompatActivity() {
         Log.d(TAG, "UPDATE loaded: $loaded")
         if (loaded) {
             try {
-                val tint = Colors.getColorAttr(this, CommonR.style.MyTheme, MaterialR.attr.colorOnPrimary)
+                val tint = Colors.getColorAttr(this, CommonR.style.MyTheme, CommonR.attr.colorOnCustom)
                 loadedIndicator.setColorFilter(tint)
                 val animatedDrawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animated_bound)!!
                 loadedIndicator.setImageDrawable(animatedDrawable)
