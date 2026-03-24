@@ -8,6 +8,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -16,6 +17,7 @@ import android.os.ResultReceiver
 import android.provider.MediaStore
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -55,7 +57,10 @@ class GetTextActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // edge to edge
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
+        )
 
         // layout
         setContentView(R.layout.activity_gettext)

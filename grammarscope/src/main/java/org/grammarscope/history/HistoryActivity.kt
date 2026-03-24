@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SearchRecentSuggestionsProvider
 import android.database.Cursor
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
@@ -25,6 +26,7 @@ import android.widget.CursorAdapter
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import android.widget.Toast
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -66,7 +68,10 @@ class HistoryActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Curso
         super.onCreate(savedInstanceState)
 
         // edge to edge
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
+        )
 
         // layout
         setContentView(R.layout.activity_history)

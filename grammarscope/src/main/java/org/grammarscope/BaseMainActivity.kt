@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -22,6 +23,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
@@ -111,7 +113,10 @@ abstract class BaseMainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate()")
 
         // edge to edge
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
+        )
 
         // create an intent filter to listen to the broadcast sent forActivity the action "ENGINE" and map it to the receiver
         ContextCompat.registerReceiver(this, receiver, IntentFilter(Broadcast.BROADCAST_LISTEN), ContextCompat.RECEIVER_NOT_EXPORTED)
