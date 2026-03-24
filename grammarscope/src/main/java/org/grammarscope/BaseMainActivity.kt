@@ -1015,12 +1015,12 @@ abstract class BaseMainActivity : AppCompatActivity() {
     private fun warn(exception: Exception) {
         val contentView = findViewById<View>(android.R.id.content)
         val message = exception.message ?: exception.toString()
-        showSnackbar(this, contentView, message, android.R.color.holo_red_light, android.R.color.white)
+        showSnackbar(this, contentView, message, MaterialR.attr.colorError, MaterialR.attr.colorOnError)
     }
 
     private fun warn(message: String) {
         val contentView = findViewById<View>(android.R.id.content)
-        showSnackbar(this, contentView, message, android.R.color.holo_red_light, android.R.color.white)
+        showSnackbar(this, contentView, message, MaterialR.attr.colorError, MaterialR.attr.colorOnError)
     }
 
     private fun info(message: String) {
