@@ -918,7 +918,8 @@ abstract class BaseMainActivity : AppCompatActivity() {
         } else {
             val title = if (bound) R.string.action_unbind else R.string.action_bind
             val drawable = AppCompatResources.getDrawable(this, if (bound) R.drawable.ic_unbind else R.drawable.ic_bind)!!
-            val tints = Colors.getColorAttrs(this, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorOnPrimary, MaterialR.attr.colorAccent))
+            val tints = Colors.getColorAttrs(this, CommonR.style.MyTheme, intArrayOf(CommonR.attr.colorOnCustom, MaterialR.attr.colorError
+            ))
             val tint = tints[if (bound) 0 else 1]
             DrawableCompat.setTint(drawable, tint)
             controlMenuItem?.let {
