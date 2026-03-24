@@ -41,7 +41,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="org.grammarscope.udpipe.premium" />
+                  <option name="appId" value="org.grammarscope.corenlp.premium" />
                   <option name="mobileSdkAppId" value="1:782074441282:android:175f94911abd8b100d87db" />
                   <option name="projectId" value="apps-373c9" />
                   <option name="projectNumber" value="782074441282" />
