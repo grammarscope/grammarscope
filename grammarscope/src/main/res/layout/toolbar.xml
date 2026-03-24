@@ -19,7 +19,7 @@
 		android:layout_marginEnd="10dp"
 		android:background="@android:color/transparent"
 		android:contentDescription="@string/app_name"
-		android:src="@drawable/ic_warn" />
+		android:visibility="gone"/>
 
 	<!--
 	<ImageButton

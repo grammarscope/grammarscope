@@ -77,8 +77,8 @@ import org.grammarscope.history.History.Companion.recordQuery
 import org.grammarscope.history.HistoryActivity
 import java.util.Locale
 import java.util.function.Consumer
-import org.depparse.common.R as CommonR
 import com.google.android.material.R as MaterialR
+import org.depparse.common.R as CommonR
 
 abstract class BaseMainActivity : AppCompatActivity() {
 
@@ -206,6 +206,11 @@ abstract class BaseMainActivity : AppCompatActivity() {
         fabSemantics.setOnLongClickListener { onClickFABSemantics(true); true }
         loadedIndicator.setOnClickListener { info(status()) }
         // boundIndicator.setOnClickListener { info(status()) }
+
+        // visibility
+        loadedIndicator.visibility = View.VISIBLE
+        // boundIndicator.visibility = View.VISIBLE
+
     }
 
     override fun onStart() {
@@ -918,8 +923,11 @@ abstract class BaseMainActivity : AppCompatActivity() {
         } else {
             val title = if (bound) R.string.action_unbind else R.string.action_bind
             val drawable = AppCompatResources.getDrawable(this, if (bound) R.drawable.ic_unbind else R.drawable.ic_bind)!!
-            val tints = Colors.getColorAttrs(this, CommonR.style.MyTheme, intArrayOf(CommonR.attr.colorOnCustom, MaterialR.attr.colorError
-            ))
+            val tints = Colors.getColorAttrs(
+                this, CommonR.style.MyTheme, intArrayOf(
+                    CommonR.attr.colorOnCustom, MaterialR.attr.colorError
+                )
+            )
             val tint = tints[if (bound) 0 else 1]
             DrawableCompat.setTint(drawable, tint)
             controlMenuItem?.let {
