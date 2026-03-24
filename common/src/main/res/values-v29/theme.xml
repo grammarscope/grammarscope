@@ -4,9 +4,23 @@
 
 <resources>
 
-	<style name="MyTheme29" parent="MyTheme25">
+	<style name="MyTheme29" parent="Base.MyTheme">
 
-		<!-- force dark mode -->
+		<!-- Remove contrast enforcement (API 29+) -->
+		<!-- whether the system should ensure that the status bar has enough contrast when a fully transparent background is requested.
+             if true, the system will determine whether a scrim is necessary to ensure that the status bar has enough contrast with the contents of
+             this app, and set an appropriate effective bar background color accordingly. -->
+		<item name="android:enforceStatusBarContrast">false</item>
+		<!-- whether the system should ensure that the navigation bar has enough contrast when a fully transparent background is requested.
+             if true, the system will determine whether a scrim is necessary to ensure that the navigation bar has enough contrast with the contents of
+             this app, and set an appropriate effective bar background color accordingly. -->
+		<item name="android:enforceNavigationBarContrast">false</item>
+
+		<!-- whether or not the force dark feature is allowed to be applied to this theme.
+			 Setting this to false will disable the auto-dark feature on everything this theme is applied to along with anything drawn by any children
+      		 of views using this theme.
+      		 Setting this to true will allow this view to be automatically made dark, however a value of 'true' will not override any 'false' value
+      		 in its parent chain nor will it prevent any 'false' in any of its children. -->
 		<item name="android:forceDarkAllowed">false</item>
 
 	</style>

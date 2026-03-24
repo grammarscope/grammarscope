@@ -1,8 +1,10 @@
-<!--
-  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2026. Bernard Bou <1313ou@gmail.com>
   -->
 
 <resources>
+
+	<!-- O V E R L A Y S -->
 
 	<!-- Custom surface overlay -->
 	<style name="MySurfaceOverlay" parent="ThemeOverlay.Material3">
@@ -42,4 +44,5 @@
 	<style name="MyAutoCompleteTextViewStyle" parent="Widget.AppCompat.Light.AutoCompleteTextView">
 		<item name="android:popupBackground">?attr/colorCustom</item>
 	</style>
+
 </resources>
