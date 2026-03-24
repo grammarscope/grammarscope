@@ -39,7 +39,7 @@ fun showSwipableSnackbar(context: Context, parentLayout: View, @StringRes textId
 
 fun showSwipableSnackbar(context: Context, parentLayout: View, text: CharSequence, @ColorRes backColor: Int = 0, @ColorRes foreColor: Int = 0, action: CharSequence, listener: View.OnClickListener) {
     val colors: IntArray = if (backColor == 0 || foreColor == 0)
-        Colors.getColorAttrs(context, R.style.MyTheme, intArrayOf(MaterialR.attr.colorSecondary, MaterialR.attr.colorOnSecondary)) else
+        Colors.getColorAttrs(context, R.style.MyTheme, intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary)) else
         arrayOf(ContextCompat.getColor(context, backColor), ContextCompat.getColor(context, foreColor)).toIntArray()
     val behavior = BaseTransientBottomBar.Behavior()
     behavior.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY)
