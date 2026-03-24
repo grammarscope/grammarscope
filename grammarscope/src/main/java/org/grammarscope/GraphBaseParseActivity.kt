@@ -57,12 +57,6 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
-
         viewer = findViewById(R.id.visualization_viewer)
 
         GraphColors.setColorsFromResources(this)
