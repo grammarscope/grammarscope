@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.graphics.Typeface
 import android.text.SpannableStringBuilder
+import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.util.Log
@@ -58,12 +59,12 @@ object Status {
             alert.setIcon(R.drawable.ic_error)
             alert.setMessage(R.string.model_none)
         } else {
-            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary, MaterialR.attr.colorOnSecondary))
-            val langFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.BOLD)) }
-            val nameFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
-            val moreFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[0]), StyleSpan(Typeface.ITALIC)) }
-            val coreFileFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[1]), StyleSpan(Typeface.BOLD)) }
-            val fileFactory = SpanFactory { arrayOf<Any>(ForegroundColorSpan(colors[2]), StyleSpan(Typeface.ITALIC)) }
+            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary))
+            val langFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
+            val nameFactory = SpanFactory { arrayOf<Any>(BackgroundColorSpan(colors[0]), ForegroundColorSpan(colors[1]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
+            val moreFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
+            val coreFileFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
+            val fileFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
             val items: MutableList<CharSequence> = ArrayList()
             items.add(format(info.lang, langFactory))
             if (info.lang != info.name)

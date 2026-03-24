@@ -80,7 +80,7 @@ class SentencesFragment : Fragment() {
                     // get the position on recyclerview.
                     val pos = layoutPosition
                     Log.d(TAG, "position " + pos + " " + dataset[pos])
-                    val colors: IntArray = getColorAttrs(requireContext(), R.style.MyTheme, intArrayOf(MaterialR.attr.colorSecondary, MaterialR.attr.colorOnSecondary, MaterialR.attr.colorOnPrimary))
+                    val colors: IntArray = getColorAttrs(requireContext(), R.style.MyTheme, intArrayOf(MaterialR.attr.colorSecondary, MaterialR.attr.colorOnSecondary, MaterialR.attr.colorOnSecondaryFixed))
                     Snackbar.make(view, dataset[pos], Snackbar.LENGTH_LONG)
                         .setAction("Select") {
                             if (receiver != null) {
