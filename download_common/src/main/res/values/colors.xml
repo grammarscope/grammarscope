@@ -6,37 +6,34 @@
 
 	<!-- R A W -->
 
-	<!-- red -->
-	<color name="dark_red_color">#b32400</color>
-
-	<!-- green -->
-	<color name="dark_green_color">#008000</color>
+	<color name="red_color">#800000</color>
+	<color name="green_color">#008000</color>
+	<color name="blue_color">#000080</color>
 
 	<!-- M A I N -->
 
 	<!-- button -->
-	<color name="action_button_color">#ff00ff</color>
-	<color name="ok_button_color">@color/dark_green_color</color>
-	<color name="err_button_color">@color/dark_red_color</color>
+	<color name="ok_button_color">@color/green_color</color>
+	<color name="err_button_color">@color/red_color</color>
 
 	<!-- report -->
 	<color name="storageTypeBackColor">#FFFF80</color>
 	<color name="storageTypeForeColor">#000000</color>
 
-	<color name="storageValueBackColor">#FFFFC0</color>
-	<color name="storageValueForeColor">#000000</color>
-
 	<color name="dirTypeBackColor">#800080</color>
 	<color name="dirTypeForeColor">#FFFFFF</color>
 
-	<color name="dirValueBackColor">#FFFFFF</color>
-	<color name="dirValueForeColor">#000080</color>
+	<color name="storageValueBackColor">@android:color/transparent</color>
+	<color name="storageValueForeColor">#000000</color>
 
-	<color name="dirOkBackColor">#FFFFFF</color>
-	<color name="dirOkForeColor">#008000</color>
+	<color name="dirValueBackColor">@android:color/transparent</color>
+	<color name="dirValueForeColor">@color/blue_color</color>
 
-	<color name="dirFailBackColor">#FFFFFF</color>
-	<color name="dirFailForeColor">#800000</color>
+	<color name="dirOkBackColor">@android:color/transparent</color>
+	<color name="dirOkForeColor">@color/green_color</color>
+
+	<color name="dirFailBackColor">@android:color/transparent</color>
+	<color name="dirFailForeColor">@color/red_color</color>
 
 	<array name="palette_storage">
 

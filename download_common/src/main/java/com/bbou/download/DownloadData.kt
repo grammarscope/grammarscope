@@ -7,29 +7,36 @@ data class DownloadData(
 
     /**
      * Source url
-     */ val fromUrl: String?,
+     */
+    val fromUrl: String?,
 
     /**
      * Local downloaded file
-     */ val toFile: String?,
+     */
+    val toFile: String?,
 
     /**
      * Data stamp
-     */ val date: Long? = null,
+     */
+    val date: Long? = null,
 
     /**
      * Size
-     */ val size: Long? = null,
+     */
+    val size: Long? = null,
 
     /**
      * Etag
-     */ val etag: String? = null,
+     */
+    val etag: String? = null,
 
     /**
      * Version
-     */ val version: String? = null,
+     */
+    val version: String? = null,
 
     /**
      * Static version
-     */ val staticVersion: String? = null,
+     */
+    val staticVersion: String? = null,
 )

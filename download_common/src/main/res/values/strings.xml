@@ -2,7 +2,7 @@
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>.
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
 	<!-- labels -->
 	<string name="title_activity_download">Download</string>
@@ -11,10 +11,11 @@
 
 	<!-- action -->
 	<string name="action_download">Download</string>
-	<string name="action_zip_download" tools:keep="@string/action_zip_download">Zip Download</string>
+	<string name="action_zip_download">Zip Download</string>
 	<string name="action_cancel">Cancel</string>
 	<string name="action_ok">OK</string>
-    <string name="action_deploy">Deploy</string>
+	<string name="action_dismiss">Dismiss</string>
+	<string name="action_deploy">Deploy</string>
 	<string name="action_copy_datapack_from_file">Copy datapack from …</string>
 	<string name="action_unzip_datapack_from_archive">Unzip datapack from …</string>
 	<string name="action_update">Update</string>
@@ -111,7 +112,7 @@
 	<string name="status_download_downloadable_content">Exploring available content…</string>
 
 	<!-- result -->
-	<string name="result_success" tools:ignore="UnusedResources">Success</string>
+	<string name="result_success">Success</string>
 	<string name="result_fail">Fail</string>
 	<string name="result_deleted">deleted</string>
 

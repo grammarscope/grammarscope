@@ -8,21 +8,19 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.annotation.UiThread
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.bbou.download.Keys.CANCEL_BTN_STATE
@@ -41,6 +39,7 @@ import com.bbou.download.Notifier.Companion.ACTION_DOWNLOAD_CANCEL
 import com.bbou.download.common.R
 import com.bbou.download.preference.Settings
 import com.bbou.download.storage.FormatUtils.formatAsInformationString
+import com.google.android.material.button.MaterialButton
 import java.io.File
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.properties.Delegates
@@ -88,7 +87,6 @@ abstract class BaseDownloadFragment : Fragment() {
         /**
          * Paused
          */
-        @Suppress("unused")
         STATUS_PAUSED(R.string.status_download_paused),
 
         /**
@@ -212,7 +210,7 @@ abstract class BaseDownloadFragment : Fragment() {
     /**
      * Download button
      */
-    private lateinit var downloadButton: ImageButton
+    private lateinit var downloadButton: MaterialButton
 
     // R E S O U R C E S
 
@@ -285,10 +283,6 @@ abstract class BaseDownloadFragment : Fragment() {
         progressStatus = view.findViewById(R.id.progressStatus)
         statusTextView = view.findViewById(R.id.status)
 
-        // default button resources
-        downloadButtonImageResId = R.drawable.bn_download
-        downloadButtonBackgroundResId = R.drawable.bg_button_action
-
         // buttons
         downloadButton = view.findViewById(R.id.downloadButton)
         cancelButton = view.findViewById(R.id.cancelButton)
@@ -297,8 +291,9 @@ abstract class BaseDownloadFragment : Fragment() {
 
         // click listeners
         downloadButton.setOnClickListener {
-            val wasNotDownloading = isDownloading.getAndSet(true)
-            if (wasNotDownloading) {
+            val wasDownloading = isDownloading.getAndSet(true)
+            Log.d(TAG, "Clicked download button: was downloading=$wasDownloading")
+            if (!wasDownloading) {
                 onDownloadStart()
                 startUI()
                 try {
@@ -355,12 +350,6 @@ abstract class BaseDownloadFragment : Fragment() {
         if (savedInstanceState != null) {
 
             downloadButton.visibility = savedInstanceState.getInt(DOWNLOAD_BTN_STATE, View.VISIBLE)
-            downloadButtonImageResId = savedInstanceState.getInt(DOWNLOAD_BTN_IMAGE_STATE, R.drawable.bn_download)
-            val drawable = AppCompatResources.getDrawable(requireContext(), downloadButtonImageResId)!!
-            DrawableCompat.setTint(drawable, android.R.attr.colorForeground)
-            downloadButton.setImageDrawable(drawable)
-            downloadButtonBackgroundResId = savedInstanceState.getInt(DOWNLOAD_BTN_BACKGROUND_STATE, R.drawable.bg_button_action)
-            downloadButton.setBackgroundResource(downloadButtonBackgroundResId)
 
             progressBar.visibility = savedInstanceState.getInt(PROGRESS_STATE, View.INVISIBLE)
             progressStatus.visibility = savedInstanceState.getInt(PROGRESS_STATUS_STATE, View.INVISIBLE)
@@ -447,6 +436,7 @@ abstract class BaseDownloadFragment : Fragment() {
      *
      * @noinspection EmptyMethod
      */
+    @Suppress("EmptyMethod")
     protected abstract fun cleanup()
 
     // S T A T U S
@@ -456,7 +446,6 @@ abstract class BaseDownloadFragment : Fragment() {
      *
      * @return reason
      */
-    @Suppress("SameReturnValue")
     abstract val reason: String?
 
     /**
@@ -469,10 +458,7 @@ abstract class BaseDownloadFragment : Fragment() {
         val statusStr = status?.toString(appContext) ?: "unknown"
         if (status != Status.STATUS_SUCCEEDED) {
             if (reason != null) {
-                return """
-                    $statusStr
-                    $reason
-                    """.trimIndent()
+                return "$statusStr\n$reason"
             }
         }
         return statusStr
@@ -535,12 +521,10 @@ abstract class BaseDownloadFragment : Fragment() {
         statusTextView.visibility = View.VISIBLE
 
         // buttons
-        downloadButtonImageResId = if (status == Status.STATUS_SUCCEEDED) R.drawable.bn_download_ok else R.drawable.bn_download
-        val drawable = AppCompatResources.getDrawable(requireContext(), downloadButtonImageResId)!!
-        DrawableCompat.setTint(drawable, android.R.attr.colorForeground)
-        downloadButton.setImageDrawable(drawable)
-        downloadButtonBackgroundResId = if (status == Status.STATUS_SUCCEEDED) R.drawable.bg_button_ok else R.drawable.bg_button_err
-        downloadButton.setBackgroundResource(downloadButtonBackgroundResId)
+        downloadButton.setIconResource(if (status == Status.STATUS_SUCCEEDED) R.drawable.bn_download_ok else R.drawable.bn_download)
+        val colorRes = if (status == Status.STATUS_SUCCEEDED) R.color.ok_button_color else R.color.err_button_color
+        val tint = ContextCompat.getColor(requireContext(), colorRes)
+        downloadButton.backgroundTintList = ColorStateList.valueOf(tint)
         downloadButton.isEnabled = false
         downloadButton.visibility = View.VISIBLE
 
@@ -575,21 +559,21 @@ abstract class BaseDownloadFragment : Fragment() {
         val srcView3 = view.findViewById<TextView>(R.id.src3)
         if (srcView2 != null && srcView3 != null) {
             try {
-                val uri = downloadUrl!!.toUri()
-                var host = uri.host
-                val port = uri.port
+                val uri = downloadUrl?.toUri()
+                var host = uri?.host
+                val port = uri?.port
                 if (port != -1) {
                     host += ":$port"
                 }
-                val file = uri.lastPathSegment
-                var path = uri.path
+                val file = uri?.lastPathSegment
+                var path = uri?.path
                 if (path != null && file != null) {
                     path = path.take(path.lastIndexOf(file))
                 }
                 srcView3.text = host
                 srcView2.text = path
                 srcView.text = file
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 srcView3.setText(R.string.status_error_invalid)
                 srcView2.setText(R.string.status_error_invalid)
                 srcView.setText(R.string.status_error_invalid)
@@ -650,6 +634,7 @@ abstract class BaseDownloadFragment : Fragment() {
     /**
      * Event sink for download events fired by downloader
      */
+    @Suppress("EmptyMethod")
     @CallSuper
     open fun onDownloadStart() {
     }

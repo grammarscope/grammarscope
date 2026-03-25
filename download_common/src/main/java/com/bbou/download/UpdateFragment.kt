@@ -13,11 +13,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.bbou.download.common.R
+import com.google.android.material.button.MaterialButton
 
 /**
  * Update fragment
@@ -96,17 +96,19 @@ class UpdateFragment : Fragment() {
         val newerArg = intent.getBooleanExtra(NEWER_ARG, false)
         val newer = view.findViewById<TextView>(R.id.newer)
         if (newerArg) {
-            newer.setTextColor(Color.BLUE)
+            newer.setBackgroundResource(android.R.color.holo_blue_dark)
+            newer.setTextColor(Color.WHITE)
             newer.setText(R.string.download_newer)
         } else {
-            newer.setTextColor(Color.GREEN)
+            newer.setBackgroundResource(android.R.color.holo_green_dark)
+            newer.setTextColor(Color.WHITE)
             newer.setText(R.string.download_uptodate)
         }
 
         // proceed with update button
         // if (newerArg) // do not depend on newer flag
         run {
-            val button = view.findViewById<ImageButton>(R.id.update)
+            val button = view.findViewById<MaterialButton>(R.id.updateButton)
             button.visibility = View.VISIBLE
             button.setOnClickListener {
                 val activityContext = requireContext()

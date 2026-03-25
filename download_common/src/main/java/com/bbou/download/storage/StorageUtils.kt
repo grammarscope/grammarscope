@@ -246,7 +246,7 @@ object StorageUtils {
         val manager = context.getSystemService(Context.USER_SERVICE) as UserManager
         val user = Process.myUserHandle()
         val userSerialNumber = manager.getSerialNumberForUser(user)
-        // Log.d("USER", "userSerialNumber = " + userSerialNumber);
+        // Log.d("USER", "userSerialNumber = " + userSerialNumber)
         return userSerialNumber.toString()
     }
 
@@ -340,7 +340,6 @@ object StorageUtils {
      * @param target directory or file system object
      * @return free storage report
      */
-    @Suppress("unused")
     fun getFree(context: Context, target: String): String {
         val file = File(target)
         val dir: String? = if (file.isDirectory) file.absolutePath else file.parent
@@ -413,7 +412,7 @@ object StorageUtils {
                 (stat.blockCount * stat.blockSize).toFloat()
             }
             bytes / (1024f * 1024f)
-        } catch (e: Throwable) {
+        } catch (_: Throwable) {
             Float.NaN
         }
     }
@@ -721,7 +720,6 @@ object StorageUtils {
      * @param context context
      * @return
      */
-    @Suppress("unused")
     fun getDatapackFile(context: Context): File {
         return File(Settings.getDatapackDir(context), context.getString(R.string.default_target_file))
     }
@@ -737,7 +735,6 @@ object StorageUtils {
      * @param nameValues2 values 2
      * @return pair of names and values
      */
-    @Suppress("unused")
     fun mergeNamesValues(nameValues1: Pair<Array<out CharSequence>, Array<String>>, nameValues2: Pair<Array<out CharSequence>, Array<String>>): Pair<Array<out CharSequence>, Array<String>> {
         val names: MutableList<CharSequence> = ArrayList()
         val values: MutableList<String> = ArrayList()

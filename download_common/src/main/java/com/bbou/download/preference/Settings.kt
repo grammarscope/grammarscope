@@ -123,7 +123,6 @@ object Settings {
      * @param context context
      * @return whether vital preferences have been initialized
      */
-    @Suppress("unused")
     fun getInitializedPref(context: Context): Boolean {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
         return sharedPref.getBoolean(PREF_INITIALIZED, false)
@@ -135,7 +134,6 @@ object Settings {
      * @param context context
      * @param flag initialized flag
      */
-    @Suppress("unused")
     fun setInitializedPref(context: Context, flag: Boolean?) {
         PreferenceManager.getDefaultSharedPreferences(context).edit {
             if (flag == null) {
@@ -154,7 +152,6 @@ object Settings {
      * @param context context
      * @return download source
      */
-    @Suppress("unused")
     fun getDownloadSource(context: Context): String {
         val repo = getRepoPref(context)
         val name = getDatapackName(context)
@@ -182,7 +179,6 @@ object Settings {
      * @param name name, by default datapack name
      * @return download cache target
      */
-    @Suppress("unused")
     fun getDownloadCacheTarget(context: Context, name: String? = getDatapackName(context)): String {
         val dest = getCachePref(context)
         return "${dest}/${name}"
@@ -460,7 +456,6 @@ object Settings {
      * @param context     context
      * @param datapackUri datapack uri
      */
-    @Suppress("unused")
     fun recordDatapackUri(context: Context, datapackUri: String?) {
         val sharedPref = context.getSharedPreferences(PREFERENCES_DATAPACK, Context.MODE_PRIVATE)
         sharedPref.edit {
@@ -627,7 +622,6 @@ object Settings {
              * @param context context
              * @param value mode value
              */
-            @Suppress("unused")
             fun setModePref(context: Context, value: Mode) {
                 val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
                 sharedPref.edit { putString(PREF_DOWNLOAD_MODE, value.toString()) }

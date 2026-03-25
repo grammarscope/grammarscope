@@ -1,30 +1,23 @@
 <!--
-  ~ Copyright (c) 2024. Bernard Bou <1313ou@gmail.com>.
+  ~ Copyright (c) 2025. Bernard Bou <1313ou@gmail.com>.
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<ImageButton
+	<include
 		android:id="@+id/downloadButton"
-		style="@style/ActionButton"
+		layout="@layout/button_download"
 		android:layout_width="64dp"
 		android:layout_height="64dp"
-		android:background="@drawable/bg_button_action"
-		android:contentDescription="@string/description_download_datapack"
-		android:src="@drawable/bn_download"
-		android:text="@string/action_download"
-		android:visibility="visible"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_bias="0.5"
-		app:tint="?android:attr/colorForeground" />
+		app:layout_constraintVertical_bias="0.5" />
 
 	<ProgressBar
 		android:id="@+id/progressBar"
@@ -104,8 +97,7 @@
 		app:layout_constraintBottom_toTopOf="@id/src"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"
-		app:layout_constraintStart_toStartOf="parent"
-		tools:ignore="InconsistentLayout" />
+		app:layout_constraintStart_toStartOf="parent" />
 
 	<TextView
 		android:id="@+id/src3"
@@ -119,8 +111,7 @@
 		app:layout_constraintBottom_toTopOf="@id/src2"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"
-		app:layout_constraintStart_toStartOf="parent"
-		tools:ignore="InconsistentLayout" />
+		app:layout_constraintStart_toStartOf="parent" />
 
 	<ImageView
 		android:id="@+id/imgtarget"
