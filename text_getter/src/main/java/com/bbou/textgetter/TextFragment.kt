@@ -11,6 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import com.bbou.textrecog.R
 
@@ -20,6 +23,7 @@ import com.bbou.textrecog.R
 class TextFragment : Fragment() {
 
     private lateinit var editText: EditText
+    private lateinit var scrollView: NestedScrollView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,23 @@ class TextFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gettext_text, container, false)
         editText = root.findViewById(R.id.text)
+        scrollView = root.findViewById(R.id.text_scroll_view)
+        
+        // Apply bottom padding to the scroll view to account for system bars and FABs
+        val initialPaddingBottom = scrollView.paddingBottom
+        ViewCompat.setOnApplyWindowInsetsListener(scrollView) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            // Add extra padding (e.g., 80dp) to ensure content clears the FABs
+            val extraPadding = (80 * resources.displayMetrics.density).toInt()
+            v.setPadding(
+                v.paddingLeft,
+                v.paddingTop,
+                v.paddingRight,
+                initialPaddingBottom + systemBars.bottom + extraPadding
+            )
+            insets
+        }
+
         editText.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

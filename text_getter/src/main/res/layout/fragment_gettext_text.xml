@@ -1,25 +1,30 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/constraintLayout"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context="com.bbou.textgetter.TextFragment">
+	android:layout_height="match_parent">
 
-	<androidx.appcompat.widget.AppCompatEditText
-		android:id="@+id/text"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
-		android:layout_marginEnd="16dp"
-		android:layout_marginBottom="16dp"
-		android:background="@null"
-		android:focusable="auto"
-		android:gravity="top"
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/text_scroll_view"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:clipToPadding="false"
+		android:scrollbarStyle="outsideOverlay"
+		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-		tools:layout_constraintLeft_creator="1"
-		tools:layout_constraintTop_creator="1" />
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.appcompat.widget.AppCompatEditText
+			android:id="@+id/text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@null"
+			android:focusable="auto"
+			android:gravity="top"
+			android:padding="16dp"
+			android:inputType="textMultiLine" />
+
+	</androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
