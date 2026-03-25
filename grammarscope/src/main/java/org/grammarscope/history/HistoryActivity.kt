@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SearchRecentSuggestionsProvider
 import android.database.Cursor
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
@@ -26,15 +25,13 @@ import android.widget.CursorAdapter
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import android.widget.Toast
-import androidx.activity.SystemBarStyle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
+import org.depparse.common.BaseActivity
 import org.grammarscope.MainActivity
 import org.grammarscope.common.R
 import org.grammarscope.history.History.Companion.recordQuery
@@ -52,7 +49,7 @@ import kotlin.math.roundToInt
  *
  * @author Bernard Bou
  */
-class HistoryActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor>, OnItemClickListener {
+class HistoryActivity : BaseActivity(), LoaderManager.LoaderCallbacks<Cursor>, OnItemClickListener {
 
     /**
      * List view
@@ -66,12 +63,6 @@ class HistoryActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Curso
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
 
         // layout
         setContentView(R.layout.activity_history)

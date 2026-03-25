@@ -1,6 +1,5 @@
 package org.grammarscope
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -13,12 +12,10 @@ import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
-import androidx.activity.SystemBarStyle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import org.depparse.Storage.getAppStorage
+import org.depparse.common.BaseActivity
 import org.depparse.common.WebActivity.Companion.tryStart
 import org.grammarscope.common.R
 import org.grammarscope.semantics.SemanticRelations.ObjectRelations
@@ -41,7 +38,7 @@ import java.nio.charset.StandardCharsets
  *
  * @author Bernard Bou
  */
-class LabelsActivity : AppCompatActivity() {
+class LabelsActivity : BaseActivity() {
 
     /**
      * List adapter
@@ -50,12 +47,6 @@ class LabelsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
 
         // layout
         setContentView(R.layout.activity_labels)

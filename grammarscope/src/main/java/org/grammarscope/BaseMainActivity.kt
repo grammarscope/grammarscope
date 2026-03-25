@@ -9,7 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Resources
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -23,11 +22,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.activity.SystemBarStyle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
@@ -63,6 +59,7 @@ import org.depparse.Broadcast
 import org.depparse.IProvider
 import org.depparse.Storage
 import org.depparse.common.AboutActivity
+import org.depparse.common.BaseActivity
 import org.depparse.common.BaseParseActivity.Companion.tryStartParse
 import org.depparse.common.Colors
 import org.depparse.common.LanguageFlag
@@ -82,7 +79,7 @@ import java.util.function.Consumer
 import com.google.android.material.R as MaterialR
 import org.depparse.common.R as CommonR
 
-abstract class BaseMainActivity : AppCompatActivity() {
+abstract class BaseMainActivity : BaseActivity() {
 
     private var autoStart = true
     private lateinit var fabDependencies: FloatingActionButton
@@ -111,12 +108,6 @@ abstract class BaseMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate()")
-
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
 
         // create an intent filter to listen to the broadcast sent forActivity the action "ENGINE" and map it to the receiver
         ContextCompat.registerReceiver(this, receiver, IntentFilter(Broadcast.BROADCAST_LISTEN), ContextCompat.RECEIVER_NOT_EXPORTED)

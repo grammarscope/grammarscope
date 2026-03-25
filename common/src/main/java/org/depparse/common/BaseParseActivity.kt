@@ -4,23 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.SystemBarStyle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.bbou.deploy.coroutines.Deploy.fastCheck
 import org.depparse.Storage
 import java.text.Normalizer
 import java.util.function.Consumer
 
-abstract class BaseParseActivity<T> : AppCompatActivity(), Consumer<T> {
+abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
 
     protected abstract val layout: Int
     protected abstract fun pending()
@@ -28,12 +24,6 @@ abstract class BaseParseActivity<T> : AppCompatActivity(), Consumer<T> {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate")
         super.onCreate(savedInstanceState)
-
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
 
         // init
         fastCheck(Storage.getAppStorage(this))
