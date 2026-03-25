@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,6 +49,22 @@ class SentencesFragment : Fragment() {
         // Adapter
         val adapter: RecyclerView.Adapter<SentenceViewHolder> = SentencesAdapter()
         listView.setAdapter(adapter)
+
+        // Apply bottom padding to account for system bars and FABs
+        val initialPaddingBottom = listView.paddingBottom
+        ViewCompat.setOnApplyWindowInsetsListener(listView) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            // Add extra padding (e.g., 80dp) to ensure content clears the FABs
+            val extraPadding = (80 * resources.displayMetrics.density).toInt()
+            v.setPadding(
+                v.paddingLeft,
+                v.paddingTop,
+                v.paddingRight,
+                initialPaddingBottom + systemBars.bottom + extraPadding
+            )
+            insets
+        }
+
         return root
     }
 
@@ -127,17 +145,5 @@ class SentencesFragment : Fragment() {
             f.resultKey = resultKey
             return f
         }
-
-//        fun getColorAttrs(context: Context, @StyleRes themeId: Int, @StyleableRes resIds: IntArray): IntArray {
-//            val result: IntArray
-//            context.theme.obtainStyledAttributes(themeId, resIds).let {
-//                result = IntArray(resIds.size)
-//                for (i in resIds.indices) {
-//                    result[i] = it.getColor(i, -1)
-//                }
-//                it.recycle()
-//            }
-//            return result
-//        }
     }
 }
