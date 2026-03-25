@@ -4,7 +4,7 @@ source "./lib-artwork.sh"
 
 launch_list="ic_launcher.svg ic_launcher_round.svg"
 logo_list="logo_app.svg"
-splash_list="ic_splash_app.svg"
+splash_list="ic_splash_grammarscope.svg ic_splash_engine.svg"
 icon_list="ic_error.svg"
 button_list="ic_dependency.svg ic_semantics.svg"
 settings_list="ic_settings_general.svg ic_settings_download.svg ic_settings_graph.svg ic_settings_text.svg ic_settings_semantics.svg ic_settings_system.svg ic_settings_provider.svg ic_settings_palette.svg"

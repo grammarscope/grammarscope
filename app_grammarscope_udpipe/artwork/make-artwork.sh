@@ -3,7 +3,7 @@
 source "./lib-artwork.sh"
 
 launch_list="ic_launcher.svg ic_launcher_round.svg"
-splash_list="ic_splash_app.svg"
+splash_list="ic_splash_grammarscope.svg ic_splash_engine.svg"
 logo_list="logo_app.svg logo_grammarscope.svg"
 
 make_mipmap "${launch_list}" 48
