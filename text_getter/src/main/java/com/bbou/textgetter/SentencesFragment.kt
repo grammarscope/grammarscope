@@ -75,20 +75,6 @@ class SentencesFragment : Fragment() {
                     // get the position on recyclerview.
                     val pos = layoutPosition
                     Log.d(TAG, "position " + pos + " " + dataset[pos])
-                    //val colors: IntArray = getColorAttrs(requireContext(), R.style.MyTheme, intArrayOf(MaterialR.attr.colorSecondary, MaterialR.attr.colorOnSecondary, MaterialR.attr.colorOnSecondaryFixed))
-                    //Snackbar.make(view, dataset[pos], Snackbar.LENGTH_LONG)
-                    //    .setAction("Select") {
-                    //        if (receiver != null) {
-                    //            val result = Bundle()
-                    //            result.putString(resultKey, dataset[pos])
-                    //            receiver!!.send(code, result)
-                    //        }
-                    //    }
-                    //    .setTextMaxLines(8)
-                    //    .setBackgroundTint(colors[0])
-                    //    .setTextColor(colors[1])
-                    //    .setActionTextColor(colors[2])
-                    //    .show()
                     ActionBottomSheet(dataset[pos]) { sentence: String ->
                         if (receiver != null) {
                             val result = Bundle()
