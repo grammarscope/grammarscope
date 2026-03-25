@@ -15,10 +15,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.R as MaterialR
 
 fun showSnackbar(context: Context, parentLayout: View, text: CharSequence, @AttrRes backColorAttr: Int = 0, @AttrRes foreColorAttr: Int = 0, duration: Int = Snackbar.LENGTH_LONG) {
-    val colorAttrs: IntArray = if (backColorAttr != 0 || foreColorAttr != 0) intArrayOf(backColorAttr, foreColorAttr) else intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary)
+    val colorAttrs: IntArray = if (backColorAttr != 0 || foreColorAttr != 0) intArrayOf(backColorAttr, foreColorAttr) else intArrayOf(MaterialR.attr.colorTertiary, MaterialR.attr.colorOnTertiary)
     val colors: IntArray = Colors.getColorAttrs(context, R.style.MyTheme, colorAttrs)
-    val snackbar = Snackbar.make(parentLayout, text, duration)
-    snackbar.setTextMaxLines(8)
+    Snackbar.make(parentLayout, text, duration)
+        .setTextMaxLines(8)
         .setBackgroundTint(colors[0])
         .setTextColor(colors[1])
         .show()
@@ -31,12 +31,12 @@ fun showSwipableSnackbar(context: Context, parentLayout: View, @StringRes textId
 }
 
 fun showSwipableSnackbar(context: Context, parentLayout: View, text: CharSequence, @AttrRes backColorAttr: Int = 0, @AttrRes foreColorAttr: Int = 0, action: CharSequence, listener: View.OnClickListener) {
-    val colorAttrs: IntArray = if (backColorAttr != 0 || foreColorAttr != 0) intArrayOf(backColorAttr, foreColorAttr) else intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary)
+    val colorAttrs: IntArray = if (backColorAttr != 0 || foreColorAttr != 0) intArrayOf(backColorAttr, foreColorAttr) else intArrayOf(MaterialR.attr.colorTertiary, MaterialR.attr.colorOnTertiary)
     val colors: IntArray = Colors.getColorAttrs(context, R.style.MyTheme, colorAttrs)
     val behavior = BaseTransientBottomBar.Behavior()
     behavior.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY)
-    val snackbar = Snackbar.make(parentLayout, text, Snackbar.LENGTH_INDEFINITE)
-    snackbar.setTextMaxLines(8)
+    Snackbar.make(parentLayout, text, Snackbar.LENGTH_INDEFINITE)
+        .setTextMaxLines(8)
         .setBehavior(behavior)
         .setBackgroundTint(colors[0])
         .setTextColor(colors[1])
