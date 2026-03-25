@@ -606,7 +606,7 @@ abstract class BaseMainActivity : BaseActivity() {
 
     private fun onClickFABDependencies(longClick: Boolean) {
         queryEdit?.let {
-            val query: CharSequence = it.text
+            val query: CharSequence = it.text ?: ""
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
@@ -620,7 +620,7 @@ abstract class BaseMainActivity : BaseActivity() {
 
     private fun onClickFABSemantics(longClick: Boolean) {
         queryEdit?.let {
-            val query: CharSequence = it.text
+            val query: CharSequence = it.text ?: ""
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
@@ -704,7 +704,7 @@ abstract class BaseMainActivity : BaseActivity() {
         set(text) {
             queryEdit?.let {
                 it.setText(text)
-                it.setSelection(it.text.length)
+                it.setSelection(it.text?.length ?: 0)
                 val focus = currentFocus
                 if (focus != null) {
                     val inputManager = (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
