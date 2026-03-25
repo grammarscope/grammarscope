@@ -19,7 +19,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -53,6 +52,8 @@ import com.bbou.download.preference.Settings.unrecordDatapackSource
 import com.bbou.others.OthersActivity
 import com.bbou.rate.AppRate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.Broadcast
@@ -241,7 +242,7 @@ abstract class BaseMainActivity : BaseActivity() {
      */
     class MainFragment : Fragment() {
 
-        private lateinit var queryEdit: EditText
+        private lateinit var queryEdit: TextInputEditText
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             return inflater.inflate(R.layout.fragment_main, container, false)
@@ -317,7 +318,7 @@ abstract class BaseMainActivity : BaseActivity() {
             super.onSaveInstanceState(outState)
             val view = view
             if (view != null) {
-                val edit = view.findViewById<EditText>(R.id.query)
+                val edit = view.findViewById<TextInputEditText>(R.id.query)
                 outState.putString(QUERY_STATE, edit.text.toString())
             }
         }
@@ -695,7 +696,7 @@ abstract class BaseMainActivity : BaseActivity() {
 
     // Q U E R Y
 
-    private val queryEdit: EditText?
+    private val queryEdit: TextInputEditText?
         get() = findViewById(R.id.query)
 
     private var query: CharSequence?
