@@ -16,6 +16,7 @@ import android.os.Looper
 import android.os.ResultReceiver
 import android.provider.MediaStore
 import android.util.Log
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
@@ -26,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bbou.textrecog.ImageUtils
@@ -140,9 +142,27 @@ class GetTextActivity : AppCompatActivity() {
         fabImage.setOnClickListener { trySelectImage() }
 
         // handle window insets
+        val fabRecogMarginBottom = (fabRecog.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabDocumentMarginBottom = (fabDocument.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabImageMarginBottom = (fabImage.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(0, 0, 0, systemBars.bottom)
+            
+            // View pager takes full screen
+            view.setPadding(0, 0, 0, 0)
+
+            // Adjust FAB margins to stay above the navigation bar
+            fabRecog.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabRecogMarginBottom + systemBars.bottom
+            }
+            fabDocument.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabDocumentMarginBottom + systemBars.bottom
+            }
+            fabImage.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabImageMarginBottom + systemBars.bottom
+            }
+
             insets
         }
     }
