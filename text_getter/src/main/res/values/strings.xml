@@ -13,6 +13,9 @@
 	<string name="description_from_camera">Get text from camera</string>
 	<string name="description_from_image">Get text from image</string>
 
+	<string name="action_cancel">Dismiss</string>
+	<string name="action_select">Select</string>
+
 	<string-array name="tabs">
 		<item>Text</item>
 		<item>Sentences</item>

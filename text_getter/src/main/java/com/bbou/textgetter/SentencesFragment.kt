@@ -4,7 +4,6 @@
 package com.bbou.textgetter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.os.ResultReceiver
 import android.util.Log
@@ -12,16 +11,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.StyleRes
-import androidx.annotation.StyleableRes
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bbou.textgetter.SentencesFragment.SentencesAdapter.SentenceViewHolder
 import com.bbou.textrecog.R
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.R as MaterialR
 
 /**
  * A placeholder fragment containing a simple view.
@@ -75,25 +70,32 @@ class SentencesFragment : Fragment() {
         inner class SentenceViewHolder internal constructor(val textView: TextView) : RecyclerView.ViewHolder(textView) {
 
             init {
-                itemView.setOnClickListener { view: View ->
+                itemView.setOnClickListener { _: View ->
 
                     // get the position on recyclerview.
                     val pos = layoutPosition
                     Log.d(TAG, "position " + pos + " " + dataset[pos])
-                    val colors: IntArray = getColorAttrs(requireContext(), R.style.MyTheme, intArrayOf(MaterialR.attr.colorSecondary, MaterialR.attr.colorOnSecondary, MaterialR.attr.colorOnSecondaryFixed))
-                    Snackbar.make(view, dataset[pos], Snackbar.LENGTH_LONG)
-                        .setAction("Select") {
-                            if (receiver != null) {
-                                val result = Bundle()
-                                result.putString(resultKey, dataset[pos])
-                                receiver!!.send(code, result)
-                            }
+                    //val colors: IntArray = getColorAttrs(requireContext(), R.style.MyTheme, intArrayOf(MaterialR.attr.colorSecondary, MaterialR.attr.colorOnSecondary, MaterialR.attr.colorOnSecondaryFixed))
+                    //Snackbar.make(view, dataset[pos], Snackbar.LENGTH_LONG)
+                    //    .setAction("Select") {
+                    //        if (receiver != null) {
+                    //            val result = Bundle()
+                    //            result.putString(resultKey, dataset[pos])
+                    //            receiver!!.send(code, result)
+                    //        }
+                    //    }
+                    //    .setTextMaxLines(8)
+                    //    .setBackgroundTint(colors[0])
+                    //    .setTextColor(colors[1])
+                    //    .setActionTextColor(colors[2])
+                    //    .show()
+                    ActionBottomSheet(dataset[pos]) { sentence: String ->
+                        if (receiver != null) {
+                            val result = Bundle()
+                            result.putString(resultKey, sentence)
+                            receiver!!.send(code, result)
                         }
-                        .setTextMaxLines(8)
-                        .setBackgroundTint(colors[0])
-                        .setTextColor(colors[1])
-                        .setActionTextColor(colors[2])
-                        .show()
+                    }.show(parentFragmentManager, "ActionBottomSheet")
                 }
             }
         }
@@ -140,16 +142,16 @@ class SentencesFragment : Fragment() {
             return f
         }
 
-        fun getColorAttrs(context: Context, @StyleRes themeId: Int, @StyleableRes resIds: IntArray): IntArray {
-            val result: IntArray
-            context.theme.obtainStyledAttributes(themeId, resIds).let {
-                result = IntArray(resIds.size)
-                for (i in resIds.indices) {
-                    result[i] = it.getColor(i, -1)
-                }
-                it.recycle()
-            }
-            return result
-        }
+//        fun getColorAttrs(context: Context, @StyleRes themeId: Int, @StyleableRes resIds: IntArray): IntArray {
+//            val result: IntArray
+//            context.theme.obtainStyledAttributes(themeId, resIds).let {
+//                result = IntArray(resIds.size)
+//                for (i in resIds.indices) {
+//                    result[i] = it.getColor(i, -1)
+//                }
+//                it.recycle()
+//            }
+//            return result
+//        }
     }
 }

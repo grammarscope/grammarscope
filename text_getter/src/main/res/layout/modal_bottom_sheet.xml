@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2026. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorSecondary"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:textColor="?attr/colorOnSecondary">
+
+    <TextView
+        android:id="@+id/sentence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorOnTertiary"
+        android:textSize="14sp" />
+
+    <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:id="@+id/btn_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="?attr/colorTertiary"
+        android:text="@string/action_select"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnTertiary" />
+
+    <!--    <Button-->
+    <!--        style="@style/Widget.MaterialComponents.Button.TextButton"-->
+    <!--        android:id="@+id/btn_cancel"-->
+    <!--        android:background="?attr/colorTertiary"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/action_cancel"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:textColor="?attr/colorOnTertiary" />-->
+</LinearLayout>
