@@ -5,7 +5,6 @@
 package org.grammarscope.syntaxnet
 
 import org.grammarscope.AbstractApplication
-import org.grammarscope.BuildConfig
 
 class Application : AbstractApplication() {
 
