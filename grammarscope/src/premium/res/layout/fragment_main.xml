@@ -27,18 +27,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:hint="@string/hint_query">
+            android:hint="@string/hint_query"
+            app:boxBackgroundColor="?attr/colorSurfaceVariant"
+            app:boxCornerRadiusBottomEnd="28dp"
+            app:boxCornerRadiusBottomStart="28dp"
+            app:boxCornerRadiusTopEnd="28dp"
+            app:boxCornerRadiusTopStart="28dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/query"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/colorOnSurfaceVariant"
                 android:imeOptions="normal"
                 android:importantForAutofill="no"
                 android:inputType="text|textCapSentences|textMultiLine|textNoSuggestions"
                 android:minHeight="48dp"
-                android:scrollbars="vertical"
-                tools:targetApi="o" />
+                android:scrollbars="vertical" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
