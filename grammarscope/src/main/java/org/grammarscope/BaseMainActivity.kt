@@ -61,7 +61,7 @@ import org.depparse.Broadcast
 import org.depparse.IProvider
 import org.depparse.Storage
 import org.depparse.common.AboutActivity
-import org.depparse.common.BaseActivity
+import org.depparse.BaseActivity
 import org.depparse.common.BaseParseActivity.Companion.tryStartParse
 import org.depparse.common.Colors
 import org.depparse.common.LanguageFlag

@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.net.toUri
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewAssetLoader.AssetsPathHandler
+import org.depparse.BaseActivity
 
 /**
  * Web activity

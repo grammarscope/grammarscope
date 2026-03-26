@@ -52,6 +52,7 @@ dependencies {
     implementation(platform(libs.kotlin.bom))
     implementation(kotlin("stdlib"))
 
+    implementation(project(":core"))
     implementation(project(":download_common"))
     implementation(project(":deploy"))
     implementation(project(":coroutines"))

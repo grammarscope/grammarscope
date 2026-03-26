@@ -51,7 +51,7 @@ dependencies {
     implementation(project(":service_iface")) // needed for IParceler
     implementation(project(":data")) // needed for Sentence
     implementation(project(":provider")) // needed for IProvider
-    implementation(project(":core")) // needed  for IEngine, IAsyncLoading
+    implementation(project(":stub")) // needed  for IEngine, IAsyncLoading
     implementation(project(":result"))
     implementation(project(":corenlp_engine"))
 

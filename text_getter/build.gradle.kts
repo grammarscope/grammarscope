@@ -47,6 +47,7 @@ dependencies {
     implementation(platform(libs.kotlin.bom))
     implementation(kotlin("stdlib"))
 
+    implementation(project(":core"))
     implementation(project(":livedata"))
     implementation(project(":sentence_detector"))
 

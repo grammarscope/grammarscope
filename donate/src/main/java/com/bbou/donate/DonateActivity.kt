@@ -26,6 +26,7 @@ import com.bbou.donate.billing.BillingManager.BillingListener
 import com.bbou.donate.billing.Products.inappProducts
 import com.bbou.donate.billing.Products.init
 import com.google.android.material.button.MaterialButton
+import org.depparse.BaseActivity
 import java.util.Date
 
 /**
@@ -33,7 +34,7 @@ import java.util.Date
  *
  * @author [Bernard Bou](mailto:1313ou@gmail.com)
  */
-class DonateActivity : AppCompatActivity(), BillingListener {
+class DonateActivity : BaseActivity(), BillingListener {
 
     /**
      * Adapter to in-app billing

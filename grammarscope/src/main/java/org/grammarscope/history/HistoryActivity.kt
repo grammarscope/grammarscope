@@ -31,7 +31,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
-import org.depparse.common.BaseActivity
+import org.depparse.BaseActivity
 import org.grammarscope.MainActivity
 import org.grammarscope.common.R
 import org.grammarscope.history.History.Companion.recordQuery

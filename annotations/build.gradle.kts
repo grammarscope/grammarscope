@@ -44,8 +44,9 @@ dependencies {
     implementation(platform(libs.kotlin.bom))
     implementation(kotlin("stdlib"))
 
-    implementation(project(":data"))
     implementation(project(":core"))
+    implementation(project(":data"))
+    implementation(project(":stub"))
     implementation(project(":common"))
     implementation(project(":coroutines"))
     implementation(project(":capture"))

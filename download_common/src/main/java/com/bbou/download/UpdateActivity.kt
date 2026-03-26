@@ -3,19 +3,16 @@
  */
 package com.bbou.download
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.activity.SystemBarStyle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.bbou.download.common.R
+import org.depparse.BaseActivity
 
 /**
  * Update activity
  */
-class UpdateActivity : AppCompatActivity() {
+class UpdateActivity : BaseActivity() {
 
     /**
      * onCreate
@@ -24,12 +21,6 @@ class UpdateActivity : AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
 
         // content view
         setContentView(R.layout.activity_update)

@@ -76,7 +76,7 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     implementation(project(":data"))
-    implementation(project(":core"))
+    implementation(project(":stub"))
     implementation(project(":provider"))
 
     implementation(libs.core.ktx)

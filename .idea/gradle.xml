@@ -40,6 +40,7 @@
             <option value="$PROJECT_DIR$/service_bound_server" />
             <option value="$PROJECT_DIR$/service_client_iface" />
             <option value="$PROJECT_DIR$/service_iface" />
+            <option value="$PROJECT_DIR$/stub" />
             <option value="$PROJECT_DIR$/syntaxnet1_jni" />
             <option value="$PROJECT_DIR$/syntaxnet2_jni" />
             <option value="$PROJECT_DIR$/syntaxnet_bound_server" />

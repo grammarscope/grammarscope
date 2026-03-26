@@ -52,7 +52,7 @@ dependencies {
     implementation(project(":service_client_iface"))
     implementation(project(":data"))
     implementation(project(":provider"))
-    implementation(project(":core"))
+    implementation(project(":stub"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

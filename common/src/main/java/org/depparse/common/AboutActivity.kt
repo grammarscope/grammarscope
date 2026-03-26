@@ -8,6 +8,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.bbou.donate.DonateActivity
 import com.bbou.others.OthersActivity
+import org.depparse.BaseActivity
 
 /**
  * About activity

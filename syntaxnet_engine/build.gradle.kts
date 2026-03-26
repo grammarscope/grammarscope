@@ -50,7 +50,7 @@ dependencies {
     implementation(project(":service_iface"))
     implementation(project(":data"))
     implementation(project(":provider"))
-    implementation(project(":core"))
+    implementation(project(":stub"))
     implementation(project(":coroutines"))
     implementation(project(":syntaxnet2_jni"))
 

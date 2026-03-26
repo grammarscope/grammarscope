@@ -8,7 +8,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -18,8 +17,6 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.SystemBarStyle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -36,12 +33,13 @@ import com.bbou.textrecog.RecognizedTextViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import org.depparse.BaseActivity
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.IOException
 import java.util.Objects
 
-class GetTextActivity : AppCompatActivity() {
+class GetTextActivity : BaseActivity() {
 
     var textFromFileModel: TextFromFileViewModel? = null
     private var imageFromFileModel: ImageFromFileViewModel? = null
@@ -57,12 +55,6 @@ class GetTextActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
 
         // layout
         setContentView(R.layout.activity_gettext)

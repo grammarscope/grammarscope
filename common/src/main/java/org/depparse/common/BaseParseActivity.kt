@@ -15,6 +15,7 @@ import com.bbou.deploy.coroutines.Deploy.fastCheck
 import org.depparse.Storage
 import java.text.Normalizer
 import java.util.function.Consumer
+import org.depparse.BaseActivity
 
 abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
 

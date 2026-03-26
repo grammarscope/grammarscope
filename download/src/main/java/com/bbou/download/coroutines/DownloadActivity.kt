@@ -6,25 +6,22 @@ package com.bbou.download.coroutines
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.SystemBarStyle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceManager
 import com.bbou.download.CompletionListener
 import com.bbou.download.Keys
 import com.bbou.download.common.R
 import com.bbou.download.preference.Settings
+import org.depparse.BaseActivity
 
 /**
  * Download activity
  *
  * @author [Bernard Bou](mailto:1313ou@gmail.com)
  */
-class DownloadActivity : AppCompatActivity(), CompletionListener {
+class DownloadActivity : BaseActivity(), CompletionListener {
 
     /**
      * onCreate
@@ -34,12 +31,6 @@ class DownloadActivity : AppCompatActivity(), CompletionListener {
     @SuppressLint("CommitTransaction") // BUG
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // edge to edge
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT) //(DefaultLightScrim, DefaultDarkScrim)
-        )
 
         // download mode to downloader
         val overriddenMode = intent.getStringExtra(Keys.DOWNLOAD_MODE_ARG)

@@ -9,7 +9,7 @@ private val vMinSdk by lazy { rootProject.extra["minSdk"] as Int }
 
 android {
 
-    namespace = "org.grammarscope.semantics"
+    namespace = "org.depparse.stub"
 
     defaultConfig {
         minSdk = vMinSdk
@@ -47,14 +47,10 @@ dependencies {
     implementation(platform(libs.kotlin.bom))
     implementation(kotlin("stdlib"))
 
-    implementation(project(":data"))
-    implementation(project(":stub"))
-    implementation(project(":common"))
-    implementation(project(":coroutines"))
+    implementation(project(":provider"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.preference.ktx)
-    implementation(libs.constraintlayout)
-    implementation(libs.material)
+    implementation(libs.annotation)
 }

@@ -15,7 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import org.depparse.Storage.getAppStorage
-import org.depparse.common.BaseActivity
+import org.depparse.BaseActivity
 import org.depparse.common.WebActivity.Companion.tryStart
 import org.grammarscope.common.R
 import org.grammarscope.semantics.SemanticRelations.ObjectRelations

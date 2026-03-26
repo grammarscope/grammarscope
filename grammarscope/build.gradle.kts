@@ -69,9 +69,10 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
 
+    implementation(project(":core"))
     implementation(project(":data"))
     implementation(project(":provider"))
-    implementation(project(":core"))
+    implementation(project(":stub"))
     implementation(project(":deploy"))
     implementation(project(":common"))
     implementation(project(":coroutines"))

@@ -53,5 +53,4 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.preference.ktx)
     implementation(libs.annotation)
-
 }
