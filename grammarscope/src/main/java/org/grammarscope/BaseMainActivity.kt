@@ -19,6 +19,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -31,6 +32,7 @@ import androidx.core.content.edit
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
@@ -53,7 +55,6 @@ import com.bbou.others.OthersActivity
 import com.bbou.rate.AppRate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.Broadcast
@@ -150,9 +151,19 @@ abstract class BaseMainActivity : BaseActivity() {
         setupUI()
 
         // handle window insets
+        val fabDependenciesMarginBottom = (fabDependencies.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabSemanticsMarginBottom = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(0, 0, 0, systemBars.bottom)
+            val container = findViewById<FrameLayout>(R.id.container)
+            // view.setPadding(0, 0, 0, 0)
+            container.setPadding(0, 0, 0, systemBars.bottom)
+            fabDependencies.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabDependenciesMarginBottom + systemBars.bottom
+            }
+            fabSemantics.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabSemanticsMarginBottom + systemBars.bottom
+            }
             insets
         }
 
