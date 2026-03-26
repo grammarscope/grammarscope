@@ -3,6 +3,10 @@ package org.grammarscope
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uci.ics.jung.AugmentedGraph
 import edu.uci.ics.jung.Visualizer
@@ -24,6 +28,26 @@ abstract class GraphsParseActivity<V : Token, E : Label> : GraphBaseParseActivit
         fabPrev.setOnClickListener { v: View? -> onFABPrevClick(v) }
         fabNext = findViewById(R.id.fab_next)
         fabNext.setOnClickListener { v: View? -> onFABNextClick(v) }
+
+        // handle window insets
+        val fabRefresh = findViewById<FloatingActionButton>(R.id.fab_refresh)
+        val fabRefreshMarginBottom = (fabRefresh.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabPrevMarginBottom = (fabPrev.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabNextMarginBottom = (fabNext.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            //view.setPadding(0, 0, 0, systemBars.bottom)
+            fabPrev.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabPrevMarginBottom + systemBars.bottom
+            }
+            fabNext.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabNextMarginBottom + systemBars.bottom
+            }
+            fabRefresh.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = fabRefreshMarginBottom + systemBars.bottom
+            }
+            insets
+        }
     }
 
     override val layout: Int

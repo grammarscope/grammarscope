@@ -9,8 +9,6 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bbou.capture.Capture.captureAndSave
 import com.bbou.capture.Capture.captureAndShare
@@ -59,13 +57,6 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
         GraphColors.setColorsFromResources(this)
         colorSettings = ColorSettings(this)
         assetManager = resources.assets
-
-        // handle window insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(0, 0, 0, systemBars.bottom)
-            insets
-        }
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
