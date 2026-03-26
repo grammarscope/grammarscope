@@ -71,6 +71,8 @@ import org.depparse.common.Settings.isStripAccentsEnabled
 import org.depparse.common.UniqueProvider
 import org.depparse.common.WebActivity
 import org.depparse.common.showSnackbar
+import org.grammarscope.AbstractApplication.Companion.createOverrideConfigurationForDayNight
+import org.grammarscope.Version.version
 import org.grammarscope.annotations.AnnotatedTextActivity
 import org.grammarscope.common.R
 import org.grammarscope.history.History.Companion.recordQuery
@@ -379,6 +381,11 @@ abstract class BaseMainActivity : BaseActivity() {
 
             R.id.status -> {
                 info(status())
+                return true
+            }
+
+            R.id.version -> {
+                version(this)
                 return true
             }
 
@@ -1029,7 +1036,7 @@ abstract class BaseMainActivity : BaseActivity() {
 
     override fun onNightModeChanged(mode: Int) {
         super.onNightModeChanged(mode)
-        val overrideConfig = Application.createOverrideConfigurationForDayNight(this, mode)
+        val overrideConfig = createOverrideConfigurationForDayNight(this, mode)
         application.onConfigurationChanged(overrideConfig)
     }
 

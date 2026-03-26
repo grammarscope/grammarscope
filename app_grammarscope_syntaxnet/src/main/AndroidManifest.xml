@@ -9,7 +9,7 @@
 		android:required="true" />
 
 	<application
-		android:name="org.grammarscope.Application"
+		android:name="org.grammarscope.syntaxnet.Application"
 		android:allowBackup="true"
 		android:dataExtractionRules="@xml/data_extraction_rules"
 		android:fullBackupContent="@xml/backup_descriptor"
@@ -23,7 +23,7 @@
 		tools:targetApi="s">
 
 		<activity
-			android:name=".MainActivity"
+			android:name="org.grammarscope.MainActivity"
 			android:exported="true"
 			android:label="@string/title_activity_main">
 			<intent-filter>
@@ -33,41 +33,41 @@
 		</activity>
 
 		<activity
-			android:name=".DependencyParseActivity"
+			android:name="org.grammarscope.DependencyParseActivity"
 			android:configChanges="uiMode"
 			android:exported="false"
 			android:label="@string/title_activity_parse"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
-			android:name=".DependencyGraphParseActivity"
+			android:name="org.grammarscope.DependencyGraphParseActivity"
 			android:configChanges="uiMode"
 			android:exported="false"
 			android:hardwareAccelerated="true"
 			android:label="@string/title_activity_dependency_graph"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
-			android:name=".DependencyGraphsParseActivity"
+			android:name="org.grammarscope.DependencyGraphsParseActivity"
 			android:configChanges="uiMode"
 			android:exported="false"
 			android:hardwareAccelerated="true"
 			android:label="@string/title_activity_dependency_graphs"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
@@ -76,36 +76,36 @@
 			android:exported="false"
 			android:label="@string/title_activity_semantic_parse"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
-			android:name=".SemanticGraphParseActivity"
+			android:name="org.grammarscope.SemanticGraphParseActivity"
 			android:configChanges="uiMode"
 			android:exported="false"
 			android:hardwareAccelerated="true"
 			android:label="@string/title_activity_semantic_graph_parse"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
-			android:name=".SemanticGraphsParseActivity"
+			android:name="org.grammarscope.SemanticGraphsParseActivity"
 			android:configChanges="uiMode"
 			android:exported="false"
 			android:hardwareAccelerated="true"
 			android:label="@string/title_activity_semantic_graphs_parse"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
@@ -114,10 +114,10 @@
 			android:hardwareAccelerated="true"
 			android:label="@string/title_activity_annotate"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
@@ -136,104 +136,104 @@
 			android:exported="false"
 			android:label="@string/title_activity_labels"
 			android:launchMode="singleTop"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
-			android:name=".SettingsActivity"
+			android:name="org.grammarscope.SettingsActivity"
 			android:exported="false"
 			android:label="@string/title_activity_settings"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
-			android:name=".DependencySettingsActivity"
+			android:name="org.grammarscope.DependencySettingsActivity"
 			android:exported="false"
 			android:label="@string/title_activity_settings"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
-			android:name=".SemanticSettingsActivity"
+			android:name="org.grammarscope.SemanticSettingsActivity"
 			android:exported="false"
 			android:label="@string/title_activity_settings"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
 			android:name="org.grammarscope.annotations.AnnotationsSettingsActivity"
 			android:exported="false"
 			android:label="@string/title_activity_settings"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
 			android:name="org.depparse.common.AboutActivity"
 			android:exported="false"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
 			android:name="org.depparse.common.WebActivity"
 			android:exported="false"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
 			android:name="com.bbou.others.OthersActivity"
 			android:exported="false"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
 			android:name="com.bbou.donate.DonateActivity"
 			android:exported="false"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
 			android:name="com.bbou.download.coroutines.DownloadActivity"
 			android:exported="false"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<activity
 			android:name="com.bbou.download.UpdateActivity"
 			android:exported="false"
-			android:parentActivityName=".MainActivity">
+			android:parentActivityName="org.grammarscope.MainActivity">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value="org.grammarscope.MainActivity" />
 		</activity>
 
 		<service

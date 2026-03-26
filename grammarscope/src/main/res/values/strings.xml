@@ -24,9 +24,13 @@
 	<string name="action_bind">Bind</string>
 	<string name="action_unbind">Unbind</string>
 	<string name="action_bind_unbind">bind_unbind</string>
+	<string name="action_input">Input</string>
+	<string name="action_app">App</string>
 	<string name="action_status">Status</string>
+	<string name="action_version">Version</string>
 	<string name="action_engine_version">Engine version</string>
 	<string name="action_settings">Settings</string>
+	<string name="action_doc">Doc</string>
 	<string name="action_theme">Theme …</string>
 	<string name="action_theme_system">Theme follows system</string>
 	<string name="action_theme_night">Night theme</string>
@@ -51,6 +55,7 @@
 	<string name="action_semantics_reset">Reset semantics</string>
 
     <string name="action_cancel">Cancel</string>
+	<string name="action_dismiss">Dismiss</string>
 
     <string name="description_splash">powered by SyntaxNet</string>
 	<string name="description_graph">Graph</string>
@@ -87,7 +92,7 @@
 	<string name="provider_not_ready">not ready</string>
 	<string name="provider_pending">pending</string>
 
-    <plurals name="sentences_found">
+	<plurals name="sentences_found">
 		<item quantity="zero">No sentence found.</item>
 		<item quantity="one">%1$d sentence found.</item>
 		<item quantity="other">%1$d sentences found.</item>

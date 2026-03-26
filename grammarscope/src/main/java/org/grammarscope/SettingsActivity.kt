@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
 import org.depparse.common.BaseSettingsActivity
 import org.depparse.common.Colors.setColorsFromResources
-import org.grammarscope.Application.Companion.clearSettings
-import org.grammarscope.Application.Companion.initSettings
+import org.grammarscope.AbstractApplication.Companion.clearSettings
+import org.grammarscope.AbstractApplication.Companion.initSettings
 import org.grammarscope.common.R
 import org.grammarscope.graph.DependencySettings
 import org.grammarscope.graph.SemanticSettings

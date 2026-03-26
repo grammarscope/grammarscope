@@ -39,7 +39,7 @@ import kotlin.system.exitProcess
 import com.bbou.download.common.R as DownloadR
 import org.depparse.common.R as CommonR
 
-class Application : Application() {
+abstract class AbstractApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -57,6 +57,12 @@ class Application : Application() {
         super.onTerminate()
         unregisterReceiver(ProviderManager)
     }
+
+    // F E A T U R E S
+
+    abstract fun buildTime(): String
+
+    abstract fun gitHash(): String
 
     // I N I T I A L I Z A T I O N
 

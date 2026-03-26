@@ -21,6 +21,11 @@
 		app:showAsAction="never" />
 
 	<item
+		android:id="@+id/version"
+		android:title="@string/action_version"
+		app:showAsAction="never" />
+
+	<item
 		android:id="@+id/engine_version"
 		android:title="@string/action_engine_version"
 		app:showAsAction="never" />
