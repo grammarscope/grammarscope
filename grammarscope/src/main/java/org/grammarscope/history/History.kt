@@ -110,6 +110,12 @@ class History(private val context: Context, mode: Int) {
 
         private const val PREF_KEY_HISTORY_SORT_BY_DATE = "pref_history_sort_by_date"
 
+        /**
+         * Get authority
+         *
+         * @param context context
+         * @return authority for provider
+         */
         @JvmStatic
         fun getAuthority(context: Context): String {
             return context.getString(R.string.history_provider_authority)
@@ -127,5 +133,9 @@ class History(private val context: Context, mode: Int) {
             suggestions.saveRecentQuery(query, null)
         }
 
+        @JvmStatic
+        fun getAuthority(context: Context): String {
+            return context.getString(R.string.history_provider_authority)
+        }
     }
 }
