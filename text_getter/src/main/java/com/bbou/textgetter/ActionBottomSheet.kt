@@ -20,7 +20,7 @@ class ActionBottomSheet(val sentence: String, val select: (sentence: String)->Un
             savedInstanceState: Bundle?
         ): View? {
             val view = inflater.inflate(R.layout.modal_bottom_sheet, container, false)
-            view.findViewById<TextView>(R.id.sentence).setText(sentence)
+            view.findViewById<TextView>(R.id.sentence).text = sentence
             view.findViewById<Button>(R.id.btn_select).setOnClickListener {
                 dismiss()
                 select.invoke(sentence)
