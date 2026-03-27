@@ -57,11 +57,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.depparse.BaseActivity
 import org.depparse.Broadcast
 import org.depparse.IProvider
 import org.depparse.Storage
 import org.depparse.common.AboutActivity
-import org.depparse.BaseActivity
 import org.depparse.common.BaseParseActivity.Companion.tryStartParse
 import org.depparse.common.Colors
 import org.depparse.common.LanguageFlag
@@ -80,6 +80,7 @@ import org.grammarscope.history.History.Companion.recordQuery
 import org.grammarscope.history.HistoryActivity
 import java.util.Locale
 import java.util.function.Consumer
+import androidx.appcompat.R as AppCompatR
 import com.google.android.material.R as MaterialR
 import org.depparse.common.R as CommonR
 
@@ -940,7 +941,7 @@ abstract class BaseMainActivity : BaseActivity() {
             val drawable = AppCompatResources.getDrawable(this, if (bound) R.drawable.ic_unbind else R.drawable.ic_bind)!!
             val tints = Colors.getColorAttrs(
                 this, CommonR.style.MyTheme, intArrayOf(
-                    CommonR.attr.colorOnCustom, MaterialR.attr.colorError
+                    CommonR.attr.colorOnCustom, MaterialR.attr.colorErrorContainer
                 )
             )
             val tint = tints[if (bound) 0 else 1]
@@ -1030,12 +1031,12 @@ abstract class BaseMainActivity : BaseActivity() {
     private fun warn(exception: Exception) {
         val contentView = findViewById<View>(android.R.id.content)
         val message = exception.message ?: exception.toString()
-        showSnackbar(this, contentView, message, MaterialR.attr.colorError, MaterialR.attr.colorOnError)
+        showSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError)
     }
 
     private fun warn(message: String) {
         val contentView = findViewById<View>(android.R.id.content)
-        showSnackbar(this, contentView, message, MaterialR.attr.colorError, MaterialR.attr.colorOnError)
+        showSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError)
     }
 
     private fun info(message: String) {

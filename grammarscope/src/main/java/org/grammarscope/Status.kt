@@ -21,6 +21,7 @@ import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 import kotlin.math.ln
 import kotlin.math.pow
+import androidx.appcompat.R as AppCompatR
 import org.depparse.common.R as CommonR
 import com.google.android.material.R as MaterialR
 
@@ -59,7 +60,7 @@ object Status {
             alert.setIcon(R.drawable.ic_error)
             alert.setMessage(R.string.model_none)
         } else {
-            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(MaterialR.attr.colorPrimary, MaterialR.attr.colorOnPrimary))
+            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(AppCompatR.attr.colorPrimary, MaterialR.attr.colorOnPrimary))
             val langFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
             val nameFactory = SpanFactory { arrayOf<Any>(BackgroundColorSpan(colors[0]), ForegroundColorSpan(colors[1]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
             val moreFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
