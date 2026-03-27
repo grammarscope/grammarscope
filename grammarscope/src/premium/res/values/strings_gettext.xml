@@ -6,5 +6,6 @@
 
 	<string name="action_text_get">Get input from text</string>
 	<string name="description_text_get">Get input from text, image or camera</string>
+	<string name="description_text_history">Get input from history</string>
 
 </resources>
