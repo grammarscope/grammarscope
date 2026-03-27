@@ -132,10 +132,5 @@ class History(private val context: Context, mode: Int) {
             val suggestions = android.provider.SearchRecentSuggestions(context, getAuthority(context), SearchRecentSuggestionsProvider.DATABASE_MODE_QUERIES)
             suggestions.saveRecentQuery(query, null)
         }
-
-        @JvmStatic
-        fun getAuthority(context: Context): String {
-            return context.getString(R.string.history_provider_authority)
-        }
     }
 }

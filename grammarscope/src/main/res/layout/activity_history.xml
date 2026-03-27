@@ -10,6 +10,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
@@ -18,6 +19,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/list_history" />
+	<androidx.fragment.app.FragmentContainerView
+		android:id="@+id/fragment_history"
+		android:name="org.grammarscope.history.HistoryEditFragment"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
