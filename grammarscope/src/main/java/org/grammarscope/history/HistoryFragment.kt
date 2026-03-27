@@ -29,6 +29,12 @@ open class HistoryFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             field = selectListener
         }
 
+    var itemLayoutId: Int? = null
+        set(itemLayoutId) {
+            adapter.itemLayoutId = itemLayoutId ?: R.layout.item_history
+            field = itemLayoutId
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appContext = requireContext().applicationContext
@@ -65,10 +71,12 @@ open class HistoryFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         var onSelect: ((query: String) -> Unit)? = null
 
+        var itemLayoutId: Int = R.layout.item_history
+
         private var cursor: Cursor? = null
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(itemLayoutId, parent, false)
             return ViewHolder(view)
         }
 

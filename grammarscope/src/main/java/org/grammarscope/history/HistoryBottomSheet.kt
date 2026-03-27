@@ -34,7 +34,6 @@ class HistoryBottomSheet(private val select: (query: String) -> Unit) : BottomSh
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // We reuse the existing HistoryFragment by adding it to this BottomSheet
         return inflater.inflate(R.layout.fragment_history_bottom_sheet, container, false)
     }
 
@@ -42,6 +41,7 @@ class HistoryBottomSheet(private val select: (query: String) -> Unit) : BottomSh
         super.onViewCreated(view, savedInstanceState)
 
         val fragment = HistoryFragment().apply {
+            itemLayoutId = R.layout.item_history_bottomsheet
             selectListener = { query ->
                 dismiss()
                 select(query)
