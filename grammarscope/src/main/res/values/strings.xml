@@ -76,6 +76,7 @@
 
 	<string name="status_clear_data">Clear model.</string>
 	<string name="status_disable_sentence_boundary_detect">Disabling sentence boundary detection.</string>
+	<string name="status_deleted">Deleted</string>
 
 	<string name="download_down">current model</string>
 	<string name="download_newer">source model is possibly newer</string>
