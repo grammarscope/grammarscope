@@ -292,8 +292,7 @@ abstract class BaseMainActivity : BaseActivity() {
             })
 
             // clear button
-            val btnClear = requireActivity().findViewById<ImageButton>(R.id.clear)
-            btnClear.setOnClickListener {
+            requireActivity().findViewById<ImageButton>(R.id.clear).setOnClickListener {
                 // data
                 queryEdit.setText("")
 
@@ -307,8 +306,7 @@ abstract class BaseMainActivity : BaseActivity() {
             }
 
             // example button
-            val btnExamples = requireActivity().findViewById<ImageButton>(R.id.examples)
-            btnExamples.setOnClickListener {
+            requireActivity().findViewById<ImageButton>(R.id.examples).setOnClickListener {
                 val sentences = Samples.read(activity)
                 if (!sentences.isNullOrEmpty()) {
                     val builder = AlertDialog.Builder(requireContext())
