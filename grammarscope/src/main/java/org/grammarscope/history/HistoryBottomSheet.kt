@@ -35,7 +35,7 @@ class HistoryBottomSheet(private val select: (query: String) -> Unit) : BottomSh
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_history_bottom_sheet, container, false)
+        return inflater.inflate(R.layout.fragment_list_bottomsheet, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +50,7 @@ class HistoryBottomSheet(private val select: (query: String) -> Unit) : BottomSh
         }
 
         childFragmentManager.beginTransaction()
-            .replace(R.id.history_container, fragment)
+            .replace(R.id.list_container, fragment)
             .commit()
 
         // Fix icon contrast (prevents white icons on white/light bar).
