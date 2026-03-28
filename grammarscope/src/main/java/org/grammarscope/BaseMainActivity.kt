@@ -23,7 +23,6 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
@@ -157,7 +156,7 @@ abstract class BaseMainActivity : BaseActivity() {
         val fabDependenciesMarginBottom = (fabDependencies.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         val fabSemanticsMarginEnd = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         val fabSemanticsMarginBottom = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_layout)
             val container = findViewById<FrameLayout>(R.id.container)
@@ -307,21 +306,24 @@ abstract class BaseMainActivity : BaseActivity() {
 
             // example button
             requireActivity().findViewById<ImageButton>(R.id.examples).setOnClickListener {
-                val sentences = Samples.read(activity)
-                if (!sentences.isNullOrEmpty()) {
-                    val builder = AlertDialog.Builder(requireContext())
-                    builder
-                        .setTitle(R.string.title_sentences)
-                        .setItems(sentences) { _, which ->
-                            val selected = sentences[which]
-                            queryEdit.setText(selected)
-                        }
-                        .setNegativeButton(android.R.string.cancel) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                    val dialog = builder.create()
-                    dialog.show()
-                }
+                // val sentences = Samples.read(activity)
+                // if (!sentences.isNullOrEmpty()) {
+                //     val builder = AlertDialog.Builder(requireContext())
+                //     builder
+                //         .setTitle(R.string.title_sentences)
+                //         .setItems(sentences) { _, which ->
+                //             val selected = sentences[which]
+                //             queryEdit.setText(selected)
+                //         }
+                //         .setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                //             dialog.dismiss()
+                //         }
+                //     val dialog = builder.create()
+                //     dialog.show()
+                // }
+                SampleBottomSheet { sentence: String ->
+                    select(sentence)
+                }.show(parentFragmentManager, "SampleBottomSheet")
 
                 // focus
                 val focus = activity.currentFocus
@@ -340,6 +342,13 @@ abstract class BaseMainActivity : BaseActivity() {
                 val edit = view.findViewById<TextInputEditText>(R.id.query)
                 outState.putString(QUERY_STATE, edit.text.toString())
             }
+        }
+
+        fun select(query: String) {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            intent.action = Intent.ACTION_SEARCH
+            intent.putExtra(SearchManager.QUERY, query)
+            startActivity(intent)
         }
 
         companion object {

@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (c) 2026. Bernard Bou <1313ou@gmail.com>
+  -->
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:drawablePadding="10sp"
+    android:gravity="center_vertical"
+    android:maxLines="10"
+    android:minHeight="32sp"
+    android:paddingTop="16sp"
+    android:paddingStart="16sp"
+    android:paddingEnd="16sp"
+    android:textSize="14sp"
+    android:textColor="?attr/colorOnSurface"
+    app:drawableStartCompat="@drawable/ic_history"
+    app:drawableTint="?attr/colorOnSurface" />
