@@ -30,8 +30,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="808080" />
-                            <entry key="outputName" value="ic_document_history" />
-                            <entry key="sourceFile" value="/opt/devel/dep-parsers/android/apps/grammarscope/artwork/ic_document_history.svg" />
+                            <entry key="outputName" value="ic_document_get" />
+                            <entry key="sourceFile" value="/opt/devel/dep-parsers/android/apps/grammarscope/artwork/ic_document_get.svg" />
                           </map>
                         </option>
                       </PersistentState>
