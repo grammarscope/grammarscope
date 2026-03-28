@@ -73,7 +73,7 @@
 				android:layout_height="wrap_content"
 				android:background="@android:color/transparent"
 				android:contentDescription="@string/description_examples"
-				android:src="@drawable/ic_examples"
+				android:src="@drawable/ic_document_examples"
                 android:visibility="visible"
                 app:tint="?attr/colorOnCustom" />
 

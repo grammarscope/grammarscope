@@ -17,5 +17,5 @@
     android:paddingEnd="16sp"
     android:textSize="14sp"
     android:textColor="?attr/colorOnSurface"
-    app:drawableStartCompat="@drawable/ic_history"
+    app:drawableStartCompat="@drawable/ic_example"
     app:drawableTint="?attr/colorOnSurface" />
