@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.WindowInsetsControllerCompat
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.color.MaterialColors.getColor
@@ -59,6 +60,24 @@ class HistoryBottomSheet(private val select: (query: String) -> Unit) : BottomSh
         WindowInsetsControllerCompat(window, window.decorView).apply {
             isAppearanceLightNavigationBars = isLightMode
             isAppearanceLightStatusBars = isLightMode
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val dialog = dialog as? BottomSheetDialog
+        val bottomSheet = dialog?.findViewById<View>(MaterialR.id.design_bottom_sheet)
+        val isLandscape = resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+        bottomSheet?.let {
+            if (isLandscape) {
+                val behavior = BottomSheetBehavior.from(it)
+
+                // Force the sheet to be expanded immediately
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+                // Optional: Ensure it can still be dragged/dismissed
+                behavior.skipCollapsed = true
+            }
         }
     }
 }
