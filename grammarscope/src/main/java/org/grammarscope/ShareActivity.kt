@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import org.grammarscope.BaseMainActivity.Companion.tryStartWithText
+import org.grammarscope.BaseMainActivity.Companion.startMainWithQuery
 
 class ShareActivity : AppCompatActivity() {
 
@@ -33,7 +33,7 @@ class ShareActivity : AppCompatActivity() {
             if ("text/plain" == type) {
                 val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
                 if (!sharedText.isNullOrEmpty()) {
-                    tryStartWithText(this, sharedText)
+                    startMainWithQuery(sharedText, this)
                     return true
                 }
             }

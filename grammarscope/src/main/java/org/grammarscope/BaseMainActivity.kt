@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.SearchManager
 import android.content.BroadcastReceiver
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -322,7 +321,7 @@ abstract class BaseMainActivity : BaseActivity() {
                 //     dialog.show()
                 // }
                 SampleBottomSheet { sentence: String ->
-                    select(sentence)
+                    startMainWithQuery(sentence, requireActivity())
                 }.show(parentFragmentManager, "SampleBottomSheet")
 
                 // focus
@@ -342,13 +341,6 @@ abstract class BaseMainActivity : BaseActivity() {
                 val edit = view.findViewById<TextInputEditText>(R.id.query)
                 outState.putString(QUERY_STATE, edit.text.toString())
             }
-        }
-
-        fun select(query: String) {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            intent.action = Intent.ACTION_SEARCH
-            intent.putExtra(SearchManager.QUERY, query)
-            startActivity(intent)
         }
 
         companion object {
@@ -1089,10 +1081,8 @@ abstract class BaseMainActivity : BaseActivity() {
 
         // S T A R T A C T I V I T Y
 
-        fun tryStartWithText(activity: Activity, query: String) {
-            val component = ComponentName(activity, "org.grammarscope.MainActivity")
-            val intent = Intent()
-            intent.component = component
+        fun startMainWithQuery(query: String, activity: Activity) {
+            val intent = Intent(activity, MainActivity::class.java)
             intent.action = Intent.ACTION_SEARCH
             intent.putExtra(SearchManager.QUERY, query)
             activity.startActivity(intent)

@@ -1,6 +1,5 @@
 package org.grammarscope
 
-import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -52,19 +51,7 @@ class MainActivity : BaseMainActivity() {
 
     private fun getTextFromHistory() {
         HistoryBottomSheet { sentence: String ->
-            select(sentence)
+            startMainWithQuery(sentence, this)
         }.show(supportFragmentManager, "HistoryBottomSheet")
-    }
-
-    fun select(query: String) {
-        val intent = makeInputIntent(query)
-        startActivity(intent)
-    }
-
-    fun makeInputIntent(query: String): Intent {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.action = Intent.ACTION_SEARCH
-        intent.putExtra(SearchManager.QUERY, query)
-        return intent
     }
 }

@@ -3,13 +3,11 @@
  */
 package org.grammarscope.history
 
-import android.app.SearchManager
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import org.depparse.BaseActivity
-import org.grammarscope.MainActivity
+import org.grammarscope.BaseMainActivity.Companion.startMainWithQuery
 import org.grammarscope.common.R
 
 /**
@@ -31,7 +29,7 @@ class HistoryActivity : BaseActivity() {
                 .apply {
                     itemLayoutId = R.layout.item_history
                     selectListener = { query ->
-                        select(query)
+                        startMainWithQuery(query, requireActivity())
                     }
                 }
             supportFragmentManager
@@ -49,17 +47,5 @@ class HistoryActivity : BaseActivity() {
         if (actionBar != null) {
             actionBar.displayOptions = ActionBar.DISPLAY_USE_LOGO or ActionBar.DISPLAY_SHOW_TITLE or ActionBar.DISPLAY_SHOW_HOME or ActionBar.DISPLAY_HOME_AS_UP
         }
-    }
-
-    fun select(query: String) {
-        val intent = makeInputIntent(query)
-        startActivity(intent)
-    }
-
-    fun makeInputIntent(query: String): Intent {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.action = Intent.ACTION_SEARCH
-        intent.putExtra(SearchManager.QUERY, query)
-        return intent
     }
 }
