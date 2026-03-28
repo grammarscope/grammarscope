@@ -50,16 +50,18 @@ class SentencesFragment : Fragment() {
         val adapter: RecyclerView.Adapter<SentenceViewHolder> = SentencesAdapter()
         listView.setAdapter(adapter)
 
-        // Apply bottom padding to account for system bars and FABs
+        // Apply padding to account for system bars and FABs
+        val initialPaddingLeft = listView.paddingLeft
+        val initialPaddingRight = listView.paddingRight
         val initialPaddingBottom = listView.paddingBottom
         ViewCompat.setOnApplyWindowInsetsListener(listView) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             // Add extra padding (e.g., 80dp) to ensure content clears the FABs
             val extraPadding = (80 * resources.displayMetrics.density).toInt()
             v.setPadding(
-                v.paddingLeft,
+                initialPaddingLeft + systemBars.left,
                 v.paddingTop,
-                v.paddingRight,
+                initialPaddingRight + systemBars.right,
                 initialPaddingBottom + systemBars.bottom + extraPadding
             )
             insets

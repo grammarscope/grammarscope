@@ -36,16 +36,18 @@ class TextFragment : Fragment() {
         editText = root.findViewById(R.id.text)
         scrollView = root.findViewById(R.id.text_scroll_view)
         
-        // Apply bottom padding to the scroll view to account for system bars and FABs
+        // Apply padding to the scroll view to account for system bars and FABs
+        val initialPaddingLeft = scrollView.paddingLeft
+        val initialPaddingRight = scrollView.paddingRight
         val initialPaddingBottom = scrollView.paddingBottom
         ViewCompat.setOnApplyWindowInsetsListener(scrollView) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             // Add extra padding (e.g., 80dp) to ensure content clears the FABs
             val extraPadding = (80 * resources.displayMetrics.density).toInt()
             v.setPadding(
-                v.paddingLeft,
+                initialPaddingLeft + systemBars.left,
                 v.paddingTop,
-                v.paddingRight,
+                initialPaddingRight + systemBars.right,
                 initialPaddingBottom + systemBars.bottom + extraPadding
             )
             insets

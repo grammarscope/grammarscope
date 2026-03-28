@@ -1,7 +1,8 @@
 <resources>
 
-	<!-- Default surface view padding -->
-	<dimen name="surface_padding">10dp</dimen>
+	<!-- Horizontal root view padding -->
+	<dimen name="root_horiz_padding">0dp</dimen>
+
 	<!-- Graph view padding -->
 	<dimen name="graph_padding">10dp</dimen>
 

@@ -152,17 +152,21 @@ abstract class BaseMainActivity : BaseActivity() {
         setupUI()
 
         // handle window insets
+        val fabDependenciesMarginStart = (fabDependencies.layoutParams as ViewGroup.MarginLayoutParams).marginStart
         val fabDependenciesMarginBottom = (fabDependencies.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabSemanticsMarginEnd = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         val fabSemanticsMarginBottom = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val container = findViewById<FrameLayout>(R.id.container)
             // view.setPadding(0, 0, 0, 0)
-            container.setPadding(0, 0, 0, systemBars.bottom)
+            container.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
             fabDependencies.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginStart = fabDependenciesMarginStart + systemBars.left
                 bottomMargin = fabDependenciesMarginBottom + systemBars.bottom
             }
             fabSemantics.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginEnd = fabSemanticsMarginEnd + systemBars.right
                 bottomMargin = fabSemanticsMarginBottom + systemBars.bottom
             }
             insets

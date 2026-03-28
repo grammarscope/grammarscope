@@ -1,0 +1,6 @@
+<resources>
+
+	<!-- Horizontal root view padding -->
+	<dimen name="root_horiz_padding">0dp</dimen>
+
+</resources>

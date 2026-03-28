@@ -134,7 +134,9 @@ class GetTextActivity : BaseActivity() {
         fabImage.setOnClickListener { trySelectImage() }
 
         // handle window insets
+        val fabRecogMarginEnd = (fabRecog.layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         val fabRecogMarginBottom = (fabRecog.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabDocumentMarginStart = (fabDocument.layoutParams as ViewGroup.MarginLayoutParams).marginStart
         val fabDocumentMarginBottom = (fabDocument.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         val fabImageMarginBottom = (fabImage.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
 
@@ -142,13 +144,15 @@ class GetTextActivity : BaseActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             
             // View pager takes full screen
-            view.setPadding(0, 0, 0, 0)
+            view.setPadding(systemBars.left, 0, systemBars.right, 0)
 
             // Adjust FAB margins to stay above the navigation bar
             fabRecog.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginEnd = fabRecogMarginEnd + systemBars.right
                 bottomMargin = fabRecogMarginBottom + systemBars.bottom
             }
             fabDocument.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginStart = fabDocumentMarginStart + systemBars.left
                 bottomMargin = fabDocumentMarginBottom + systemBars.bottom
             }
             fabImage.updateLayoutParams<ViewGroup.MarginLayoutParams> {
