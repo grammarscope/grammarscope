@@ -53,6 +53,7 @@ import com.bbou.download.preference.Settings.unrecordDatapack
 import com.bbou.download.preference.Settings.unrecordDatapackSource
 import com.bbou.others.OthersActivity
 import com.bbou.rate.AppRate
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
@@ -158,8 +159,10 @@ abstract class BaseMainActivity : BaseActivity() {
         val fabSemanticsMarginBottom = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_layout)
             val container = findViewById<FrameLayout>(R.id.container)
             // view.setPadding(0, 0, 0, 0)
+            appBarLayout.setPadding(systemBars.left, 0, systemBars.right, 0)
             container.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
             fabDependencies.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 marginStart = fabDependenciesMarginStart + systemBars.left

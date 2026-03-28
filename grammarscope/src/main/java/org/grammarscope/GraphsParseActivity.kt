@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uci.ics.jung.AugmentedGraph
 import edu.uci.ics.jung.Visualizer
@@ -32,15 +33,23 @@ abstract class GraphsParseActivity<V : Token, E : Label> : GraphBaseParseActivit
         // handle window insets
         val fabRefresh = findViewById<FloatingActionButton>(R.id.fab_refresh)
         val fabRefreshMarginBottom = (fabRefresh.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabPrevMarginStart = (fabPrev.layoutParams as ViewGroup.MarginLayoutParams).marginStart
         val fabPrevMarginBottom = (fabPrev.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+        val fabNextMarginEnd = (fabNext.layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         val fabNextMarginBottom = (fabNext.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            //view.setPadding(0, 0, 0, systemBars.bottom)
+            val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_layout)
+            val container = findViewById<ViewGroup>(R.id.container)
+            appBarLayout.setPadding(systemBars.left, 0, systemBars.right, 0)
+            container.setPadding(systemBars.left, container.paddingTop, systemBars.right, systemBars.bottom)
+
             fabPrev.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginStart = fabPrevMarginStart + systemBars.left
                 bottomMargin = fabPrevMarginBottom + systemBars.bottom
             }
             fabNext.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginEnd = fabNextMarginEnd + systemBars.right
                 bottomMargin = fabNextMarginBottom + systemBars.bottom
             }
             fabRefresh.updateLayoutParams<ViewGroup.MarginLayoutParams> {
