@@ -12,7 +12,6 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.widget.ScrollView
 import androidx.annotation.AttrRes
-import androidx.appcompat.view.ContextThemeWrapper
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -109,29 +108,30 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
             connect(scrollView.id, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT)
             connect(scrollView.id, ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT)
 
+            // From bottom upwards
             // Increase Line Spacing Button
-            connect(increaseLineSpacingButton.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 8)
-            connect(increaseLineSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 8)
+            connect(increaseLineSpacingButton.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, MARGIN_BOTTOM)
+            connect(increaseLineSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, MARGIN_END)
 
             // Decrease Line Spacing Button
-            connect(decreaseLineSpacingButton.id, ConstraintSet.BOTTOM, increaseLineSpacingButton.id, ConstraintSet.TOP, 8)
-            connect(decreaseLineSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 8)
+            connect(decreaseLineSpacingButton.id, ConstraintSet.BOTTOM, increaseLineSpacingButton.id, ConstraintSet.TOP, MARGIN_BOTTOM)
+            connect(decreaseLineSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, MARGIN_END)
 
             // Increase TextSize Button
-            connect(increaseTextSizeButton.id, ConstraintSet.BOTTOM, decreaseLineSpacingButton.id, ConstraintSet.TOP, 8)
-            connect(increaseTextSizeButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 8)
+            connect(increaseTextSizeButton.id, ConstraintSet.BOTTOM, decreaseLineSpacingButton.id, ConstraintSet.TOP, MARGIN_BOTTOM)
+            connect(increaseTextSizeButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, MARGIN_END)
 
             // Decrease TextSize Button
-            connect(decreaseTextSizeButton.id, ConstraintSet.BOTTOM, increaseTextSizeButton.id, ConstraintSet.TOP, 8)
-            connect(decreaseTextSizeButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 8)
+            connect(decreaseTextSizeButton.id, ConstraintSet.BOTTOM, increaseTextSizeButton.id, ConstraintSet.TOP, MARGIN_BOTTOM)
+            connect(decreaseTextSizeButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, MARGIN_END)
 
             // Increase Letter spacing Button
-            connect(increaseLetterSpacingButton.id, ConstraintSet.BOTTOM, decreaseTextSizeButton.id, ConstraintSet.TOP, 8)
-            connect(increaseLetterSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 8)
+            connect(increaseLetterSpacingButton.id, ConstraintSet.BOTTOM, decreaseTextSizeButton.id, ConstraintSet.TOP, MARGIN_BOTTOM)
+            connect(increaseLetterSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, MARGIN_END)
 
             // Decrease Letter Button
-            connect(decreaseLetterSpacingButton.id, ConstraintSet.BOTTOM, increaseLetterSpacingButton.id, ConstraintSet.TOP, 8)
-            connect(decreaseLetterSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 8)
+            connect(decreaseLetterSpacingButton.id, ConstraintSet.BOTTOM, increaseLetterSpacingButton.id, ConstraintSet.TOP, MARGIN_BOTTOM)
+            connect(decreaseLetterSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, MARGIN_END)
 
             applyTo(this@AnnotatedTextControl)
         }
@@ -164,18 +164,30 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
     fun createTransparentFab(context: Context, icon: Int): FloatingActionButton {
 
         // Create a ContextThemeWrapper with your style
-        val contextThemeWrapper: Context = ContextThemeWrapper(context, R.style.TransparentFab)
-        val fab = FloatingActionButton(contextThemeWrapper).apply {
+        val fab = FloatingActionButton(context).apply {
 
             // Set transparent background
             backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
-            compatElevation = 0f
+
+            // Setting elevation to 0 often solves the "square shadow" artifact
+            // If you want a shadow, it's better to use a standard ImageButton with a ripple
             elevation = 0f
+            compatElevation = 0f
+
+            // Ensure the icon is centered
+            scaleType = android.widget.ImageView.ScaleType.CENTER
 
             // Set icon
             setImageResource(icon)
 
+            // Apply the theme color to the icon
             imageTintList = ColorStateList.valueOf(context.getColorFromAttr(android.R.attr.colorPrimary))
+
+            // Optional: Adjust size to mini to make it less intrusive
+            size = FloatingActionButton.SIZE_MINI
+
+            // Ensure there's no background shadow casting at all
+            outlineProvider = null
         }
         return fab
     }
@@ -235,5 +247,7 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
     companion object {
         const val LEFT_PADDING = 50
         const val RIGHT_PADDING = 30
+        const val MARGIN_BOTTOM = 3
+        const val MARGIN_END = 0
     }
 }
