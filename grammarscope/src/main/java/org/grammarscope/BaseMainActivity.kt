@@ -941,7 +941,7 @@ abstract class BaseMainActivity : BaseActivity() {
             val drawable = AppCompatResources.getDrawable(this, if (bound) R.drawable.ic_unbind else R.drawable.ic_bind)!!
             val tints = Colors.getColorAttrs(
                 this, CommonR.style.MyTheme, intArrayOf(
-                    CommonR.attr.colorOnCustom, MaterialR.attr.colorErrorContainer
+                    CommonR.attr.colorOnCustom, AppCompatR.attr.colorError
                 )
             )
             val tint = tints[if (bound) 0 else 1]
