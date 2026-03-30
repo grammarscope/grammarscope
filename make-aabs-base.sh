@@ -14,7 +14,7 @@ case "$1" in
 esac
 
 #specific targets
-apps="app_mysyntaxnet app_grammarscope_syntaxnet app_grammarscope_udpipe app_grammarscope_corenlp"
+apps="app_grammarscope_syntaxnet app_grammarscope_udpipe app_grammarscope_corenlp"
 for a in $apps; do
 	echo -e "${Y}${a}${Z}"
 	./gradlew :${a}:bundleBaseRelease

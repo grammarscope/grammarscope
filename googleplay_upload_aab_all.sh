@@ -11,5 +11,4 @@ RECENT_CHANGES="Fixes"
 ./googleplay_upload_aab_grammarscope_syntaxnet.sh	"${RELEASE_NAME}" "${RECENT_CHANGES}"
 ./googleplay_upload_aab_grammarscope_udpipe.sh		"${RELEASE_NAME}" "${RECENT_CHANGES}"
 ./googleplay_upload_aab_grammarscope_corenlp.sh		"${RELEASE_NAME}" "${RECENT_CHANGES}"
-./googleplay_upload_aab_mysyntaxnet.sh			"${RELEASE_NAME}" "${RECENT_CHANGES}"
 
