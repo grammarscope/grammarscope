@@ -66,6 +66,7 @@
 	<string name="description_graph_fab_prev">Prev</string>
 	<string name="description_clear">Clear</string>
 	<string name="description_examples">Examples</string>
+	<string name="description_text_history">Get input from history</string>
 	<string name="hint_query">Text</string>
 	<string name="powered_by">powered by</string>
 
