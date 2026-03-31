@@ -3,9 +3,6 @@
 	<!-- Horizontal root view padding -->
 	<dimen name="root_horiz_padding">0dp</dimen>
 
-	<!-- Graph view padding -->
-	<dimen name="graph_padding">10dp</dimen>
-
 	<!-- Action button -->
 	<dimen name="action_button_diameter">50dp</dimen>
 	<dimen name="action_button_shadow_offset">10dp</dimen>

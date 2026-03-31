@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uci.ics.jung.AugmentedGraph
 import edu.uci.ics.jung.Visualizer
@@ -15,41 +14,37 @@ import org.depparse.Label
 import org.depparse.Token
 import org.grammarscope.common.R
 import org.grammarscope.graph.SentenceGraph
+import android.R as AndroidR
 
 abstract class GraphsParseActivity<V : Token, E : Label> : GraphBaseParseActivity<V, E, List<SentenceGraph<V, E>>?>() {
 
     private var graphs: List<SentenceGraph<V, E>>? = null
+
     protected var current = 0
-    private lateinit var fabPrev: FloatingActionButton
-    private lateinit var fabNext: FloatingActionButton
+
+    private val fabPrev: FloatingActionButton by lazy { findViewById(R.id.fab_prev) }
+
+    private val fabNext: FloatingActionButton by lazy { findViewById(R.id.fab_next) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fabPrev = findViewById(R.id.fab_prev)
         fabPrev.setOnClickListener { v: View? -> onFABPrevClick(v) }
-        fabNext = findViewById(R.id.fab_next)
         fabNext.setOnClickListener { v: View? -> onFABNextClick(v) }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
 
         // handle window insets
-        val fabRefresh = findViewById<FloatingActionButton>(R.id.fab_refresh)
         val fabRefreshMarginBottom = (fabRefresh.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        val fabPrevMarginStart = (fabPrev.layoutParams as ViewGroup.MarginLayoutParams).marginStart
         val fabPrevMarginBottom = (fabPrev.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        val fabNextMarginEnd = (fabNext.layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         val fabNextMarginBottom = (fabNext.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_layout)
-            val container = findViewById<ViewGroup>(R.id.container)
-            appBarLayout.setPadding(systemBars.left, 0, systemBars.right, 0)
-            container.setPadding(systemBars.left, container.paddingTop, systemBars.right, systemBars.bottom)
-
             fabPrev.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                marginStart = fabPrevMarginStart + systemBars.left
                 bottomMargin = fabPrevMarginBottom + systemBars.bottom
             }
             fabNext.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                marginEnd = fabNextMarginEnd + systemBars.right
                 bottomMargin = fabNextMarginBottom + systemBars.bottom
             }
             fabRefresh.updateLayoutParams<ViewGroup.MarginLayoutParams> {

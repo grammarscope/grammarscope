@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uci.ics.jung.AugmentedGraph
 import edu.uci.ics.jung.Visualizer
 import org.depparse.Label
@@ -19,22 +17,14 @@ abstract class GraphParseActivity<V : Token, E : Label> : GraphBaseParseActivity
     override val layout: Int
         get() = R.layout.activity_graph
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
 
         // handle window insets
-        val fabRefresh = findViewById<FloatingActionButton>(R.id.fab_refresh)
-        val fabRefreshMarginEnd = (fabRefresh.layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         val fabRefreshMarginBottom = (fabRefresh.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_layout)
-            val container = findViewById<ViewGroup>(R.id.container)
-            appBarLayout.setPadding(systemBars.left, 0, systemBars.right, 0)
-            container.setPadding(systemBars.left, container.paddingTop, systemBars.right, systemBars.bottom)
-
             fabRefresh.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                marginEnd = fabRefreshMarginEnd + systemBars.right
                 bottomMargin = fabRefreshMarginBottom + systemBars.bottom
             }
             insets

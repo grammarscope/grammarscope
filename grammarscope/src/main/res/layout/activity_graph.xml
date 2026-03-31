@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coord_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -22,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:padding="@dimen/graph_padding"
+        android:clipToPadding="false"
         android:scrollbars="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
@@ -30,7 +29,6 @@
             android:id="@+id/visualization_viewer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fcfcfc"
             android:contentDescription="@string/description_graph" />
 
     </ScrollView>
@@ -39,8 +37,8 @@
         android:id="@+id/fab_refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
         android:background="@null"
         android:clickable="true"
         android:contentDescription="@string/description_graph_fab_refresh"
@@ -48,7 +46,7 @@
         app:backgroundTint="?attr/colorPrimary"
         app:fabSize="mini"
         app:layout_anchor="@id/container"
-        app:layout_anchorGravity="top|end"
+        app:layout_anchorGravity="bottom|end"
         app:srcCompat="@drawable/ic_refresh"
         app:tint="?attr/colorOnPrimary" />
 

@@ -6,13 +6,14 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageButton
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bbou.capture.Capture.captureAndSave
 import com.bbou.capture.Capture.captureAndShare
 import com.bbou.capture.Capture.getBackgroundFromTheme
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uci.ics.jung.AugmentedGraph
 import edu.uci.ics.jung.Visualizer
 import edu.uci.ics.jung.settings.Configurator
@@ -27,6 +28,7 @@ import org.depparse.common.BaseParseActivity
 import org.grammarscope.common.R
 import org.grammarscope.graph.GraphColors
 import org.grammarscope.graph.SentenceGraph
+import android.R as AndroidR
 import com.bbou.capture.R as CaptureR
 
 abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivity<G>() {
@@ -42,6 +44,10 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
     open var graph: SentenceGraph<V, E>? = null
 
     lateinit var configurator: Configurator<V, E>
+
+    protected val rootView: View? by lazy { findViewById<ViewGroup>(AndroidR.id.content).getChildAt(0) }
+
+    protected val fabRefresh: View by lazy { findViewById<FloatingActionButton>(R.id.fab_refresh) }
 
     // A B S T R A C T
 
@@ -61,7 +67,6 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        val fabRefresh = findViewById<ImageButton>(R.id.fab_refresh)
         fabRefresh.setOnClickListener { onFABRefreshClick() }
     }
 
