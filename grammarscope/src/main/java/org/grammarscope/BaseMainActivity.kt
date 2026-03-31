@@ -77,6 +77,7 @@ import org.grammarscope.annotations.AnnotatedTextActivity
 import org.grammarscope.common.R
 import org.grammarscope.history.History.Companion.recordQuery
 import org.grammarscope.history.HistoryActivity
+import org.grammarscope.history.HistoryBottomSheet
 import java.util.Locale
 import java.util.function.Consumer
 import androidx.appcompat.R as AppCompatR
@@ -201,6 +202,9 @@ abstract class BaseMainActivity : BaseActivity() {
         super.onPostCreate(savedInstanceState)
         Log.d(TAG, "onPostCreate()")
 
+        // button
+        findViewById<ImageButton>(R.id.text_history).setOnClickListener { getTextFromHistory() }
+
         // provider
         if (autoStart) {
             ProviderManager.requestNew(applicationContext)
@@ -226,7 +230,6 @@ abstract class BaseMainActivity : BaseActivity() {
         // visibility
         loadedIndicator.visibility = View.VISIBLE
         // boundIndicator.visibility = View.VISIBLE
-
     }
 
     override fun onStart() {
@@ -587,6 +590,10 @@ abstract class BaseMainActivity : BaseActivity() {
                 return false // submenu
             }
 
+            R.id.text_history -> {
+                getTextFromHistory()
+                true
+            }
             else -> if (item.itemId >= R.id.sentences + SENTENCE_ID_OFFSET) {
                 val sentIdx = item.itemId - R.id.sentences - SENTENCE_ID_OFFSET
                 val sentences = Samples.read(this)
@@ -627,6 +634,12 @@ abstract class BaseMainActivity : BaseActivity() {
             }
         }
         return true
+    }
+
+    private fun getTextFromHistory() {
+        HistoryBottomSheet { sentence: String ->
+            startMainWithQuery(sentence, this)
+        }.show(supportFragmentManager, "HistoryBottomSheet")
     }
 
     private fun onClickFABDependencies(longClick: Boolean) {
