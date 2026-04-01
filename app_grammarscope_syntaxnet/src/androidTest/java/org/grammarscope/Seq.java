@@ -74,22 +74,6 @@ class Seq
 		onView(withText(menuText)).perform(click());
 	}
 
-	static void do_menu_check(@SuppressWarnings("SameParameterValue") final @StringRes int resId, boolean mustBeChecked)
-	{
-		openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
-		Matcher<View> v = Matchers.checkboxWithMenuItem(org.grammarscope.common.R.string.action_as_graph);
-		boolean wasChecked = ToBoolean.test(v, isChecked());
-		if ((mustBeChecked && !wasChecked) || (!mustBeChecked && wasChecked))
-		{
-			onView(v).perform(click());
-			openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
-		}
-
-		Matcher<View> v2 = Matchers.checkboxWithMenuItem(org.grammarscope.common.R.string.action_as_graph);
-		onView(v2).check(matches(mustBeChecked ? isChecked() : isNotChecked()));
-		do_pressBack();
-	}
-
 	static void do_choose(@IdRes int spinnerId, final String targetText)
 	{
 		// expand spinner

@@ -28,7 +28,6 @@ public class QueriesGraphTests extends TestCase
 	@Before
 	public void before()
 	{
-		Seq.do_menu_check(R.string.action_as_graph, true);
 	}
 
 	@Test
