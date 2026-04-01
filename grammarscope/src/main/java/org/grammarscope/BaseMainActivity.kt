@@ -18,7 +18,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -30,7 +29,6 @@ import androidx.core.content.edit
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
@@ -51,13 +49,13 @@ import com.bbou.download.preference.Settings.unrecordDatapack
 import com.bbou.download.preference.Settings.unrecordDatapackSource
 import com.bbou.others.OthersActivity
 import com.bbou.rate.AppRate
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.BaseActivity
 import org.depparse.Broadcast
+import org.depparse.EdgeToEdge.updateBottomMargin
 import org.depparse.IProvider
 import org.depparse.Storage
 import org.depparse.common.AboutActivity
@@ -152,25 +150,12 @@ abstract class BaseMainActivity : BaseActivity() {
         setupUI()
 
         // handle window insets
-        val fabDependenciesMarginStart = (fabDependencies.layoutParams as ViewGroup.MarginLayoutParams).marginStart
         val fabDependenciesMarginBottom = (fabDependencies.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        val fabSemanticsMarginEnd = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).marginEnd
         val fabSemanticsMarginBottom = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { _, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val appBarLayout = findViewById<AppBarLayout>(R.id.app_bar_layout)
-            val container = findViewById<FrameLayout>(R.id.container)
-            // view.setPadding(0, 0, 0, 0)
-            appBarLayout.setPadding(systemBars.left, 0, systemBars.right, 0)
-            container.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
-            fabDependencies.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                marginStart = fabDependenciesMarginStart + systemBars.left
-                bottomMargin = fabDependenciesMarginBottom + systemBars.bottom
-            }
-            fabSemantics.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                marginEnd = fabSemanticsMarginEnd + systemBars.right
-                bottomMargin = fabSemanticsMarginBottom + systemBars.bottom
-            }
+            fabDependencies.updateBottomMargin(systemBars, initialMargin = fabDependenciesMarginBottom)
+            fabSemantics.updateBottomMargin(systemBars, initialMargin = fabSemanticsMarginBottom)
             insets
         }
 
@@ -592,8 +577,9 @@ abstract class BaseMainActivity : BaseActivity() {
 
             R.id.text_history -> {
                 getTextFromHistory()
-                true
+                return true
             }
+
             else -> if (item.itemId >= R.id.sentences + SENTENCE_ID_OFFSET) {
                 val sentIdx = item.itemId - R.id.sentences - SENTENCE_ID_OFFSET
                 val sentences = Samples.read(this)

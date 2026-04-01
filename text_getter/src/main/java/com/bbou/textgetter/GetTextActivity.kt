@@ -140,7 +140,7 @@ class GetTextActivity : BaseActivity() {
         val fabDocumentMarginBottom = (fabDocument.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         val fabImageMarginBottom = (fabImage.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coord_layout)) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             
             // View pager takes full screen

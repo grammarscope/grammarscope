@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -28,7 +27,6 @@ import org.depparse.common.BaseParseActivity
 import org.grammarscope.common.R
 import org.grammarscope.graph.GraphColors
 import org.grammarscope.graph.SentenceGraph
-import android.R as AndroidR
 import com.bbou.capture.R as CaptureR
 
 abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivity<G>() {
@@ -44,8 +42,6 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
     open var graph: SentenceGraph<V, E>? = null
 
     lateinit var configurator: Configurator<V, E>
-
-    protected val rootView: View? by lazy { findViewById<ViewGroup>(AndroidR.id.content).getChildAt(0) }
 
     protected val fabRefresh: View by lazy { findViewById<FloatingActionButton>(R.id.fab_refresh) }
 

@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import com.bbou.textrecog.R
+import org.depparse.EdgeToEdge.updateBottomPadding
 
 /**
  * A Text fragment.
@@ -35,21 +36,15 @@ class TextFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_gettext_text, container, false)
         editText = root.findViewById(R.id.text)
         scrollView = root.findViewById(R.id.text_scroll_view)
-        
+
         // Apply padding to the scroll view to account for system bars and FABs
-        val initialPaddingLeft = scrollView.paddingLeft
-        val initialPaddingRight = scrollView.paddingRight
         val initialPaddingBottom = scrollView.paddingBottom
-        ViewCompat.setOnApplyWindowInsetsListener(scrollView) { v, insets ->
+        // Extra padding to ensure content clears the FABs
+        val extraBottomPadding = (FAB_HEIGHT_DP * resources.displayMetrics.density).toInt()
+        ViewCompat.setOnApplyWindowInsetsListener(scrollView) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Add extra padding (e.g., 80dp) to ensure content clears the FABs
-            val extraPadding = (80 * resources.displayMetrics.density).toInt()
-            v.setPadding(
-                initialPaddingLeft + systemBars.left,
-                v.paddingTop,
-                initialPaddingRight + systemBars.right,
-                initialPaddingBottom + systemBars.bottom + extraPadding
-            )
+            //view.updateHorizontalPadding(systemBars, initialLeftPadding = initialPaddingLeft, initialRightPadding = initialPaddingRight)
+            view.updateBottomPadding(systemBars, initialPadding = initialPaddingBottom + extraBottomPadding)
             insets
         }
 
@@ -76,5 +71,9 @@ class TextFragment : Fragment() {
 
         val fileData = activity.textFromFileModel
         fileData?.output!!.observe(viewLifecycleOwner) { text: CharSequence? -> editText.setText(text) }
+    }
+
+    companion object {
+        const val FAB_HEIGHT_DP = 80
     }
 }

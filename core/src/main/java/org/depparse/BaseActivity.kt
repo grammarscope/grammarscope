@@ -62,7 +62,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    private val rootView: View? by lazy { findViewById<ViewGroup>(AndroidR.id.content).getChildAt(0) }
+    protected val rootView: View? by lazy { findViewById<ViewGroup>(AndroidR.id.content).getChildAt(0) }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -71,10 +71,6 @@ open class BaseActivity : AppCompatActivity() {
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 Log.d(TAG, "Inset listener systemBars=$systemBars")
                 view.updateHorizontalMargin(systemBars)
-                //navView?.updateHorizontalPadding(systemBars)
-                //contentView?.updateHorizontalPadding(systemBars)
-                //appBar?.updateHorizontalPadding(systemBars)
-                //searchViewDataView?.updateHorizontalPadding(systemBars)
                 insets
             }
         }

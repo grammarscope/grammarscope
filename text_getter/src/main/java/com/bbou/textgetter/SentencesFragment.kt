@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bbou.textgetter.SentencesFragment.SentencesAdapter.SentenceViewHolder
 import com.bbou.textrecog.R
+import org.depparse.EdgeToEdge.updateBottomPadding
 
 /**
  * A placeholder fragment containing a simple view.
@@ -51,22 +52,14 @@ class SentencesFragment : Fragment() {
         listView.setAdapter(adapter)
 
         // Apply padding to account for system bars and FABs
-        val initialPaddingLeft = listView.paddingLeft
-        val initialPaddingRight = listView.paddingRight
         val initialPaddingBottom = listView.paddingBottom
-        ViewCompat.setOnApplyWindowInsetsListener(listView) { v, insets ->
+        // Extra padding to ensure content clears the FABs
+        val extraBottomPadding = (FAB_HEIGHT_DP * resources.displayMetrics.density).toInt()
+        ViewCompat.setOnApplyWindowInsetsListener(listView) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Add extra padding (e.g., 80dp) to ensure content clears the FABs
-            val extraPadding = (80 * resources.displayMetrics.density).toInt()
-            v.setPadding(
-                initialPaddingLeft + systemBars.left,
-                v.paddingTop,
-                initialPaddingRight + systemBars.right,
-                initialPaddingBottom + systemBars.bottom + extraPadding
-            )
+            view.updateBottomPadding(systemBars, initialPadding = initialPaddingBottom + extraBottomPadding)
             insets
         }
-
         return root
     }
 
@@ -139,6 +132,8 @@ class SentencesFragment : Fragment() {
     companion object {
 
         private const val TAG = "SentencesF"
+
+        private const val FAB_HEIGHT_DP = 80
 
         fun newInstance(receiver: ResultReceiver?, code: Int, resultKey: String?): SentencesFragment {
             val f = SentencesFragment()

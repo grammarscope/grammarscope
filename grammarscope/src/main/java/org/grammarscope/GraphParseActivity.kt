@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
 import edu.uci.ics.jung.AugmentedGraph
 import edu.uci.ics.jung.Visualizer
+import org.depparse.EdgeToEdge.updateBottomMargin
 import org.depparse.Label
 import org.depparse.Token
 import org.grammarscope.common.R
@@ -24,9 +24,7 @@ abstract class GraphParseActivity<V : Token, E : Label> : GraphBaseParseActivity
         val fabRefreshMarginBottom = (fabRefresh.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            fabRefresh.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = fabRefreshMarginBottom + systemBars.bottom
-            }
+            fabRefresh.updateBottomMargin(systemBars, initialMargin = fabRefreshMarginBottom)
             insets
         }
     }

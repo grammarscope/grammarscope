@@ -6,15 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.uci.ics.jung.AugmentedGraph
 import edu.uci.ics.jung.Visualizer
+import org.depparse.EdgeToEdge.updateBottomMargin
 import org.depparse.Label
 import org.depparse.Token
 import org.grammarscope.common.R
 import org.grammarscope.graph.SentenceGraph
-import android.R as AndroidR
 
 abstract class GraphsParseActivity<V : Token, E : Label> : GraphBaseParseActivity<V, E, List<SentenceGraph<V, E>>?>() {
 
@@ -41,15 +40,9 @@ abstract class GraphsParseActivity<V : Token, E : Label> : GraphBaseParseActivit
         val fabNextMarginBottom = (fabNext.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            fabPrev.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = fabPrevMarginBottom + systemBars.bottom
-            }
-            fabNext.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = fabNextMarginBottom + systemBars.bottom
-            }
-            fabRefresh.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = fabRefreshMarginBottom + systemBars.bottom
-            }
+            fabRefresh.updateBottomMargin(systemBars, initialMargin = fabRefreshMarginBottom)
+            fabPrev.updateBottomMargin(systemBars, initialMargin = fabPrevMarginBottom)
+            fabNext.updateBottomMargin(systemBars, initialMargin = fabNextMarginBottom)
             insets
         }
     }
