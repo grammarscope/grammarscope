@@ -207,10 +207,8 @@ abstract class BaseMainActivity : BaseActivity() {
         // boundIndicator = findViewById(R.id.bound_indicator)
 
         // listeners
-        fabDependencies.setOnClickListener { onClickFABDependencies(false) }
-        fabDependencies.setOnLongClickListener { onClickFABDependencies(true); true }
-        fabSemantics.setOnClickListener { onClickFABSemantics(false) }
-        fabSemantics.setOnLongClickListener { onClickFABSemantics(true); true }
+        setFABListeners(fabDependencies) { longClick, doubleClick -> onClickFABDependencies(longClick, doubleClick) }
+        setFABListeners(fabSemantics) { longClick, doubleClick -> onClickFABSemantics(longClick, doubleClick) }
         loadedIndicator.setOnClickListener { info(status()) }
         // boundIndicator.setOnClickListener { info(status()) }
 
