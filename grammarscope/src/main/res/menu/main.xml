@@ -176,15 +176,9 @@
     </item>
 
     <item
-        android:id="@+id/graph"
+        android:id="@+id/split_graphs"
         android:checkable="true"
-        android:title="@string/action_as_graph"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/graphs"
-        android:checkable="true"
-        android:title="@string/action_as_graphs"
+        android:title="@string/action_split"
         app:showAsAction="never" />
 
 </menu>

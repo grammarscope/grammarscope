@@ -37,8 +37,7 @@
 	<string name="action_theme_day">Day theme</string>
 
 	<string name="action_strip_accents">Strip accents</string>
-	<string name="action_as_graph">Graph</string>
-	<string name="action_as_graphs">Graphs</string>
+	<string name="action_split">Split</string>
 
 	<string name="action_builtin_english">Built-in English</string>
 	<string name="action_builtin_french">Built-in French</string>

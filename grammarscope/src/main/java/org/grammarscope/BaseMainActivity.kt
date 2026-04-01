@@ -514,20 +514,11 @@ abstract class BaseMainActivity : BaseActivity() {
                 return true
             }
 
-            R.id.graph -> {
+            R.id.split_graphs -> {
                 val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-                val asGraph = prefs.getBoolean(GeneralSettings.PREF_AS_GRAPH, false)
+                val splitGraphs = prefs.getBoolean(GeneralSettings.PREF_SPLIT_GRAPHS, true)
                 val editor = prefs.edit()
-                editor.putBoolean(GeneralSettings.PREF_AS_GRAPH, !asGraph) // toggle
-                    .apply()
-                return true
-            }
-
-            R.id.graphs -> {
-                val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-                val asGraphs = prefs.getBoolean(GeneralSettings.PREF_AS_GRAPHS, true)
-                val editor = prefs.edit()
-                editor.putBoolean(GeneralSettings.PREF_AS_GRAPHS, !asGraphs) // toggle
+                editor.putBoolean(GeneralSettings.PREF_SPLIT_GRAPHS, !splitGraphs) // toggle
                     .apply()
                 return true
             }
@@ -611,11 +602,11 @@ abstract class BaseMainActivity : BaseActivity() {
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         super.onPrepareOptionsMenu(menu)
 
-        // check asGraph
-        val asGraph = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(GeneralSettings.PREF_AS_GRAPH, false)
-        menu.findItem(R.id.graph).isChecked = asGraph
-        val asGraphs = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(GeneralSettings.PREF_AS_GRAPHS, true)
-        menu.findItem(R.id.graphs).isChecked = asGraphs
+        // check split
+        val split = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(GeneralSettings.PREF_SPLIT_GRAPHS, true)
+        menu.findItem(R.id.split_graphs).isChecked = split
+
+        // strip accent
         val stripAccents = isStripAccentsEnabled(this)
         menu.findItem(R.id.strip_accents).isChecked = stripAccents
 
@@ -672,7 +663,7 @@ abstract class BaseMainActivity : BaseActivity() {
         }
     }
 
-    private fun dependencies(query: CharSequence, longClick: Boolean, doubleClick: Boolean = false) {
+    private fun dependencies(query: CharSequence, longClick: Boolean = false, doubleClick: Boolean = false) {
         // state check
         if (isReady()) {
             var queryStr = query.toString()
@@ -682,18 +673,13 @@ abstract class BaseMainActivity : BaseActivity() {
             queryStr = queryStr.replace("\\s+$".toRegex(), "")
             if (queryStr.isNotEmpty()) {
                 val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
-                var asGraph = sharedPrefs.getBoolean(GeneralSettings.PREF_AS_GRAPH, false)
-                if (longClick) {
-                    asGraph = !asGraph
-                }
-                val asGraphs = sharedPrefs.getBoolean(GeneralSettings.PREF_AS_GRAPHS, true)
-                val asAnnotation = sharedPrefs.getBoolean(GeneralSettings.PREF_AS_ANNOTATION, true)
+                val split = sharedPrefs.getBoolean(GeneralSettings.PREF_SPLIT_GRAPHS, true)
                 tryStartParse(
                     this,
-                    if (asGraph)
-                        (if (asGraphs) DependencyGraphsParseActivity::class.java else DependencyGraphParseActivity::class.java)
+                    if (doubleClick)
+                        (DependencyParseActivity::class.java)
                     else
-                        (if (asAnnotation) AnnotatedTextActivity::class.java else DependencyParseActivity::class.java),
+                        (if (longClick) AnnotatedTextActivity::class.java else (if (split) DependencyGraphsParseActivity::class.java else DependencyGraphParseActivity::class.java)),
                     queryStr
                 )
             }
@@ -701,7 +687,7 @@ abstract class BaseMainActivity : BaseActivity() {
             warn(getString(R.string.provider_not_ready))
     }
 
-    private fun semantics(query: CharSequence, longClick: Boolean, doubleClick: Boolean = false) {
+    private fun semantics(query: CharSequence, longClick: Boolean = false, doubleClick: Boolean = false) {
         // state check
         if (isReady()) {
             var queryStr = query.toString()
@@ -711,17 +697,13 @@ abstract class BaseMainActivity : BaseActivity() {
             queryStr = queryStr.replace("\\s+$".toRegex(), "")
             if (queryStr.isNotEmpty()) {
                 val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
-                var asGraph = sharedPrefs.getBoolean(GeneralSettings.PREF_AS_GRAPH, false)
-                if (longClick) {
-                    asGraph = !asGraph
-                }
-                val asGraphs = sharedPrefs.getBoolean(GeneralSettings.PREF_AS_GRAPHS, true)
+                val splitGraphs = sharedPrefs.getBoolean(GeneralSettings.PREF_SPLIT_GRAPHS, true)
                 tryStartParse(
                     this,
-                    if (asGraph)
-                        (if (asGraphs) SemanticGraphsParseActivity::class.java else SemanticGraphParseActivity::class.java)
+                    if (doubleClick)
+                        SemanticParseActivity::class.java
                     else
-                        SemanticParseActivity::class.java,
+                        (if (splitGraphs) SemanticGraphsParseActivity::class.java else SemanticGraphParseActivity::class.java),
                     queryStr
                 )
             }

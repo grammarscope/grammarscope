@@ -5,11 +5,8 @@
 	<string name="pref_title_labels">Labels</string>
 	<string name="pref_description_labels">The labels dependencies are labeled with</string>
 
-	<string name="pref_title_as_graph">Render as graph</string>
-	<string name="pref_description_as_graph">Render results as graph (long press reverses this text/graph option)</string>
-
-	<string name="pref_title_as_graphs">Multiple graph</string>
-	<string name="pref_description_as_graphs">One graph per sentence</string>
+	<string name="pref_title_split_graphs">Split graphs</string>
+	<string name="pref_description_split_graphs">Split to one graph per sentence</string>
 
 	<string name="pref_title_sentence_boundary_detection">Sentence boundary detection</string>
 	<string name="pref_description_sentence_boundary_detection">Sentence boundary detection before parsing (English, French only)</string>

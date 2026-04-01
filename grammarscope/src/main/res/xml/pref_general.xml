@@ -3,26 +3,10 @@
 	app:title="@string/pref_header_general">
 
 	<SwitchPreferenceCompat
-		android:defaultValue="true"
-		android:key="as_annotation"
-		android:summary="@string/pref_description_as_annotation"
-		android:title="@string/pref_title_as_annotation"
-		app:iconSpaceReserved="false"
-		app:singleLineTitle="false" />
-
-	<SwitchPreferenceCompat
 		android:defaultValue="@null"
-		android:key="as_graph"
-		android:summary="@string/pref_description_as_graph"
-		android:title="@string/pref_title_as_graph"
-		app:iconSpaceReserved="false"
-		app:singleLineTitle="false" />
-
-	<SwitchPreferenceCompat
-		android:defaultValue="@null"
-		android:key="as_graphs"
-		android:summary="@string/pref_description_as_graphs"
-		android:title="@string/pref_title_as_graphs"
+		android:key="split_graphs"
+		android:summary="@string/pref_description_split_graphs"
+		android:title="@string/pref_title_split_graphs"
 		app:iconSpaceReserved="false"
 		app:singleLineTitle="false" />
 

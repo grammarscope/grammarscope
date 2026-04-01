@@ -21,9 +21,7 @@ class GeneralSettings(context: Context) {
         // initialize
         sharedPrefs.edit(commit = true) {
             this
-                .putBoolean(PREF_AS_GRAPH, false)
-                .putBoolean(PREF_AS_GRAPHS, true)
-                .putBoolean(PREF_AS_ANNOTATION, true)
+                .putBoolean(PREF_SPLIT_GRAPHS, true)
                 .putBoolean(PREF_SENTENCE_BOUNDARY_DETECTION, true)
                 .putBoolean(PREF_INITIALIZED, true)
         }
@@ -34,9 +32,8 @@ class GeneralSettings(context: Context) {
 
         private const val PREF_INITIALIZED = "pref_initialized_settings"
 
-        const val PREF_AS_GRAPH = "as_graph"
-        const val PREF_AS_GRAPHS = "as_graphs"
-        const val PREF_AS_ANNOTATION = "as_annotation"
+        const val PREF_SPLIT_GRAPHS = "split_graphs"
+
         const val PREF_SENTENCE_BOUNDARY_DETECTION = "sentence_boundary_detection"
 
         /**

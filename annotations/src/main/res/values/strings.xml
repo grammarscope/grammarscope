@@ -7,9 +7,6 @@
     <string name="title_category_annotation_ignore_relations">Annotation ignore</string>
     <string name="title_category_annotation_boxes">Annotation boxes</string>
 
-    <string name="pref_description_as_annotation">Annotation</string>
-    <string name="pref_title_as_annotation">Dependencies as annotations</string>
-
     <string name="pref_description_ignore_relations">Ignore relations: %s</string>
     <string name="pref_description_ignore_relations_none">No relation ignored</string>
     <string name="pref_title_ignore_relations">"Ignore</string>
