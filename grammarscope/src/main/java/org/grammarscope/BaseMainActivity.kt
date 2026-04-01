@@ -628,35 +628,35 @@ abstract class BaseMainActivity : BaseActivity() {
         }.show(supportFragmentManager, "HistoryBottomSheet")
     }
 
-    private fun onClickFABDependencies(longClick: Boolean) {
+    private fun onClickFABDependencies(longClick: Boolean, doubleClick: Boolean = false) {
         queryEdit?.let {
             val query: CharSequence = it.text ?: ""
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
             if (sentenceBoundaryDetection) {
-                sentenceDetectThenDependencies(query, longClick)
+                sentenceDetectThenDependencies(query, longClick, doubleClick)
             } else {
-                dependencies(query, longClick)
+                dependencies(query, longClick, doubleClick)
             }
         }
     }
 
-    private fun onClickFABSemantics(longClick: Boolean) {
+    private fun onClickFABSemantics(longClick: Boolean, doubleClick: Boolean = false) {
         queryEdit?.let {
             val query: CharSequence = it.text ?: ""
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
             if (sentenceBoundaryDetection) {
-                sentenceDetectThenSemantics(query, longClick)
+                sentenceDetectThenSemantics(query, longClick, doubleClick)
             } else {
-                semantics(query, longClick)
+                semantics(query, longClick, doubleClick)
             }
         }
     }
 
-    private fun dependencies(query: CharSequence, longClick: Boolean) {
+    private fun dependencies(query: CharSequence, longClick: Boolean, doubleClick: Boolean = false) {
         // state check
         if (isReady()) {
             var queryStr = query.toString()
@@ -685,7 +685,7 @@ abstract class BaseMainActivity : BaseActivity() {
             warn(getString(R.string.provider_not_ready))
     }
 
-    private fun semantics(query: CharSequence, longClick: Boolean) {
+    private fun semantics(query: CharSequence, longClick: Boolean, doubleClick: Boolean = false) {
         // state check
         if (isReady()) {
             var queryStr = query.toString()
@@ -795,7 +795,7 @@ abstract class BaseMainActivity : BaseActivity() {
         }
     }
 
-    private fun sentenceDetectThenDependencies(query: CharSequence?, longClick: Boolean) {
+    private fun sentenceDetectThenDependencies(query: CharSequence?, longClick: Boolean, doubleClick: Boolean = false) {
         if (query.isNullOrEmpty()) {
             return
         }
@@ -805,7 +805,7 @@ abstract class BaseMainActivity : BaseActivity() {
                 val info = ModelInfo.read(this@BaseMainActivity) ?: throw IllegalArgumentException("Can't read model info.")
                 val detector = SentenceDetect(this@BaseMainActivity, info.lang) { sentences: Array<String> ->
                     val joined = setSplitQuery(sentences)
-                    dependencies(joined, longClick)
+                    dependencies(joined, longClick, doubleClick)
                 }
                 detector.runAndCallback(Dispatchers.IO, text)
 
@@ -822,7 +822,7 @@ abstract class BaseMainActivity : BaseActivity() {
         }
     }
 
-    private fun sentenceDetectThenSemantics(query: CharSequence?, longClick: Boolean) {
+    private fun sentenceDetectThenSemantics(query: CharSequence?, longClick: Boolean, doubleClick: Boolean = false) {
         if (query.isNullOrEmpty()) {
             return
         }
@@ -832,7 +832,7 @@ abstract class BaseMainActivity : BaseActivity() {
                 val info = ModelInfo.read(this@BaseMainActivity) ?: throw IllegalArgumentException("Can't read model info.")
                 val detector = SentenceDetect(this@BaseMainActivity, info.lang) { sentences: Array<String> ->
                     val joined = setSplitQuery(sentences)
-                    semantics(joined, longClick)
+                    semantics(joined, longClick, doubleClick)
                 }
                 detector.runAndCallback(Dispatchers.Default, text)
 
@@ -1020,6 +1020,35 @@ abstract class BaseMainActivity : BaseActivity() {
                 else -> {}
             }
             langIndicator.setCompoundDrawablesWithIntrinsicBounds(iconId, 0, 0, 0)
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setFABListeners(fab: FloatingActionButton, onClick: (longClick: Boolean, doubleClick: Boolean) -> Unit) {
+        val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+                onClick(false, false)
+                return true
+            }
+
+            override fun onDoubleTap(e: MotionEvent): Boolean {
+                onClick(false, true)
+                return true
+            }
+
+            override fun onLongPress(e: MotionEvent) {
+                onClick(true, false)
+            }
+
+            override fun onDown(e: MotionEvent): Boolean {
+                return true
+            }
+        })
+        fab.isLongClickable = false
+        fab.setOnTouchListener { v, event ->
+            gestureDetector.onTouchEvent(event)
+            v.onTouchEvent(event)
+            true
         }
     }
 
