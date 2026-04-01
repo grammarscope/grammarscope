@@ -243,6 +243,15 @@ abstract class BaseMainActivity : BaseActivity() {
             super.onViewCreated(view, savedInstanceState)
 
             setupUI(requireActivity())
+
+            val engine = view.findViewById<ViewGroup>(R.id.engine)
+            val engineMarginBottom = (engine.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+            ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                engine.updateBottomMargin(systemBars, initialMargin = engineMarginBottom)
+                insets
+            }
+
             if (savedInstanceState != null) {
                 queryEdit.setText(savedInstanceState.getString(QUERY_STATE))
             }
