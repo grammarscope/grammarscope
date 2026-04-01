@@ -198,25 +198,6 @@ abstract class BaseMainActivity : BaseActivity() {
         }
     }
 
-    private fun setupUI() {
-
-        // UI items that are not in the fragment
-        fabDependencies = findViewById(R.id.fab_dependencies)
-        fabSemantics = findViewById(R.id.fab_semantics)
-        loadedIndicator = findViewById(R.id.loaded_indicator)
-        // boundIndicator = findViewById(R.id.bound_indicator)
-
-        // listeners
-        setFABListeners(fabDependencies) { longClick, doubleClick -> onClickFABDependencies(longClick, doubleClick) }
-        setFABListeners(fabSemantics) { longClick, doubleClick -> onClickFABSemantics(longClick, doubleClick) }
-        loadedIndicator.setOnClickListener { info(status()) }
-        // boundIndicator.setOnClickListener { info(status()) }
-
-        // visibility
-        loadedIndicator.visibility = View.VISIBLE
-        // boundIndicator.visibility = View.VISIBLE
-    }
-
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart()")
@@ -264,6 +245,15 @@ abstract class BaseMainActivity : BaseActivity() {
             }
         }
 
+        override fun onSaveInstanceState(outState: Bundle) {
+            super.onSaveInstanceState(outState)
+            val view = view
+            if (view != null) {
+                val edit = view.findViewById<TextInputEditText>(R.id.query)
+                outState.putString(QUERY_STATE, edit.text.toString())
+            }
+        }
+
         private fun setupUI(activity: Activity) {
             queryEdit = requireActivity().findViewById(R.id.query)
             queryEdit.addTextChangedListener(object : TextWatcher {
@@ -293,21 +283,6 @@ abstract class BaseMainActivity : BaseActivity() {
 
             // example button
             requireActivity().findViewById<ImageButton>(R.id.examples).setOnClickListener {
-                // val sentences = Samples.read(activity)
-                // if (!sentences.isNullOrEmpty()) {
-                //     val builder = AlertDialog.Builder(requireContext())
-                //     builder
-                //         .setTitle(R.string.title_sentences)
-                //         .setItems(sentences) { _, which ->
-                //             val selected = sentences[which]
-                //             queryEdit.setText(selected)
-                //         }
-                //         .setNegativeButton(android.R.string.cancel) { dialog, _ ->
-                //             dialog.dismiss()
-                //         }
-                //     val dialog = builder.create()
-                //     dialog.show()
-                // }
                 SampleBottomSheet { sentence: String ->
                     startMainWithQuery(sentence, requireActivity())
                 }.show(parentFragmentManager, "SampleBottomSheet")
@@ -319,15 +294,6 @@ abstract class BaseMainActivity : BaseActivity() {
                     inputManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
                     queryEdit.clearFocus()
                 }
-            }
-        }
-
-        override fun onSaveInstanceState(outState: Bundle) {
-            super.onSaveInstanceState(outState)
-            val view = view
-            if (view != null) {
-                val edit = view.findViewById<TextInputEditText>(R.id.query)
-                outState.putString(QUERY_STATE, edit.text.toString())
             }
         }
 
@@ -354,6 +320,56 @@ abstract class BaseMainActivity : BaseActivity() {
             emptyDirectory(dir)
             warn(getString(R.string.error_deploy) + '\n' + e.message + '\n' + getString(R.string.status_clear_data))
             finish()
+        }
+    }
+
+    private fun setupUI() {
+
+        // UI items that are not in the fragment
+        fabDependencies = findViewById(R.id.fab_dependencies)
+        fabSemantics = findViewById(R.id.fab_semantics)
+        loadedIndicator = findViewById(R.id.loaded_indicator)
+        // boundIndicator = findViewById(R.id.bound_indicator)
+
+        // listeners
+        setFABListeners(fabDependencies) { longClick, doubleClick -> onClickFABDependencies(longClick, doubleClick) }
+        setFABListeners(fabSemantics) { longClick, doubleClick -> onClickFABSemantics(longClick, doubleClick) }
+        loadedIndicator.setOnClickListener { info(status()) }
+        // boundIndicator.setOnClickListener { info(status()) }
+
+        // visibility
+        loadedIndicator.visibility = View.VISIBLE
+        // boundIndicator.visibility = View.VISIBLE
+    }
+
+    // C L I C K
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setFABListeners(fab: FloatingActionButton, onClick: (longClick: Boolean, doubleClick: Boolean) -> Unit) {
+        val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+                onClick(false, false)
+                return true
+            }
+
+            override fun onDoubleTap(e: MotionEvent): Boolean {
+                onClick(false, true)
+                return true
+            }
+
+            override fun onLongPress(e: MotionEvent) {
+                onClick(true, false)
+            }
+
+            override fun onDown(e: MotionEvent): Boolean {
+                return true
+            }
+        })
+        fab.isLongClickable = false
+        fab.setOnTouchListener { v, event ->
+            gestureDetector.onTouchEvent(event)
+            v.onTouchEvent(event)
+            true
         }
     }
 
@@ -1020,35 +1036,6 @@ abstract class BaseMainActivity : BaseActivity() {
                 else -> {}
             }
             langIndicator.setCompoundDrawablesWithIntrinsicBounds(iconId, 0, 0, 0)
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private fun setFABListeners(fab: FloatingActionButton, onClick: (longClick: Boolean, doubleClick: Boolean) -> Unit) {
-        val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
-            override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
-                onClick(false, false)
-                return true
-            }
-
-            override fun onDoubleTap(e: MotionEvent): Boolean {
-                onClick(false, true)
-                return true
-            }
-
-            override fun onLongPress(e: MotionEvent) {
-                onClick(true, false)
-            }
-
-            override fun onDown(e: MotionEvent): Boolean {
-                return true
-            }
-        })
-        fab.isLongClickable = false
-        fab.setOnTouchListener { v, event ->
-            gestureDetector.onTouchEvent(event)
-            v.onTouchEvent(event)
-            true
         }
     }
 
