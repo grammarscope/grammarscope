@@ -10,6 +10,7 @@ import android.content.IntentFilter
 import android.content.res.Resources
 import android.os.Bundle
 import android.text.Editable
+import android.text.Html
 import android.text.TextWatcher
 import android.util.Log
 import android.view.GestureDetector
@@ -22,6 +23,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
@@ -52,6 +54,7 @@ import com.bbou.download.preference.Settings.unrecordDatapackSource
 import com.bbou.others.OthersActivity
 import com.bbou.rate.AppRate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -152,15 +155,12 @@ abstract class BaseMainActivity : BaseActivity() {
         setupUI()
 
         // handle window insets
-        val engine = findViewById<View>(R.id.engine)
         val fabDependenciesMarginBottom = (fabDependencies.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         val fabSemanticsMarginBottom = (fabSemantics.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        val engineMarginBottom = (engine.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
         ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { _, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             fabDependencies.updateBottomMargin(systemBars, initialMargin = fabDependenciesMarginBottom)
             fabSemantics.updateBottomMargin(systemBars, initialMargin = fabSemanticsMarginBottom)
-            engine.updateBottomMargin(systemBars, initialMargin = engineMarginBottom)
             insets
         }
 
@@ -343,9 +343,10 @@ abstract class BaseMainActivity : BaseActivity() {
         loadedIndicator = findViewById(R.id.loaded_indicator)
         // boundIndicator = findViewById(R.id.bound_indicator)
 
+
         // listeners
-        setFABListeners(fabDependencies) { longClick, doubleClick -> onClickFABDependencies(longClick, doubleClick) }
-        setFABListeners(fabSemantics) { longClick, doubleClick -> onClickFABSemantics(longClick, doubleClick) }
+        setFABListeners(fabDependencies, R.string.tooltip_graph_text_annotation) { longClick, doubleClick -> onClickFABDependencies(longClick, doubleClick) }
+        setFABListeners(fabSemantics, R.string.tooltip_graph_text) { longClick, doubleClick -> onClickFABSemantics(longClick, doubleClick) }
         loadedIndicator.setOnClickListener { info(status()) }
         // boundIndicator.setOnClickListener { info(status()) }
 
@@ -357,7 +358,7 @@ abstract class BaseMainActivity : BaseActivity() {
     // C L I C K
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setFABListeners(fab: FloatingActionButton, onClick: (longClick: Boolean, doubleClick: Boolean) -> Unit) {
+    private fun setFABListeners(fab: FloatingActionButton, @StringRes textId: Int, onClick: (longClick: Boolean, doubleClick: Boolean) -> Unit) {
         val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
             override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
                 onClick(false, false)
@@ -374,6 +375,7 @@ abstract class BaseMainActivity : BaseActivity() {
             }
 
             override fun onDown(e: MotionEvent): Boolean {
+                showFabHint(fab, textId)
                 return true
             }
         })
@@ -382,6 +384,22 @@ abstract class BaseMainActivity : BaseActivity() {
             gestureDetector.onTouchEvent(event)
             v.onTouchEvent(event)
             true
+        }
+    }
+
+    private fun showFabHint(view: View, @StringRes textId: Int) {
+        // Only show if the user hasn't seen it many times
+        val prefs = getSharedPreferences("usage_hints", MODE_PRIVATE)
+        val count = prefs.getInt("fab_hint_count", 0)
+        //TODO
+        if (count < 300) {
+            val rawString = getString(textId)
+            val formattedText = Html.fromHtml(rawString, Html.FROM_HTML_MODE_LEGACY)
+            Snackbar
+                .make(view, formattedText, Snackbar.LENGTH_LONG)
+                .setAnchorView(view)
+                .show()
+            prefs.edit { putInt("fab_hint_count", count + 1) }
         }
     }
 
@@ -691,7 +709,7 @@ abstract class BaseMainActivity : BaseActivity() {
                     if (doubleClick)
                         (DependencyParseActivity::class.java)
                     else
-                        (if (longClick) AnnotatedTextActivity::class.java else (if (split) DependencyGraphsParseActivity::class.java else DependencyGraphParseActivity::class.java)),
+                        (if (longClick) (if (split) DependencyGraphsParseActivity::class.java else DependencyGraphParseActivity::class.java) else AnnotatedTextActivity::class.java),
                     queryStr
                 )
             }

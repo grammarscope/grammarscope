@@ -82,6 +82,9 @@
 	<string name="download_newer">source model is possibly newer</string>
 	<string name="download_uptodate">current model is up-to-date</string>
 
+	<string name="tooltip_graph_text"><![CDATA[<b>Single Tap</b>: graph<br/>, <b>Double Tap</b>: text<br/>]]></string>
+	<string name="tooltip_graph_text_annotation"><![CDATA[<b>Single Tap:</b> annotation, <b>Double Tap:</b> text<br/><b>Long Press:</b> graph<br/>]]></string>
+
 	<string name="provider_none">No provider.</string>
 	<string name="provider_is">Provider is %s</string>
 	<string name="provider_engine">engine</string>
