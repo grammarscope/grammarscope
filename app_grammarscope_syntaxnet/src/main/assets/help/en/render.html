@@ -1,34 +1,56 @@
 <!--suppress  CheckEmptyScriptTag -->
 <HTML lang="en">
 <HEAD>
-	<META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<TITLE>Help</TITLE>
-	<LINK rel="stylesheet" type="text/css" href="style.css"/>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <TITLE>Help</TITLE>
+    <LINK rel="stylesheet" type="text/css" href="style.css"/>
 </HEAD>
 <BODY>
 
 <DIV class='section'>
-	<DIV class='sectionhead'>Press/Long press and rendering</DIV>
+    <DIV class='sectionhead'>Press/Long press/Double tap and rendering</DIV>
 
-	<TABLE class='center'>
-		<TR>
-			<TH class='from'>gesture</TH>
-			<TH class='img'></TH>
-			<TH class='to'>effect</TH>
-		</TR>
+    <TABLE class='center'>
+        <TR>
+            <TH class='from'>gesture</TH>
+            <TH class='img'></TH>
+            <TH class='to' colspan="2">effect</TH>
+        </TR>
 
-		<TR>
-			<TD class='from'>Press</TD>
-			<TD class='img'><IMG src='images/tip_press.png'/></TD>
-			<TD class='to'>render as text or graph as per settings</TD>
-		</TR>
+        <TR>
+            <TH class='from'></TH>
+            <TH class='img'></TH>
+            <TH class='to'>dependencies</TH>
+            <TH class='to'>semantics</TH>
+        </TR>
 
-		<TR>
-			<TD class='from'>Long press</TD>
-			<TD class='img'><IMG src='images/tip_longpress.png'/></TD>
-			<TD class='to'>reverses text/graph setting</TD>
-		</TR>
-	</TABLE>
+        <TR>
+            <TH class='from'></TH>
+            <TH class='img'></TH>
+            <TH class='img'><IMG src='images/tip_dependency.png'/></TH>
+            <TH class='img'><IMG src='images/tip_semantics.png'/></TH>
+        </TR>
+
+        <TR>
+            <TD class='from'>Press</TD>
+            <TD class='img'><IMG src='images/tip_press.png'/></TD>
+            <TD class='to'>render as <i>annotations</i></TD>
+            <TD class='to'>render as <i>graph</i></TD>
+        </TR>
+
+        <TR>
+            <TD class='from'>Double tap</TD>
+            <TD class='img'><IMG src='images/tip_doubletap.png'/></TD>
+            <TD class='to'>render as <i>text</i></TD>
+            <TD class='to'>render as <i>text</i></TD>
+        </TR>
+        <TR>
+            <TD class='from'>Long press</TD>
+            <TD class='img'><IMG src='images/tip_longpress.png'/></TD>
+            <TD class='to'>renders as <i>graph</i></TD>
+            <TD class='to'></TD>
+        </TR>
+    </TABLE>
 
 </DIV>
 
