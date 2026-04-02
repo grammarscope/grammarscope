@@ -77,13 +77,14 @@
 	<string name="status_clear_data">Clear model.</string>
 	<string name="status_disable_sentence_boundary_detect">Disabling sentence boundary detection.</string>
 	<string name="status_deleted">Deleted</string>
+	<string name="status_error_no_query">No query</string>
 
 	<string name="download_down">current model</string>
 	<string name="download_newer">source model is possibly newer</string>
 	<string name="download_uptodate">current model is up-to-date</string>
 
-	<string name="tooltip_graph_text"><![CDATA[<b>Single Tap</b>: graph, <b>Double Tap</b>: text<br/>]]></string>
-	<string name="tooltip_graph_text_annotation"><![CDATA[<b>Single Tap:</b> annotation, <b>Double Tap:</b> text<br/><b>Long Press:</b> graph<br/>]]></string>
+	<string name="tooltip_graph_text"><![CDATA[<b>Single Tap</b>: graph<br/><b>Double Tap</b>: text<br/>]]></string>
+	<string name="tooltip_graph_text_annotation"><![CDATA[<b>Single Tap:</b> annotation<br/><b>Double Tap:</b> text<br/><b>Long Press:</b> graph<br/>]]></string>
 
 	<string name="provider_none">No provider.</string>
 	<string name="provider_is">Provider is %s</string>
