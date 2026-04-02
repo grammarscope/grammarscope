@@ -28,6 +28,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.graphics.drawable.DrawableCompat
@@ -345,8 +346,8 @@ abstract class BaseMainActivity : BaseActivity() {
 
 
         // listeners
-        setFABListeners(fabDependencies, R.string.tooltip_graph_text_annotation) { longClick, doubleClick -> onClickFABDependencies(longClick, doubleClick) }
-        setFABListeners(fabSemantics, R.string.tooltip_graph_text) { longClick, doubleClick -> onClickFABSemantics(longClick, doubleClick) }
+        setFABListeners(fabDependencies, "dependencies", R.string.tooltip_graph_text_annotation) { longClick, doubleClick -> onClickFABDependencies(longClick, doubleClick) }
+        setFABListeners(fabSemantics, "semantics", R.string.tooltip_graph_text) { longClick, doubleClick -> onClickFABSemantics(longClick, doubleClick) }
         loadedIndicator.setOnClickListener { info(status()) }
         // boundIndicator.setOnClickListener { info(status()) }
 
@@ -358,25 +359,20 @@ abstract class BaseMainActivity : BaseActivity() {
     // C L I C K
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setFABListeners(fab: FloatingActionButton, @StringRes textId: Int, onClick: (longClick: Boolean, doubleClick: Boolean) -> Unit) {
+    private fun setFABListeners(fab: FloatingActionButton, fabTag: String, @StringRes textId: Int, onClick: (longClick: Boolean, doubleClick: Boolean) -> Unit) {
         val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
             override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
-                onClick(false, false)
+                handleFabActionWithPrimer(fab, fabTag = fabTag, textId = textId) { onClick(false, false) }
                 return true
             }
 
             override fun onDoubleTap(e: MotionEvent): Boolean {
-                onClick(false, true)
+                handleFabActionWithPrimer(fab, fabTag = fabTag, textId = textId) { onClick(false, true) }
                 return true
             }
 
             override fun onLongPress(e: MotionEvent) {
-                onClick(true, false)
-            }
-
-            override fun onDown(e: MotionEvent): Boolean {
-                showFabHint(fab, textId)
-                return true
+                handleFabActionWithPrimer(fab, fabTag = fabTag, textId = textId) { onClick(true, false) }
             }
         })
         fab.isLongClickable = false
@@ -387,20 +383,71 @@ abstract class BaseMainActivity : BaseActivity() {
         }
     }
 
-    private fun showFabHint(view: View, @StringRes textId: Int) {
-        // Only show if the user hasn't seen it many times
-        val prefs = getSharedPreferences("usage_hints", MODE_PRIVATE)
-        val count = prefs.getInt("fab_hint_count", 0)
-        //TODO
-        if (count < 300) {
-            val rawString = getString(textId)
-            val formattedText = Html.fromHtml(rawString, Html.FROM_HTML_MODE_LEGACY)
-            Snackbar
-                .make(view, formattedText, Snackbar.LENGTH_LONG)
-                .setAnchorView(view)
-                .show()
-            prefs.edit { putInt("fab_hint_count", count + 1) }
+    private fun handleFabActionWithPrimer(
+        fab: View,
+        fabTag: String,
+        @StringRes textId: Int,
+        action: () -> Unit
+    ) {
+        val prefs = getSharedPreferences(PREF_FABS, MODE_PRIVATE)
+        val useCount = prefs.getInt("${fabTag}_${PREF_FAB_USES}", 0)
+        val lastShownTime = prefs.getLong("${fabTag}_${PREF_FAB_LAST_TIME}", 0)
+        val currentTime = System.currentTimeMillis()
+
+        // 1. If user is experienced (e.g., used 3+ times), launch instantly
+        if (useCount >= FAB_DISARM_AFTER) {
+            action()
+            return
         }
+
+        // 2. DISARMED STATE: Show hint if they haven't seen it in the last 2 seconds
+        // This prevents the hint from showing AND the action firing on the same "session"
+        if (currentTime - lastShownTime > FAB_ARMED_SPAN) {
+            //showTooltip(fab, textId)
+            showSnackbar(fab, textId)
+            // Record that they saw the hint
+            prefs.edit { putLong("${fabTag}_${PREF_FAB_LAST_TIME}", currentTime) }
+        } else {
+            // 3. ARMED STATE: This is the "Second Press"
+            // Increment use count and perform action
+            prefs.edit { putInt("${fabTag}_${PREF_FAB_USES}", useCount + 1) }
+            action()
+        }
+    }
+
+    private fun showSnackbar(view: View, @StringRes textId: Int) {
+        val formattedText = Html.fromHtml(getString(textId), Html.FROM_HTML_MODE_LEGACY)
+        Snackbar
+            .make(view, formattedText, Snackbar.LENGTH_LONG)
+            .setAnchorView(view)
+            .setAction(android.R.string.ok) {}
+            .apply { // remove the 2-line constraint from the internal TextView
+                val snackText = this.view.findViewById<TextView>(MaterialR.id.snackbar_text)
+                snackText.maxLines = 10
+            }
+            .show()
+    }
+
+    private fun showTooltip(view: View, @StringRes textId: Int) {
+        val rawString = getString(textId)
+        val formattedText = Html.fromHtml(rawString, Html.FROM_HTML_MODE_LEGACY)
+
+        // Using TooltipCompat ensures the most "Material 3" compliant behavior
+        // for the View system across all API levels.
+        TooltipCompat.setTooltipText(view, formattedText)
+
+        // To force the tooltip to show immediately (since it's a 'Primer'),
+        // we simulate a long click which triggers the system tooltip.
+        // If you prefer the Snackbar look (which is often used for M3 'Plain Tooltips'
+        // that contain more than one word), the Snackbar code is actually more M3-standard.
+
+        // However, if you want the strictly visual "PlainTooltip" anchor:
+        view.performLongClick()
+
+        // Since performLongClick might trigger your LongPress listener logic,
+        // a safer Material 3 approach for a persistent primer is actually
+        // the Snackbar anchored to the FAB (which you already had),
+        // but styled specifically for M3.
     }
 
     // M E N U
@@ -666,8 +713,8 @@ abstract class BaseMainActivity : BaseActivity() {
     }
 
     private fun onClickFABDependencies(longClick: Boolean, doubleClick: Boolean = false) {
-        queryEdit?.let {
-            val query: CharSequence = it.text ?: ""
+        if (queryEdit != null && ! queryEdit!!.text.isNullOrEmpty()) {
+            val query: CharSequence = queryEdit!!.text!!
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
@@ -676,12 +723,14 @@ abstract class BaseMainActivity : BaseActivity() {
             } else {
                 dependencies(query, longClick, doubleClick)
             }
+        } else {
+            warn(getString(R.string.status_error_no_query))
         }
     }
 
     private fun onClickFABSemantics(longClick: Boolean, doubleClick: Boolean = false) {
-        queryEdit?.let {
-            val query: CharSequence = it.text ?: ""
+        if (queryEdit != null && ! queryEdit!!.text.isNullOrEmpty()) {
+            val query: CharSequence = queryEdit!!.text!!
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
             val sentenceBoundaryDetection = sharedPrefs.getBoolean(GeneralSettings.PREF_SENTENCE_BOUNDARY_DETECTION, true)
@@ -690,6 +739,8 @@ abstract class BaseMainActivity : BaseActivity() {
             } else {
                 semantics(query, longClick, doubleClick)
             }
+        } else {
+            warn(getString(R.string.status_error_no_query))
         }
     }
 
@@ -774,7 +825,7 @@ abstract class BaseMainActivity : BaseActivity() {
         return newText
     }
 
-    // S E N T E N C E   D E T E C T
+// S E N T E N C E   D E T E C T
 
     internal class SentenceDetect(context: Context, lang: String, private val consumer: Consumer<Array<String>>) : BaseSentenceDetect(context, lang) {
 
@@ -884,7 +935,7 @@ abstract class BaseMainActivity : BaseActivity() {
         }
     }
 
-    // R E Q U E S T S
+// R E Q U E S T S
 
     /**
      * Handle search intent
@@ -904,7 +955,7 @@ abstract class BaseMainActivity : BaseActivity() {
         return false
     }
 
-    // E V E N T
+// E V E N T
 
     private fun onEvent(e: Broadcast.EventType) {
         Log.d(TAG, "Event $e")
@@ -936,7 +987,7 @@ abstract class BaseMainActivity : BaseActivity() {
         }
     }
 
-    // U I
+// U I
 
     private fun isReady(): Boolean {
         return UniqueProvider.SINGLETON.get()?.let {
@@ -1059,7 +1110,7 @@ abstract class BaseMainActivity : BaseActivity() {
         return ProviderManager.engineVersion()
     }
 
-    // S N A C K B A R
+// S N A C K B A R
 
     private fun warn(exception: Exception) {
         val contentView = findViewById<View>(android.R.id.content)
@@ -1077,7 +1128,7 @@ abstract class BaseMainActivity : BaseActivity() {
         showSnackbar(this, contentView, message)
     }
 
-    // D A Y
+// D A Y
 
     override fun onNightModeChanged(mode: Int) {
         super.onNightModeChanged(mode)
@@ -1091,6 +1142,12 @@ abstract class BaseMainActivity : BaseActivity() {
         private const val SENTENCE_ID_OFFSET = 1000
         private const val FLAG_WIDTH = 24
         private const val FLAG_HEIGHT = 16
+
+        private const val FAB_DISARM_AFTER = 5
+        private const val FAB_ARMED_SPAN = 10000
+        private const val PREF_FABS = "fab_usage"
+        private const val PREF_FAB_USES = "total_uses"
+        private const val PREF_FAB_LAST_TIME = "last_time"
 
         private fun join(@Suppress("SameParameterValue") delimiter: String, items: Array<String>): CharSequence {
             val sb = StringBuilder()
