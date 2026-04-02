@@ -101,7 +101,7 @@
 			android:layout_height="wrap_content"
 			android:contentDescription="@string/description_splash"
 			android:src="@drawable/ic_splash_grammarscope"
-			app:tint="?attr/colorCustomVariant" />
+			app:tint="?attr/colorOnCustom" />
 
 		<ImageView
 			android:layout_width="wrap_content"
