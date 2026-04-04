@@ -13,4 +13,6 @@
 	<dimen name="download_horizontal_margin">16dp</dimen>
 	<dimen name="download_vertical_margin">16dp</dimen>
 
+	<dimen name="button_margin">16dp</dimen>
+
 </resources>
