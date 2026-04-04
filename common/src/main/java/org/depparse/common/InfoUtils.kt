@@ -18,8 +18,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.R as MaterialR
 
 private fun Snackbar.setTextMinLines(min: Int): Snackbar {
-    val snackText = view.findViewById<TextView>(MaterialR.id.snackbar_text)
-    snackText.minLines = min
+    if (min != 2) {
+        val snackText = view.findViewById<TextView>(MaterialR.id.snackbar_text)
+        snackText.minLines = min
+    }
     return this
 }
 
@@ -40,7 +42,7 @@ fun makeAnchoredSnackbar(
     context: Context,
     anchorView: View,
     @StringRes textId: Int,
-    minLines: Int = 3,
+    minLines: Int = 2,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -71,7 +73,7 @@ fun makeActionSnackbar(
     context: Context,
     anchorView: View,
     text: CharSequence,
-    minLines: Int = 3,
+    minLines: Int = 2,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -85,7 +87,7 @@ fun makeAnchoredSnackbar(
     context: Context,
     anchorView: View,
     text: CharSequence,
-    minLines: Int = 3,
+    minLines: Int = 2,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,

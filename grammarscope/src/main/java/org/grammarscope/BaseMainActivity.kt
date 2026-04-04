@@ -403,7 +403,7 @@ abstract class BaseMainActivity : BaseActivity() {
         // This prevents the hint from showing AND the action firing on the same "session"
         if (currentTime - lastShownTime > FAB_ARMED_SPAN) {
             //showTooltip(fab, textId)
-            makeAnchoredSnackbar(this, fab, textId).show()
+            makeAnchoredSnackbar(this, fab, textId, minLines=3).show()
             // Record that they saw the hint
             prefs.edit { putLong("${fabTag}_${PREF_FAB_LAST_TIME}", currentTime) }
         } else {
