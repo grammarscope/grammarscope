@@ -78,7 +78,7 @@ fun makeActionSnackbar(
     action: (View) -> Unit,
 ): Snackbar {
     return makeSnackbar(context, anchorView, text, minLines = minLines, backColorAttr = backColorAttr, foreColorAttr = foreColorAttr, duration = duration)
-         .setAction(android.R.string.ok, action)
+        .setAction(android.R.string.ok, action)
 }
 
 fun makeAnchoredSnackbar(
@@ -95,10 +95,10 @@ fun makeAnchoredSnackbar(
 }
 
 fun Snackbar.makeSwipable(
-     @StringRes actionId: Int,
+    @StringRes actionId: Int,
     listener: View.OnClickListener
 ): Snackbar {
-     val action = context.getText(actionId)
+    val action = context.getText(actionId)
     return makeSwipable(action, listener)
 }
 
