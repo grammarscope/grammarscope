@@ -1081,12 +1081,12 @@ abstract class BaseMainActivity : BaseActivity() {
     private fun warn(exception: Exception) {
         val contentView = findViewById<View>(android.R.id.content)
         val message = exception.message ?: exception.toString()
-        makeSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError).show()
+        makeSnackbar(this, contentView, message, backColorAttr = AppCompatR.attr.colorError, foreColorAttr = MaterialR.attr.colorOnError).show()
     }
 
     private fun warn(message: String) {
         val contentView = findViewById<View>(android.R.id.content)
-        makeSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError).show()
+        makeSnackbar(this, contentView, message, backColorAttr = AppCompatR.attr.colorError, foreColorAttr = MaterialR.attr.colorOnError).show()
     }
 
     private fun info(message: String) {

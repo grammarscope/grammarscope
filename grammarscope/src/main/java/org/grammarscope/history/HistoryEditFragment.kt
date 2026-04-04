@@ -205,7 +205,7 @@ class HistoryEditFragment : HistoryFragment() {
     private fun warn(message: String) {
         activity?.let {
             val contentView = it.findViewById<View>(android.R.id.content)
-            makeSnackbar(it, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError).show()
+            makeSnackbar(it, contentView, message, backColorAttr = AppCompatR.attr.colorError, foreColorAttr = MaterialR.attr.colorOnError).show()
         }
     }
 
