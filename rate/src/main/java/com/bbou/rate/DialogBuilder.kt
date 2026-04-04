@@ -20,45 +20,46 @@ internal object DialogBuilder {
     }
 
     fun build(context: Context, options: DialogOptions): Dialog {
-        val builder = getDialogBuilder(context)
-
-        // message
-        builder.setMessage(options.getMessageText(context))
-
-        // title
-        if (options.shouldShowTitle()) {
-            builder.setTitle(options.getTitleText(context))
-        }
-
-        // title
-        val view = options.view
-        if (view != null) {
-            builder.setView(view)
-        }
-
-        // cancelable
-        builder.setCancelable(options.cancelable)
-
-        // positive button
-        builder.setPositiveButton(options.getPositiveText(context)) { _: DialogInterface?, _: Int ->
-            val intentToAppstore = options.storeType.getIntent(context)
-            try {
-                context.startActivity(intentToAppstore)
-            } catch (e: ActivityNotFoundException) {
-                Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+        return getDialogBuilder(context)
+            // message
+            .setMessage(options.getMessageText(context))
+            // title
+            .apply {
+                if (options.shouldShowTitle()) {
+                    setTitle(options.getTitleText(context))
+                }
             }
-            PreferenceHelper.setAgreeShowDialog(context, false)
-        }
-
-        // neutral button
-        if (options.shouldShowNeutralButton()) {
-            builder.setNeutralButton(options.getNeutralText(context)) { _: DialogInterface?, _: Int -> PreferenceHelper.setRemindInterval(context) }
-        }
-
-        // negative button
-        if (options.shouldShowNegativeButton()) {
-            builder.setNegativeButton(options.getNegativeText(context)) { _: DialogInterface?, _: Int -> PreferenceHelper.setAgreeShowDialog(context, false) }
-        }
-        return builder.create()
+            // view
+            .apply {
+                val view = options.view
+                if (view != null) {
+                    setView(view)
+                }
+            }
+            // cancelable
+            .setCancelable(options.cancelable)
+            // positive button
+            .setPositiveButton(options.getPositiveText(context)) { _: DialogInterface?, _: Int ->
+                val intentToAppstore = options.storeType.getIntent(context)
+                try {
+                    context.startActivity(intentToAppstore)
+                } catch (e: ActivityNotFoundException) {
+                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                }
+                PreferenceHelper.setAgreeShowDialog(context, false)
+            }
+            // neutral button
+            .apply {
+                if (options.shouldShowNeutralButton()) {
+                    setNeutralButton(options.getNeutralText(context)) { _: DialogInterface?, _: Int -> PreferenceHelper.setRemindInterval(context) }
+                }
+            }
+            // negative button
+            .apply {
+                if (options.shouldShowNegativeButton()) {
+                    setNegativeButton(options.getNegativeText(context)) { _: DialogInterface?, _: Int -> PreferenceHelper.setAgreeShowDialog(context, false) }
+                }
+            }
+            .create()
     }
 }

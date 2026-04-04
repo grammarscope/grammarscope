@@ -151,18 +151,20 @@ class ContentDownloader : BaseTask<String, Array<String>?>() {
             val sourceView = header.findViewById<TextView>(R.id.source)
             sourceView.text = targetFile
 
-            val alert = AlertDialog.Builder(activity)
-            alert.setCustomTitle(header)
-            if (result == null) {
-                alert.setIconAttribute(android.R.attr.alertDialogIcon)
-                    .setMessage(R.string.status_task_failed)
-            } else {
-                alert.setItems(result) { _: DialogInterface?, which: Int ->
-                    val item = result[which]
-                    consumer.accept(activity, item)
+            AlertDialog.Builder(activity)
+                .setCustomTitle(header)
+                .apply {
+                    if (result == null) {
+                        setIconAttribute(android.R.attr.alertDialogIcon)
+                        setMessage(R.string.status_task_failed)
+                    } else {
+                        setItems(result) { _: DialogInterface?, which: Int ->
+                            val item = result[which]
+                            consumer.accept(activity, item)
+                        }
+                    }
                 }
-            }
-            alert.show()
+                .show()
         }
 
         /**

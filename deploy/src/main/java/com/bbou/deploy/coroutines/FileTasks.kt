@@ -558,14 +558,16 @@ class FileTasks(
 
         private fun getMD5Consumer(activity: FragmentActivity, whenDone: Runnable?): Consumer<String?> {
             return Consumer { md5: String? ->
-                val alert = AlertDialog.Builder(activity)
-                if (md5 != null) {
-                    alert.setMessage(md5)
-                } else {
-                    alert.setMessage(R.string.result_fail)
-                }
-                alert.setOnDismissListener { _: DialogInterface? -> whenDone?.run() }
-                alert.show()
+                AlertDialog.Builder(activity)
+                    .apply {
+                        if (md5 != null) {
+                            setMessage(md5)
+                        } else {
+                            setMessage(R.string.result_fail)
+                        }
+                    }
+                    .setOnDismissListener { _: DialogInterface? -> whenDone?.run() }
+                    .show()
             }
         }
 

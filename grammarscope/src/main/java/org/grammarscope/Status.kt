@@ -54,43 +54,47 @@ object Status {
     fun modelStatus(activity: Activity) {
         val dir = getAppStorage(activity)
         val info = read(activity)
-        val alert = AlertDialog.Builder(activity) // unguarded, level 1
-        alert.setTitle(R.string.model)
-        if (info == null) {
-            alert.setIcon(R.drawable.ic_error)
-            alert.setMessage(R.string.model_none)
-        } else {
-            val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(AppCompatR.attr.colorPrimary, MaterialR.attr.colorOnPrimary))
-            val langFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
-            val nameFactory = SpanFactory { arrayOf<Any>(BackgroundColorSpan(colors[0]), ForegroundColorSpan(colors[1]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
-            val moreFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
-            val coreFileFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
-            val fileFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
-            val items: MutableList<CharSequence> = ArrayList()
-            items.add(format(info.lang, langFactory))
-            if (info.lang != info.name)
-                items.add(format(info.name, nameFactory))
-            if (info.more1 != null)
-                items.add(format(info.more1!!, moreFactory))
-            if (info.more2 != null)
-                items.add(format(info.more2!!, moreFactory))
-            val coreModelFiles = activity.resources.getStringArray(R.array.core_model_files)
-            for (modelFile in expandRegEx(dir, coreModelFiles)) {
-                val file = File(modelFile)
-                items.add(format(file.name, coreFileFactory)
-                    .append(" (")
-                    .append(sizeOf(file))
-                    .append(')'))
+        AlertDialog.Builder(activity)
+            .apply { // unguarded, level 1
+                setTitle(R.string.model)
+                if (info == null) {
+                    setIcon(R.drawable.ic_error)
+                    setMessage(R.string.model_none)
+                } else {
+                    val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(AppCompatR.attr.colorPrimary, MaterialR.attr.colorOnPrimary))
+                    val langFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
+                    val nameFactory = SpanFactory { arrayOf<Any>(BackgroundColorSpan(colors[0]), ForegroundColorSpan(colors[1]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
+                    val moreFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
+                    val coreFileFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
+                    val fileFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
+                    val items: MutableList<CharSequence> = ArrayList()
+                    items.add(format(info.lang, langFactory))
+                    if (info.lang != info.name)
+                        items.add(format(info.name, nameFactory))
+                    if (info.more1 != null)
+                        items.add(format(info.more1!!, moreFactory))
+                    if (info.more2 != null)
+                        items.add(format(info.more2!!, moreFactory))
+                    val coreModelFiles = activity.resources.getStringArray(R.array.core_model_files)
+                    for (modelFile in expandRegEx(dir, coreModelFiles)) {
+                        val file = File(modelFile)
+                        items.add(
+                            format(file.name, coreFileFactory)
+                                .append(" (")
+                                .append(sizeOf(file))
+                                .append(')')
+                        )
+                    }
+                    val modelFiles = activity.resources.getStringArray(R.array.model_files)
+                    for (modelFile in expandRegEx(dir, modelFiles)) {
+                        val file = File(modelFile)
+                        items.add(format(file.name, fileFactory))
+                    }
+                    setItems(items.toTypedArray<CharSequence>(), null)
+                    setNegativeButton(R.string.action_cancel) { d: DialogInterface, _: Int -> d.cancel() }
+                }
             }
-            val modelFiles = activity.resources.getStringArray(R.array.model_files)
-            for (modelFile in expandRegEx(dir, modelFiles)) {
-                val file = File(modelFile)
-                items.add(format(file.name, fileFactory))
-            }
-            alert.setItems(items.toTypedArray<CharSequence>(), null)
-            alert.setNegativeButton(R.string.action_cancel) { d: DialogInterface, _: Int -> d.cancel() }
-        }
-        alert.show()
+            .show()
     }
 
     private fun expandRegEx(dir: File, array: Array<String>): List<String> {

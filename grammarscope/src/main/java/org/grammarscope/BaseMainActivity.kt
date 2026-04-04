@@ -24,6 +24,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
@@ -452,7 +453,7 @@ abstract class BaseMainActivity : BaseActivity() {
             }
 
             R.id.engine_version -> {
-                info(version())
+                dialog(version())
                 return true
             }
 
@@ -1073,7 +1074,7 @@ abstract class BaseMainActivity : BaseActivity() {
         return ProviderManager.engineVersion()
     }
 
-// S N A C K B A R
+    // S N A C K B A R
 
     private fun warn(exception: Exception) {
         val contentView = findViewById<View>(android.R.id.content)
@@ -1091,7 +1092,18 @@ abstract class BaseMainActivity : BaseActivity() {
         makeSnackbar(this, contentView, message).show()
     }
 
-// D A Y
+    // D A Y / N I G H T
+
+    private fun dialog(message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.app_name)
+            .setIcon(R.drawable.logo_app)
+            .setMessage(message)
+            .setNegativeButton(R.string.action_cancel) { d, _ -> d.cancel() }
+            .show()
+    }
+
+    // D A Y
 
     override fun onNightModeChanged(mode: Int) {
         super.onNightModeChanged(mode)

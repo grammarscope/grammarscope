@@ -52,14 +52,14 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
         adapter = ColorMapAdapter(colorMap.map { ColorMapAdapter.ColorItem(it.key, it.value) })
 
         // Build the dialog
-        val builder = AlertDialog.Builder(context)
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_colors, null)
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         // Set up the builder
-        builder.setView(view)
+        dialog = AlertDialog.Builder(context)
+            .setView(view)
             .setTitle("Color Map")
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 // Save the color map to preferences
@@ -69,9 +69,8 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
             .setNegativeButton(android.R.string.cancel) { _, _ ->
                 dialog = null
             }
-        // Show the dialog
-        dialog = builder.create()
-        dialog?.show()
+            .create()
+        dialog!!.show()
     }
 
     class ColorMapAdapter(val items: List<ColorItem>) : RecyclerView.Adapter<ColorMapAdapter.ViewHolder>() {
