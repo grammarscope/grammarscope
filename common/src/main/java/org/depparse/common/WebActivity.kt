@@ -13,7 +13,6 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.net.toUri
@@ -40,7 +39,7 @@ class WebActivity : BaseActivity() {
         try {
             setContentView(R.layout.activity_web)
         } catch (e: InflateException) {
-            Toast.makeText(this, "Needs android WebView", Toast.LENGTH_LONG).show()
+            fatal(this, "Needs android WebView")
             finish()
             return
         }

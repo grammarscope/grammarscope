@@ -8,6 +8,7 @@ import android.content.Context
 import android.text.Html
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.TooltipCompat
@@ -114,6 +115,23 @@ fun Snackbar.makeSwipable(
         .setBehavior(behavior)
         .setAction(action, listener)
         .setActionTextColor(ContextCompat.getColor(context, android.R.color.white))
+}
+
+
+fun operation(context: Context, text: String) {
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+}
+
+fun operation(context: Context, textId: Int) {
+    operation(context, context.getString(textId))
+}
+
+fun fatal(context: Context, text: String) {
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+}
+
+fun fatal(context: Context, @StringRes textId: Int) {
+    fatal(context, context.getString(textId))
 }
 
 fun showTooltip(context: Context, view: View, @StringRes textId: Int) {

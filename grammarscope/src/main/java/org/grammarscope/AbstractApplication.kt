@@ -9,7 +9,6 @@ import android.os.Process
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
@@ -28,6 +27,7 @@ import org.depparse.Storage.getAppStorage
 import org.depparse.common.AppContext
 import org.depparse.common.AppValues
 import org.depparse.common.Colors
+import org.depparse.common.fatal
 import org.grammarscope.annotations.AnnotationsSettings
 import org.grammarscope.annotations.paint.Palette
 import org.grammarscope.common.BuildConfig
@@ -117,9 +117,9 @@ abstract class AbstractApplication : Application() {
             }
         } catch (e: Exception) {
             Log.e(TAG, "Deploy failed", e)
-            Toast.makeText(this, getString(R.string.error_deploy) + e.message, Toast.LENGTH_LONG).show()
+            fatal(this, getString(R.string.error_deploy) + e.message)
             emptyDirectory(dir)
-            Toast.makeText(this, R.string.status_clear_data, Toast.LENGTH_LONG).show()
+            fatal(this, R.string.status_clear_data)
             Process.killProcess(Process.myPid())
             exitProcess(1)
         }

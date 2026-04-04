@@ -9,15 +9,13 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.bbou.deploy.coroutines.Deploy.fastCheck
+import org.depparse.BaseActivity
 import org.depparse.Storage
 import java.text.Normalizer
 import java.util.function.Consumer
-import org.depparse.BaseActivity
 import androidx.appcompat.R as AppCompatR
 import com.google.android.material.R as MaterialR
 import org.depparse.common.R as CommonR
@@ -82,7 +80,7 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
 
             // sanity check
             if (source == null) {
-                Toast.makeText(this, CommonR.string.error_null_data, Toast.LENGTH_LONG).show()
+                fatal(this, CommonR.string.error_null_data)
                 finish()
                 return
             }

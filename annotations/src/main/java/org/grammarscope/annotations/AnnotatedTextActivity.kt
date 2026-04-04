@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bbou.capture.Capture.captureAndSave
@@ -20,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.Token
 import org.depparse.common.BaseParseActivity
+import org.depparse.common.operation
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_BOX_EDGES
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_BOX_WORDS
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_IGNORE_RELATIONS
@@ -106,7 +106,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
     }
 
     override fun pending() {
-        Toast.makeText(this, R.string.status_processing, Toast.LENGTH_SHORT).show()
+        operation(this, R.string.status_processing)
     }
 
     // M E N U
