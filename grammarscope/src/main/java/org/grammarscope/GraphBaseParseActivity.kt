@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bbou.capture.Capture.captureAndSave
@@ -137,7 +136,7 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
-        Toast.makeText(activity, CaptureR.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
+        warn(getString(CaptureR.string.status_capture_no_view)).show()
         return null
     }
 

@@ -82,7 +82,7 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
 
             // sanity check
             if (source == null) {
-                Toast.makeText(this, R.string.error_null_data, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, CommonR.string.error_null_data, Toast.LENGTH_LONG).show()
                 finish()
                 return
             }
@@ -170,6 +170,11 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
         return false
     }
 
+    protected fun warn(message: String) {
+        val contentView = findViewById<View>(android.R.id.content)
+        makeSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError).show()
+    }
+
     companion object {
 
         private const val TAG = "ParseActivity"
@@ -185,7 +190,6 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
          */
         private fun makeParseIntent(context: Context, clazz: Class<out BaseParseActivity<*>>, query: String): Intent? {
             if (query.isEmpty()) {
-                Toast.makeText(context, R.string.error_null_source, Toast.LENGTH_SHORT).show()
                 return null
             }
             val intent = Intent(context, clazz)

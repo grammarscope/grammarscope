@@ -2,7 +2,6 @@ package org.grammarscope
 
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bbou.capture.Capture.captureAndSave
 import com.bbou.capture.Capture.captureAndShare
@@ -46,7 +45,7 @@ abstract class TextParseActivity : TextBaseParseActivity() {
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
-        Toast.makeText(activity, CaptureR.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
+        warn(getString(CaptureR.string.status_capture_no_view))
         return null
     }
 }

@@ -727,7 +727,8 @@ abstract class BaseMainActivity : BaseActivity() {
                         (if (longClick) (if (split) DependencyGraphsParseActivity::class.java else DependencyGraphParseActivity::class.java) else AnnotatedTextActivity::class.java),
                     queryStr
                 )
-            }
+            } else
+                warn(getString(CommonR.string.error_null_source))
         } else
             warn(getString(R.string.provider_not_ready))
     }
@@ -751,7 +752,8 @@ abstract class BaseMainActivity : BaseActivity() {
                         (if (splitGraphs) SemanticGraphsParseActivity::class.java else SemanticGraphParseActivity::class.java),
                     queryStr
                 )
-            }
+            } else
+                warn(getString(CommonR.string.error_null_source))
         } else
             warn(getString(R.string.provider_not_ready))
     }

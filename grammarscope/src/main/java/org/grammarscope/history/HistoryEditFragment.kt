@@ -14,7 +14,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
@@ -23,7 +22,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.loader.app.LoaderManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import org.grammarscope.common.R
+import org.depparse.common.makeSnackbar
 import org.grammarscope.history.History.Companion.getAuthority
 import org.grammarscope.history.History.Companion.recordQuery
 import java.io.BufferedReader
@@ -32,6 +31,9 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
+import androidx.appcompat.R as AppCompatR
+import com.google.android.material.R as MaterialR
+import org.grammarscope.common.R as CommonR
 
 class HistoryEditFragment : HistoryFragment() {
 
@@ -41,22 +43,22 @@ class HistoryEditFragment : HistoryFragment() {
     private val fragmentMenuProvider = object : MenuProvider {
 
         override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-            menuInflater.inflate(R.menu.history, menu)
+            menuInflater.inflate(CommonR.menu.history, menu)
         }
 
         override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
             return when (menuItem.itemId) {
-                R.id.action_history_export -> {
+                CommonR.id.action_history_export -> {
                     exportHistory()
                     true
                 }
 
-                R.id.action_history_import -> {
+                CommonR.id.action_history_import -> {
                     importHistory()
                     true
                 }
 
-                R.id.action_history_clear -> {
+                CommonR.id.action_history_clear -> {
                     val suggestions = SearchRecentSuggestions(requireContext(), getAuthority(appContext), SearchRecentSuggestionsProvider.DATABASE_MODE_QUERIES)
                     suggestions.clearHistory()
                     true
@@ -85,7 +87,7 @@ class HistoryEditFragment : HistoryFragment() {
                 suggestions.delete(itemId)
                 // Restart the loader to get the updated cursor
                 LoaderManager.getInstance(this@HistoryEditFragment).restartLoader(LOADER_ID, null, this@HistoryEditFragment)
-                Toast.makeText(requireContext(), resources.getString(R.string.status_deleted) + ' ' + data, Toast.LENGTH_SHORT).show()
+                info(resources.getString(CommonR.string.status_deleted) + ' ' + data)
             }
         }
     }
@@ -96,13 +98,13 @@ class HistoryEditFragment : HistoryFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        return inflater.inflate(CommonR.layout.fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
+        val recyclerView = view.findViewById<RecyclerView>(CommonR.id.list)
 
         val touchHelper = ItemTouchHelper(swipeCallback)
         touchHelper.attachToRecyclerView(recyclerView)
@@ -161,14 +163,14 @@ class HistoryEditFragment : HistoryFragment() {
                                 }
                             }
                             Log.i(TAG, "Exported to $uri")
-                            Toast.makeText(appContext, resources.getText(R.string.title_history_export).toString() + " " + uri, Toast.LENGTH_SHORT).show()
+                            info(resources.getText(CommonR.string.title_history_export).toString() + " " + uri)
                         }
                     }
                 }
             }
         } catch (e: IOException) {
             Log.e(TAG, "While writing", e)
-            Toast.makeText(appContext, resources.getText(R.string.error_export).toString() + " " + uri, Toast.LENGTH_SHORT).show()
+            warn(resources.getText(CommonR.string.error_export).toString() + " " + uri)
         }
     }
 
@@ -183,13 +185,27 @@ class HistoryEditFragment : HistoryFragment() {
                             recordQuery(appContext, line!!.trim { it <= ' ' })
                         }
                         Log.i(TAG, "Imported from $uri")
-                        Toast.makeText(appContext, resources.getText(R.string.title_history_import).toString() + " " + uri, Toast.LENGTH_SHORT).show()
+                        info(resources.getText(CommonR.string.title_history_import).toString() + " " + uri)
                     }
                 }
             }
         } catch (e: IOException) {
             Log.e(TAG, "While reading", e)
-            Toast.makeText(appContext, resources.getText(R.string.error_import).toString() + " " + uri, Toast.LENGTH_SHORT).show()
+            warn(resources.getText(CommonR.string.error_import).toString() + " " + uri)
+        }
+    }
+
+    private fun info(message: String) {
+        activity?.let {
+            val contentView = it.findViewById<View>(android.R.id.content)
+            makeSnackbar(it, contentView, message).show()
+        }
+    }
+
+    private fun warn(message: String) {
+        activity?.let {
+            val contentView = it.findViewById<View>(android.R.id.content)
+            makeSnackbar(it, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError).show()
         }
     }
 

@@ -154,7 +154,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
-        Toast.makeText(activity, CaptureR.string.status_capture_no_view, Toast.LENGTH_SHORT).show()
+        warn(getString(CaptureR.string.status_capture_no_view))
         return null
     }
 
