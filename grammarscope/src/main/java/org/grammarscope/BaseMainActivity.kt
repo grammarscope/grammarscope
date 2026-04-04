@@ -10,7 +10,6 @@ import android.content.IntentFilter
 import android.content.res.Resources
 import android.os.Bundle
 import android.text.Editable
-import android.text.Html
 import android.text.TextWatcher
 import android.util.Log
 import android.view.GestureDetector
@@ -28,7 +27,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
-import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.graphics.drawable.DrawableCompat
@@ -55,7 +53,6 @@ import com.bbou.download.preference.Settings.unrecordDatapackSource
 import com.bbou.others.OthersActivity
 import com.bbou.rate.AppRate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -74,7 +71,8 @@ import org.depparse.common.Settings
 import org.depparse.common.Settings.isStripAccentsEnabled
 import org.depparse.common.UniqueProvider
 import org.depparse.common.WebActivity
-import org.depparse.common.showSnackbar
+import org.depparse.common.makeAnchoredSnackbar
+import org.depparse.common.makeSnackbar
 import org.grammarscope.AbstractApplication.Companion.createOverrideConfigurationForDayNight
 import org.grammarscope.Version.version
 import org.grammarscope.annotations.AnnotatedTextActivity
@@ -404,7 +402,7 @@ abstract class BaseMainActivity : BaseActivity() {
         // This prevents the hint from showing AND the action firing on the same "session"
         if (currentTime - lastShownTime > FAB_ARMED_SPAN) {
             //showTooltip(fab, textId)
-            showSnackbar(fab, textId)
+            makeAnchoredSnackbar(this, fab, textId).show()
             // Record that they saw the hint
             prefs.edit { putLong("${fabTag}_${PREF_FAB_LAST_TIME}", currentTime) }
         } else {
@@ -413,41 +411,6 @@ abstract class BaseMainActivity : BaseActivity() {
             prefs.edit { putInt("${fabTag}_${PREF_FAB_USES}", useCount + 1) }
             action()
         }
-    }
-
-    private fun showSnackbar(view: View, @StringRes textId: Int) {
-        val formattedText = Html.fromHtml(getString(textId), Html.FROM_HTML_MODE_LEGACY)
-        Snackbar
-            .make(view, formattedText, Snackbar.LENGTH_LONG)
-            .setAnchorView(view)
-            .setAction(android.R.string.ok) {}
-            .apply { // remove the 2-line constraint from the internal TextView
-                val snackText = this.view.findViewById<TextView>(MaterialR.id.snackbar_text)
-                snackText.maxLines = 10
-            }
-            .show()
-    }
-
-    private fun showTooltip(view: View, @StringRes textId: Int) {
-        val rawString = getString(textId)
-        val formattedText = Html.fromHtml(rawString, Html.FROM_HTML_MODE_LEGACY)
-
-        // Using TooltipCompat ensures the most "Material 3" compliant behavior
-        // for the View system across all API levels.
-        TooltipCompat.setTooltipText(view, formattedText)
-
-        // To force the tooltip to show immediately (since it's a 'Primer'),
-        // we simulate a long click which triggers the system tooltip.
-        // If you prefer the Snackbar look (which is often used for M3 'Plain Tooltips'
-        // that contain more than one word), the Snackbar code is actually more M3-standard.
-
-        // However, if you want the strictly visual "PlainTooltip" anchor:
-        view.performLongClick()
-
-        // Since performLongClick might trigger your LongPress listener logic,
-        // a safer Material 3 approach for a persistent primer is actually
-        // the Snackbar anchored to the FAB (which you already had),
-        // but styled specifically for M3.
     }
 
     // M E N U
@@ -713,7 +676,7 @@ abstract class BaseMainActivity : BaseActivity() {
     }
 
     private fun onClickFABDependencies(longClick: Boolean, doubleClick: Boolean = false) {
-        if (queryEdit != null && ! queryEdit!!.text.isNullOrEmpty()) {
+        if (queryEdit != null && !queryEdit!!.text.isNullOrEmpty()) {
             val query: CharSequence = queryEdit!!.text!!
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
@@ -729,7 +692,7 @@ abstract class BaseMainActivity : BaseActivity() {
     }
 
     private fun onClickFABSemantics(longClick: Boolean, doubleClick: Boolean = false) {
-        if (queryEdit != null && ! queryEdit!!.text.isNullOrEmpty()) {
+        if (queryEdit != null && !queryEdit!!.text.isNullOrEmpty()) {
             val query: CharSequence = queryEdit!!.text!!
             recordQuery(this, query.toString())
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
@@ -1115,17 +1078,17 @@ abstract class BaseMainActivity : BaseActivity() {
     private fun warn(exception: Exception) {
         val contentView = findViewById<View>(android.R.id.content)
         val message = exception.message ?: exception.toString()
-        showSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError)
+        makeSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError).show()
     }
 
     private fun warn(message: String) {
         val contentView = findViewById<View>(android.R.id.content)
-        showSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError)
+        makeSnackbar(this, contentView, message, AppCompatR.attr.colorError, MaterialR.attr.colorOnError).show()
     }
 
     private fun info(message: String) {
         val contentView = findViewById<View>(android.R.id.content)
-        showSnackbar(this, contentView, message)
+        makeSnackbar(this, contentView, message).show()
     }
 
 // D A Y
