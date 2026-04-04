@@ -5,16 +5,14 @@
 package org.grammarscope
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.text.SpannableStringBuilder
-import androidx.appcompat.app.AlertDialog
-import org.grammarscope.common.R
 
 object Version {
-    fun reportVersion(context: Context): CharSequence {
+
+    fun appVersion(context: Context): CharSequence {
         val sb = SpannableStringBuilder()
         sb.apply {
             val packageName = context.applicationInfo.packageName
@@ -47,14 +45,5 @@ object Version {
             append('\n')
         }
         return sb
-    }
-
-    fun version(context: Context) {
-        val version = reportVersion(context)
-        AlertDialog.Builder(context)
-            .setTitle(R.string.app_name)
-            .setMessage(version)
-            .setNegativeButton(R.string.action_dismiss) { _: DialogInterface?, _: Int -> }
-            .show()
     }
 }

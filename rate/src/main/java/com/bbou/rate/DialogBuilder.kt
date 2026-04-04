@@ -14,14 +14,8 @@ import android.widget.Toast
 
 internal object DialogBuilder {
 
-    @SuppressLint("NewApi")
-    private fun getDialogBuilder(context: Context): AlertDialog.Builder {
-        return AlertDialog.Builder(context)
-    }
-
     fun build(context: Context, options: DialogOptions): Dialog {
-        return getDialogBuilder(context)
-            // message
+        return AlertDialog.Builder(context)            // message
             .setMessage(options.getMessageText(context))
             // title
             .apply {

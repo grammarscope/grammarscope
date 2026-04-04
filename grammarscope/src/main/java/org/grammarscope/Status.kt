@@ -1,7 +1,7 @@
 package org.grammarscope
 
-import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Typeface
 import android.text.SpannableStringBuilder
@@ -51,17 +51,17 @@ object Status {
         return humanReadableByteCount(bytes, false)
     }
 
-    fun modelStatus(activity: Activity) {
-        val dir = getAppStorage(activity)
-        val info = read(activity)
-        AlertDialog.Builder(activity)
+    fun modelStatus(context: Context): AlertDialog.Builder {
+        val dir = getAppStorage(context)
+        val info = read(context)
+        return AlertDialog.Builder(context)
             .apply { // unguarded, level 1
                 setTitle(R.string.model)
                 if (info == null) {
                     setIcon(R.drawable.ic_error)
                     setMessage(R.string.model_none)
                 } else {
-                    val colors = getColorAttrs(activity, CommonR.style.MyTheme, intArrayOf(AppCompatR.attr.colorPrimary, MaterialR.attr.colorOnPrimary))
+                    val colors = getColorAttrs(context, CommonR.style.MyTheme, intArrayOf(AppCompatR.attr.colorPrimary, MaterialR.attr.colorOnPrimary))
                     val langFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.BOLD)) }
                     val nameFactory = SpanFactory { arrayOf<Any>(BackgroundColorSpan(colors[0]), ForegroundColorSpan(colors[1]), StyleSpan(Typeface.BOLD), StyleSpan(Typeface.ITALIC)) }
                     val moreFactory = SpanFactory { arrayOf<Any>(StyleSpan(Typeface.ITALIC)) }
@@ -75,7 +75,7 @@ object Status {
                         items.add(format(info.more1!!, moreFactory))
                     if (info.more2 != null)
                         items.add(format(info.more2!!, moreFactory))
-                    val coreModelFiles = activity.resources.getStringArray(R.array.core_model_files)
+                    val coreModelFiles = context.resources.getStringArray(R.array.core_model_files)
                     for (modelFile in expandRegEx(dir, coreModelFiles)) {
                         val file = File(modelFile)
                         items.add(
@@ -85,7 +85,7 @@ object Status {
                                 .append(')')
                         )
                     }
-                    val modelFiles = activity.resources.getStringArray(R.array.model_files)
+                    val modelFiles = context.resources.getStringArray(R.array.model_files)
                     for (modelFile in expandRegEx(dir, modelFiles)) {
                         val file = File(modelFile)
                         items.add(format(file.name, fileFactory))
@@ -94,7 +94,6 @@ object Status {
                     setNegativeButton(R.string.action_cancel) { d: DialogInterface, _: Int -> d.cancel() }
                 }
             }
-            .show()
     }
 
     private fun expandRegEx(dir: File, array: Array<String>): List<String> {

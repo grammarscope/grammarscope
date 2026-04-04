@@ -75,7 +75,7 @@ import org.depparse.common.WebActivity
 import org.depparse.common.makeAnchoredSnackbar
 import org.depparse.common.makeSnackbar
 import org.grammarscope.AbstractApplication.Companion.createOverrideConfigurationForDayNight
-import org.grammarscope.Version.version
+import org.grammarscope.Version.appVersion
 import org.grammarscope.annotations.AnnotatedTextActivity
 import org.grammarscope.common.R
 import org.grammarscope.history.History.Companion.recordQuery
@@ -448,17 +448,17 @@ abstract class BaseMainActivity : BaseActivity() {
             }
 
             R.id.version -> {
-                version(this)
+                dialog(appVersion(this.applicationContext)).show()
                 return true
             }
 
             R.id.engine_version -> {
-                dialog(version())
+                dialog(engineVersion()).show()
                 return true
             }
 
             R.id.model_status -> {
-                Status.modelStatus(this)
+                Status.modelStatus(this).show()
                 return true
             }
 
@@ -985,7 +985,7 @@ abstract class BaseMainActivity : BaseActivity() {
                 it.icon = null
             }
         } else {
-            val title = if (bound) R.string.action_unbind else R.string.action_bind
+            val title = getString(if (bound) R.string.action_unbind else R.string.action_bind)
             val drawable = AppCompatResources.getDrawable(this, if (bound) R.drawable.ic_unbind else R.drawable.ic_bind)!!
             val tints = Colors.getColorAttrs(
                 this, CommonR.style.MyTheme, intArrayOf(
@@ -995,7 +995,7 @@ abstract class BaseMainActivity : BaseActivity() {
             val tint = tints[if (bound) 0 else 1]
             DrawableCompat.setTint(drawable, tint)
             controlMenuItem?.let {
-                it.setTitle(title)
+                it.title = title
                 it.icon = drawable
             }
         }
@@ -1070,7 +1070,7 @@ abstract class BaseMainActivity : BaseActivity() {
         return "${ProviderManager.providerToString(this, UniqueProvider.SINGLETON.get())}\n${ModelInfo.modelToString(this)}"
     }
 
-    protected fun version(): String {
+    protected fun engineVersion(): String {
         return ProviderManager.engineVersion()
     }
 
@@ -1092,18 +1092,17 @@ abstract class BaseMainActivity : BaseActivity() {
         makeSnackbar(this, contentView, message).show()
     }
 
-    // D A Y / N I G H T
+    // D I A L O G
 
-    private fun dialog(message: String) {
-        AlertDialog.Builder(this)
+    private fun dialog(message: CharSequence): AlertDialog.Builder {
+        return AlertDialog.Builder(this)
             .setTitle(R.string.app_name)
             .setIcon(R.drawable.logo_app)
             .setMessage(message)
-            .setNegativeButton(R.string.action_cancel) { d, _ -> d.cancel() }
-            .show()
+            .setNegativeButton(com.bbou.download.common.R.string.action_dismiss) { d, _ -> d.cancel() }
     }
 
-    // D A Y
+    // D A Y / N I G H T
 
     override fun onNightModeChanged(mode: Int) {
         super.onNightModeChanged(mode)
