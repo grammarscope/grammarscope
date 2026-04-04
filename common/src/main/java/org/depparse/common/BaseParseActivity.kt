@@ -8,7 +8,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.bbou.deploy.coroutines.Deploy.fastCheck
@@ -16,6 +18,9 @@ import org.depparse.Storage
 import java.text.Normalizer
 import java.util.function.Consumer
 import org.depparse.BaseActivity
+import androidx.appcompat.R as AppCompatR
+import com.google.android.material.R as MaterialR
+import org.depparse.common.R as CommonR
 
 abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
 
@@ -33,14 +38,14 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
         setContentView(layout)
 
         // toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(CommonR.id.toolbar)
         setSupportActionBar(toolbar)
 
         // action bar
-        @SuppressLint("InflateParams") val actionBarView = layoutInflater.inflate(R.layout.actionbar_custom, null)
+        @SuppressLint("InflateParams") val actionBarView = layoutInflater.inflate(CommonR.layout.actionbar_custom, null)
         val actionBar = supportActionBar!!
-        actionBar.setTitle(R.string.actionbar_title)
-        actionBar.setSubtitle(R.string.actionbar_subtitle)
+        actionBar.setTitle(CommonR.string.actionbar_title)
+        actionBar.setSubtitle(CommonR.string.actionbar_subtitle)
         actionBar.elevation = 0f
         actionBar.customView = actionBarView
         actionBar.displayOptions = ActionBar.DISPLAY_SHOW_TITLE or ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_USE_LOGO
@@ -149,7 +154,7 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.parse, menu)
+        menuInflater.inflate(CommonR.menu.parse, menu)
         return true
     }
 
@@ -158,7 +163,7 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val itemId = item.itemId
-        if (itemId == R.id.reference_uds) {
+        if (itemId == CommonR.id.reference_uds) {
             WebActivity.tryStart(this, "file:///android_asset/reference/uds.html", usesJavaScript = true, local = true)
             return true
         }
