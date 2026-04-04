@@ -136,7 +136,7 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
         if (view != null && view.width > 0 && view.height > 0) {
             return view
         }
-        warn(getString(CaptureR.string.status_capture_no_view)).show()
+        warn(getString(CaptureR.string.status_capture_no_view))
         return null
     }
 
