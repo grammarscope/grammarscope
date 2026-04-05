@@ -41,19 +41,6 @@ fun makeSnackbar(
     return makeSnackbar(context, view, formattedText, minLines = minLines, backColorAttr = backColorAttr, foreColorAttr = foreColorAttr, duration = duration)
 }
 
-fun makeAnchoredSnackbar(
-    context: Context,
-    anchorView: View,
-    @StringRes textId: Int,
-    minLines: Int = SNACKBAR_DEFAULT_MINLINES,
-    @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
-    @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
-    duration: Int = Snackbar.LENGTH_LONG,
-): Snackbar {
-    val formattedText = Html.fromHtml(context.getString(textId), Html.FROM_HTML_MODE_LEGACY)
-    return makeAnchoredSnackbar(context, anchorView, formattedText, minLines = minLines, backColorAttr = backColorAttr, foreColorAttr = foreColorAttr, duration = duration)
-}
-
 fun makeSnackbar(
     context: Context,
     view: View,
@@ -84,6 +71,19 @@ fun makeActionSnackbar(
 ): Snackbar {
     return makeSnackbar(context, anchorView, text, minLines = minLines, backColorAttr = backColorAttr, foreColorAttr = foreColorAttr, duration = duration)
         .setAction(android.R.string.ok, action)
+}
+
+fun makeAnchoredSnackbar(
+    context: Context,
+    anchorView: View,
+    @StringRes textId: Int,
+    minLines: Int = SNACKBAR_DEFAULT_MINLINES,
+    @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
+    @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
+    duration: Int = Snackbar.LENGTH_LONG,
+): Snackbar {
+    val formattedText = Html.fromHtml(context.getString(textId), Html.FROM_HTML_MODE_LEGACY)
+    return makeAnchoredSnackbar(context, anchorView, formattedText, minLines = minLines, backColorAttr = backColorAttr, foreColorAttr = foreColorAttr, duration = duration)
 }
 
 fun makeAnchoredSnackbar(
