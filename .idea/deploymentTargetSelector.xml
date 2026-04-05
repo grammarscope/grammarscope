@@ -18,7 +18,7 @@
       </SelectionState>
       <SelectionState runConfigName="GrammarScope.app_grammarscope_syntaxnet">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-05-29T08:52:42.950117402Z">
+        <DropdownSelection timestamp="2026-04-05T08:15:50.520626913Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=e7f518b7" />
