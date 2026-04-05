@@ -85,7 +85,10 @@
                 android:title="@string/action_update"
                 app:showAsAction="never" />
 
-
+            <item
+                android:id="@+id/labels"
+                android:title="@string/action_labels"
+                app:showAsAction="never" />
         </menu>
     </item>
 
@@ -121,11 +124,6 @@
         android:title="@string/action_doc"
         app:showAsAction="never">
         <menu>
-            <item
-                android:id="@+id/labels"
-                android:title="@string/action_labels"
-                app:showAsAction="never" />
-
             <item
                 android:id="@+id/help"
                 android:title="@string/action_help"
