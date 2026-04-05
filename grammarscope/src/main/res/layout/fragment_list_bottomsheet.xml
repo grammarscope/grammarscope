@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/colorSecondary"
+    android:background="?attr/colorSurface"
     android:orientation="vertical"
     android:padding="0dp"
-    android:textColor="?attr/colorOnSecondary">
+    android:textColor="?attr/colorOnSurface">
 
     <com.google.android.material.bottomsheet.BottomSheetDragHandleView
         android:id="@+id/drag_handle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tint="?attr/colorOnSecondary" />
+        app:tint="?attr/colorOnSurface" />
 
     <FrameLayout
         android:id="@+id/list_container"

@@ -26,7 +26,7 @@ class SampleBottomSheet(private val select: (query: String) -> Unit) : BottomShe
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         dialog.setOnShowListener {
             val bottomSheet = dialog.findViewById<View>(MaterialR.id.design_bottom_sheet)
-            bottomSheet?.background = getColor(requireContext(), MaterialR.attr.colorSecondary, Color.TRANSPARENT).toDrawable()
+            bottomSheet?.background = getColor(requireContext(), MaterialR.attr.colorSurface, Color.TRANSPARENT).toDrawable()
         }
         return dialog
     }
