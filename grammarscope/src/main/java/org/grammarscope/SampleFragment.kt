@@ -32,7 +32,7 @@ open class SampleFragment : Fragment() {
 
     var itemLayoutId: Int? = null
         set(itemLayoutId) {
-            adapter.itemLayoutId = itemLayoutId ?: R.layout.item_example
+            adapter.itemLayoutId = itemLayoutId ?: R.layout.item_sample
             field = itemLayoutId
         }
 
@@ -59,7 +59,7 @@ open class SampleFragment : Fragment() {
 
         var onSelect: ((query: String) -> Unit)? = null
 
-        var itemLayoutId: Int = R.layout.item_example
+        var itemLayoutId: Int = R.layout.item_sample
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(itemLayoutId, parent, false)
