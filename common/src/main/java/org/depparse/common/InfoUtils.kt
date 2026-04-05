@@ -18,6 +18,8 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.R as MaterialR
 
+private const val SNACKBAR_DEFAULT_MINLINES = 3
+
 private fun Snackbar.setTextMinLines(min: Int): Snackbar {
     if (min != 2) {
         val snackText = view.findViewById<TextView>(MaterialR.id.snackbar_text)
@@ -30,7 +32,7 @@ fun makeSnackbar(
     context: Context,
     view: View,
     @StringRes textId: Int,
-    minLines: Int = 2,
+    minLines: Int = SNACKBAR_DEFAULT_MINLINES,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -43,7 +45,7 @@ fun makeAnchoredSnackbar(
     context: Context,
     anchorView: View,
     @StringRes textId: Int,
-    minLines: Int = 2,
+    minLines: Int = SNACKBAR_DEFAULT_MINLINES,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -56,7 +58,7 @@ fun makeSnackbar(
     context: Context,
     view: View,
     text: CharSequence,
-    minLines: Int = 2,
+    minLines: Int = SNACKBAR_DEFAULT_MINLINES,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -74,7 +76,7 @@ fun makeActionSnackbar(
     context: Context,
     anchorView: View,
     text: CharSequence,
-    minLines: Int = 2,
+    minLines: Int = SNACKBAR_DEFAULT_MINLINES,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -88,7 +90,7 @@ fun makeAnchoredSnackbar(
     context: Context,
     anchorView: View,
     text: CharSequence,
-    minLines: Int = 2,
+    minLines: Int = SNACKBAR_DEFAULT_MINLINES,
     @AttrRes backColorAttr: Int = MaterialR.attr.colorTertiary,
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -118,12 +120,12 @@ fun Snackbar.makeSwipable(
 }
 
 
-fun operation(context: Context, text: String) {
+fun operationPending(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
 
-fun operation(context: Context, textId: Int) {
-    operation(context, context.getString(textId))
+fun operationPending(context: Context, textId: Int) {
+    operationPending(context, context.getString(textId))
 }
 
 fun fatal(context: Context, text: String) {
