@@ -42,7 +42,7 @@ class SampleBottomSheet(private val select: (query: String) -> Unit) : BottomShe
         super.onViewCreated(view, savedInstanceState)
 
         val fragment = SampleFragment().apply {
-            itemLayoutId = R.layout.item_history_bottomsheet
+            itemLayoutId = R.layout.item_sample
             selectListener = { query ->
                 dismiss()
                 select(query)
