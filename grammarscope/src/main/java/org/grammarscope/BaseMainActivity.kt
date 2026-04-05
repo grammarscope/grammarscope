@@ -1121,7 +1121,7 @@ abstract class BaseMainActivity : BaseActivity() {
 
         private const val FAB_DISARM_AFTER = 5
         private const val FAB_ARMED_SPAN = 10000
-        private const val PREF_FABS = "fab_usage"
+        const val PREF_FABS = "fab_usage"
         private const val PREF_FAB_USES = "total_uses"
         private const val PREF_FAB_LAST_TIME = "last_time"
 

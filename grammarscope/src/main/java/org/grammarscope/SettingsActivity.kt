@@ -1,6 +1,7 @@
 package org.grammarscope
 
 import android.os.Bundle
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
 import org.depparse.common.BaseSettingsActivity
@@ -42,6 +43,7 @@ class SettingsActivity : BaseSettingsActivity() {
         clearSettings(this)
         initSettings(this)
         setColorsFromResources(this)
+        getSharedPreferences(BaseMainActivity.PREF_FABS, MODE_PRIVATE).edit { clear() }
     }
 
 
