@@ -19,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.depparse.Token
 import org.depparse.common.BaseParseActivity
-import org.depparse.common.operation
+import org.depparse.common.operationPending
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_BOX_EDGES
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_BOX_WORDS
 import org.grammarscope.annotations.AnnotationsSettings.Companion.PREF_IGNORE_RELATIONS
@@ -106,7 +106,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
     }
 
     override fun pending() {
-        operation(this, R.string.status_processing)
+        operationPending(this, R.string.status_processing)
     }
 
     // M E N U
