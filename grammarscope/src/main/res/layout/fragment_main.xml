@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="@dimen/activity_horizontal_margin"
@@ -41,64 +40,18 @@
                 android:imeOptions="normal"
                 android:importantForAutofill="no"
                 android:inputType="text|textCapSentences|textMultiLine|textNoSuggestions"
-                android:minHeight="48dp"
-                android:scrollbars="vertical" />
+                android:minHeight="48dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+        <include layout="@layout/inc_tools"
             android:id="@+id/query_tools"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical" />
 
-            <ImageButton
-                android:id="@+id/clear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/description_clear"
-                android:src="@drawable/ic_clear"
-                android:visibility="visible"
-                app:tint="?attr/colorOnCustom" />
-
-            <ImageButton
-                android:id="@+id/examples"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/description_examples"
-                android:src="@drawable/ic_document_examples"
-                android:visibility="visible"
-                app:tint="?attr/colorOnCustom" />
-
-            <ImageButton
-                android:id="@+id/text_history"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/description_text_history"
-                android:src="@drawable/ic_document_history"
-                android:visibility="visible"
-                app:tint="?attr/colorOnCustom" />
-
-            <ImageButton
-                android:id="@+id/text_get"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/description_text_get"
-                android:src="@drawable/ic_document_get"
-                android:visibility="visible"
-                app:tint="?attr/colorOnCustom" />
-
-        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout

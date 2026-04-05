@@ -1,10 +1,12 @@
 <resources>
 
-	<!-- Horizontal root view padding -->
-	<dimen name="root_horiz_padding">0dp</dimen>
+    <!-- Horizontal root view padding -->
+    <dimen name="root_horiz_padding">0dp</dimen>
 
-	<!-- Action button -->
-	<dimen name="action_button_diameter">50dp</dimen>
-	<dimen name="action_button_shadow_offset">10dp</dimen>
+    <!-- Input tool buttons -->
+    <dimen name="tool_vert_margin">2dp</dimen>
 
+    <!-- Action button -->
+    <dimen name="action_button_diameter">50dp</dimen>
+    <dimen name="action_button_shadow_offset">10dp</dimen>
 </resources>
