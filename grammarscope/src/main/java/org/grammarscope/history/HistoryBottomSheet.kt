@@ -5,6 +5,7 @@
 package org.grammarscope.history
 
 import android.app.Dialog
+import android.content.ContextWrapper
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,11 +23,14 @@ import com.google.android.material.R as MaterialR
 
 class HistoryBottomSheet(private val select: (query: String) -> Unit) : BottomSheetDialogFragment() {
 
+    override fun getTheme(): Int = R.style.MyBottomSheetOverlay
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         dialog.setOnShowListener {
             val bottomSheet = dialog.findViewById<View>(MaterialR.id.design_bottom_sheet)
-            bottomSheet?.background = getColor(requireContext(), MaterialR.attr.colorSurface, Color.TRANSPARENT).toDrawable()
+            val color = getColor(dialog.context, MaterialR.attr.colorSurface, Color.TRANSPARENT)
+            bottomSheet?.background = color.toDrawable()
         }
         return dialog
     }

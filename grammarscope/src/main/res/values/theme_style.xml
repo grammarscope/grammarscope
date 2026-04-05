@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2026. Bernard Bou <1313ou@gmail.com>.
+  -->
+
+<resources>
+
+    <!-- O V E R L A Y S -->
+
+    <!-- Custom overlay -->
+    <style name="MyBottomSheetOverlay" parent="ThemeOverlay.Material3.DayNight.BottomSheetDialog">
+        <item name="colorSurface">?attr/colorTertiary</item>
+        <item name="colorOnSurface">?attr/colorOnTertiary</item>
+        <!-- Ensure the navigation bar remains transparent if the parent doesn't set it -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+</resources>
