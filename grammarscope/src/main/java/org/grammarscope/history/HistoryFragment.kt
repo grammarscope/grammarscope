@@ -41,7 +41,11 @@ open class HistoryFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        // If 'container' (the list_container) has a theme overlay, we should use its context to inflate the fragment layout.
+        val themedInflater = container?.let {
+            inflater.cloneInContext(it.context)
+        } ?: inflater
+        return themedInflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
