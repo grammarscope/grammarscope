@@ -101,9 +101,9 @@ object Colors {
         return result
     }
 
-    fun getColorAttrs(context: Context, @StyleRes themeId: Int, @StyleableRes resIds: IntArray): IntArray {
+    fun getColorAttrs(context: Context, @StyleableRes resIds: IntArray): IntArray {
         val result: IntArray
-        context.theme.obtainStyledAttributes(themeId, resIds).let {
+        context.theme.obtainStyledAttributes(resIds).let {
             result = IntArray(resIds.size)
             for (i in resIds.indices) {
                 result[i] = it.getColor(i, NOT_DEFINED)
@@ -113,9 +113,9 @@ object Colors {
         return result
     }
 
-    fun getColorAttr(context: Context, @StyleRes themeId: Int, @AttrRes resId: Int): Int {
+    fun getColorAttr(context: Context, @AttrRes resId: Int): Int {
         val result: Int
-        context.theme.obtainStyledAttributes(themeId, intArrayOf(resId)).let {
+        context.theme.obtainStyledAttributes(intArrayOf(resId)).let {
             result = it.getColor(0, NOT_DEFINED)
             it.recycle()
         }

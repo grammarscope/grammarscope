@@ -50,7 +50,7 @@ fun makeSnackbar(
     @AttrRes foreColorAttr: Int = MaterialR.attr.colorOnTertiary,
     duration: Int = Snackbar.LENGTH_LONG,
 ): Snackbar {
-    val colors: IntArray = Colors.getColorAttrs(context, R.style.MyTheme, intArrayOf(backColorAttr, foreColorAttr))
+    val colors: IntArray = Colors.getColorAttrs(context, intArrayOf(backColorAttr, foreColorAttr))
     return Snackbar
         .make(view, text, duration)
         .setTextMaxLines(8)
