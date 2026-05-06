@@ -130,9 +130,9 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
                     Palette.arrowTipColor = color
                     Palette.arrowStartColor = color
                 } else {
-                    Palette.edgeColor = Palette.DEFAULT_EDGE_COLOR
-                    Palette.arrowTipColor = Palette.DEFAULT_ARROW_TIP_COLOR
-                    Palette.arrowStartColor = Palette.DEFAULT_ARROW_START_COLOR
+                    Palette.edgeColor = requireContext().getColor(R.color.edge)
+                    Palette.arrowTipColor = requireContext().getColor(R.color.arrowTip)
+                    Palette.arrowStartColor = requireContext().getColor(R.color.arrowStart)
                 }
             }
 
@@ -141,7 +141,7 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
                 if (color != -1) {
                     Palette.labelColor = color
                 } else {
-                    Palette.labelColor = Palette.DEFAULT_LABEL_COLOR
+                    Palette.labelColor = requireContext().getColor(R.color.label)
                 }
             }
 
@@ -150,7 +150,7 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
                 if (color != -1) {
                     Palette.rootColor = color
                 } else {
-                    Palette.rootColor = Palette.DEFAULT_ROOT_COLOR
+                    Palette.rootColor = requireContext().getColor(R.color.root)
                 }
             }
 
@@ -159,7 +159,7 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
                 if (color != -1) {
                     Palette.posColor = color
                 } else {
-                    Palette.posColor = Palette.DEFAULT_POS_COLOR
+                    Palette.posColor = requireContext().getColor(R.color.pos)
                 }
             }
 
@@ -169,8 +169,8 @@ class AnnotationsPreferenceFragment : PreferenceFragmentCompat(), OnSharedPrefer
                     Palette.overflowColor = color
                     Palette.spanColor = color
                 } else {
-                    Palette.overflowColor = Palette.DEFAULT_OVERFLOW_COLOR
-                    Palette.spanColor = Palette.DEFAULT_OVERFLOW_COLOR
+                    Palette.overflowColor = requireContext().getColor(R.color.overflow)
+                    Palette.spanColor = requireContext().getColor(R.color.span)
                 }
             }
 
