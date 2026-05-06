@@ -3,7 +3,6 @@
  */
 package com.bbou.download.coroutines.utils
 
-import android.app.AlertDialog
 import android.content.Context
 import android.text.SpannableStringBuilder
 import android.util.Log
@@ -13,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bbou.coroutines.BaseTask
 import com.bbou.download.common.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
@@ -117,7 +117,7 @@ class ResourcesDownloader : BaseTask<ResourcesDownloader.Params, Collection<Arra
          */
         private fun show(activity: AppCompatActivity, resources: Collection<Array<String>>?, url: String) {
             if (resources == null) {
-                AlertDialog.Builder(activity)
+                MaterialAlertDialogBuilder(activity)
                     .setTitle(activity.getString(R.string.action_directory) + " of " + url)
                     .setMessage(R.string.status_task_failed)
                     .show()
@@ -129,7 +129,7 @@ class ResourcesDownloader : BaseTask<ResourcesDownloader.Params, Collection<Arra
                     sb.append('\n')
                     sb.append('\n')
                 }
-                AlertDialog.Builder(activity)
+                MaterialAlertDialogBuilder(activity)
                     .setTitle(activity.getString(R.string.resource_directory) + ' ' + url)
                     .setMessage(sb)
                     .show()

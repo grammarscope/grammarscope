@@ -5,7 +5,6 @@
 package org.grammarscope
 
 import android.app.Dialog
-import android.content.ContextWrapper
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater

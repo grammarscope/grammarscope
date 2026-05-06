@@ -3,7 +3,6 @@
  */
 package com.bbou.download.coroutines.choose
 
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -13,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import com.bbou.deploy.coroutines.FileTasks
 import com.bbou.download.choose.Chooser.toRadioGroup
 import com.bbou.download.common.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * File chooser for file tasks
@@ -39,11 +39,11 @@ object FileTaskChooser {
         }
 
         // display sources
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.action_copy_datapack_from_file)
             .setMessage(R.string.hint_copy_from_file)
             .setView(input)
-            .setPositiveButton(R.string.action_ok) { dialog: DialogInterface, _: Int ->
+            .setPositiveButton(R.string.action_ok) { dialog, _ ->
                 dialog.dismiss()
                 val childCount = input.childCount
                 for (i in 0 until childCount) {
@@ -56,7 +56,7 @@ object FileTaskChooser {
                     }
                 }
             }
-            .setNegativeButton(R.string.action_cancel) { _: DialogInterface?, _: Int -> }
+            .setNegativeButton(R.string.action_cancel) { _, _ -> }
             .show()
     }
 
@@ -77,11 +77,11 @@ object FileTaskChooser {
         }
 
         // display sources
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.action_unzip_datapack_from_archive)
             .setMessage(R.string.hint_unzip_from_archive)
             .setView(input)
-            .setPositiveButton(R.string.action_ok) { dialog: DialogInterface, _: Int ->
+            .setPositiveButton(R.string.action_ok) { dialog, _ ->
                 dialog.dismiss()
                 val childCount = input.childCount
                 for (i in 0 until childCount) {
@@ -94,7 +94,7 @@ object FileTaskChooser {
                     }
                 }
             }
-            .setNegativeButton(R.string.action_cancel) { _: DialogInterface?, _: Int -> }
+            .setNegativeButton(R.string.action_cancel) { _, _ -> }
             .show()
     }
 
@@ -123,7 +123,7 @@ object FileTaskChooser {
         input.addView(archiveInput1)
 
         // display sources
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.action_unzip_datapack_from_archive)
             .setMessage(R.string.hint_unzip_from_archive)
             .setView(input)
@@ -143,7 +143,7 @@ object FileTaskChooser {
                     }
                 }
             }
-            .setNegativeButton(R.string.action_cancel) { _: DialogInterface?, _: Int -> }
+            .setNegativeButton(R.string.action_cancel) { _, _ -> }
             .show()
     }
 
@@ -163,7 +163,7 @@ object FileTaskChooser {
         }
 
         // display sources
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.action_md5_ask)
             .setMessage(R.string.hint_md5_of_file)
             .setView(input)
@@ -180,7 +180,7 @@ object FileTaskChooser {
                     }
                 }
             }
-            .setNegativeButton(R.string.action_cancel) { _: DialogInterface?, _: Int -> }
+            .setNegativeButton(R.string.action_cancel) { _, _ -> }
             .show()
     }
 }

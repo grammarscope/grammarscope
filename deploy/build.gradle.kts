@@ -56,6 +56,8 @@ dependencies {
 
     implementation(project(":download_common"))
     implementation(project(":coroutines"))
+
     implementation(libs.appcompat)
+    implementation(libs.material)
     implementation(libs.lifecycle)
 }

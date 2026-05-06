@@ -3,13 +3,13 @@
  */
 package com.bbou.deploy.coroutines
 
-import android.app.AlertDialog
 import android.content.Context
 import android.widget.TextView
 import androidx.core.util.Consumer
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.bbou.coroutines.observe.TaskDialogObserver
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -73,7 +73,7 @@ object MD5 {
         resultView.text = result
         resultView.setPadding(35, 20, 35, 20)
         resultView.setTextIsSelectable(true)
-        AlertDialog.Builder(context)
+        MaterialAlertDialogBuilder(context)
             .setTitle(context.getString(R.string.action_md5_of_what, sourceFile))
             .setView(resultView) //.setMessage(sb)
             .show()

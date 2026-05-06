@@ -4,7 +4,6 @@
 package com.bbou.download.coroutines
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.text.SpannableStringBuilder
 import android.util.Log
@@ -28,6 +27,7 @@ import com.bbou.download.coroutines.core.DownloadTask
 import com.bbou.download.coroutines.utils.MD5Downloader
 import com.bbou.download.preference.Settings
 import com.bbou.download.storage.ReportUtils
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
@@ -258,7 +258,7 @@ class DownloadFragment : DownloadBaseFragment() {
     }
 
     private fun showMD5DownloadFailed(activity: Activity, targetFile: String) {
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(activity.getString(R.string.action_md5_of_what, targetFile))
             .setMessage(R.string.status_task_failed)
             .show()
@@ -278,7 +278,7 @@ class DownloadFragment : DownloadBaseFragment() {
         ReportUtils.appendHeader(sb, getString(R.string.md5_compared))
         sb.append('\n')
         sb.append(getString(if (success) R.string.status_task_success else R.string.status_task_failed))
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(getString(R.string.action_md5_of_what, targetFile))
             .setMessage(sb)
             .show()

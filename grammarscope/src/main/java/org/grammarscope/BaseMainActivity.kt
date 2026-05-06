@@ -24,7 +24,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
@@ -53,6 +52,7 @@ import com.bbou.download.preference.Settings.unrecordDatapack
 import com.bbou.download.preference.Settings.unrecordDatapackSource
 import com.bbou.others.OthersActivity
 import com.bbou.rate.AppRate
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
@@ -1092,8 +1092,8 @@ abstract class BaseMainActivity : BaseActivity() {
 
     // D I A L O G
 
-    private fun dialog(message: CharSequence): AlertDialog.Builder {
-        return AlertDialog.Builder(this)
+    private fun dialog(message: CharSequence): MaterialAlertDialogBuilder {
+        return MaterialAlertDialogBuilder(this)
             .setTitle(R.string.app_name)
             .setIcon(R.drawable.logo_app)
             .setMessage(message)

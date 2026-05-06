@@ -1,6 +1,5 @@
 package org.grammarscope
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Typeface
@@ -9,6 +8,7 @@ import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.util.Log
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.depparse.Storage.getAppStorage
 import org.depparse.common.BaseSpanner.SpanFactory
 import org.depparse.common.BaseSpanner.append
@@ -22,7 +22,6 @@ import java.util.regex.PatternSyntaxException
 import kotlin.math.ln
 import kotlin.math.pow
 import androidx.appcompat.R as AppCompatR
-import org.depparse.common.R as CommonR
 import com.google.android.material.R as MaterialR
 
 /**
@@ -51,10 +50,10 @@ object Status {
         return humanReadableByteCount(bytes, false)
     }
 
-    fun modelStatus(context: Context): AlertDialog.Builder {
+    fun modelStatus(context: Context): MaterialAlertDialogBuilder {
         val dir = getAppStorage(context)
         val info = read(context)
-        return AlertDialog.Builder(context)
+        return MaterialAlertDialogBuilder(context)
             .apply { // unguarded, level 1
                 setTitle(R.string.model)
                 if (info == null) {

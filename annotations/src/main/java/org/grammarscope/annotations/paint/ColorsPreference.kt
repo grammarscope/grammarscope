@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.preference.DialogPreference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.grammarscope.annotations.R
 import org.grammarscope.annotations.paint.ColorsJson.getColorMapFromResources
 import org.jung.colors.ColorPadView
@@ -58,7 +59,7 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         // Set up the builder
-        dialog = AlertDialog.Builder(context)
+        dialog = MaterialAlertDialogBuilder(context)
             .setView(view)
             .setTitle("Color Map")
             .setPositiveButton(android.R.string.ok) { _, _ ->

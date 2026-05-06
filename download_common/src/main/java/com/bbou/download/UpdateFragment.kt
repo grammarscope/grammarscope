@@ -5,7 +5,6 @@ package com.bbou.download
 
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -14,10 +13,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.bbou.download.common.R
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * Update fragment
@@ -220,11 +219,11 @@ class UpdateFragment : Fragment() {
          * @param runnable run if confirmed
          */
         private fun confirm(context: Context, titleId: Int, askId: Int, runnable: Runnable) {
-            AlertDialog.Builder(context)
+            MaterialAlertDialogBuilder(context)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle(titleId)
                 .setMessage(askId)
-                .setPositiveButton(R.string.yes) { _: DialogInterface?, _: Int -> runnable.run() }.setNegativeButton(R.string.no, null).show()
+                .setPositiveButton(R.string.yes) { _, _ -> runnable.run() }.setNegativeButton(R.string.no, null).show()
         }
     }
 }

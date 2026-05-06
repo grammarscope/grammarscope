@@ -3,7 +3,6 @@
  */
 package com.bbou.download.coroutines.choose
 
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.text.SpannableStringBuilder
 import android.widget.RadioButton
@@ -15,6 +14,7 @@ import com.bbou.download.choose.Chooser
 import com.bbou.download.common.R
 import com.bbou.download.storage.ReportUtils.appendHeader
 import com.bbou.download.storage.StorageReports
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
 
 /**
@@ -74,7 +74,7 @@ object MD5Chooser {
         }
 
         // display targets
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.action_md5_ask)
             .setMessage(R.string.hint_md5_of_file)
             .setView(radioGroup)
@@ -106,7 +106,7 @@ object MD5Chooser {
                                 }
                             }
                         } else {
-                            AlertDialog.Builder(activity)
+                            MaterialAlertDialogBuilder(activity)
                                 .setTitle(sourceFile)
                                 .setMessage(activity.getString(R.string.status_error_no_file))
                                 .show()
@@ -114,7 +114,7 @@ object MD5Chooser {
                     }
                 }
             }
-            .setNegativeButton(R.string.action_cancel) { _: DialogInterface?, _: Int -> }
+            .setNegativeButton(R.string.action_cancel) { _, _ -> }
             .show()
     }
 }

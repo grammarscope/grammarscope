@@ -3,7 +3,6 @@
  */
 package com.bbou.deploy.coroutines
 
-import android.app.AlertDialog
 import android.content.ContentResolver
 import android.content.DialogInterface
 import android.net.Uri
@@ -12,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.bbou.coroutines.Task
 import com.bbou.coroutines.observe.TaskDialogObserver
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.URL
@@ -558,7 +558,7 @@ class FileTasks(
 
         private fun getMD5Consumer(activity: FragmentActivity, whenDone: Runnable?): Consumer<String?> {
             return Consumer { md5: String? ->
-                AlertDialog.Builder(activity)
+                MaterialAlertDialogBuilder(activity)
                     .apply {
                         if (md5 != null) {
                             setMessage(md5)

@@ -5,7 +5,6 @@ package com.bbou.download.coroutines.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -24,6 +23,7 @@ import com.bbou.download.Keys.DOWNLOAD_TO_DIR_ARG
 import com.bbou.download.Keys.DOWNLOAD_TO_FILE_ARG
 import com.bbou.download.common.R
 import com.bbou.download.preference.Settings
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
@@ -151,7 +151,7 @@ class ContentDownloader : BaseTask<String, Array<String>?>() {
             val sourceView = header.findViewById<TextView>(R.id.source)
             sourceView.text = targetFile
 
-            AlertDialog.Builder(activity)
+            MaterialAlertDialogBuilder(activity)
                 .setCustomTitle(header)
                 .apply {
                     if (result == null) {
