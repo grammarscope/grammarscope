@@ -15,12 +15,12 @@ import androidx.preference.DialogPreference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.depparse.common.R as CommonR
 import org.grammarscope.annotations.R
 import org.grammarscope.annotations.paint.ColorsJson.getColorMapFromResources
 import org.jung.colors.ColorPadView
 import org.jung.colors.chooser.ColorChooserDialog
-import org.jung.colors.chooser.ColorChooserView.OnColorChangedListener
+import org.depparse.common.R as CommonR
+import org.jung.colors.R as JungR
 
 class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPreference(context, attrs) {
 
@@ -94,7 +94,7 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
             holder.idView.text = item.id
             holder.colorView.setValue(item.color)
             holder.colorView.setOnClickListener {
-                // Open a color picker dialog (you'll need to implement this part)
+                // Open a color picker dialog
                 openColorPickerDialog(holder, item)
             }
         }
@@ -105,17 +105,19 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
 
             var color = item.color
 
-            val colorChooserDialog = ColorChooserDialog(holder.itemView.context, item.color, object : OnColorChangedListener {
-                override fun onColorChanged(newColor: Int) {
-                    color = newColor
+            ColorChooserDialog(holder.itemView.context, item.color) { color = it }
+                .apply {
+                    setButton(AlertDialog.BUTTON_NEGATIVE, holder.itemView.context.getString(android.R.string.cancel)) { _, _ -> }
+                    setButton(AlertDialog.BUTTON_POSITIVE, holder.itemView.context.getString(android.R.string.ok)) { _, _ ->
+                        item.color = color
+                        holder.colorView.setValue(color)
+                    }
+                    setButton(AlertDialog.BUTTON_NEUTRAL, holder.itemView.context.getString(JungR.string.dialog_button_title_none)) { _, _ ->
+                        item.color = color
+                        holder.colorView.setValue(color)
+                    }
                 }
-            })
-            colorChooserDialog.setButton(AlertDialog.BUTTON_NEGATIVE, holder.itemView.context.getString(android.R.string.cancel)) { _, _ -> }
-            colorChooserDialog.setButton(AlertDialog.BUTTON_POSITIVE, holder.itemView.context.getString(android.R.string.ok)) { _, _ ->
-                item.color = color
-                holder.colorView.setValue(color)
-            }
-            colorChooserDialog.show()
+                .show()
         }
     }
 }
