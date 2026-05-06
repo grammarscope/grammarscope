@@ -28,7 +28,7 @@ text-recognition = "16.0.1"
 billing = "8.3.0"
 
 opennlp-tools = "2.5.3"
-jung = "3.0.0-android"
+jung = "3.1.0-android"
 coreNlp = "4.5.10"
 
 slf4j-api = "2.0.17"
