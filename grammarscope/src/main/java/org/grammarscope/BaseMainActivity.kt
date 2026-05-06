@@ -127,7 +127,7 @@ abstract class BaseMainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         // toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(CommonR.id.toolbar)
         langIndicator = toolbar.findViewById(R.id.lang_indicator)
         setSupportActionBar(toolbar)
 
@@ -1093,7 +1093,7 @@ abstract class BaseMainActivity : BaseActivity() {
     // D I A L O G
 
     private fun dialog(message: CharSequence): MaterialAlertDialogBuilder {
-        return MaterialAlertDialogBuilder(this)
+        return MaterialAlertDialogBuilder(this, CommonR.style.MyM3AlertDialogOverlay)
             .setTitle(R.string.app_name)
             .setIcon(R.drawable.logo_app)
             .setMessage(message)

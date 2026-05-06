@@ -15,6 +15,7 @@ import androidx.preference.DialogPreference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.depparse.common.R as CommonR
 import org.grammarscope.annotations.R
 import org.grammarscope.annotations.paint.ColorsJson.getColorMapFromResources
 import org.jung.colors.ColorPadView
@@ -59,7 +60,7 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         // Set up the builder
-        dialog = MaterialAlertDialogBuilder(context)
+        dialog = MaterialAlertDialogBuilder(context, CommonR.style.MyM3AlertDialogOverlay)
             .setView(view)
             .setTitle("Color Map")
             .setPositiveButton(android.R.string.ok) { _, _ ->
@@ -109,8 +110,8 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
                     color = newColor
                 }
             })
-            colorChooserDialog.setButton(AlertDialog.BUTTON_NEGATIVE, holder.itemView.context.getString(android.R.string.cancel)) { dialog, p -> }
-            colorChooserDialog.setButton(AlertDialog.BUTTON_POSITIVE, holder.itemView.context.getString(android.R.string.ok)) { dialog, p ->
+            colorChooserDialog.setButton(AlertDialog.BUTTON_NEGATIVE, holder.itemView.context.getString(android.R.string.cancel)) { _, _ -> }
+            colorChooserDialog.setButton(AlertDialog.BUTTON_POSITIVE, holder.itemView.context.getString(android.R.string.ok)) { _, _ ->
                 item.color = color
                 holder.colorView.setValue(color)
             }

@@ -23,6 +23,7 @@ import kotlin.math.ln
 import kotlin.math.pow
 import androidx.appcompat.R as AppCompatR
 import com.google.android.material.R as MaterialR
+import org.depparse.common.R as CommonR
 
 /**
  * Status
@@ -53,7 +54,7 @@ object Status {
     fun modelStatus(context: Context): MaterialAlertDialogBuilder {
         val dir = getAppStorage(context)
         val info = read(context)
-        return MaterialAlertDialogBuilder(context)
+        return MaterialAlertDialogBuilder(context, CommonR.style.MyM3AlertDialogOverlay)
             .apply { // unguarded, level 1
                 setTitle(R.string.model)
                 if (info == null) {

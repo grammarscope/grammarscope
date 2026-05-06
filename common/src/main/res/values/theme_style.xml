@@ -28,10 +28,14 @@
         <item name="liftOnScroll">false</item>
     </style>
 
-    <!-- Search view -->
+    <!-- S E A R C H   V I E W  -->
+
+   <!-- Search view -->
     <style name="MySearchViewStyle" parent="Widget.Material3.SearchView">
         <item name="backgroundTint">?attr/colorCustom</item>
     </style>
+
+   <!-- D R O P   D O W N  -->
 
     <!-- Dropdown list -->
     <style name="MyDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
@@ -44,6 +48,14 @@
         <item name="android:background">?attr/colorCustom</item>
         <item name="android:textColor">?attr/colorOnCustom</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- A L E R T   D I A L O G S -->
+
+    <!-- M3 Alert Dialog overlay -->
+    <style name="MyM3AlertDialogOverlay" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:backgroundTint">?attr/colorCustom</item>
+        <!-- <item name="colorPrimary">?attr/colorOnPrimary</item>-->
     </style>
 
 </resources>
