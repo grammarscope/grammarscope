@@ -19,7 +19,6 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.StringRes
@@ -32,6 +31,7 @@ import androidx.core.content.edit
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
@@ -287,8 +287,7 @@ abstract class BaseMainActivity : BaseActivity() {
                 // focus
                 val focus = activity.currentFocus
                 if (focus != null) {
-                    val inputManager = (activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
-                    inputManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                    WindowInsetsControllerCompat(activity.window, focus).hide(WindowInsetsCompat.Type.ime())
                     queryEdit.clearFocus()
                 }
             }
@@ -302,8 +301,7 @@ abstract class BaseMainActivity : BaseActivity() {
                 // focus
                 val focus = activity.currentFocus
                 if (focus != null) {
-                    val inputManager = (activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
-                    inputManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                    WindowInsetsControllerCompat(activity.window, focus).hide(WindowInsetsCompat.Type.ime())
                     queryEdit.clearFocus()
                 }
             }
@@ -776,8 +774,7 @@ abstract class BaseMainActivity : BaseActivity() {
                 it.setSelection(it.text?.length ?: 0)
                 val focus = currentFocus
                 if (focus != null) {
-                    val inputManager = (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
-                    inputManager.hideSoftInputFromWindow(this.currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                    WindowInsetsControllerCompat(window, focus).hide(WindowInsetsCompat.Type.ime())
                     it.clearFocus()
                 }
             }
