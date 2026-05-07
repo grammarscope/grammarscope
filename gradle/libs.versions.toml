@@ -1,4 +1,10 @@
 [versions]
+versionCode="6111"
+versionName="6.111"
+minSdk = "24"
+targetSdk = "36"
+compileSdk = "37"
+
 agp = "9.2.1"
 google-services = "4.4.3"
 

@@ -4,18 +4,15 @@ plugins {
     alias(libs.plugins.androidLibrary)
 }
 
-private val vCompileSdk by lazy { rootProject.extra["compileSdk"] as Int }
-private val vMinSdk by lazy { rootProject.extra["minSdk"] as Int }
-
 android {
 
     namespace = "androidx.livedata.contrib"
 
     defaultConfig {
-        minSdk = vMinSdk
+        minSdk = libs.versions.minSdk.get().toInt()
     }
 
-    compileSdk = vCompileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

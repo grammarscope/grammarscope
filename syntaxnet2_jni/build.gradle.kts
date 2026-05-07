@@ -2,15 +2,12 @@ plugins {
     alias(libs.plugins.androidLibrary)
 }
 
-private val vCompileSdk by lazy { rootProject.extra["compileSdk"] as Int }
-private val vMinSdk by lazy { rootProject.extra["minSdk"] as Int }
-
 android {
 
     namespace = "org.depparse.syntaxnet2"
 
     defaultConfig {
-        minSdk = vMinSdk
+        minSdk = libs.versions.minSdk.get().toInt()
 
         externalNativeBuild {
             cmake {
@@ -24,7 +21,7 @@ android {
         //}
     }
 
-    compileSdk = vCompileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

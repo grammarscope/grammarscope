@@ -8,20 +8,16 @@ plugins {
     alias(libs.plugins.androidLibrary)
 }
 
-private val vCompileSdk by lazy { rootProject.extra["compileSdk"] as Int }
-private val vMinSdk by lazy { rootProject.extra["minSdk"] as Int }
-private val vTargetSdk by lazy { rootProject.extra["targetSdk"] as Int }
-
 android {
 
     namespace = "com.bbou.coroutines"
 
     defaultConfig {
-        minSdk = vMinSdk
+        minSdk = libs.versions.minSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    compileSdk = vCompileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -30,7 +26,7 @@ android {
     }
 
     testOptions {
-        targetSdk = vTargetSdk
+        targetSdk = libs.versions.targetSdk.get().toInt()
     }
 
     buildFeatures {
