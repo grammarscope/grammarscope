@@ -21,7 +21,7 @@ allprojects {
         set("versionName", "6.111")
         set("minSdk", 24)
         set("targetSdk", 36)
-        set("compileSdk", 36)
+        set("compileSdk", 37)
     }
 
     gradle.projectsEvaluated {
