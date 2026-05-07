@@ -20,7 +20,8 @@ import org.grammarscope.annotations.paint.ColorsJson.getColorMapFromResources
 import org.jung.colors.ColorPadView
 import org.jung.colors.chooser.ColorChooserDialog
 import org.depparse.common.R as CommonR
-import org.jung.colors.R as JungR
+
+// import org.jung.colors.R as JungR
 
 class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPreference(context, attrs) {
 
@@ -103,20 +104,18 @@ class ColorMapPreference(context: Context, attrs: AttributeSet?) : DialogPrefere
 
         private fun openColorPickerDialog(holder: ViewHolder, item: ColorItem) {
 
-            var color = item.color
-
-            ColorChooserDialog(holder.itemView.context, item.color) { color = it }
-                .apply {
-                    setButton(AlertDialog.BUTTON_NEGATIVE, holder.itemView.context.getString(android.R.string.cancel)) { _, _ -> }
-                    setButton(AlertDialog.BUTTON_POSITIVE, holder.itemView.context.getString(android.R.string.ok)) { _, _ ->
-                        item.color = color
-                        holder.colorView.setValue(color)
-                    }
-                    setButton(AlertDialog.BUTTON_NEUTRAL, holder.itemView.context.getString(JungR.string.dialog_button_title_none)) { _, _ ->
-                        item.color = color
-                        holder.colorView.setValue(color)
+            ColorChooserDialog.Builder(holder.itemView.context)
+                .setColor(item.color)
+                .setPositiveButton { newColor ->
+                    if (newColor != null) {
+                        item.color = newColor
+                        holder.colorView.setValue(newColor)
                     }
                 }
+                //.setNeutralButton(textId = JungR.string.dialog_button_title_none) { ->
+                //    item.color = null
+                //    holder.colorView.setValue(null)
+                //}
                 .show()
         }
     }
