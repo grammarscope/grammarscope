@@ -195,7 +195,7 @@ object Deploy {
     private fun copy(fromPath: String, toPath: String, getter: InputStreamGetter): Boolean {
         try {
             File(toPath).createNewFile()
-        } catch (e: IOException) {
+        } catch (_: IOException) {
             return false
         }
         try {
@@ -600,7 +600,7 @@ object Deploy {
                     }
                 }
             }
-        } catch (e: IOException) {
+        } catch (_: IOException) {
             throw RuntimeException("Can't read 'md5sum.txt'.")
         }
         md5Scan(dir, map)
@@ -649,7 +649,7 @@ object Deploy {
         // Log.d(TAG, "MD5 " + path);
         val md: MessageDigest = try {
             MessageDigest.getInstance("MD5")
-        } catch (e: NoSuchAlgorithmException) {
+        } catch (_: NoSuchAlgorithmException) {
             return null
         }
         try {
@@ -663,7 +663,7 @@ object Deploy {
                     return digestToString(*digest)
                 }
             }
-        } catch (e: IOException) {
+        } catch (_: IOException) {
             return null
         }
     }
