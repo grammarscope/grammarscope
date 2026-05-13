@@ -82,7 +82,9 @@ class GetTextActivity : BaseActivity() {
                 if (data != null) {
                     val uri = data.data
                     Log.d(TAG, "Uri  = $uri")
-                    textFromFileModel!!.input.value = uri
+                    textFromFileModel?.input?.let {
+                        it.value = uri
+                    }
                 }
             }
         }
@@ -94,7 +96,9 @@ class GetTextActivity : BaseActivity() {
                 if (data != null) {
                     val uri = data.data
                     Log.d(TAG, "Uri  = $uri")
-                    imageFromFileModel!!.input.value = uri
+                    imageFromFileModel?.input?.let {
+                        it.value = uri
+                    }
                 }
             }
         }
@@ -104,7 +108,9 @@ class GetTextActivity : BaseActivity() {
             if (success) {
                 val bitmap = getBitmapFromFile(currentPhotoPath!!)
                 currentPhotoPath?.let { File(it).delete() }
-                textModel!!.input.value = bitmap
+                textModel?.input?.let {
+                    it.value = bitmap
+                }
             }
         }
 
@@ -142,7 +148,7 @@ class GetTextActivity : BaseActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(rootView!!) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            
+
             // View pager takes full screen
             view.setPadding(systemBars.left, 0, systemBars.right, 0)
 
