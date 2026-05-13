@@ -701,9 +701,11 @@ object Deploy {
                 }
             }
         }
-        val dirContent = dir.listFiles() ?: throw RuntimeException("Null directory")
-        if (dirContent.isNotEmpty()) {
-            throw RuntimeException("Cannot empty $dir")
+        val dirContent = dir.listFiles()
+        if (dirContent == null) {
+            Log.e(TAG, "Cannot access dir $dir")
+        } else if (dirContent.isNotEmpty()) {
+            Log.e(TAG, "Cannot empty dir $dir")
         }
     }
 
