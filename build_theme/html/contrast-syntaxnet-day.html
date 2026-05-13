@@ -1,0 +1,31 @@
+
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>#AEC8D7,#A602C1,#8E2A9E,#31424B</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+div#colors div{float: left; width: 64px; height: 64px; margin: 2px; text-align: center; font-size: 12px; font-family: Arial, Helvetica, sans-serif}
+div#colors div span{font-weight: bold; cursor: pointer}
+div#colors div span:hover{text-decoration: underline}
+html{}
+input{margin-left: 1em;}
+</style></head>
+<body>
+<div>#AEC8D7,#A602C1,#8E2A9E,#31424B</div>
+<br/>
+<div id="colors"><table>
+<tr><td>custom</td><td>/</td><td>surface</td><td>1.66:1</td><td>FAIL</td><td><div style="background-color:#AEC8D7; color:#FAF9FA"><span>#AEC8D7</span></div></td><td><div style="background-color:#FAF9FA; color:#AEC8D7"><span>#FAF9FA</span></div></td></tr>
+<tr><td>onSurface</td><td>/</td><td>surface</td><td>16.25:1</td><td>PASS</td><td><div style="background-color:#1B1C1D; color:#FAF9FA"><span>#1B1C1D</span></div></td><td><div style="background-color:#FAF9FA; color:#1B1C1D"><span>#FAF9FA</span></div></td></tr>
+<tr><td>primary</td><td>/</td><td>surface</td><td>6.17:1</td><td>PASS</td><td><div style="background-color:#A100BC; color:#FAF9FA"><span>#A100BC</span></div></td><td><div style="background-color:#FAF9FA; color:#A100BC"><span>#FAF9FA</span></div></td></tr>
+<tr><td>secondary</td><td>/</td><td>surface</td><td>6.15:1</td><td>PASS</td><td><div style="background-color:#9531A4; color:#FAF9FA"><span>#9531A4</span></div></td><td><div style="background-color:#FAF9FA; color:#9531A4"><span>#FAF9FA</span></div></td></tr>
+<tr><td>tertiary</td><td>/</td><td>surface</td><td>6.14:1</td><td>PASS</td><td><div style="background-color:#50616A; color:#FAF9FA"><span>#50616A</span></div></td><td><div style="background-color:#FAF9FA; color:#50616A"><span>#FAF9FA</span></div></td></tr>
+<tr><td>onCustom</td><td>/</td><td>surface</td><td>11.71:1</td><td>PASS</td><td><div style="background-color:#1F3844; color:#FAF9FA"><span>#1F3844</span></div></td><td><div style="background-color:#FAF9FA; color:#1F3844"><span>#FAF9FA</span></div></td></tr>
+<tr><td>onSurface</td><td>/</td><td>custom</td><td>9.79:1</td><td>PASS</td><td><div style="background-color:#1B1C1D; color:#AEC8D7"><span>#1B1C1D</span></div></td><td><div style="background-color:#AEC8D7; color:#1B1C1D"><span>#AEC8D7</span></div></td></tr>
+<tr><td>primary</td><td>/</td><td>custom</td><td>3.72:1</td><td>FAIL</td><td><div style="background-color:#A100BC; color:#AEC8D7"><span>#A100BC</span></div></td><td><div style="background-color:#AEC8D7; color:#A100BC"><span>#AEC8D7</span></div></td></tr>
+<tr><td>secondary</td><td>/</td><td>custom</td><td>3.70:1</td><td>FAIL</td><td><div style="background-color:#9531A4; color:#AEC8D7"><span>#9531A4</span></div></td><td><div style="background-color:#AEC8D7; color:#9531A4"><span>#AEC8D7</span></div></td></tr>
+<tr><td>tertiary</td><td>/</td><td>custom</td><td>3.70:1</td><td>FAIL</td><td><div style="background-color:#50616A; color:#AEC8D7"><span>#50616A</span></div></td><td><div style="background-color:#AEC8D7; color:#50616A"><span>#AEC8D7</span></div></td></tr>
+<tr><td>onCustom</td><td>/</td><td>custom</td><td>7.05:1</td><td>PASS</td><td><div style="background-color:#1F3844; color:#AEC8D7"><span>#1F3844</span></div></td><td><div style="background-color:#AEC8D7; color:#1F3844"><span>#AEC8D7</span></div></td></tr>
+</table></div>
+<script>
+function selectText(element){ if (document.selection){ var range = document.body.createTextRange(); range.moveToElementText(element); range.select(); }else if (window.getSelection){ var range = document.createRange(); range.selectNode(element); window.getSelection().addRange(range); } }
+document.getElementById('colors').addEventListener('click', function(event){ if (event.target.tagName.toLowerCase() == 'span'){ event.preventDefault(); selectText(event.target); document.execCommand('copy'); }});
+</script></body></html>
+
