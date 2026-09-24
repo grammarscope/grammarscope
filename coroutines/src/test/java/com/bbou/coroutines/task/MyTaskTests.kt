@@ -168,7 +168,7 @@ class MyTaskTests {
             runBlocking {
                 println("Run ${where()}")
                 launch {
-                    delay(cancelAfter)
+                    delay(cancelAfter.milliseconds)
                     println("Cancel now ${where()}")
                     t.cancel()
                 }
