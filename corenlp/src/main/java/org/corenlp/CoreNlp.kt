@@ -29,9 +29,11 @@ typealias CoreNlpConstituencyDependency = TypedDependency
 
 object CoreNlp {
 
-    var pipeline: StanfordCoreNLP? = null
-
     var neural = true
+
+    lateinit var props: Properties
+
+    var pipeline: StanfordCoreNLP? = null
 
     fun version(): Int {
         return (4 shl 24) or (5 shl 16) or (9 shl 8) or 1
@@ -58,7 +60,7 @@ object CoreNlp {
 
             // set up pipeline properties
             val propertiesPath = modelPath
-            val props = loadProperties(propertiesPath)
+            props = loadProperties(propertiesPath)
             props.setProperty("annotators", if (neural) "tokenize,pos,depparse" else "tokenize,pos,lemma,parse") // drop "lemma"
 
             // build pipeline
@@ -79,6 +81,26 @@ object CoreNlp {
             pipeline = null
             System.gc()
         }
+    }
+
+    private fun makeLanguagePack(props: Properties): TreebankLanguagePack {
+        val pack = props.getProperty("language.pack")
+        if (pack != null && pack.isNotEmpty()) {
+            return Class.forName(pack).getDeclaredConstructor().newInstance() as TreebankLanguagePack
+        }
+
+        val lang = props.getProperty("language")
+        if (pack == null || pack.isEmpty())
+            return when (lang) {
+                "english", "English" -> PennTreebankLanguagePack()
+                "chinese", "Chinese" -> edu.stanford.nlp.trees.international.pennchinese.ChineseTreebankLanguagePack()
+                "french", "French" -> edu.stanford.nlp.trees.international.french.FrenchTreebankLanguagePack()
+                "italian", "Italian" -> edu.stanford.nlp.trees.international.italian.ItalianTreebankLanguagePack()
+                "spanish", "Spanish" -> edu.stanford.nlp.trees.international.spanish.SpanishTreebankLanguagePack()
+                "arabic", "Arabic" -> edu.stanford.nlp.trees.international.arabic.ArabicTreebankLanguagePack()
+                else -> PennTreebankLanguagePack()
+            }
+        return PennTreebankLanguagePack()
     }
 
     private fun CoreNlpSentence.basicDeps(): SemanticGraph {
@@ -115,28 +137,26 @@ object CoreNlp {
         return enhanced
             .asSequence()
             .filter { index == it.target.index() }
-            .map { edge: SemanticGraphEdge ->
+            .joinToString(separator = "|") { edge: SemanticGraphEdge ->
                 val relation: GrammaticalRelation = edge.relation
                 val label: String = relation.shortName
                 val source: IndexedWord = edge.source
                 val head = source.index() - 1
                 "$head:$label"
             }
-            .joinToString(separator = "|")
     }
 
     private fun enhancedDependency(enhanced: Iterable<TypedDependency>, index: Int): String {
         return enhanced
             .asSequence()
             .filter { index == it.dep().index() }
-            .map { edge: TypedDependency ->
+            .joinToString(separator = "|") { edge: TypedDependency ->
                 val relation: GrammaticalRelation = edge.reln()
                 val label: String = relation.shortName
                 val gov: IndexedWord = edge.gov()
                 val head = gov.index() - 1
                 "$head:$label"
             }
-            .joinToString(separator = "|")
     }
 
     fun parse(inputTexts: Array<String>): Array<Sentence> {
@@ -148,110 +168,120 @@ object CoreNlp {
 
     fun parseConstituency(doc: CoreDocument): Array<Sentence> {
         val charIndices: IntArray = getCharIndices(doc.text())
-        val tlp: TreebankLanguagePack = PennTreebankLanguagePack()
+        val tlp: TreebankLanguagePack = makeLanguagePack(props)
         val gsf: GrammaticalStructureFactory = tlp.grammaticalStructureFactory()
-        return doc.sentences()
-            .withIndex()
-            .map { (sentenceIndex: Int, sentence: CoreNlpSentence) ->
+        try {
+            return doc.sentences()
+                .withIndex()
+                .map { (sentenceIndex: Int, sentence: CoreNlpSentence) ->
 
-                val offsets = sentence.charOffsets()
-                val sentenceStart = charIndices[offsets.first]
-                val sentenceEnd = charIndices[offsets.second - 1]
+                    val offsets = sentence.charOffsets()
+                    val sentenceStart = charIndices[offsets.first]
+                    val sentenceEnd = charIndices[offsets.second - 1]
 
-                val parseTree = sentence.constituencyParse()
-                val gs: GrammaticalStructure = gsf.newGrammaticalStructure(parseTree)
-                val constituencyDeps: Collection<CoreNlpConstituencyDependency> = gs.typedDependencies()
-                val constituencyEnhancedDeps: Collection<CoreNlpConstituencyDependency> = gs.typedDependenciesEnhancedPlusPlus() - constituencyDeps.toSet()
-                val tokens = constituencyDeps
-                    .map { dependency: CoreNlpConstituencyDependency ->
-                        val head = dependency.gov()
-                        val headIndex = head.index() - 1
-                        val dependent = dependency.dep()
-                        val dependentIndex = dependent.index() - 1
-                        val dependentWord = dependent.word()
-                        val dependentPos = "name: 'postag' value: '${dependent.tag()}'"
-                        val label = dependency.reln().toString()
+                    val parseTree = sentence.constituencyParse()
+                    val gs: GrammaticalStructure = gsf.newGrammaticalStructure(parseTree)
+                    val constituencyDeps: Collection<CoreNlpConstituencyDependency> = gs.typedDependencies()
+                    val constituencyEnhancedDeps: Collection<CoreNlpConstituencyDependency> = gs.typedDependenciesEnhancedPlusPlus() - constituencyDeps.toSet()
+                    val tokens = constituencyDeps
+                        .map { dependency: CoreNlpConstituencyDependency ->
+                            val head = dependency.gov()
+                            val headIndex = head.index() - 1
+                            val dependent = dependency.dep()
+                            val dependentIndex = dependent.index() - 1
+                            val dependentWord = dependent.word()
+                            val dependentPos = "name: 'postag' value: '${dependent.tag()}'"
+                            val label = dependency.reln().toString()
 
-                        // offsets
-                        val dependentStart = charIndices[dependent.beginPosition() - sentenceStart] // sentence relative offset
-                        val dependentEnd = charIndices[dependent.endPosition() - 1 - sentenceStart] // sentence relative offset
+                            // offsets
+                            val dependentStart = charIndices[dependent.beginPosition() - sentenceStart] // sentence relative offset
+                            val dependentEnd = charIndices[dependent.endPosition() - 1 - sentenceStart] // sentence relative offset
 
-                        // breaklevel
-                        val breakLevel = dependent.breakLevel()
+                            // breaklevel
+                            val breakLevel = dependent.breakLevel()
 
-                        val deps: String = enhancedDependency(constituencyEnhancedDeps, dependentIndex + 1)
+                            val deps: String = enhancedDependency(constituencyEnhancedDeps, dependentIndex + 1)
 
-                        val token = Token(sentenceIndex, dependentIndex, dependentWord, dependentStart, dependentEnd, "", dependentPos.ifEmpty { "?" }, head = headIndex, label, breakLevel = breakLevel, deps = deps)
-                        token
-                    }
-                    .sortedBy { it.index }
-                    .toTypedArray()
+                            val token = Token(sentenceIndex, dependentIndex, dependentWord, dependentStart, dependentEnd, "", dependentPos.ifEmpty { "?" }, head = headIndex, label, breakLevel = breakLevel, deps = deps)
+                            token
+                        }
+                        .sortedBy { it.index }
+                        .toTypedArray()
 
-                val text = sentence.text()
-                val docid = sentence.document().docID() ?: ""
-                Sentence(text, sentenceStart, sentenceEnd, tokens, docid)
-            }
-            .toTypedArray()
+                    val text = sentence.text()
+                    val docid = sentence.document().docID() ?: ""
+                    Sentence(text, sentenceStart, sentenceEnd, tokens, docid)
+                }
+                .toTypedArray()
+        } catch (iae: IllegalArgumentException) {
+            Log.e(TAG, "Exception: ${iae.message}")
+            return emptyArray()
+        }
     }
 
     fun parseNeural(doc: CoreDocument): Array<Sentence> {
         val charIndices: IntArray = getCharIndices(doc.text())
-        return doc.sentences()
-            .withIndex()
-            .map { (sentenceIndex: Int, sentence: CoreNlpSentence) ->
-                val offsets = sentence.charOffsets()
-                val sentenceStart = charIndices[offsets.first]
-                val sentenceEnd = charIndices[offsets.second - 1]
+        try {
+            return doc.sentences()
+                .withIndex()
+                .map { (sentenceIndex: Int, sentence: CoreNlpSentence) ->
+                    val offsets = sentence.charOffsets()
+                    val sentenceStart = charIndices[offsets.first]
+                    val sentenceEnd = charIndices[offsets.second - 1]
 
-                val neuralDeps: CoreNlpNeuralDependencies = sentence.basicDeps()
-                val neuralEnhancedDeps = sentence.enhancedPlusPlusDeps().edgeIterable().filter { it.isExtra }
+                    val neuralDeps: CoreNlpNeuralDependencies = sentence.basicDeps()
+                    val neuralEnhancedDeps = sentence.enhancedPlusPlusDeps().edgeIterable().filter { it.isExtra }
 
-                val deps: Sequence<Token> = neuralDeps.edgeIterable()
-                    .asSequence()
-                    .map { edge: SemanticGraphEdge ->
+                    val deps: Sequence<Token> = neuralDeps.edgeIterable()
+                        .asSequence()
+                        .map { edge: SemanticGraphEdge ->
 
-                        val relation: GrammaticalRelation = edge.relation
-                        val label: String = relation.shortName
+                            val relation: GrammaticalRelation = edge.relation
+                            val label: String = relation.shortName
 
-                        // source is head / governor
-                        val source: IndexedWord = edge.source
-                        val sourceIndex = source.index() - 1
+                            // source is head / governor
+                            val source: IndexedWord = edge.source
+                            val sourceIndex = source.index() - 1
 
-                        // target is dependent token
-                        val target: IndexedWord = edge.target
-                        val targetIndex = target.index() - 1
-                        val targetWord = target.word()
-                        val targetPos = "name: 'postag' value: '${target.get(CoreAnnotations.PartOfSpeechAnnotation::class.java)}'"
+                            // target is dependent token
+                            val target: IndexedWord = edge.target
+                            val targetIndex = target.index() - 1
+                            val targetWord = target.word()
+                            val targetPos = "name: 'postag' value: '${target.get(CoreAnnotations.PartOfSpeechAnnotation::class.java)}'"
 
-                        // offsets
-                        val targetStart = charIndices[target.beginPosition() - sentenceStart] // sentence relative offset
-                        val targetEnd = charIndices[target.endPosition() - 1 - sentenceStart] // sentence relative offset
+                            // offsets
+                            val targetStart = charIndices[target.beginPosition() - sentenceStart] // sentence relative offset
+                            val targetEnd = charIndices[target.endPosition() - 1 - sentenceStart] // sentence relative offset
 
-                        // breaklevel
-                        val breakLevel = target.breakLevel()
+                            // breaklevel
+                            val breakLevel = target.breakLevel()
 
-                        val deps: String = enhancedEdge(neuralEnhancedDeps, targetIndex + 1)
+                            val deps: String = enhancedEdge(neuralEnhancedDeps, targetIndex + 1)
 
-                        val token = Token(sentenceIndex, targetIndex, targetWord, targetStart, targetEnd, "", targetPos, head = sourceIndex, label, breakLevel = breakLevel, deps = deps)
-                        token
-                    }
+                            val token = Token(sentenceIndex, targetIndex, targetWord, targetStart, targetEnd, "", targetPos, head = sourceIndex, label, breakLevel = breakLevel, deps = deps)
+                            token
+                        }
 
-                val root: IndexedWord = neuralDeps.roots.first()
-                val rootIndex = root.index() - 1
-                val rootStart = charIndices[root.beginPosition() - sentenceStart]
-                val rootEnd = charIndices[root.endPosition() - 1 - sentenceStart]
-                val rootWord = root.word()
-                val rootPos = "name: 'postag' value: '${root.get(CoreAnnotations.PartOfSpeechAnnotation::class.java)}'"
-                val rootBreakLevel = root.breakLevel()
+                    val root: IndexedWord = neuralDeps.roots.first()
+                    val rootIndex = root.index() - 1
+                    val rootStart = charIndices[root.beginPosition() - sentenceStart]
+                    val rootEnd = charIndices[root.endPosition() - 1 - sentenceStart]
+                    val rootWord = root.word()
+                    val rootPos = "name: 'postag' value: '${root.get(CoreAnnotations.PartOfSpeechAnnotation::class.java)}'"
+                    val rootBreakLevel = root.breakLevel()
 
-                val tokens: Sequence<Token> = sequenceOf(Token(sentenceIndex, rootIndex, rootWord, rootStart, rootEnd, "", rootPos, head = -1, "root", breakLevel = rootBreakLevel, deps = null)) + deps
-                val tokenArray: Array<Token> = tokens.sortedBy { it.index }.toList().toTypedArray()
+                    val tokens: Sequence<Token> = sequenceOf(Token(sentenceIndex, rootIndex, rootWord, rootStart, rootEnd, "", rootPos, head = -1, "root", breakLevel = rootBreakLevel, deps = null)) + deps
+                    val tokenArray: Array<Token> = tokens.sortedBy { it.index }.toList().toTypedArray()
 
-                val text = sentence.text()
-                val docid = sentence.document().docID() ?: ""
-                Sentence(text, sentenceStart, sentenceEnd, tokenArray, docid)
-            }
-            .toTypedArray()
+                    val text = sentence.text()
+                    val docid = sentence.document().docID() ?: ""
+                    Sentence(text, sentenceStart, sentenceEnd, tokenArray, docid)
+                }
+                .toTypedArray()
+        } catch (iae: IllegalArgumentException) {
+            Log.e(TAG, "Exception: ${iae.message}")
+            return emptyArray()
+        }
     }
 
     private fun IndexedWord.breakLevel(): Int {
