@@ -10,7 +10,6 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.yield
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
-import kotlin.coroutines.coroutineContext
 
 data class Parameters(val times: Int, val lapse: Long)
 
