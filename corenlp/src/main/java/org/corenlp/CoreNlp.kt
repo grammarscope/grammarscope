@@ -168,9 +168,9 @@ object CoreNlp {
 
     fun parseConstituency(doc: CoreDocument): Array<Sentence> {
         val charIndices: IntArray = getCharIndices(doc.text())
-        val tlp: TreebankLanguagePack = makeLanguagePack(props)
-        val gsf: GrammaticalStructureFactory = tlp.grammaticalStructureFactory()
         try {
+            val tlp: TreebankLanguagePack = makeLanguagePack(props)
+            val gsf: GrammaticalStructureFactory = tlp.grammaticalStructureFactory()
             return doc.sentences()
                 .withIndex()
                 .map { (sentenceIndex: Int, sentence: CoreNlpSentence) ->
