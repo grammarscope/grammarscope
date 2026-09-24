@@ -9,6 +9,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
+import kotlin.time.Duration.Companion.milliseconds
 
 class MyTaskTests {
 
@@ -145,7 +146,7 @@ class MyTaskTests {
             runBlocking {
                 println("Run ${where()}")
                 launch {
-                    delay(cancelAfter)
+                    delay(cancelAfter.milliseconds)
                     println("Cancel now ${where()}")
                     t.cancel()
                 }
@@ -189,7 +190,7 @@ class MyTaskTests {
             runBlocking {
                 println("Run ${where()}")
                 launch {
-                    delay(cancelAfter)
+                    delay(cancelAfter.milliseconds)
                     println("Cancel now ${where()}")
                     t.cancel()
                 }
