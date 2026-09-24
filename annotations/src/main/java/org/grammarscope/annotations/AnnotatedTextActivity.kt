@@ -95,10 +95,10 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
                     val ignoreRelations = sharedPrefs.getStringSet(PREF_IGNORE_RELATIONS, null) ?: resources.getStringArray(R.array.default_ignored_relations_keys).toSet()
                     val manager = AnnotationManager(textView)
                     val depAnnotator = DependencyAnnotator<Token>(textView, manager, boxWords = boxWords, boxEdges = boxEdges, ignoreRelations = ignoreRelations)
-                    val depAnnotations = depAnnotator.annotate(document!!)!!
+                    val depAnnotations = depAnnotator.annotate(document!!)
                     val posAnnotator = PosAnnotator<Token>(textView, manager, ignoreRelations = ignoreRelations)
-                    val posAnnotations = posAnnotator.annotate(document!!)!!
-                    textView.annotations = depAnnotations + posAnnotations
+                    val posAnnotations = posAnnotator.annotate(document!!)
+                    textView.annotations = (depAnnotations ?: emptyMap()) + (posAnnotations ?: emptyMap())
                     textView.invalidate()
                 }
             }
