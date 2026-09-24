@@ -87,8 +87,8 @@ object Palette : (String?) -> Int {
         val paletteKeys = resources.getStringArray(R.array.relations_keys)
         val paletteValues = resources.getIntArray(R.array.palette_relations_values)
         require(paletteValues.size == paletteKeys.size)
-        for (i in 0 until paletteKeys.size) {
-            val k = paletteKeys[i]
+        for ((i, element) in paletteKeys.withIndex()) {
+            val k = element
             val v = paletteValues[i]
             colorMap[k] = v
         }
