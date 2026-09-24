@@ -12,6 +12,7 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.bbou.deploy.coroutines.Deploy.fastCheck
+import com.google.android.material.snackbar.Snackbar
 import org.depparse.BaseActivity
 import org.depparse.Storage
 import java.text.Normalizer
@@ -168,13 +169,14 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
         return false
     }
 
-    protected fun warn(message: String) {
+    protected fun warn(message: String, duration: Int = Snackbar.LENGTH_LONG) {
         val contentView = findViewById<View>(android.R.id.content)
-        makeSnackbar(this, contentView, message, backColorAttr = AppCompatR.attr.colorError, foreColorAttr = MaterialR.attr.colorOnError).show()
+        makeSnackbar(this, contentView, message, backColorAttr = AppCompatR.attr.colorError, foreColorAttr = MaterialR.attr.colorOnError, duration = duration)
+            .show()
     }
 
     protected fun handleException(e: Exception) {
-        warn(e.message.toString())
+        warn(e.message.toString(), duration = Snackbar.LENGTH_INDEFINITE)
     }
 
     companion object {
