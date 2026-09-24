@@ -52,7 +52,7 @@ data class ModelInfo(val lang: String, val name: String, val more1: String?, val
             } else {
                 val model = context.getString(R.string.model_is, modelInfo.name)
                 val lang = context.getString(R.string.language_is, modelInfo.lang)
-                return "$model\n$lang"
+                "$model\n$lang"
             }
         }
     }
