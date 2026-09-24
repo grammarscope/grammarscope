@@ -11,7 +11,6 @@ import androidx.test.filters.LargeTest;
 
 import junit.framework.TestCase;
 
-import org.grammarscope.common.R;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

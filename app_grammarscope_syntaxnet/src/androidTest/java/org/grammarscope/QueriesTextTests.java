@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
-import org.grammarscope.common.R;
 
 @SuppressWarnings("WeakerAccess")
 @RunWith(AndroidJUnit4ClassRunner.class)
