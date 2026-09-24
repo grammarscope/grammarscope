@@ -214,8 +214,12 @@ object CoreNlp {
                 }
                 .toTypedArray()
         } catch (iae: IllegalArgumentException) {
-            Log.e(TAG, "Exception: ${iae.message}")
-            return emptyArray()
+            Log.e(TAG, "Illegal argument exception: ${iae.message}")
+            throw iae
+
+        } catch (uoe: UnsupportedOperationException) {
+            Log.e(TAG, "Unsupported operation Exception: ${uoe.message}")
+            throw uoe
         }
     }
 
@@ -280,7 +284,11 @@ object CoreNlp {
                 .toTypedArray()
         } catch (iae: IllegalArgumentException) {
             Log.e(TAG, "Exception: ${iae.message}")
-            return emptyArray()
+            throw iae
+
+        } catch (uoe: UnsupportedOperationException) {
+            Log.e(TAG, "Unsupported operation Exception: ${uoe.message}")
+            throw uoe
         }
     }
 
