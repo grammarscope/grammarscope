@@ -5,6 +5,7 @@ import com.bbou.coroutines.ProgressEmitter
 import com.bbou.coroutines.Task
 import com.bbou.coroutines.TaskWithCallbacks
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.yield
 import org.junit.Assert.assertFalse
@@ -25,7 +26,7 @@ const val retValue = "Kilroy was there"
 
 suspend fun dummyWork(params: Parameters?, emitter: ProgressEmitter<Int>? = null): String? {
 
-    val job = coroutineContext[Job] ?: return null
+    val job = currentCoroutineContext()[Job] ?: return null
     println("Job> ${where()}")
     for (count in 1..params!!.times) {
         job.ensureActive() // checks for cancellation
