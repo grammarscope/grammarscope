@@ -33,7 +33,6 @@ class ParcelableSentence : Parcelable {
 
         private const val TAG = "ParcelableSentence"
 
-        @Suppress("unused")
         @JvmField
         val CREATOR: Parcelable.Creator<ParcelableSentence> = object : Parcelable.Creator<ParcelableSentence> {
 

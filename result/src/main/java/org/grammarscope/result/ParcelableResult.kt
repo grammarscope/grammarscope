@@ -46,7 +46,6 @@ class ParcelableResult : Parcelable {
 
         private const val TAG = "ParcelableResult"
 
-        @Suppress("unused")
         @JvmField
         val CREATOR: Parcelable.Creator<ParcelableResult> = object : Parcelable.Creator<ParcelableResult> {
 
