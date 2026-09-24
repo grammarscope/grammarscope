@@ -90,7 +90,7 @@ object CoreNlp {
         }
 
         val lang = props.getProperty("language")
-        if (pack == null || pack.isEmpty())
+        if (pack != null && pack.isNotEmpty())
             return when (lang) {
                 "english", "English" -> PennTreebankLanguagePack()
                 "chinese", "Chinese" -> edu.stanford.nlp.trees.international.pennchinese.ChineseTreebankLanguagePack()
