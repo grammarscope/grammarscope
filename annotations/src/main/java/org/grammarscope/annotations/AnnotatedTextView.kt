@@ -127,7 +127,7 @@ class AnnotatedTextView @JvmOverloads constructor(
             // for (annotation in annotations) {
             //     annotation.draw(canvas, this)
             // }
-            if (annotations != null) {
+            if (annotations != null && annotations!!.isNotEmpty()) {
                 val labelAnnotations = annotations!![AnnotationType.LABEL]!!.map { it as LabelAnnotation }
                 AnnotationPainter.paintLabels(canvas, labelAnnotations)
 
