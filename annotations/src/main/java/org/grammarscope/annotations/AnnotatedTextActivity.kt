@@ -61,18 +61,6 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
         }
     }
 
-    // T E X T   T O   P A R S E D   D O C U M E N T
-
-    override fun runParse(source: String?) {
-        if (source.isNullOrEmpty()) {
-            return
-        }
-        Log.d(TAG, "Parse run on '$source'")
-        lifecycleScope.launch {
-            AnnotationParse(this@AnnotatedTextActivity).runAndCallback(Dispatchers.IO, source)
-        }
-    }
-
     override fun accept(result: Document<Token>?) {
         Log.d(TAG, "Accept document")
         if (result != null) {
@@ -82,24 +70,44 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
         }
     }
 
+    // T E X T   T O   P A R S E D   D O C U M E N T
+
+    override fun runParse(source: String?) {
+        if (source.isNullOrEmpty()) {
+            return
+        }
+        Log.d(TAG, "Parse run on '$source'")
+        lifecycleScope.launch {
+            try {
+                AnnotationParse(this@AnnotatedTextActivity).runAndCallback(Dispatchers.IO, source)
+            } catch (e: Exception) {
+                handleException(e)
+            }
+        }
+    }
+
     // D O C U M E N T   T O   A N N O T A T I O N S
 
     private fun runAnnotations() {
         Log.d(TAG, "Annotate from document")
         if (document != null) {
             textView.post {
-                this.lifecycleScope.launch {
-                    val sharedPrefs = AnnotationsSettings(this@AnnotatedTextActivity).sharedPrefs
-                    val boxWords = sharedPrefs.getBoolean(PREF_BOX_WORDS, false)
-                    val boxEdges = sharedPrefs.getBoolean(PREF_BOX_EDGES, false)
-                    val ignoreRelations = sharedPrefs.getStringSet(PREF_IGNORE_RELATIONS, null) ?: resources.getStringArray(R.array.default_ignored_relations_keys).toSet()
-                    val manager = AnnotationManager(textView)
-                    val depAnnotator = DependencyAnnotator<Token>(textView, manager, boxWords = boxWords, boxEdges = boxEdges, ignoreRelations = ignoreRelations)
-                    val depAnnotations = depAnnotator.annotate(document!!)
-                    val posAnnotator = PosAnnotator<Token>(textView, manager, ignoreRelations = ignoreRelations)
-                    val posAnnotations = posAnnotator.annotate(document!!)
-                    textView.annotations = (depAnnotations ?: emptyMap()) + (posAnnotations ?: emptyMap())
-                    textView.invalidate()
+                lifecycleScope.launch {
+                    try {
+                        val sharedPrefs = AnnotationsSettings(this@AnnotatedTextActivity).sharedPrefs
+                        val boxWords = sharedPrefs.getBoolean(PREF_BOX_WORDS, false)
+                        val boxEdges = sharedPrefs.getBoolean(PREF_BOX_EDGES, false)
+                        val ignoreRelations = sharedPrefs.getStringSet(PREF_IGNORE_RELATIONS, null) ?: resources.getStringArray(R.array.default_ignored_relations_keys).toSet()
+                        val manager = AnnotationManager(textView)
+                        val depAnnotator = DependencyAnnotator<Token>(textView, manager, boxWords = boxWords, boxEdges = boxEdges, ignoreRelations = ignoreRelations)
+                        val depAnnotations = depAnnotator.annotate(document!!)
+                        val posAnnotator = PosAnnotator<Token>(textView, manager, ignoreRelations = ignoreRelations)
+                        val posAnnotations = posAnnotator.annotate(document!!)
+                        textView.annotations = (depAnnotations ?: emptyMap()) + (posAnnotations ?: emptyMap())
+                        textView.invalidate()
+                    } catch (e: Exception) {
+                        handleException(e)
+                    }
                 }
             }
         }

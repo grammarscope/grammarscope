@@ -173,6 +173,10 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
         makeSnackbar(this, contentView, message, backColorAttr = AppCompatR.attr.colorError, foreColorAttr = MaterialR.attr.colorOnError).show()
     }
 
+    protected fun handleException(e: Exception) {
+        warn(e.message.toString())
+    }
+
     companion object {
 
         private const val TAG = "ParseActivity"

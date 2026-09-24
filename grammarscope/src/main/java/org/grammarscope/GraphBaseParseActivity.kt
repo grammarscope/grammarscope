@@ -83,7 +83,11 @@ abstract class GraphBaseParseActivity<V : Token, E : Label, G> : BaseParseActivi
         }
         Log.d(TAG, "Parse run on '$source'")
         lifecycleScope.launch {
-            makeParse().runAndCallback(Dispatchers.Default, source)
+            try {
+                makeParse().runAndCallback(Dispatchers.Default, source)
+            } catch (e: Exception) {
+                handleException(e)
+            }
         }
     }
 
