@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 /*
  * Copyright (c) 2020. Bernard Bou <1313ou@gmail.com>.
  */
