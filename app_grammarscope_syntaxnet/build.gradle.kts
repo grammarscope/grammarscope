@@ -142,8 +142,6 @@ kotlin {
     }
 }
 
-val premiumImplementation by configurations
-
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
@@ -168,8 +166,8 @@ dependencies {
     implementation(libs.material) // strictly not a dependency but for layout resources validation
     implementation(libs.test)
 
-    premiumImplementation(project(":text_getter")) // strictly not a dependency but for manifest validation
-    premiumImplementation(libs.text.recognition)
+    "premiumImplementation"(project(":text_getter")) // strictly not a dependency but for manifest validation
+    "premiumImplementation"(libs.text.recognition)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit)

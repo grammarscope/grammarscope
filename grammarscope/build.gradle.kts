@@ -55,8 +55,6 @@ kotlin {
     }
 }
 
-val premiumImplementation by configurations
-
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
@@ -102,5 +100,5 @@ dependencies {
     implementation(libs.jung.glue.event)
     implementation(libs.jung.glue.visualization)
 
-    premiumImplementation(project(":text_getter"))
+    "premiumImplementation"(project(":text_getter"))
 }
