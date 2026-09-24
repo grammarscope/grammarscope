@@ -3,7 +3,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Properties
 
-val buildTime = SimpleDateFormat("yyyy-MM-dd_HH:mm").format(Date())
+val buildTime: String = SimpleDateFormat("yyyy-MM-dd_HH:mm").format(Date())
 
 fun getGitHash(workingDir: File = File(".")): String? {
     return try {
