@@ -9,6 +9,7 @@ android {
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
 
+        @Suppress("UnstableApiUsage")
         externalNativeBuild {
             cmake {
                 cppFlags("-frtti -fexceptions")
