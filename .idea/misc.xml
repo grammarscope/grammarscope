@@ -1581,6 +1581,7 @@
     <pattern value="com.bbou.coroutines.task.MyTaskTests" method="withCallbacksTaskCancelTest" />
     <pattern value="com.bbou.coroutines.task.MyTaskTests" method="withCallBacksTaskRepeatTest" />
     <pattern value="com.bbou.coroutines.task.MyTaskTests" method="withCallbacksTaskTest" />
+    <pattern value="org.grammarscope.Matchers" method="checkboxWithMenuItem" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="NullableNotNullManager">
