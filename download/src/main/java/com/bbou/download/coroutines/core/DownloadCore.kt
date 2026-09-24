@@ -255,7 +255,6 @@ open class DownloadCore(private val progressEmitter: ProgressEmitter<Pair<Long, 
             yield()
         }
         @Suppress("BlockingMethodInNonBlockingContext")
-        @Suppress("BlockingMethodInNonBlockingContext")
         os.flush()
     }
 
