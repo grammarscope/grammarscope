@@ -40,7 +40,9 @@ internal class MD5Downloader : BaseTask<MD5Downloader.Params, String?>() {
             // connect
             val url = URL(md5Arg)
             Log.d(TAG, "Getting $url")
+            @Suppress("BlockingMethodInNonBlockingContext")
             val connection = url.openConnection()
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.connect()
 
             // expect HTTP 200 OK, so we don't mistakenly save error report instead of the file
@@ -51,6 +53,7 @@ internal class MD5Downloader : BaseTask<MD5Downloader.Params, String?>() {
                     throw RuntimeException(message)
                 }
             }
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.getInputStream().use { `is` ->
                 InputStreamReader(`is`).use { isr ->
                     BufferedReader(isr).use { reader ->

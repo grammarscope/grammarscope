@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2023. Bernard Bou <1313ou@gmail.com>.
  */
+
 package com.bbou.download.coroutines.utils
 
 import android.annotation.SuppressLint
@@ -51,7 +52,9 @@ class ContentDownloader : BaseTask<String, Array<String>?>() {
             // connect
             val url = URL(params)
             Log.d(TAG, "Getting $url")
+            @Suppress("BlockingMethodInNonBlockingContext")
             val connection = url.openConnection()
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.connect()
 
             // expect HTTP 200 OK, so we don't mistakenly save error report instead of the file
@@ -61,6 +64,7 @@ class ContentDownloader : BaseTask<String, Array<String>?>() {
                     throw RuntimeException(message)
                 }
             }
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.getInputStream().use { input ->
                 InputStreamReader(input).use { isr ->
                     BufferedReader(isr).use { reader ->

@@ -235,6 +235,7 @@ open class DownloadCore(private val progressEmitter: ProgressEmitter<Pair<Long, 
         var downloaded: Long = 0
         var chunks = 0
         var count: Int
+        @Suppress("BlockingMethodInNonBlockingContext")
         while (`is`.read(buffer).also { count = it } != -1) {
             downloaded += count.toLong()
 
@@ -253,6 +254,8 @@ open class DownloadCore(private val progressEmitter: ProgressEmitter<Pair<Long, 
             // coroutine cooperation
             yield()
         }
+        @Suppress("BlockingMethodInNonBlockingContext")
+        @Suppress("BlockingMethodInNonBlockingContext")
         os.flush()
     }
 

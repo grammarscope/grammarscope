@@ -51,7 +51,9 @@ class ResourcesDownloader : BaseTask<ResourcesDownloader.Params, Collection<Arra
             // connect
             val url = URL(params.resourcesUrl)
             Log.d(TAG, "Get $url")
+            @Suppress("BlockingMethodInNonBlockingContext")
             val connection = url.openConnection()
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.connect()
 
             // expect HTTP 200 OK, so we don't mistakenly save error report instead of the file
@@ -62,6 +64,7 @@ class ResourcesDownloader : BaseTask<ResourcesDownloader.Params, Collection<Arra
                     throw RuntimeException(message)
                 }
             }
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.getInputStream().use { `is` ->
                 InputStreamReader(`is`).use { isr ->
                     BufferedReader(isr).use { reader ->

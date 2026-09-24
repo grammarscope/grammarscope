@@ -34,6 +34,7 @@ class FileDataDownloader : BaseTask<String, FileData?>() {
             Log.d(TAG, "Getting $url")
 
             // connection
+            @Suppress("BlockingMethodInNonBlockingContext")
             var connection = url.openConnection()
 
             // handle redirect
@@ -55,12 +56,14 @@ class FileDataDownloader : BaseTask<String, FileData?>() {
                     val newUrl = httpConnection.getHeaderField("Location")
 
                     // close
+                    @Suppress("BlockingMethodInNonBlockingContext")
                     httpConnection.inputStream.close()
 
                     // disconnect
                     httpConnection.disconnect()
 
                     // open the new connection again
+                    @Suppress("BlockingMethodInNonBlockingContext")
                     httpConnection = URL(newUrl).openConnection() as HttpURLConnection
                     connection = httpConnection
                     httpConnection.instanceFollowRedirects = true
@@ -70,6 +73,7 @@ class FileDataDownloader : BaseTask<String, FileData?>() {
             }
 
             // connect
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.connect()
 
             // expect HTTP 200 OK, so we don't mistakenly save error report instead of the file
@@ -97,6 +101,7 @@ class FileDataDownloader : BaseTask<String, FileData?>() {
             }
 
             // close
+            @Suppress("BlockingMethodInNonBlockingContext")
             connection.getInputStream().close()
             return FileData(name, date, size, etag, version, staticVersion)
         } catch (e: Exception) {

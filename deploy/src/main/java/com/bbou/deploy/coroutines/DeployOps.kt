@@ -49,6 +49,7 @@ object DeployOps {
         val sourceFile = File(srcFile)
         val length = sourceFile.length()
         try {
+            @Suppress("BlockingMethodInNonBlockingContext")
             FileInputStream(srcFile).use { `is` ->
                 FileOutputStream(destFile).use { os ->
                     val buffer = ByteArray(CHUNK_SIZE)
@@ -138,6 +139,7 @@ object DeployOps {
     suspend fun copyFromUrl(srcUrl: URL, destFile: String, progressEmitter: ProgressEmitter<Pair<Number, Number>>, progressRate: Int): Boolean {
         Log.d(TAG, "Copying from $srcUrl to $destFile")
         try {
+            @Suppress("BlockingMethodInNonBlockingContext")
             srcUrl.openStream().use { `is` ->
                 FileOutputStream(destFile).use { os ->
                     val buffer = ByteArray(CHUNK_SIZE)
@@ -188,6 +190,7 @@ object DeployOps {
         val dirPath = File(destDir).canonicalPath
 
         try {
+            @Suppress("BlockingMethodInNonBlockingContext")
             ZipFile(srcArchive).use { zipFile ->
                 val zipEntries = zipFile.entries()
                 while (zipEntries.hasMoreElements()) {
@@ -359,6 +362,7 @@ object DeployOps {
         val dirPath = File(destDir).canonicalPath
 
         try {
+            @Suppress("BlockingMethodInNonBlockingContext")
             srcUrl.openStream().use { `is` ->
                 ZipInputStream(`is`).use { zis ->
                     generateSequence { zis.nextEntry }
@@ -440,6 +444,7 @@ object DeployOps {
     suspend fun unzipEntryFromArchiveFile(srcArchive: String, srcEntry: String, destFile: String, progressEmitter: ProgressEmitter<Pair<Number, Number>>, progressRate: Int): Boolean {
         Log.d(TAG, "Expanding from $srcArchive (entry $srcEntry) to $destFile")
         try {
+            @Suppress("BlockingMethodInNonBlockingContext")
             ZipFile(srcArchive).use { zipFile ->
                 // entry
                 val zipEntry = zipFile.getEntry(srcEntry) ?: throw IOException("Zip entry not found $srcEntry")
@@ -598,6 +603,7 @@ object DeployOps {
     suspend fun unzipEntryFromArchiveUrl(srcUrl: URL, srcEntry: String, destFile: String, progressEmitter: ProgressEmitter<Pair<Number, Number>>, progressRate: Int): Boolean {
         Log.d(TAG, "Expanding from $srcUrl (entry $srcEntry) to $destFile")
         try {
+            @Suppress("BlockingMethodInNonBlockingContext")
             srcUrl.openStream().use { `is` ->
                 ZipInputStream(`is`).use { zis ->
                     generateSequence { zis.nextEntry }
@@ -682,6 +688,7 @@ object DeployOps {
             val md = MessageDigest.getInstance("MD5")
             val sourceFile = File(srcFile)
             val length = sourceFile.length()
+            @Suppress("BlockingMethodInNonBlockingContext")
             FileInputStream(srcFile).use { fis ->
                 DigestInputStream(fis, md).use { dis ->
                     val buffer = ByteArray(CHUNK_SIZE)
@@ -775,6 +782,7 @@ object DeployOps {
         Log.d(TAG, "Md5 uri $url")
         try {
             val md = MessageDigest.getInstance("MD5")
+            @Suppress("BlockingMethodInNonBlockingContext")
             url.openStream().use { `is` ->
                 DigestInputStream(`is`, md).use { dis ->
                     val buffer = ByteArray(CHUNK_SIZE)
