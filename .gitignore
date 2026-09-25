@@ -35,8 +35,7 @@ app_grammarscope_syntaxnet/src/main/res/values/strings_license-nontranslatable.x
 app_grammarscope_udpipe/src/main/res/values/strings_license-nontranslatable.xml
 app_mysyntaxnet/src/main/res/values/strings_license-nontranslatable.xml
 
-**/keystore.properties
-**/keystore_upload.properties
+**/keystore*
 **/androidpublisher.dat
 **/client_secrets.json
 

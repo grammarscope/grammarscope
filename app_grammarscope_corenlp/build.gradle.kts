@@ -31,7 +31,7 @@ plugins {
     alias(libs.plugins.googleServices)
 }
 
-val keystoreProperties = getProps(rootProject.file("keystore_upload.properties"))
+val keystoreProperties = getProps(rootProject.file("keystore_corenlp.properties"))
 
 android {
 
@@ -73,7 +73,7 @@ android {
     }
 
     signingConfigs {
-        create("upload") {
+        create("release") {
             keyAlias = keystoreProperties.getProperty("keyAlias")
             keyPassword = keystoreProperties.getProperty("keyPassword")
             storeFile = file(keystoreProperties.getProperty("storeFile"))
@@ -96,7 +96,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName("upload")
+            signingConfig = signingConfigs.getByName("release")
             versionNameSuffix = "signed"
         }
     }

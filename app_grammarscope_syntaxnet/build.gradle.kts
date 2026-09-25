@@ -31,7 +31,7 @@ plugins {
     alias(libs.plugins.googleServices)
 }
 
-val keystoreProperties = getProps(rootProject.file("keystore.properties"))
+val keystoreProperties = getProps(rootProject.file("keystore_syntaxnet.properties"))
 
 android {
 
@@ -73,7 +73,7 @@ android {
     }
 
     signingConfigs {
-        create("mysyntaxnet") {
+        create("release") {
             keyAlias = keystoreProperties.getProperty("keyAlias")
             keyPassword = keystoreProperties.getProperty("keyPassword")
             storeFile = file(keystoreProperties.getProperty("storeFile"))
@@ -90,13 +90,13 @@ android {
         getByName("debug") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName("mysyntaxnet")
+            signingConfig = signingConfigs.getByName("debug")
         }
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName("mysyntaxnet")
+            signingConfig = signingConfigs.getByName("release")
             versionNameSuffix = "signed"
         }
     }
