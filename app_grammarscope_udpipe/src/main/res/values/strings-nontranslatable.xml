@@ -17,7 +17,9 @@
 	<!-- labels: use default -->
 
 	<!-- download -->
-	<string name="default_download_repo" translatable="false" tools:keep="@string/default_download_repo">https://sourceforge.net/projects/grammarscope-udpipe/files/current</string>
+	<string name="sourceforge_site_url" translatable="false">https://sourceforge.net/projects/grammarscope-udpipe/files/current</string>
+	<string name="huggingface_site_url" translatable="false">https://huggingface.co/buckets/grammarscope/udpipe/resolve</string>
+	<string name="default_download_repo" translatable="false" tools:keep="@string/default_download_repo">@string/huggingface_site_url</string>
 
 	<!-- model files -->
 	<string-array name="core_model_files" translatable="false" tools:keep="@array/core_model_files">
