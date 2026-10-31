@@ -5,7 +5,7 @@ import org.depparse.Sentence
 object JNI {
 
     fun init() {
-        System.loadLibrary("udpipe_inference")
+        System.loadLibrary("udpipe_inference_android")
         System.loadLibrary("udpipe_jni")
     }
 

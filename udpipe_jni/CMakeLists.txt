@@ -49,17 +49,17 @@ find_library(
         log       # the name of the NDK library that CMake is to locate.
 )
 
-add_library(udpipe_inference SHARED IMPORTED)
-set_target_properties(udpipe_inference PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libudpipe_inference.so)
-#set_target_properties(udpipe_inference PROPERTIES IMPORTED_NO_SONAME 1)
-set_property(TARGET udpipe_inference PROPERTY IMPORTED_NO_SONAME 1)
+add_library(udpipe_inference_android SHARED IMPORTED)
+set_target_properties(udpipe_inference_android PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libudpipe_inference_android.so)
+#set_target_properties(udpipe_inference_android PROPERTIES IMPORTED_NO_SONAME 1)
+set_property(TARGET udpipe_inference_android PROPERTY IMPORTED_NO_SONAME 1)
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 target_link_libraries(
         udpipe_jni         # the target library.
-        udpipe_inference      # the imported library to link to.
+        udpipe_inference_android      # the imported library to link to.
         android
         log
         m
