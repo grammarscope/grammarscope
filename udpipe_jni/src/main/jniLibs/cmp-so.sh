@@ -22,7 +22,7 @@ export W=$WHITE
 export Z=$RESET
 
 archs="x86_64 x86 armeabi-v7a arm64-v8a"
-base=libudpipe_inference.so
+base=libudpipe_inference_android.so
 where=../../../../../libs
 where=`readlink -m ${where}`
 echo "Source dir is ${where}"
