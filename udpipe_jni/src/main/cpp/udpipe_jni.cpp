@@ -3,12 +3,12 @@
  * 1313ou@gmail.com */
 
 #include <jni.h>
+
 #include <string>
 #include <vector>
-#include <iostream>
 #include <unistd.h>
 #include <codecvt>
-#include <locale>
+#include <cwchar>
 
 #include <android/log.h>
 
@@ -23,12 +23,13 @@
 
 using namespace std;
 
-const char kIllegalStateException[] = "java/lang/IllegalStateException";
+constexpr char kIllegalStateException[] = "java/lang/IllegalStateException";
 
-const char sentenceClass[] = "org/depparse/Sentence";
-const char tokenClass[] = "org/depparse/Token";
-const char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;Ljava/lang/String;)V";
-const char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)V";
+constexpr char sentenceClass[] = "org/depparse/Sentence";
+constexpr char tokenClass[] = "org/depparse/Token";
+constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;Ljava/lang/String;)V";
+constexpr char tokenCtor[] =
+    "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)V";
 
 // C H E C K   H E L P E R S
 
@@ -39,9 +40,11 @@ const char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/St
  * @param t object to check
  * @return object
  */
-template<typename T>
-T CheckNotNull(JNIEnv *env, T &&t) {
-    if (t == nullptr) {
+template <typename T>
+T CheckNotNull(JNIEnv* env, T&& t)
+{
+    if (t == nullptr)
+    {
         env->ThrowNew(env->FindClass(kIllegalStateException), "");
         return nullptr;
     }
@@ -50,13 +53,55 @@ T CheckNotNull(JNIEnv *env, T &&t) {
 
 // T O   C H A R   I N D E X   H E L P E R
 
+inline std::wstring Utf8ToWstring(const std::string& text)
+{
+    std::wstring result;
+    std::mbstate_t state = {};
+    const char* ptr = text.data();
+    const char* end = text.data() + text.size();
+
+    wchar_t wc;
+    while (ptr < end)
+    {
+        size_t n = std::mbrtowc(&wc, ptr, end - ptr, &state);
+
+        if (n == 0)
+        {
+            // Null character encountered
+            result.push_back(L'\0');
+            ptr += 1;
+        }
+        else if (n == static_cast<size_t>(-1) || n == static_cast<size_t>(-2))
+        {
+            // Invalid sequence or incomplete character; skip or handle error
+            break;
+        }
+        else
+        {
+            result.push_back(wc);
+            ptr += n;
+        }
+    }
+    return result;
+}
+
+size_t GetUtf8ByteCount(char32_t cp)
+{
+    if (cp <= 0x7F) return 1; // 1-byte UTF-8 sequence (ASCII)
+    else if (cp <= 0x7FF) return 2; // 2-byte UTF-8 sequence
+    else if (cp <= 0xFFFF) return 3; // 3-byte UTF-8 sequence
+    else if (cp <= 0x10FFFF) return 4; // 4-byte UTF-8 sequence
+    return 0; // Invalid code point
+}
+
 /**
  * Creates a mapping from UTF-8 byte positions to character indices.
  *
  * @param text The UTF-8 encoded string to process
  * @return A vector where each index represents a byte position, and the value is the corresponding character index
  */
-vector<int> getCharIndices(const string &text) {
+vector<int> getCharIndices(const string& text)
+{
     // Get the byte size of the UTF-8 string
     size_t byteSize = text.size();
 
@@ -64,21 +109,22 @@ vector<int> getCharIndices(const string &text) {
     vector<int> byteToCharIndex(byteSize + 1);
 
     // Convert to wstring to work with Unicode code points properly
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    wstring wideText = converter.from_bytes(text);
+    wstring wideText = Utf8ToWstring(text);
 
     // Iterate through each Unicode character
     size_t bytePos = 0;
-    for (size_t i = 0; i < wideText.size(); ++i) {
+    for (size_t i = 0; i < wideText.size(); ++i)
+    {
         wchar_t ch = wideText[i];
 
         // Convert this single character back to UTF-8 to get its byte count
-        string charBytes = converter.to_bytes(ch);
-        size_t charByteCount = charBytes.size();
+        size_t charByteCount = GetUtf8ByteCount(ch);
 
         // Fill in the byte-to-char mapping for each byte in this character
-        for (size_t j = 0; j < charByteCount; ++j) {
-            if (bytePos + j < byteToCharIndex.size()) {
+        for (size_t j = 0; j < charByteCount; ++j)
+        {
+            if (bytePos + j < byteToCharIndex.size())
+            {
                 byteToCharIndex[bytePos + j] = static_cast<int>(i);
             }
         }
@@ -86,7 +132,8 @@ vector<int> getCharIndices(const string &text) {
     }
 
     // Set the final position
-    if (bytePos < byteToCharIndex.size()) {
+    if (bytePos < byteToCharIndex.size())
+    {
         byteToCharIndex[bytePos] = static_cast<int>(wideText.size());
     }
 
@@ -95,10 +142,12 @@ vector<int> getCharIndices(const string &text) {
 
 // S P L I T
 
-void split(const string &s, const char c, vector<string> &v) {
+void split(const string& s, const char c, vector<string>& v)
+{
     string::size_type i = 0;
     string::size_type j = s.find(c);
-    while (j != string::npos) {
+    while (j != string::npos)
+    {
         v.push_back(s.substr(i, j - i));
         i = ++j;
         j = s.find(c, j);
@@ -110,20 +159,23 @@ void split(const string &s, const char c, vector<string> &v) {
 // F R O M   J A V A
 
 extern
-vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array) {
+vector<string> jniStringArrayToVector(JNIEnv* env, jobjectArray string_array)
+{
     int count = env->GetArrayLength(string_array);
     vector<string> result;
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
+    {
         auto jstr = reinterpret_cast<jstring>(env->GetObjectArrayElement(string_array, i));
-        const char *raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
+        const char* raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
         result.emplace_back(raw_str);
         env->ReleaseStringUTFChars(jstr, raw_str);
     }
     return result;
 }
 
-string jniStringToString(JNIEnv *env, jstring jstr) {
-    const char *raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
+string jniStringToString(JNIEnv* env, jstring jstr)
+{
+    const char* raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
     string result(raw_str);
     env->ReleaseStringUTFChars(jstr, raw_str);
     return result;
@@ -149,20 +201,21 @@ string jniStringToString(JNIEnv *env, jstring jstr) {
  */
 jobject
 toJavaSentence(
-        JNIEnv *env,
-        const sentence_t &parsed_sentence,
-        int sentenceIndex,
-        jclass sentence_class,
-        jmethodID sentence_ctor,
-        jclass token_class,
-        jmethodID token_ctor) {
-
-    int nTokens = (int) parsed_sentence.size();
+    JNIEnv* env,
+    const sentence_t& parsed_sentence,
+    int sentenceIndex,
+    jclass sentence_class,
+    jmethodID sentence_ctor,
+    jclass token_class,
+    jmethodID token_ctor)
+{
+    int nTokens = static_cast<int>(parsed_sentence.size());
 
     // make java array of tokens Token[] to be field of Sentence class and return back to Java
 
     jobjectArray jtoken_array = CheckNotNull(env, env->NewObjectArray(nTokens - 1, token_class, nullptr));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck())
+    {
         return nullptr;
     }
 
@@ -170,117 +223,125 @@ toJavaSentence(
 
     // Sentence text as token[0] (text as token[0]["text"], docid as token[0]["docid"]
 
-    const token_t &token0 = parsed_sentence[0];
+    const token_t& token0 = parsed_sentence[0];
 
-    const string &text = token0.at("text");
+    const string& text = token0.at("text");
     const vector<int> toCharIndices = getCharIndices(text);
 
     auto it0 = token0.find("docid");
-    const string &docid = it0 != token0.end() ? it0->second : "";
+    const string& docid = it0 != token0.end() ? it0->second : "";
 
     it0 = token0.find("start");
-    const string &s_start = it0 != token0.end() ? it0->second : "-1";
-    int s_istart = strtol(s_start.c_str(), nullptr, 10);
+    const string& s_start = it0 != token0.end() ? it0->second : "-1";
+    int s_istart = static_cast<int>(strtol(s_start.c_str(), nullptr, 10));
     if (s_istart != -1)
         s_istart = toCharIndices[s_istart];
 
     it0 = token0.find("end");
-    const string &s_end = it0 != token0.end() ? it0->second : "-1";
-    int s_iend = strtol(s_end.c_str(), nullptr, 10);
+    const string& s_end = it0 != token0.end() ? it0->second : "-1";
+    int s_iend = static_cast<int>(strtol(s_end.c_str(), nullptr, 10));
     if (s_iend != -1)
         s_iend = toCharIndices[s_iend];
 
     // Tokens
 
-    for (int j = 1; j < nTokens; j++) {
-
+    for (int j = 1; j < nTokens; j++)
+    {
         // collect token data
 
-        const token_t &token = parsed_sentence[j];
+        const token_t& token = parsed_sentence[j];
 
-        const string &word = token.at("word");
+        const string& word = token.at("word");
 
         auto it = token.find("category");
-        const string &category = it != token.end() ? it->second : "";
+        const string& category = it != token.end() ? it->second : "";
 
         string tag;
         it = token.find("upostag");
-        const string &upostag = it != token.end() ? it->second : "";
-        if (!upostag.empty()) {
+        const string& upostag = it != token.end() ? it->second : "";
+        if (!upostag.empty())
+        {
             tag += "name: 'upostag' value: '";
             tag += upostag;
-            tag += "'";
+            tag += '\'';
         }
         it = token.find("xpostag");
-        const string &xpostag = it != token.end() ? it->second : "";
-        if (!xpostag.empty()) {
+        const string& xpostag = it != token.end() ? it->second : "";
+        if (!xpostag.empty())
+        {
             if (!tag.empty())
-                tag += " ";
+                tag += ' ';
             tag += "name: 'xpostag' value: '";
             tag += xpostag;
-            tag += "'";
+            tag += '\'';
         }
         it = token.find("lemma");
-        const string &lemma = it != token.end() ? it->second : "";
-        if (!lemma.empty()) {
+        const string& lemma = it != token.end() ? it->second : "";
+        if (!lemma.empty())
+        {
             if (!tag.empty())
-                tag += " ";
+                tag += ' ';
             tag += "name: 'lemma' value: '";
             tag += lemma;
-            tag += "'";
+            tag += '\'';
         }
         it = token.find("feats");
-        const string &feats = it != token.end() ? it->second : "";
-        if (!feats.empty()) {
+        const string& feats = it != token.end() ? it->second : "";
+        if (!feats.empty())
+        {
             if (!tag.empty())
-                tag += " ";
+                tag += ' ';
             //tag += "name: 'feats' value: '";
             //tag += feats;
             //tag += "'";
             vector<string> features;
             split(feats, '|', features);
-            for (const auto &feature: features) {
+            for (const auto& feature : features)
+            {
                 vector<string> name_value;
                 split(feature, '=', name_value);
-                if (name_value.size() == 2) {
-                    string &name = name_value[0];
-                    string &value = name_value[1];
+                if (name_value.size() == 2)
+                {
+                    string& name = name_value[0];
+                    string& value = name_value[1];
                     name[0] = static_cast<char>(tolower(name[0]));
                     tag += "name: '";
                     tag += name;
                     tag += "' value: '";
                     tag += value;
-                    tag += "'";
+                    tag += '\'';
                 }
             }
         }
 
         it = token.find("head");
-        const string &head = it != token.end() ? it->second : "-1";
+        const string& head = it != token.end() ? it->second : "-1";
 
         it = token.find("label");
-        const string &label = it != token.end() ? it->second : "";
+        const string& label = it != token.end() ? it->second : "";
 
         it = token.find("start");
-        const string &t_start = it != token.end() ? it->second : "-1";
+        const string& t_start = it != token.end() ? it->second : "-1";
 
         it = token.find("end");
-        const string &t_end = it != token.end() ? it->second : "-1";
+        const string& t_end = it != token.end() ? it->second : "-1";
 
         it = token.find("breaklevel");
-        const string &breaklevel = it != token.end() ? it->second : "-1";
+        const string& breaklevel = it != token.end() ? it->second : "-1";
 
         it = token.find("deps");
-        const string &deps = it != token.end() ? it->second : "";
+        const string& deps = it != token.end() ? it->second : "";
 
-        LOGD("Token #%d '%s' l=%s t=%s h=%s x=<%s>\n", j, word.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str());
+        LOGD("Token #%d '%s' l=%s t=%s h=%s x=<%s>\n", j, word.c_str(), label.c_str(), tag.c_str(), head.c_str(),
+             deps.c_str());
 
         // token constructor parameters
 
         jstring jword = CheckNotNull(env, env->NewStringUTF(word.c_str()));
-        int t_istart = strtol(t_start.c_str(), nullptr, 10);
-        int t_iend = strtol(t_end.c_str(), nullptr, 10) - 1;
-        if (j == 1 && t_istart != 0) {
+        int t_istart = static_cast<int>(strtol(t_start.c_str(), nullptr, 10));
+        int t_iend = static_cast<int>(strtol(t_end.c_str(), nullptr, 10)) - 1;
+        if (j == 1 && t_istart != 0)
+        {
             sentence_start = t_istart;
         }
         t_istart -= sentence_start;
@@ -292,10 +353,10 @@ toJavaSentence(
         jstring jcategory = CheckNotNull(env, env->NewStringUTF(category.c_str()));
         jstring jtag = CheckNotNull(env, env->NewStringUTF(tag.c_str()));
         jstring jlabel = CheckNotNull(env, env->NewStringUTF(label.c_str()));
-        int ihead = strtol(head.c_str(), nullptr, 10);
+        int ihead = static_cast<int>(strtol(head.c_str(), nullptr, 10));
         if (ihead > 0) // O-based
             ihead--;
-        int ibreaklevel = strtol(breaklevel.c_str(), nullptr, 10);
+        int ibreaklevel = static_cast<int>(strtol(breaklevel.c_str(), nullptr, 10));
         jstring jdeps = CheckNotNull(env, env->NewStringUTF(deps.c_str()));
 
         // make java token
@@ -307,8 +368,11 @@ toJavaSentence(
         // ihead: Int!!, possibly -1
         // jlabel: String!!, possibly ""
         // ibreaklevel: Int!!, possibly -1
-        jobject jtoken = CheckNotNull(env, env->NewObject(token_class, token_ctor, sentenceIndex, j - 1, jword, t_istart, t_iend, jcategory, jtag, ihead, jlabel, ibreaklevel, jdeps));
-        if (env->ExceptionCheck()) {
+        jobject jtoken = CheckNotNull(env, env->NewObject(token_class, token_ctor, sentenceIndex, j - 1, jword,
+                                                          t_istart, t_iend, jcategory, jtag, ihead, jlabel, ibreaklevel,
+                                                          jdeps));
+        if (env->ExceptionCheck())
+        {
             return nullptr;
         }
 
@@ -338,14 +402,16 @@ toJavaSentence(
  */
 jobjectArray
 toJavaSentences(
-        JNIEnv *env,
-        const vector<sentence_t> &parsed_sentences) {
-
+    JNIEnv* env,
+    const vector<sentence_t>& parsed_sentences)
+{
     // check
     int i = 0;
-    for (const auto &parsed_sentence: parsed_sentences) {
+    for (const auto& parsed_sentence : parsed_sentences)
+    {
         LOGD("Sentence #%d: %zu tokens\n", i++, parsed_sentence.size());
-        if (parsed_sentence.empty()) {
+        if (parsed_sentence.empty())
+        {
             env->ThrowNew(env->FindClass(kIllegalStateException), "No token in sentence");
             return nullptr;
         }
@@ -354,19 +420,23 @@ toJavaSentences(
     // classes and constructors
 
     jclass sentence_class = CheckNotNull(env, env->FindClass(sentenceClass));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck())
+    {
         return nullptr;
     }
     jmethodID sentence_ctor = CheckNotNull(env, env->GetMethodID(sentence_class, "<init>", sentenceCtor));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck())
+    {
         return nullptr;
     }
     jclass token_class = CheckNotNull(env, env->FindClass(tokenClass));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck())
+    {
         return nullptr;
     }
     jmethodID token_ctor = CheckNotNull(env, env->GetMethodID(token_class, "<init>", tokenCtor));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck())
+    {
         return nullptr;
     }
 
@@ -374,15 +444,18 @@ toJavaSentences(
 
     int n = static_cast<int>(parsed_sentences.size());
     jobjectArray sentence_array = CheckNotNull(env, env->NewObjectArray(n, sentence_class, nullptr));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck())
+    {
         return nullptr;
     }
 
     // fill Array<Sentence> to return back to Java
 
     i = 0;
-    for (const auto &parsed_sentence: parsed_sentences) {
-        jobject jsentence = toJavaSentence(env, parsed_sentence, i, sentence_class, sentence_ctor, token_class, token_ctor);
+    for (const auto& parsed_sentence : parsed_sentences)
+    {
+        jobject jsentence = toJavaSentence(env, parsed_sentence, i, sentence_class, sentence_ctor, token_class,
+                                           token_ctor);
         env->SetObjectArrayElement(sentence_array, i, jsentence);
         i++;
     }
@@ -401,11 +474,11 @@ string model_path;
 extern "C" JNIEXPORT
 jint
 JNICALL Java_org_udpipe_JNI_version(
-        JNIEnv *env,
-        jobject type) {
-
-    (void) env;
-    (void) type;
+    JNIEnv* env,
+    jobject type)
+{
+    (void)env;
+    (void)type;
     int version = udpipe_version();
     return version;
 }
@@ -416,10 +489,10 @@ JNICALL Java_org_udpipe_JNI_version(
 extern "C" JNIEXPORT
 jstring
 JNICALL Java_org_udpipe_JNI_modelPath(
-        JNIEnv *env,
-        jobject /* thiz */) {
-
-    const string &s = model_path;
+    JNIEnv* env,
+    jobject /* thiz */)
+{
+    const string& s = model_path;
     return env->NewStringUTF(s.c_str());
 }
 
@@ -431,11 +504,11 @@ JNICALL Java_org_udpipe_JNI_modelPath(
 extern "C" JNIEXPORT
 jlong
 JNICALL Java_org_udpipe_JNI_load(
-        JNIEnv *env,
-        jobject type,
-        jstring j_model_path) {
-
-    (void) type;
+    JNIEnv* env,
+    jobject type,
+    jstring j_model_path)
+{
+    (void)type;
     model_path = jniStringToString(env, j_model_path);
 
     long handle = udpipe_load_h(model_path.c_str());
@@ -448,12 +521,13 @@ JNICALL Java_org_udpipe_JNI_load(
 extern "C" JNIEXPORT
 void
 JNICALL Java_org_udpipe_JNI_unload(
-        JNIEnv *env,
-        jobject type,
-        jlong handle) {
-
-    (void) type;
-    if (handle == 0) {
+    JNIEnv* env,
+    jobject type,
+    jlong handle)
+{
+    (void)type;
+    if (handle == 0)
+    {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot free null handle");
         return;
     }
@@ -468,13 +542,14 @@ JNICALL Java_org_udpipe_JNI_unload(
 extern "C" JNIEXPORT
 jobjectArray
 JNICALL Java_org_udpipe_JNI_parse(
-        JNIEnv *env,
-        jobject type,
-        jlong handle,
-        jobjectArray input_texts) {
-
-    (void) type;
-    if (handle == 0) {
+    JNIEnv* env,
+    jobject type,
+    jlong handle,
+    jobjectArray input_texts)
+{
+    (void)type;
+    if (handle == 0)
+    {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
     }
