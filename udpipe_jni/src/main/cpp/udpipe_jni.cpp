@@ -12,6 +12,8 @@
 
 #include <android/log.h>
 
+#include "utf8.h"
+
 #include "udpipe/iface_h.h"
 
 #define LOG_TAG    "UDPIPE_JNI"
@@ -109,7 +111,10 @@ vector<int> getCharIndices(const string& text)
     vector<int> byteToCharIndex(byteSize + 1);
 
     // Convert to wstring to work with Unicode code points properly
-    wstring wideText = Utf8ToWstring(text);
+    // UTF-8 string to std::wstring (assuming wchar_t is 2 bytes on Windows, 4 bytes on Linux/macOS)
+    // Use utf8to16 if wchar_t / target expects UTF-16 (e.g., Windows API)   wstring wideText;
+    std::wstring wideText;
+    utf8::utf8to32(text.begin(), text.end(), back_inserter(wideText));
 
     // Iterate through each Unicode character
     size_t bytePos = 0;
@@ -118,7 +123,9 @@ vector<int> getCharIndices(const string& text)
         wchar_t ch = wideText[i];
 
         // Convert this single character back to UTF-8 to get its byte count
-        size_t charByteCount = GetUtf8ByteCount(ch);
+        string charBytes;
+        utf8::append(ch, std::back_inserter(charBytes));
+        size_t charByteCount = charBytes.size();
 
         // Fill in the byte-to-char mapping for each byte in this character
         for (size_t j = 0; j < charByteCount; ++j)

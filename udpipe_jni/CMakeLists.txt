@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_VERBOSE_MAKEFILE on)
 
 # Sets compile flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSTANDALONE_JNI_LIB -std=c++11 -fno-exceptions -fno-rtti -O2 -Wno-narrowing -fPIE")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSTANDALONE_JNI_LIB -std=c++11 -fexceptions -frtti -O2 -Wno-narrowing -fPIE")
 if (ANDROID_ABI MATCHES "^armeabi-v7a$")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfloat-abi=softfp -mfpu=neon")
 elseif (ANDROID_ABI MATCHES "^arm64-v8a")
