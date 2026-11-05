@@ -32,16 +32,8 @@ abstract class BaseParse<R>(private val consumer: Consumer<R?>) : BaseTaskWithCa
             // provider processing operation (parse) returns an array of (parsed) non-null sentences, or null if failure
             val sentences = provider.process(
                 inputs
-                .map { it.second }
-                .map { Normalizer.normalize(it, Normalizer.Form.NFD) }
-                .toTypedArray())
-
-//            val inputs = params
-//                .split("\n+".toRegex())
-//                .dropLastWhile { it.isEmpty() }
-//                .map { Normalizer.normalize(it, Normalizer.Form.NFD) }
-//                .toTypedArray()
-//            val sentences = provider.process(inputs)
+                    .map { it.second }
+                    .toTypedArray())
 
             // transforms this parse result to a result of type R, possibly null
             return toR(sentences)
