@@ -11,6 +11,7 @@ import android.graphics.Paint
 import android.graphics.Paint.FontMetrics
 import android.graphics.Rect
 import android.graphics.RectF
+import android.text.Layout
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.BackgroundColorSpan
@@ -315,26 +316,6 @@ fun TextView.modelToViewF(offset: Int): RectF {
 
     val line = layout.getLineForOffset(start)
     val baseline = layout.getLineBaseline(line)
-    val metrics: FontMetrics = paint.fontMetrics
-    val top = baseline + metrics.ascent + paddingTop //layout.getLineTop(line)
-    val bottom = baseline + metrics.descent + paddingTop // layout.getLineBottom(line)
-    val x = layout.getPrimaryHorizontal(offset)
-    val width = if (offset < text.length) {
-        layout.getPrimaryHorizontal(offset + 1) - x
-    } else {
-        // Handle the end of the text.
-        if (text.isNotEmpty()) {
-            // Get the previous character position.
-            val previousPos = offset - 1
-            val previousX = layout.getPrimaryHorizontal(previousPos)
-            x - previousX
-        } else {
-            // Handle empty text.
-            0F
-        }
-    }
-    val left = x + paddingLeft
-    val right = left + width
     val metrics = paint.fontMetrics
     val top = baseline + metrics.ascent + totalPaddingTop
     val bottom = baseline + metrics.descent + totalPaddingTop
