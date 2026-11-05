@@ -56,49 +56,6 @@ T CheckNotNull(JNIEnv* env, T&& t)
     return std::forward<T>(t);
 }
 
-// T O   C H A R   I N D E X   H E L P E R
-
-inline std::wstring Utf8ToWstring(const std::string& text)
-{
-    std::wstring result;
-    std::mbstate_t state = {};
-    const char* ptr = text.data();
-    const char* end = text.data() + text.size();
-
-    wchar_t wc;
-    while (ptr < end)
-    {
-        size_t n = std::mbrtowc(&wc, ptr, end - ptr, &state);
-
-        if (n == 0)
-        {
-            // Null character encountered
-            result.push_back(L'\0');
-            ptr += 1;
-        }
-        else if (n == static_cast<size_t>(-1) || n == static_cast<size_t>(-2))
-        {
-            // Invalid sequence or incomplete character; skip or handle error
-            break;
-        }
-        else
-        {
-            result.push_back(wc);
-            ptr += n;
-        }
-    }
-    return result;
-}
-
-size_t GetUtf8ByteCount(char32_t cp)
-{
-    if (cp <= 0x7F) return 1; // 1-byte UTF-8 sequence (ASCII)
-    else if (cp <= 0x7FF) return 2; // 2-byte UTF-8 sequence
-    else if (cp <= 0xFFFF) return 3; // 3-byte UTF-8 sequence
-    else if (cp <= 0x10FFFF) return 4; // 4-byte UTF-8 sequence
-    return 0; // Invalid code point
-}
-
 // S P L I T
 
 void split(const string& s, const char c, vector<string>& v)
