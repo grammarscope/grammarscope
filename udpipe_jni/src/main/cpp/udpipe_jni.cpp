@@ -11,6 +11,7 @@
 #include <cwchar>
 #include <iostream>
 #include <sstream>
+#include <regex>
 #include <iomanip>   // std::setfill, std::setw, std::hex  ← required
 
 #include <android/log.h>
@@ -34,7 +35,7 @@ constexpr char sentenceClass[] = "org/depparse/Sentence";
 constexpr char tokenClass[] = "org/depparse/Token";
 constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;Ljava/lang/String;)V";
 constexpr char tokenCtor[] =
-    "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)V";
+        "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)V";
 
 // C H E C K   H E L P E R S
 
@@ -45,11 +46,9 @@ constexpr char tokenCtor[] =
  * @param t object to check
  * @return object
  */
-template <typename T>
-T CheckNotNull(JNIEnv* env, T&& t)
-{
-    if (t == nullptr)
-    {
+template<typename T>
+T CheckNotNull(JNIEnv *env, T &&t) {
+    if (t == nullptr) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "");
         return nullptr;
     }
@@ -58,12 +57,10 @@ T CheckNotNull(JNIEnv* env, T&& t)
 
 // S P L I T
 
-void split(const string& s, const char c, vector<string>& v)
-{
+void split(const string &s, const char c, vector<string> &v) {
     string::size_type i = 0;
     string::size_type j = s.find(c);
-    while (j != string::npos)
-    {
+    while (j != string::npos) {
         v.push_back(s.substr(i, j - i));
         i = ++j;
         j = s.find(c, j);
@@ -73,7 +70,7 @@ void split(const string& s, const char c, vector<string>& v)
 }
 
 // Decode UTF-8 bytes into code points, then print each as hex
-string to_hex_codepoints(const std::string& s) {
+string to_hex_codepoints(const std::string &s) {
     std::ostringstream oss;
     oss << std::hex << std::setfill('0');
 
@@ -83,10 +80,22 @@ string to_hex_codepoints(const std::string& s) {
         char32_t cp;
         size_t len;
 
-        if      ((c & 0x80) == 0x00) { cp = c;          len = 1; } // 0xxxxxxx
-        else if ((c & 0xE0) == 0xC0) { cp = c & 0x1F;   len = 2; } // 110xxxxx
-        else if ((c & 0xF0) == 0xE0) { cp = c & 0x0F;   len = 3; } // 1110xxxx
-        else if ((c & 0xF8) == 0xF0) { cp = c & 0x07;   len = 4; } // 11110xxx
+        if ((c & 0x80) == 0x00) {
+            cp = c;
+            len = 1;
+        } // 0xxxxxxx
+        else if ((c & 0xE0) == 0xC0) {
+            cp = c & 0x1F;
+            len = 2;
+        } // 110xxxxx
+        else if ((c & 0xF0) == 0xE0) {
+            cp = c & 0x0F;
+            len = 3;
+        } // 1110xxxx
+        else if ((c & 0xF8) == 0xF0) {
+            cp = c & 0x07;
+            len = 4;
+        } // 11110xxx
         else { throw std::runtime_error("invalid UTF-8"); }
 
         for (size_t k = 1; k < len; ++k) {
@@ -106,26 +115,23 @@ string to_hex_codepoints(const std::string& s) {
 // F R O M   J A V A
 
 extern
-vector<string> jniStringArrayToVector(JNIEnv* env, jobjectArray string_array)
-{
+vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array) {
     int count = env->GetArrayLength(string_array);
     vector<string> result;
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++) {
         auto jstr = reinterpret_cast<jstring>(env->GetObjectArrayElement(string_array, i));
-        const char* raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
+        const char *raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
         result.emplace_back(raw_str);
         env->ReleaseStringUTFChars(jstr, raw_str);
 
         string hex = to_hex_codepoints(result[0]);
-        LOGD("Input %zu Codepoints cps = %s" , i,  hex.c_str());
+        LOGD("Input %zu Codepoints cps = %s", i, hex.c_str());
     }
     return result;
 }
 
-string jniStringToString(JNIEnv* env, jstring jstr)
-{
-    const char* raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
+string jniStringToString(JNIEnv *env, jstring jstr) {
+    const char *raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
     string result(raw_str);
     env->ReleaseStringUTFChars(jstr, raw_str);
     return result;
@@ -151,21 +157,19 @@ string jniStringToString(JNIEnv* env, jstring jstr)
  */
 jobject
 toJavaSentence(
-    JNIEnv* env,
-    const sentence_t& parsed_sentence,
-    int sentenceIndex,
-    jclass sentence_class,
-    jmethodID sentence_ctor,
-    jclass token_class,
-    jmethodID token_ctor)
-{
+        JNIEnv *env,
+        const sentence_t &parsed_sentence,
+        int sentenceIndex,
+        jclass sentence_class,
+        jmethodID sentence_ctor,
+        jclass token_class,
+        jmethodID token_ctor) {
     int nTokens = static_cast<int>(parsed_sentence.size());
 
     // make java array of tokens Token[] to be field of Sentence class and return back to Java
 
     jobjectArray jtoken_array = CheckNotNull(env, env->NewObjectArray(nTokens - 1, token_class, nullptr));
-    if (env->ExceptionCheck())
-    {
+    if (env->ExceptionCheck()) {
         return nullptr;
     }
 
@@ -173,47 +177,45 @@ toJavaSentence(
 
     // Sentence text as token[0] (text as token[0]["text"], docid as token[0]["docid"]
 
-    const token_t& token0 = parsed_sentence[0];
+    const token_t &token0 = parsed_sentence[0];
 
-    const string& text = token0.at("text");
+    const string &text = token0.at("text");
 
     auto it0 = token0.find("docid");
-    const string& docid = it0 != token0.end() ? it0->second : "";
+    const string &docid = it0 != token0.end() ? it0->second : "";
 
     it0 = token0.find("start");
-    const string& s_start = it0 != token0.end() ? it0->second : "-1";
+    const string &s_start = it0 != token0.end() ? it0->second : "-1";
     int s_istart = static_cast<int>(strtol(s_start.c_str(), nullptr, 10));
 
     it0 = token0.find("end");
-    const string& s_end = it0 != token0.end() ? it0->second : "-1";
+    const string &s_end = it0 != token0.end() ? it0->second : "-1";
     int s_iend = static_cast<int>(strtol(s_end.c_str(), nullptr, 10));
 
     // Tokens
 
-    for (int j = 1; j < nTokens; j++)
-    {
+    for (int j = 1; j < nTokens; j++) {
         // collect token data
 
-        const token_t& token = parsed_sentence[j];
+        const token_t &token = parsed_sentence[j];
 
-        const string& word = token.at("word");
+        auto it = token.find("word");
+        const string &word = it != token.end() ? it->second : "";
 
-        auto it = token.find("category");
-        const string& category = it != token.end() ? it->second : "";
+        it = token.find("category");
+        const string &category = it != token.end() ? it->second : "";
 
         string tag;
         it = token.find("upostag");
-        const string& upostag = it != token.end() ? it->second : "";
-        if (!upostag.empty())
-        {
+        const string &upostag = it != token.end() ? it->second : "";
+        if (!upostag.empty()) {
             tag += "name: 'upostag' value: '";
             tag += upostag;
             tag += '\'';
         }
         it = token.find("xpostag");
-        const string& xpostag = it != token.end() ? it->second : "";
-        if (!xpostag.empty())
-        {
+        const string &xpostag = it != token.end() ? it->second : "";
+        if (!xpostag.empty()) {
             if (!tag.empty())
                 tag += ' ';
             tag += "name: 'xpostag' value: '";
@@ -221,9 +223,8 @@ toJavaSentence(
             tag += '\'';
         }
         it = token.find("lemma");
-        const string& lemma = it != token.end() ? it->second : "";
-        if (!lemma.empty())
-        {
+        const string &lemma = it != token.end() ? it->second : "";
+        if (!lemma.empty()) {
             if (!tag.empty())
                 tag += ' ';
             tag += "name: 'lemma' value: '";
@@ -231,9 +232,8 @@ toJavaSentence(
             tag += '\'';
         }
         it = token.find("feats");
-        const string& feats = it != token.end() ? it->second : "";
-        if (!feats.empty())
-        {
+        const string &feats = it != token.end() ? it->second : "";
+        if (!feats.empty()) {
             if (!tag.empty())
                 tag += ' ';
             //tag += "name: 'feats' value: '";
@@ -241,14 +241,12 @@ toJavaSentence(
             //tag += "'";
             vector<string> features;
             split(feats, '|', features);
-            for (const auto& feature : features)
-            {
+            for (const auto &feature: features) {
                 vector<string> name_value;
                 split(feature, '=', name_value);
-                if (name_value.size() == 2)
-                {
-                    string& name = name_value[0];
-                    string& value = name_value[1];
+                if (name_value.size() == 2) {
+                    string &name = name_value[0];
+                    string &value = name_value[1];
                     name[0] = static_cast<char>(tolower(name[0]));
                     tag += "name: '";
                     tag += name;
@@ -260,34 +258,56 @@ toJavaSentence(
         }
 
         it = token.find("head");
-        const string& head = it != token.end() ? it->second : "-1";
+        const string &head = it != token.end() ? it->second : "-1";
 
         it = token.find("label");
-        const string& label = it != token.end() ? it->second : "";
+        const string &label = it != token.end() ? it->second : "";
 
         it = token.find("start");
-        const string& t_start = it != token.end() ? it->second : "-1";
+        const string &t_start = it != token.end() ? it->second : "-1";
 
         it = token.find("end");
-        const string& t_end = it != token.end() ? it->second : "-1";
+        const string &t_end = it != token.end() ? it->second : "-1";
+
+        // mwt
+        if (t_start == "-1" || t_end == "-1") {
+            it = token.find("mwt_first");
+            const string &mwt_first = it != token.end() ? it->second : "-1";
+            it = token.find("mwt_last");
+            const string &mwt_last = it != token.end() ? it->second : "-1";
+            it = token.find("mwt_form");
+            const string &mwt_form = it != token.end() ? it->second : "";
+            it = token.find("mwt_misc");
+            const string &mwt_misc = it != token.end() ? it->second : "-1,-1";
+
+            std::regex pattern(R"(TokenRange=(\d+):(\d+))");
+            std::smatch matches;
+            // Use std::regex_search if the pattern is embedded in a larger string, or std::regex_match if the entire string must match the pattern.
+            if (std::regex_search(mwt_misc, matches, pattern)) {
+                // matches[0] contains the entire matched string ("TokenRange:10,25")
+                // matches[1] contains the first capture group (start)
+                // matches[2] contains the second capture group (end)
+                string start_str = matches[1].str();
+                string end_str = matches[2].str();
+            }
+        }
 
         it = token.find("breaklevel");
-        const string& breaklevel = it != token.end() ? it->second : "-1";
+        const string &breaklevel = it != token.end() ? it->second : "-1";
 
         it = token.find("deps");
-        const string& deps = it != token.end() ? it->second : "";
+        const string &deps = it != token.end() ? it->second : "";
 
-        LOGD("Token #%d '%s' l=%s t=%s h=%s x=<%s>\n", j, word.c_str(), label.c_str(), tag.c_str(), head.c_str(),
-             deps.c_str());
-        // LOGD("Token #%d '%s' [%s-%s] label=%s tag=%s head=%s\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str());
+        LOGD("Token #%d '%s' [%s-%s] label=%s tag=%s head=%s x=<%s>\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str());
 
         // token constructor parameters
 
         jstring jword = CheckNotNull(env, env->NewStringUTF(word.c_str()));
         int t_istart = static_cast<int>(strtol(t_start.c_str(), nullptr, 10));
-        int t_iend = static_cast<int>(strtol(t_end.c_str(), nullptr, 10)) - 1;
-        if (j == 1 && t_istart != 0)
-        {
+        int t_iend = static_cast<int>(strtol(t_end.c_str(), nullptr, 10));
+        if (t_iend != -1)
+            t_iend--;
+        if (j == 1 && t_istart != 0) {
             sentence_start = t_istart;
         }
         t_istart -= sentence_start;
@@ -313,8 +333,7 @@ toJavaSentence(
         jobject jtoken = CheckNotNull(env, env->NewObject(token_class, token_ctor, sentenceIndex, j - 1, jword,
                                                           t_istart, t_iend, jcategory, jtag, ihead, jlabel, ibreaklevel,
                                                           jdeps));
-        if (env->ExceptionCheck())
-        {
+        if (env->ExceptionCheck()) {
             return nullptr;
         }
 
@@ -344,16 +363,13 @@ toJavaSentence(
  */
 jobjectArray
 toJavaSentences(
-    JNIEnv* env,
-    const vector<sentence_t>& parsed_sentences)
-{
+        JNIEnv *env,
+        const vector<sentence_t> &parsed_sentences) {
     // check
     int i = 0;
-    for (const auto& parsed_sentence : parsed_sentences)
-    {
+    for (const auto &parsed_sentence: parsed_sentences) {
         LOGD("Sentence #%d: %zu tokens\n", i++, parsed_sentence.size());
-        if (parsed_sentence.empty())
-        {
+        if (parsed_sentence.empty()) {
             env->ThrowNew(env->FindClass(kIllegalStateException), "No token in sentence");
             return nullptr;
         }
@@ -362,23 +378,19 @@ toJavaSentences(
     // classes and constructors
 
     jclass sentence_class = CheckNotNull(env, env->FindClass(sentenceClass));
-    if (env->ExceptionCheck())
-    {
+    if (env->ExceptionCheck()) {
         return nullptr;
     }
     jmethodID sentence_ctor = CheckNotNull(env, env->GetMethodID(sentence_class, "<init>", sentenceCtor));
-    if (env->ExceptionCheck())
-    {
+    if (env->ExceptionCheck()) {
         return nullptr;
     }
     jclass token_class = CheckNotNull(env, env->FindClass(tokenClass));
-    if (env->ExceptionCheck())
-    {
+    if (env->ExceptionCheck()) {
         return nullptr;
     }
     jmethodID token_ctor = CheckNotNull(env, env->GetMethodID(token_class, "<init>", tokenCtor));
-    if (env->ExceptionCheck())
-    {
+    if (env->ExceptionCheck()) {
         return nullptr;
     }
 
@@ -386,16 +398,14 @@ toJavaSentences(
 
     int n = static_cast<int>(parsed_sentences.size());
     jobjectArray sentence_array = CheckNotNull(env, env->NewObjectArray(n, sentence_class, nullptr));
-    if (env->ExceptionCheck())
-    {
+    if (env->ExceptionCheck()) {
         return nullptr;
     }
 
     // fill Array<Sentence> to return back to Java
 
     i = 0;
-    for (const auto& parsed_sentence : parsed_sentences)
-    {
+    for (const auto &parsed_sentence: parsed_sentences) {
         jobject jsentence = toJavaSentence(env, parsed_sentence, i, sentence_class, sentence_ctor, token_class,
                                            token_ctor);
         env->SetObjectArrayElement(sentence_array, i, jsentence);
@@ -416,11 +426,10 @@ string model_path;
 extern "C" JNIEXPORT
 jint
 JNICALL Java_org_udpipe_JNI_version(
-    JNIEnv* env,
-    jobject type)
-{
-    (void)env;
-    (void)type;
+        JNIEnv *env,
+        jobject type) {
+    (void) env;
+    (void) type;
     int version = udpipe_version();
     return version;
 }
@@ -431,10 +440,9 @@ JNICALL Java_org_udpipe_JNI_version(
 extern "C" JNIEXPORT
 jstring
 JNICALL Java_org_udpipe_JNI_modelPath(
-    JNIEnv* env,
-    jobject /* thiz */)
-{
-    const string& s = model_path;
+        JNIEnv *env,
+        jobject /* thiz */) {
+    const string &s = model_path;
     return env->NewStringUTF(s.c_str());
 }
 
@@ -446,11 +454,10 @@ JNICALL Java_org_udpipe_JNI_modelPath(
 extern "C" JNIEXPORT
 jlong
 JNICALL Java_org_udpipe_JNI_load(
-    JNIEnv* env,
-    jobject type,
-    jstring j_model_path)
-{
-    (void)type;
+        JNIEnv *env,
+        jobject type,
+        jstring j_model_path) {
+    (void) type;
     model_path = jniStringToString(env, j_model_path);
 
     long handle = udpipe_load_h(model_path.c_str());
@@ -463,13 +470,11 @@ JNICALL Java_org_udpipe_JNI_load(
 extern "C" JNIEXPORT
 void
 JNICALL Java_org_udpipe_JNI_unload(
-    JNIEnv* env,
-    jobject type,
-    jlong handle)
-{
-    (void)type;
-    if (handle == 0)
-    {
+        JNIEnv *env,
+        jobject type,
+        jlong handle) {
+    (void) type;
+    if (handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot free null handle");
         return;
     }
@@ -484,14 +489,12 @@ JNICALL Java_org_udpipe_JNI_unload(
 extern "C" JNIEXPORT
 jobjectArray
 JNICALL Java_org_udpipe_JNI_parse(
-    JNIEnv* env,
-    jobject type,
-    jlong handle,
-    jobjectArray input_texts)
-{
-    (void)type;
-    if (handle == 0)
-    {
+        JNIEnv *env,
+        jobject type,
+        jlong handle,
+        jobjectArray input_texts) {
+    (void) type;
+    if (handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
     }

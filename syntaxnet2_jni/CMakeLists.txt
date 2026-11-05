@@ -8,12 +8,19 @@ cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_VERBOSE_MAKEFILE on)
 
 # Sets compile flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSTANDALONE_JNI_LIB -std=c++11 -fno-exceptions -fno-rtti -O2 -Wno-narrowing -fPIE")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSTANDALONE_JNI_LIB -std=c++11 -fno-exceptions -fno-rtti -Wno-narrowing -fPIE")
 if (ANDROID_ABI MATCHES "^armeabi-v7a$")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfloat-abi=softfp -mfpu=neon")
-elseif (ANDROID_ABI MATCHES "^arm64-v8a")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -ftree-vectorize")
 endif ()
+
+# Release specific compile flags
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+if (ANDROID_ABI MATCHES "^arm64-v8a")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -ftree-vectorize")
+endif ()
+
+# Debug specific compile flags: disable optimization (-O0) and include debug symbols (-g)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g")
 
 # Sets link flags
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--allow-multiple-definition -Wl,--whole-archive -fPIE -v")

@@ -41,6 +41,15 @@ android {
         }
         debug {
             isJniDebuggable = true
+            // Limits -O0 (no optimization) and -g (debug symbols) strictly to
+            // the debug variant of THIS module only
+            @Suppress("UnstableApiUsage")
+            externalNativeBuild {
+                cmake {
+                    cppFlags += listOf("-O0", "-g")
+                    cFlags += listOf("-O0", "-g")
+                }
+            }
         }
     }
 
