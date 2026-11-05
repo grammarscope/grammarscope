@@ -20,6 +20,7 @@ import java.util.function.Consumer
 import androidx.appcompat.R as AppCompatR
 import com.google.android.material.R as MaterialR
 import org.depparse.common.R as CommonR
+import android.icu.text.Normalizer2
 
 abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
 
@@ -86,9 +87,9 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
                 return
             }
 
-            // accents
-            val stripAccents = Settings.isStripAccentsEnabled(this)
-            val source2 = if (stripAccents) source.stripAccents() else source
+            // preprocessing
+            val source2 = prepare(source, if (Settings.isStripAccentsEnabled(this)) Preprocess.STRIP_LATIN_DIACRITICS else Preprocess.NONE)
+            Log.d(TAG, "Codepoints len=${source2.length} cps=${source2.codePointCount(0, source2.length)} ${source2.cps()}")
 
             // run parsing
             Log.d(TAG, "Parse")
@@ -112,20 +113,6 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
     private fun unmarshalArgs(intent: Intent): String? {
         val params = intent.extras!!
         return params.getString(ARG_SOURCE)
-    }
-
-    /**
-     * Strip accents
-     *
-     * @return string with accents removed
-     */
-    private fun String.stripAccents(): String {
-        // 1. Normalize to NFD (decomposes characters into base characters and combining diacritical marks)
-        val normalizedText = Normalizer.normalize(this, Normalizer.Form.NFD)
-
-        // 2. Remove combining diacritical marks (Unicode category Mn)
-        // The regex "\\p{Mn}" matches any character with the Unicode property "Mark, Nonspacing".
-        return normalizedText.replace("\\p{Mn}".toRegex(), "")
     }
 
     // P A R S E
@@ -180,6 +167,37 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
     }
 
     companion object {
+
+        private fun String.cps() = map { "%04X".format(it.code) }.joinToString(" ")
+
+        enum class Preprocess { NONE, STRIP_LATIN_DIACRITICS }
+
+        fun prepare(text: String, mode: Preprocess): String {
+            val nfc = Normalizer2.getNFCInstance()
+            return when (mode) {
+                Preprocess.NONE -> if (nfc.isNormalized(text)) text else nfc.normalize(text)
+                Preprocess.STRIP_LATIN_DIACRITICS -> {
+                    val nfd = Normalizer2.getNFDInstance()
+                    val nfdNormalized = if (nfd.isNormalized(text)) text else nfd.normalize(text)
+                    val accentless = nfdNormalized.replace(Regex("\\p{Mn}+"), "")
+                    nfc.normalize(accentless)
+                }
+            }
+        }
+
+        /**
+         * Strip accents
+         *
+         * @return string with accents removed
+         */
+        private fun String.stripAccents(): String {
+            // 1. Normalize to NFD (decomposes characters into base characters and combining diacritical marks)
+            val normalizedText = Normalizer.normalize(this, Normalizer.Form.NFD)
+
+            // 2. Remove combining diacritical marks (Unicode category Mn)
+            // The regex "\\p{Mn}" matches any character with the Unicode property "Mark, Nonspacing".
+            return normalizedText.replace("\\p{Mn}".toRegex(), "")
+        }
 
         private const val TAG = "ParseActivity"
         const val ARG_SOURCE = "org.depparse.SOURCE"
