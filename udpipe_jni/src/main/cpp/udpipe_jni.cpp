@@ -99,57 +99,6 @@ size_t GetUtf8ByteCount(char32_t cp)
     return 0; // Invalid code point
 }
 
-/**
- * Creates a mapping from UTF-8 byte positions to character indices.
- *
- * @param text The UTF-8 encoded string to process
- * @return A vector where each index represents a byte position, and the value is the corresponding character index
- */
-vector<int> getCharIndices(const string& text)
-{
-    // Get the byte size of the UTF-8 string
-    size_t byteSize = text.size();
-
-    // Create vector for byte-to-char index mapping (size + 1 to include position after last byte)
-    vector<int> byteToCharIndex(byteSize + 1);
-
-    // Convert to wstring to work with Unicode code points properly
-    // UTF-8 string to std::wstring (assuming wchar_t is 2 bytes on Windows, 4 bytes on Linux/macOS)
-    // Use utf8to16 if wchar_t / target expects UTF-16 (e.g., Windows API)   wstring wideText;
-    std::wstring wideText;
-    utf8::utf8to32(text.begin(), text.end(), back_inserter(wideText));
-
-    // Iterate through each Unicode character
-    size_t bytePos = 0;
-    for (size_t i = 0; i < wideText.size(); ++i)
-    {
-        wchar_t ch = wideText[i];
-
-        // Convert this single character back to UTF-8 to get its byte count
-        string charBytes;
-        utf8::append(ch, std::back_inserter(charBytes));
-        size_t charByteCount = charBytes.size();
-
-        // Fill in the byte-to-char mapping for each byte in this character
-        for (size_t j = 0; j < charByteCount; ++j)
-        {
-            if (bytePos + j < byteToCharIndex.size())
-            {
-                byteToCharIndex[bytePos + j] = static_cast<int>(i);
-            }
-        }
-        bytePos += charByteCount;
-    }
-
-    // Set the final position
-    if (bytePos < byteToCharIndex.size())
-    {
-        byteToCharIndex[bytePos] = static_cast<int>(wideText.size());
-    }
-
-    return byteToCharIndex;
-}
-
 // S P L I T
 
 void split(const string& s, const char c, vector<string>& v)
@@ -270,7 +219,6 @@ toJavaSentence(
     const token_t& token0 = parsed_sentence[0];
 
     const string& text = token0.at("text");
-    const vector<int> toCharIndices = getCharIndices(text);
 
     auto it0 = token0.find("docid");
     const string& docid = it0 != token0.end() ? it0->second : "";
@@ -278,14 +226,10 @@ toJavaSentence(
     it0 = token0.find("start");
     const string& s_start = it0 != token0.end() ? it0->second : "-1";
     int s_istart = static_cast<int>(strtol(s_start.c_str(), nullptr, 10));
-    if (s_istart != -1)
-        s_istart = toCharIndices[s_istart];
 
     it0 = token0.find("end");
     const string& s_end = it0 != token0.end() ? it0->second : "-1";
     int s_iend = static_cast<int>(strtol(s_end.c_str(), nullptr, 10));
-    if (s_iend != -1)
-        s_iend = toCharIndices[s_iend];
 
     // Tokens
 
@@ -391,10 +335,6 @@ toJavaSentence(
         }
         t_istart -= sentence_start;
         t_iend -= sentence_start;
-        if (t_istart != -1)
-            t_istart = toCharIndices[t_istart];
-        if (t_iend != -1)
-            t_iend = toCharIndices[t_iend];
         jstring jcategory = CheckNotNull(env, env->NewStringUTF(category.c_str()));
         jstring jtag = CheckNotNull(env, env->NewStringUTF(tag.c_str()));
         jstring jlabel = CheckNotNull(env, env->NewStringUTF(label.c_str()));
