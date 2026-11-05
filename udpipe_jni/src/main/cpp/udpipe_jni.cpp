@@ -378,6 +378,7 @@ toJavaSentence(
 
         LOGD("Token #%d '%s' l=%s t=%s h=%s x=<%s>\n", j, word.c_str(), label.c_str(), tag.c_str(), head.c_str(),
              deps.c_str());
+        // LOGD("Token #%d '%s' [%s-%s] label=%s tag=%s head=%s\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str());
 
         // token constructor parameters
 
