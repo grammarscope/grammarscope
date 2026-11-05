@@ -8,7 +8,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Paint.FontMetrics
 import android.graphics.Rect
 import android.graphics.RectF
 import android.text.Layout
@@ -30,7 +29,6 @@ import org.grammarscope.annotations.annotation.Annotation.LabelAnnotation
 import org.grammarscope.annotations.annotation.AnnotationType
 import org.grammarscope.annotations.paint.AnnotationPainter
 import org.grammarscope.annotations.paint.InterlacedHatchPaintBuilder
-import kotlin.math.max
 
 class AnnotatedTextView @JvmOverloads constructor(
     context: Context,
