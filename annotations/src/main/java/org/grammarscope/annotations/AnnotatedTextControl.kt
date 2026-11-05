@@ -110,7 +110,7 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
 
             // From bottom upwards
             // Increase Line Spacing Button
-            connect(increaseLineSpacingButton.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, MARGIN_BOTTOM)
+            connect(increaseLineSpacingButton.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, BAR_MARGIN_BOTTOM + MARGIN_BOTTOM)
             connect(increaseLineSpacingButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, MARGIN_END)
 
             // Decrease Line Spacing Button
@@ -249,5 +249,6 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
         const val RIGHT_PADDING = 30
         const val MARGIN_BOTTOM = 3
         const val MARGIN_END = 0
+        const val BAR_MARGIN_BOTTOM = 100
     }
 }
