@@ -163,6 +163,37 @@ void split(const string& s, const char c, vector<string>& v)
     }
 }
 
+// Decode UTF-8 bytes into code points, then print each as hex
+string to_hex_codepoints(const std::string& s) {
+    std::ostringstream oss;
+    oss << std::hex << std::setfill('0');
+
+    size_t i = 0;
+    while (i < s.size()) {
+        unsigned char c = static_cast<unsigned char>(s[i]);
+        char32_t cp;
+        size_t len;
+
+        if      ((c & 0x80) == 0x00) { cp = c;          len = 1; } // 0xxxxxxx
+        else if ((c & 0xE0) == 0xC0) { cp = c & 0x1F;   len = 2; } // 110xxxxx
+        else if ((c & 0xF0) == 0xE0) { cp = c & 0x0F;   len = 3; } // 1110xxxx
+        else if ((c & 0xF8) == 0xF0) { cp = c & 0x07;   len = 4; } // 11110xxx
+        else { throw std::runtime_error("invalid UTF-8"); }
+
+        for (size_t k = 1; k < len; ++k) {
+            unsigned char cc = static_cast<unsigned char>(s[i + k]);
+            if ((cc & 0xC0) != 0x80) throw std::runtime_error("invalid UTF-8");
+            cp = (cp << 6) | (cc & 0x3F);
+        }
+
+        oss << std::setw(len == 1 ? 2 : (len == 2 ? 3 : (len == 3 ? 4 : 5)))
+            << static_cast<unsigned>(cp)
+            << ' ';
+        i += len;
+    }
+    return oss.str();
+}
+
 // F R O M   J A V A
 
 extern
@@ -176,6 +207,9 @@ vector<string> jniStringArrayToVector(JNIEnv* env, jobjectArray string_array)
         const char* raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
         result.emplace_back(raw_str);
         env->ReleaseStringUTFChars(jstr, raw_str);
+
+        string hex = to_hex_codepoints(result[0]);
+        LOGD("Input %zu Codepoints cps = %s" , i,  hex.c_str());
     }
     return result;
 }
