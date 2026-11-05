@@ -64,7 +64,7 @@ class UDPipeEngine(private val context: Context) : IEngine<Array<Sentence>>, IAs
             Log.e(TAG, "Trying to process while not initialized.")
             throw IllegalStateException("Trying to process while not initialized.")
         }
-        Log.d(TAG, "Processing $handle")
+        Log.d(TAG, "Processing $handle with args codepoints ${args.joinToString(separator = " / ") { it.cps() }}")
         val result = JNI.parse(handle!!, args)
         Log.d(TAG, "Processed $handle")
         return result
@@ -99,6 +99,8 @@ class UDPipeEngine(private val context: Context) : IEngine<Array<Sentence>>, IAs
     }
 
     companion object {
+
+        private fun String.cps() = map { "%04X".format(it.code) }.joinToString(" ")
 
         private const val TAG = "Engine"
 
