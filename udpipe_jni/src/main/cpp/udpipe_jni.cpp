@@ -9,6 +9,9 @@
 #include <unistd.h>
 #include <codecvt>
 #include <cwchar>
+#include <iostream>
+#include <sstream>
+#include <iomanip>   // std::setfill, std::setw, std::hex  ← required
 
 #include <android/log.h>
 
