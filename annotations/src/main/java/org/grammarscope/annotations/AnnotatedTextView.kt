@@ -295,87 +295,25 @@ class AnnotatedTextView @JvmOverloads constructor(
 
 // M O D E L   T O   V I E W   C O N V E R T I O N S
 // Equivalent to Swing's modelToView()
+// All offsets are expressed in code points (not UTF-16 chars).
 
 /**
- * Get int rectangle for segment in text
+ * Get float rectangle for a code point offset in text
  *
- * @param segment target segment
- * @return int rectangle
- */
-fun TextView.segmentToViewRect(segment: Segment): Rect {
-
-    val fromRectangle = offsetToViewRect(segment.first)
-    val toRectangle = offsetToViewRect(segment.second)
-    val left = fromRectangle.left
-    val top = fromRectangle.top
-    val right = toRectangle.right
-    val bottom = max(fromRectangle.bottom, toRectangle.bottom)
-    return Rect(left, top, right, bottom)
-}
-
-/**
- * Get float rectangle for segment in text
- *
- * @param segment target segment
- * @return float rectangle
- */
-fun TextView.segmentToViewRectF(segment: Segment): RectF {
-
-    val fromRectangle = modelToViewF(segment.first)
-    val toRectangle = modelToViewF(segment.second)
-    val left = fromRectangle.left
-    val top = fromRectangle.top
-    val right = toRectangle.right
-    val bottom = max(fromRectangle.bottom, toRectangle.bottom)
-    return RectF(left, top, right, bottom)
-}
-
-/**
- * Get int rectangle for offset in text
- *
- * @param offset target offset in text
- * @return int rectangle
- */
-fun TextView.offsetToViewRect(offset: Int): Rect {
-    if (offset < 0 || offset > text.length) {
-        throw IllegalArgumentException("Invalid position: $offset")
-    }
-    val line = layout.getLineForOffset(offset)
-    val baseline = layout.getLineBaseline(line)
-    val metrics: FontMetrics = paint.fontMetrics
-    val top = baseline + metrics.ascent + paddingTop //layout.getLineTop(line)
-    val bottom = baseline + metrics.descent + paddingTop // layout.getLineBottom(line)
-    val x = layout.getPrimaryHorizontal(offset)
-    val width = if (offset < text.length) {
-        layout.getPrimaryHorizontal(offset + 1) - x
-    } else {
-        // Handle the end of the text.
-        if (text.isNotEmpty()) {
-            // Get the previous character position.
-            val previousPos = offset - 1
-            val previousX = layout.getPrimaryHorizontal(previousPos)
-            x - previousX
-        } else {
-            // Handle empty text.
-            0F
-        }
-    }
-    val left = x + paddingLeft
-    val right = left + width
-    return Rect(left.toInt(), top.toInt(), right.toInt(), bottom.toInt())
-}
-
-/**
- * Get float rectangle for offset in text
- *
- * @param offset target offset in text
- * @return float rectangle
+ * @param offset target offset in text, in code points
+ * @return float rectangle in view coordinates (before any scroll)
  */
 fun TextView.modelToViewF(offset: Int): RectF {
-    if (offset < 0 || offset > text.length) {
-        throw IllegalArgumentException("Invalid position: $offset")
-    }
-    val line = layout.getLineForOffset(offset)
+    val text = text
+    val codePointCount = Character.codePointCount(text, 0, text.length)
+    require(offset in 0..codePointCount) { "Invalid position: $offset (code points: $codePointCount)" }
+    val layout = checkNotNull(layout) { "Layout not available yet" }
+
+    // code point offset -> UTF-16 index
+    val start = Character.offsetByCodePoints(text, 0, offset)
+    val end = if (start < text.length) Character.offsetByCodePoints(text, start, 1) else start
+
+    val line = layout.getLineForOffset(start)
     val baseline = layout.getLineBaseline(line)
     val metrics: FontMetrics = paint.fontMetrics
     val top = baseline + metrics.ascent + paddingTop //layout.getLineTop(line)
@@ -397,35 +335,58 @@ fun TextView.modelToViewF(offset: Int): RectF {
     }
     val left = x + paddingLeft
     val right = left + width
+    val metrics = paint.fontMetrics
+    val top = baseline + metrics.ascent + totalPaddingTop
+    val bottom = baseline + metrics.descent + totalPaddingTop
+
+    val x0 = layout.getPrimaryHorizontal(start)
+    val x1 = when {
+        end == start -> x0 // end of text: zero-width caret position
+        layout.getLineForOffset(end) == line -> layout.getPrimaryHorizontal(end)
+        // glyph is last on its line: stay on this line
+        layout.getParagraphDirection(line) == Layout.DIR_LEFT_TO_RIGHT -> layout.getLineRight(line)
+        else -> layout.getLineLeft(line)
+    }
+
+    val left = minOf(x0, x1) + totalPaddingLeft
+    val right = maxOf(x0, x1) + totalPaddingLeft
     return RectF(left, top, right, bottom)
 }
 
-///**
-// * Get the screen position of a word
-// */
-//fun TextView.getWordPosition(wordStart: Int, wordEnd: Int): Rect? {
-//    if (wordStart < 0 || wordEnd > text.length || layout == null) {
-//        return null
-//    }
-//    val bounds = Rect()
-//    try {
-//        // Find the line that contains the word
-//        val line = layout.getLineForOffset(wordStart)
-//
-//        // Get the bounds of the line
-//        layout.getLineBounds(line, bounds)
-//
-//        // Get horizontal bounds
-//        val startX = layout.getPrimaryHorizontal(wordStart)
-//        val endX = layout.getPrimaryHorizontal(wordEnd)
-//
-//        // Create the word bounds
-//        bounds.left = startX.toInt() + paddingLeft
-//        bounds.right = endX.toInt() + paddingLeft
-//
-//        return bounds
-//    } catch (e: Exception) {
-//        e.printStackTrace()
-//        return null
-//    }
-//}
+/**
+ * Get int rectangle for a code point offset in text
+ *
+ * @param offset target offset in text, in code points
+ * @return int rectangle (rounded outwards so it fully covers the glyph)
+ */
+fun TextView.offsetToViewRect(offset: Int): Rect =
+    Rect().also { modelToViewF(offset).roundOut(it) }
+
+/**
+ * Get float rectangle for a segment in text
+ *
+ * @param segment target segment, in code points; `second` is the offset of
+ *                the last code point of the segment (inclusive, as in the original)
+ * @return bounding float rectangle of the segment
+ */
+fun TextView.segmentToViewRectF(segment: Segment): RectF {
+    val from = modelToViewF(segment.first)
+    val to = modelToViewF(segment.second)
+    // Manual bounding box: RectF.union() silently ignores empty (zero-width) rectangles,
+    // which is exactly what modelToViewF returns at the end of the text.
+    return RectF(
+        minOf(from.left, to.left),
+        minOf(from.top, to.top),
+        maxOf(from.right, to.right),
+        maxOf(from.bottom, to.bottom)
+    )
+}
+
+/**
+ * Get int rectangle for a segment in text
+ *
+ * @param segment target segment, in code points (see [segmentToViewRectF])
+ * @return bounding int rectangle of the segment (rounded outwards)
+ */
+fun TextView.segmentToViewRect(segment: Segment): Rect =
+    Rect().also { segmentToViewRectF(segment).roundOut(it) }
