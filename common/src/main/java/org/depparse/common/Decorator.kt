@@ -125,7 +125,7 @@ object Decorator {
                 this
                     .append("mwtoken")
                     .append(" = ")
-                    .append(mwt.word)
+                    .append(directional(token.word), factories[0])
                     .append(" (")
                     .append(mwt.start.toString())
                     .append(':')
