@@ -101,6 +101,7 @@ class DependencyAnnotator<N>(
             val isRtl = bidiFormatter.isRtl(document.getSentence(sentenceIdx).text)
 
             // NODES
+
             for (node in graph.nodes) {
                 val token = node as Token
 
