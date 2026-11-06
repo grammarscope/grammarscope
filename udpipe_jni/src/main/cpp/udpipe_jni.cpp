@@ -201,6 +201,7 @@ toJavaSentence(
 
     // Tokens
     vector<jobject> jmwtokens;
+    int ijmwtoken = 0;
     for (int j = 1; j < nTokens; j++) {
         // collect token data
 
@@ -311,7 +312,7 @@ toJavaSentence(
             }
             jmwtoken = CheckNotNull(env, env->NewObject(mwtoken_class, mwtoken_ctor,
                                                         sentenceIndex, //sentenceIndex: Int
-                                                        -1,// index: Int, // possibly -1
+                                                        ijmwtoken++,// index: Int
                                                         jmwt_form, // word: String, // not null
                                                         mwt_istart, // start: Int
                                                         mwt_iend, // end: Int, inclusive, relative to sentence text
