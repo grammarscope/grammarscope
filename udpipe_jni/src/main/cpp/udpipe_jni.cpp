@@ -374,6 +374,25 @@ toJavaSentence(
         env->SetObjectArrayElement(jtoken_array, j - 1, jtoken);
     }
 
+    // array of mwtokens
+
+    jobjectArray jmwtoken_array = nullptr;
+    int nMwtokens = static_cast<int>(jmwtokens.size());
+    if (nMwtokens > 0) {
+        jmwtoken_array = CheckNotNull(env, env->NewObjectArray(nMwtokens, mwtoken_class, nullptr));
+        if (env->ExceptionCheck()) {
+            return nullptr;
+        }
+        // populate
+        for (int j = 0; j < nMwtokens; j++) {
+            jobject& jmwtoken = jmwtokens[j];
+            env->SetObjectArrayElement(jmwtoken_array, j, jmwtoken);
+            if (env->ExceptionCheck()) {
+                return nullptr;
+            }
+        }
+    }
+
     // make sentence
 
     jstring jtext = CheckNotNull(env, env->NewStringUTF(text.c_str()));
