@@ -377,8 +377,17 @@ toJavaSentence(
     // make sentence
 
     jstring jtext = CheckNotNull(env, env->NewStringUTF(text.c_str()));
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
     jstring jdocid = CheckNotNull(env, env->NewStringUTF(docid.c_str()));
-    jobject jsentence = env->NewObject(sentence_class, sentence_ctor, jtext, s_istart, s_iend, jtoken_array, nullptr, jdocid);
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
+    jobject jsentence = env->NewObject(sentence_class, sentence_ctor, jtext, s_istart, s_iend, jtoken_array, jmwtoken_array, jdocid);
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
     return jsentence;
 }
 
