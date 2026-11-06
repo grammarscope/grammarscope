@@ -475,7 +475,13 @@ toJavaSentences(
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
         jobject jsentence = toJavaSentence(env, parsed_sentence, i, sentence_class, sentence_ctor, token_class, token_ctor, mwtoken_class, mwtoken_ctor);
+        if (env->ExceptionCheck() || !jsentence) {
+            return nullptr;
+        }
         env->SetObjectArrayElement(sentence_array, i, jsentence);
+        if (env->ExceptionCheck()) {
+            return nullptr;
+        }
         i++;
     }
     return sentence_array;
