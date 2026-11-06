@@ -3,6 +3,8 @@ package org.depparse
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
+import org.depparse.ParcelableMWToken.Companion.readMWToken
+import org.depparse.ParcelableMWToken.Companion.writeMWToken
 import org.depparse.ParcelableToken.Companion.readToken
 import org.depparse.ParcelableToken.Companion.writeToken
 
@@ -10,7 +12,8 @@ data class Sentence(
     @JvmField val text: String, // not null, possibly empty
     @JvmField val start: Int, // possibly -1
     @JvmField val end: Int, // possibly -1, inclusive
-    @JvmField val tokens: Array<Token>, // not null, possibly empty
+    @JvmField val tokens: Array<Token>, // not null
+    @JvmField val mwtokens: Array<MWToken>?, // nullable, possibly empty
     @JvmField val docid: String, // not null, possibly empty
 ) {
 
@@ -24,6 +27,7 @@ data class Sentence(
         if (start != other.start) return false
         if (end != other.end) return false
         if (!tokens.contentEquals(other.tokens)) return false
+        if (!mwtokens.contentEquals(other.mwtokens)) return false
         return true
     }
 
@@ -32,6 +36,7 @@ data class Sentence(
         result = 31 * result + start
         result = 31 * result + end
         result = 31 * result + tokens.contentHashCode()
+        result = 31 * result + mwtokens.contentHashCode()
         return result
     }
 
@@ -84,11 +89,20 @@ class ParcelableSentence(val sentence: Sentence) : Parcelable {
             parcel.writeInt(sentence.start)
             parcel.writeInt(sentence.end)
 
-            // null tokens flag
-            parcel.writeInt(1)
+            // tokens
+            parcel.writeInt(1) // null tokens flag
             parcel.writeInt(sentence.tokens.size)
             for (token in sentence.tokens) {
                 writeToken(parcel, token)
+            }
+            // mwtokens
+            val isNotNullMWTokens = sentence.mwtokens != null
+            parcel.writeInt(if (isNotNullMWTokens) 1 else 0) // null mwtokens flag
+            if (isNotNullMWTokens) {
+                parcel.writeInt(sentence.mwtokens.size)
+                for (mwtoken in sentence.mwtokens) {
+                    writeMWToken(parcel, mwtoken)
+                }
             }
             Log.i(TAG, "Write parcel write size=" + parcel.dataSize() + " pos=" + parcel.dataPosition())
         }
@@ -112,6 +126,7 @@ class ParcelableSentence(val sentence: Sentence) : Parcelable {
                 val start = parcel.readInt()
                 val end = parcel.readInt()
                 val isNotNullTokens = parcel.readInt()
+                // tokens
                 val tokens = if (isNotNullTokens != 0) {
                     val n = parcel.readInt()
                     Array(n) {
@@ -120,7 +135,18 @@ class ParcelableSentence(val sentence: Sentence) : Parcelable {
                 } else {
                     emptyArray<Token>()
                 }
-                return Sentence(text, start, end, tokens, docid)
+                // mwtokens
+                val isNotNullMWTokens = parcel.readInt()
+                val mwtokens = if (isNotNullMWTokens != 0) {
+                    val n = parcel.readInt()
+                    val array = Array(n) {
+                        readMWToken(parcel)!!
+                    }
+                    array
+                } else {
+                    null
+                }
+                return Sentence(text, start, end, tokens, mwtokens, docid)
             }
             return null
         }

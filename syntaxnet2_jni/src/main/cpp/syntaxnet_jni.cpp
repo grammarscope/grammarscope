@@ -24,12 +24,14 @@
 
 using namespace std;
 
-const char kIllegalStateException[] = "java/lang/IllegalStateException";
+constexpr char kIllegalStateException[] = "java/lang/IllegalStateException";
 
-const char sentenceClass[] = "org/depparse/Sentence";
-const char tokenClass[] = "org/depparse/Token";
-const char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;Ljava/lang/String;)V";
-const char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)V";
+constexpr char sentenceClass[] = "org/depparse/Sentence";
+constexpr char tokenClass[] = "org/depparse/Token";
+constexpr char mwtokenClass[] = "org/depparse/MWToken";
+constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;[Lorg/depparse/MWToken;Ljava/lang/String;)V";
+constexpr char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Lorg/depparse/MWToken;)V";
+constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
 
 // C H E C K   H E L P E R S
 
@@ -257,7 +259,7 @@ toJavaSentence(
 
     jstring jtext = CheckNotNull(env, env->NewStringUTF(text.c_str()));
     jstring jdocid = CheckNotNull(env, env->NewStringUTF(docid.c_str()));
-    jobject jsentence = env->NewObject(sentence_class, sentence_ctor, jtext, s_istart, s_iend, jtoken_array, jdocid);
+    jobject jsentence = env->NewObject(sentence_class, sentence_ctor, jtext, s_istart, s_iend, jtoken_array, nullptr, jdocid);
     return jsentence;
 }
 
