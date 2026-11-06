@@ -73,7 +73,7 @@ object PlainDecorator {
             this
                 .append(" (")
                 .append(token.start.toString())
-                .append('-')
+                .append(':')
                 .append(token.end.toString())
                 .append(')')
                 .append(' ')
