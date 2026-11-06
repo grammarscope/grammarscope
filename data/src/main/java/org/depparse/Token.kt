@@ -28,6 +28,9 @@ open class Token(
         get() = index
 
     override val segment: Segment
+        get() = mwt?.segment ?: tokenSegment
+
+    val tokenSegment: Segment
         get() = Segment(start, end)
 
     object TokenTagProcessor {
