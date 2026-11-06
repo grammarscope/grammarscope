@@ -1,5 +1,10 @@
 package org.depparse
 
+import android.os.Parcel
+import android.os.Parcelable
+import android.util.Log
+import org.depparse.ParcelableMWToken.Companion.readMWToken
+import org.depparse.ParcelableMWToken.Companion.writeMWToken
 import java.io.IOException
 import java.util.Locale
 import java.util.regex.Pattern
@@ -16,6 +21,7 @@ open class Token(
     @JvmField val label: String, // not null, possibly empty
     @JvmField val breakLevel: Int, // possibly -1
     @JvmField val deps: String?, // not null, possibly empty
+    @JvmField val mwt: MWToken?, // nullable
 ) : Label, HasSegment, HasIndex {
 
     override val ith: Int
@@ -101,5 +107,97 @@ open class Token(
 
     override fun toString(): String {
         return word
+    }
+}
+
+class ParcelableToken(val token: Token?) : Parcelable {
+
+    constructor(parcel: Parcel) : this(readToken(parcel)!!)
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        writeToken(parcel, token)
+    }
+
+    companion object {
+
+        private const val TAG = "ParcelableToken"
+
+        @JvmField
+        val CREATOR: Parcelable.Creator<ParcelableToken> = object : Parcelable.Creator<ParcelableToken> {
+
+            override fun createFromParcel(parcel: Parcel): ParcelableToken {
+                return ParcelableToken(parcel)
+            }
+
+            override fun newArray(size: Int): Array<ParcelableToken?> {
+                return arrayOfNulls(size)
+            }
+        }
+
+        // W R I T E
+
+        /**
+         * Write token to parcel
+         *
+         * @param parcel parcel to write to
+         * @param token token
+         */
+        @JvmStatic
+        fun writeToken(parcel: Parcel, token: Token?) {
+            // null flag
+            if (token == null) {
+                parcel.writeInt(0)
+                return
+            }
+            parcel.writeInt(1)
+
+            // fields
+            parcel.writeInt(token.sentenceIndex)
+            parcel.writeInt(token.index)
+            parcel.writeString(token.word)
+            parcel.writeInt(token.start)
+            parcel.writeInt(token.end)
+            parcel.writeString(token.category)
+            parcel.writeString(token.tag)
+            parcel.writeInt(token.head)
+            parcel.writeString(token.label)
+            parcel.writeInt(token.breakLevel)
+            writeMWToken(parcel, token.mwt)
+            Log.i(TAG, "Write parcel write size=" + parcel.dataSize() + " pos=" + parcel.dataPosition())
+        }
+
+        // R E A D
+
+        /**
+         * Read token from parcel
+         *
+         * @param parcel parcel to read from
+         * @return token
+         */
+        @JvmStatic
+        fun readToken(parcel: Parcel): Token? {
+            Log.i(TAG, "Read parcel read size=" + parcel.dataSize() + " pos=" + parcel.dataPosition())
+            val isNotNull = parcel.readInt()
+            if (isNotNull != 0) {
+                val sentenceIndex = parcel.readInt()
+                val index = parcel.readInt()
+                val word = parcel.readString()!!
+                val start = parcel.readInt()
+                val end = parcel.readInt()
+                val category = parcel.readString()!!
+                val tag = parcel.readString()!!
+                val head = parcel.readInt()
+                val label = parcel.readString()!!
+                val breaklevel = parcel.readInt()
+                val deps = parcel.readString()
+                val mwtoken = readMWToken(parcel)
+                return Token(sentenceIndex, index, word, start, end, category, tag, head, label, breaklevel, deps, mwtoken)
+            }
+            return null
+        }
     }
 }
