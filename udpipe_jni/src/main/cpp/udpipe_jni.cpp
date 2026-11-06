@@ -281,6 +281,8 @@ toJavaSentence(
         jobject jmwtoken = nullptr;
         it = token.find("mwt_misc");
         const string &mwt_misc = it != token.end() ? it->second : "";
+        it = token.find("mwt_form");
+        const string &mwt_form = it != token.end() ? it->second : "";
         if (mwt_misc != "") {
             it = token.find("mwt_first");
             const string &mwt_first = it != token.end() ? it->second : "-1";
@@ -288,8 +290,6 @@ toJavaSentence(
             it = token.find("mwt_last");
             const string &mwt_last = it != token.end() ? it->second : "-1";
             int mwt_ilast = static_cast<int>(strtol(mwt_last.c_str(), nullptr, 10));
-            it = token.find("mwt_form");
-            const string &mwt_form = it != token.end() ? it->second : "";
             int mwt_istart = -1;
             int mwt_iend = -1;
             if (mwt_misc != "") {
@@ -331,7 +331,7 @@ toJavaSentence(
         it = token.find("deps");
         const string &deps = it != token.end() ? it->second : "";
 
-        LOGD("Token #%d '%s' [%s-%s] label=%s tag=%s head=%s x=<%s> mwt=%s\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str(), "none");
+        LOGD("Token #%d '%s' [%s:%s] label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str(), mwt_form.c_str(), mwt_misc.c_str());
 
         // token constructor parameters
 
