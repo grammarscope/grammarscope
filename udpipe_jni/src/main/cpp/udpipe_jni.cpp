@@ -33,9 +33,10 @@ constexpr char kIllegalStateException[] = "java/lang/IllegalStateException";
 
 constexpr char sentenceClass[] = "org/depparse/Sentence";
 constexpr char tokenClass[] = "org/depparse/Token";
+constexpr char mwtokenClass[] = "org/depparse/MWToken";
 constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;Ljava/lang/String;)V";
-constexpr char tokenCtor[] =
-        "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)V";
+constexpr char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Lorg/depparse/MWToken;)V";
+constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
 
 // C H E C K   H E L P E R S
 
@@ -125,7 +126,7 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array) {
         env->ReleaseStringUTFChars(jstr, raw_str);
 
         string hex = to_hex_codepoints(result[0]);
-        LOGD("Input %zu Codepoints cps = %s", i, hex.c_str());
+        LOGD("Input %d Codepoints cps = %s", i, hex.c_str());
     }
     return result;
 }
@@ -149,6 +150,8 @@ string jniStringToString(JNIEnv *env, jstring jstr) {
  * @param sentence_ctor java constructor
  * @param token_class java class of token
  * @param token_ctor java constructor of token
+ * @param mwttoken_class java class of mwtoken
+ * @param mwttoken_ctor java constructor of mwtoken
  * @return Sentence with tokens field being Array<Token!!>!! otherwise
  * @throws IllegalStateException whenever CheckNull encounters a null value, that is
  * -word is null (should not happen)
@@ -163,7 +166,9 @@ toJavaSentence(
         jclass sentence_class,
         jmethodID sentence_ctor,
         jclass token_class,
-        jmethodID token_ctor) {
+        jmethodID token_ctor,
+        jclass mwtoken_class,
+        jmethodID mwtoken_ctor) {
     int nTokens = static_cast<int>(parsed_sentence.size());
 
     // make java array of tokens Token[] to be field of Sentence class and return back to Java
@@ -270,25 +275,49 @@ toJavaSentence(
         const string &t_end = it != token.end() ? it->second : "-1";
 
         // mwt
-        if (t_start == "-1" || t_end == "-1") {
+        jobject jmwtoken = nullptr;
+        it = token.find("mwt_misc");
+        const string &mwt_misc = it != token.end() ? it->second : "";
+        if (mwt_misc != "") {
             it = token.find("mwt_first");
             const string &mwt_first = it != token.end() ? it->second : "-1";
+            int mwt_ifirst = static_cast<int>(strtol(mwt_first.c_str(), nullptr, 10));
             it = token.find("mwt_last");
             const string &mwt_last = it != token.end() ? it->second : "-1";
+            int mwt_ilast = static_cast<int>(strtol(mwt_last.c_str(), nullptr, 10));
             it = token.find("mwt_form");
             const string &mwt_form = it != token.end() ? it->second : "";
-            it = token.find("mwt_misc");
-            const string &mwt_misc = it != token.end() ? it->second : "-1,-1";
-
-            std::regex pattern(R"(TokenRange=(\d+):(\d+))");
-            std::smatch matches;
-            // Use std::regex_search if the pattern is embedded in a larger string, or std::regex_match if the entire string must match the pattern.
-            if (std::regex_search(mwt_misc, matches, pattern)) {
-                // matches[0] contains the entire matched string ("TokenRange:10,25")
-                // matches[1] contains the first capture group (start)
-                // matches[2] contains the second capture group (end)
-                string start_str = matches[1].str();
-                string end_str = matches[2].str();
+            int mwt_istart = -1;
+            int mwt_iend = -1;
+            if (mwt_misc != "") {
+                std::regex pattern(R"(TokenRange=(\d+):(\d+))");
+                std::smatch matches;
+                // Use std::regex_search if the pattern is embedded in a larger string, or std::regex_match if the entire string must match the pattern.
+                if (std::regex_search(mwt_misc, matches, pattern)) {
+                    // matches[0] contains the entire matched string ("TokenRange:10,25")
+                    // matches[1] contains the first capture group (start)
+                    // matches[2] contains the second capture group (end)
+                    string mwt_start = matches[1].str();
+                    string mwt_end = matches[2].str();
+                    mwt_istart = static_cast<int>(strtol(mwt_start.c_str(), nullptr, 10));
+                    mwt_iend = static_cast<int>(strtol(mwt_end.c_str(), nullptr, 10));
+                }
+            }
+            jstring jmwt_form = CheckNotNull(env, env->NewStringUTF(mwt_form.c_str()));
+            if (env->ExceptionCheck()) {
+                return nullptr;
+            }
+            jmwtoken = CheckNotNull(env, env->NewObject(mwtoken_class, mwtoken_ctor,
+                                                        sentenceIndex, //sentenceIndex: Int
+                                                        -1,// index: Int, // possibly -1
+                                                        jmwt_form, // word: String, // not null
+                                                        mwt_istart, // start: Int
+                                                        mwt_iend, // end: Int, inclusive, relative to sentence text
+                                                        mwt_ifirst, // firstToken: Int
+                                                        mwt_ilast // lastToken: Int, // inclusive
+            ));
+            if (env->ExceptionCheck()) {
+                return nullptr;
             }
         }
 
@@ -298,7 +327,7 @@ toJavaSentence(
         it = token.find("deps");
         const string &deps = it != token.end() ? it->second : "";
 
-        LOGD("Token #%d '%s' [%s-%s] label=%s tag=%s head=%s x=<%s>\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str());
+        LOGD("Token #%d '%s' [%s-%s] label=%s tag=%s head=%s x=<%s> mwt=%s\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str(), "none");
 
         // token constructor parameters
 
@@ -332,7 +361,7 @@ toJavaSentence(
         // ibreaklevel: Int!!, possibly -1
         jobject jtoken = CheckNotNull(env, env->NewObject(token_class, token_ctor, sentenceIndex, j - 1, jword,
                                                           t_istart, t_iend, jcategory, jtag, ihead, jlabel, ibreaklevel,
-                                                          jdeps));
+                                                          jdeps, jmwtoken));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
@@ -393,6 +422,14 @@ toJavaSentences(
     if (env->ExceptionCheck()) {
         return nullptr;
     }
+    jclass mwtoken_class = CheckNotNull(env, env->FindClass(mwtokenClass));
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
+    jmethodID mwtoken_ctor = CheckNotNull(env, env->GetMethodID(mwtoken_class, "<init>", mwtokenCtor));
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
 
     // make Array<Sentence> to return back to Java
 
@@ -406,8 +443,7 @@ toJavaSentences(
 
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        jobject jsentence = toJavaSentence(env, parsed_sentence, i, sentence_class, sentence_ctor, token_class,
-                                           token_ctor);
+        jobject jsentence = toJavaSentence(env, parsed_sentence, i, sentence_class, sentence_ctor, token_class, token_ctor, mwtoken_class, mwtoken_ctor);
         env->SetObjectArrayElement(sentence_array, i, jsentence);
         i++;
     }
