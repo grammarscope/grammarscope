@@ -163,6 +163,7 @@ abstract class BaseParseActivity<T> : BaseActivity(), Consumer<T> {
     }
 
     protected fun handleException(e: Exception) {
+        Log.e(TAG, "Raised exception at ${e.stackTrace[0]}", e)
         warn(e.message.toString(), duration = Snackbar.LENGTH_INDEFINITE)
     }
 
