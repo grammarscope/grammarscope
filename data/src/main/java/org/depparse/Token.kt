@@ -21,7 +21,7 @@ open class Token(
     @JvmField val label: String, // not null, possibly empty
     @JvmField val breakLevel: Int, // possibly -1
     @JvmField val deps: String?, // not null, possibly empty
-    @JvmField val mwt: MWToken?, // nullable
+    @JvmField var mwt: MWToken?, // nullable
 ) : Label, HasSegment, HasIndex {
 
     override val ith: Int
