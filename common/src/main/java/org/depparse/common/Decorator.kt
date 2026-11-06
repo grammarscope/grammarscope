@@ -2,6 +2,7 @@ package org.depparse.common
 
 import android.text.SpannableStringBuilder
 import androidx.core.text.BidiFormatter
+import org.depparse.MWToken
 import org.depparse.Sentence
 import org.depparse.Token
 import org.depparse.Token.BreakLevel
@@ -44,6 +45,13 @@ object Decorator {
             this
                 .append(i, sentence.tokens, factories[1], factories[2], factories[3], factories[4], factories[5]) // [0] dependent, [1] head, [2] label, [3] root_label, [4] enhanced_label
                 .append("\n")
+        }
+        if (sentence.mwtokens != null) {
+            for (i in sentence.mwtokens!!.indices) {
+                this
+                    .append(i, sentence.mwtokens!!, factories[1], factories[2], factories[3], factories[4], factories[5]) // [0] dependent, [1] head, [2] label, [3] root_label, [4] enhanced_label
+                    .append("\n")
+            }
         }
         return this
     }
@@ -140,6 +148,49 @@ object Decorator {
                     .append('\n')
             }
 
+        } catch (_: IOException) {
+            this
+                .append("<error")
+                .append('\n')
+        }
+        return this
+    }
+
+    /**
+     * Tokens to string builder
+     *
+     * @param which     which mwtoken
+     * @param mwtokens  set of all mwtokens
+     * @param factories span factories: [0] dependent, [1] head, [2] label, [3] root_label, [4] enhanced_label
+     */
+    fun SpannableStringBuilder.append(which: Int, mwtokens: Array<MWToken>, vararg factories: SpanFactory): SpannableStringBuilder {
+        try {
+            val mwtoken = mwtokens[which]
+            this
+                .append("MWT [")
+                .append(mwtoken.index.toString())
+                .append(']')
+                .append(' ')
+                .append(directional(mwtoken.word), factories[0]) // dependent
+
+            // segment
+            this
+                .append(" (")
+                .append(mwtoken.start.toString())
+                .append(':')
+                .append(mwtoken.end.toString())
+                .append(')')
+                .append(' ')
+
+            // range
+            this
+                .append(" [")
+                .append(mwtoken.firstToken.toString())
+                .append(':')
+                .append(mwtoken.lastToken.toString())
+                .append(']')
+                .append(' ')
+            this.append('\n')
         } catch (_: IOException) {
             this
                 .append("<error")
