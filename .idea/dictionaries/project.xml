@@ -3,8 +3,15 @@
     <words>
       <w>horiz</w>
       <w>huggingface</w>
+      <w>ifirst</w>
+      <w>ijmwtoken</w>
+      <w>ijmwtokens</w>
+      <w>ilast</w>
+      <w>jmwtoken</w>
+      <w>jmwtokens</w>
       <w>minlines</w>
       <w>mwtoken</w>
+      <w>mwtokens</w>
     </words>
   </dictionary>
 </component>
