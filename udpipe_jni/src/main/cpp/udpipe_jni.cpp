@@ -127,7 +127,7 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array) {
         result.emplace_back(raw_str);
         env->ReleaseStringUTFChars(jstr, raw_str);
 
-        string hex = to_hex_codepoints(result[0]);
+        string hex = to_hex_codepoints(result[i]);
         LOGD("Input %d Codepoints cps = %s", i, hex.c_str());
     }
     return result;
