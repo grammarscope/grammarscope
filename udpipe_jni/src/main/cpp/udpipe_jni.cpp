@@ -51,6 +51,9 @@ template<typename T>
 T CheckNotNull(JNIEnv *env, T &&t) {
     if (t == nullptr) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "");
+        if (!env->ExceptionCheck()) {
+            env->ThrowNew(env->FindClass(kIllegalStateException), "");
+        }
         return nullptr;
     }
     return std::forward<T>(t);
