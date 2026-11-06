@@ -69,18 +69,17 @@ class ParsedGraph(val sentence: Sentence) : Graph<Token> {
 
 class ParsedDocument(val sentences: Array<Sentence>, val sentenceStarts: Array<Int>) : Document<Token> {
 
-    //init {
-    //    sentences.forEach{ sentence ->
-    //        sentence.mwtokens?.forEach { mwtoken ->
-    //            (mwtoken.firstToken..mwtoken.lastToken).forEach { i ->
-    //                sentence.tokens[i - 1].apply {
-    //                    start = mwtoken.start
-    //                    end = mwtoken.end
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
+    init {
+        sentences.forEach{ sentence ->
+            sentence.mwtokens?.forEach { mwtoken ->
+                (mwtoken.firstToken..mwtoken.lastToken).drop(1).forEach { i ->
+                    sentence.tokens[i - 1].apply {
+                        mwt = mwtoken
+                    }
+                }
+            }
+        }
+    }
 
     val graphs: Array<Graph<Token>> = Array(sentences.size) {
         ParsedGraph(sentences[it]).apply { make() }
