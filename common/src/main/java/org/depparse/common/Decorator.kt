@@ -119,6 +119,27 @@ object Decorator {
                 .append(BreakLevel.toString(token.breakLevel))
                 .append('\n')
 
+            // mwtoken
+            if (token.mwt != null) {
+                val mwt = token.mwt!!
+                this
+                    .append("mwtoken")
+                    .append(" = ")
+                    .append(mwt.word)
+                    .append(" (")
+                    .append(mwt.start.toString())
+                    .append(':')
+                    .append(mwt.end.toString())
+                    .append(')')
+                    .append(' ')
+                    .append("tokens [")
+                    .append(mwt.firstToken.toString())
+                    .append(':')
+                    .append(mwt.lastToken.toString())
+                    .append(']')
+                    .append('\n')
+            }
+
         } catch (_: IOException) {
             this
                 .append("<error")
