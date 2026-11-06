@@ -200,7 +200,7 @@ toJavaSentence(
     int s_iend = static_cast<int>(strtol(s_end.c_str(), nullptr, 10));
 
     // Tokens
-
+    vector<jobject> jmwtokens;
     for (int j = 1; j < nTokens; j++) {
         // collect token data
 
@@ -318,6 +318,7 @@ toJavaSentence(
                                                         mwt_ifirst, // firstToken: Int
                                                         mwt_ilast // lastToken: Int, // inclusive
             ));
+            jmwtokens.push_back(jmwtoken);
             if (env->ExceptionCheck()) {
                 return nullptr;
             }
