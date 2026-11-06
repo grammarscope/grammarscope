@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 import org.depparse.ParcelableSentence.Companion.readSentence
-import org.depparse.ParcelableSentence.Companion.writeToParcel
+import org.depparse.ParcelableSentence.Companion.writeSentence
 import org.depparse.Sentence
 
 class ParcelableResult : Parcelable {
@@ -37,7 +37,7 @@ class ParcelableResult : Parcelable {
         val n = result.size
         parcel.writeInt(n)
         for (sentence in result) {
-            writeToParcel(parcel, sentence)
+            writeSentence(parcel, sentence)
         }
         Log.i(TAG, "Write parcel write size=" + parcel.dataSize() + " pos=" + parcel.dataPosition())
     }
