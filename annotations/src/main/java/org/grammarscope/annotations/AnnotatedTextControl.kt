@@ -7,6 +7,9 @@ package org.grammarscope.annotations
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.text.LineBreaker
+import android.os.Build
+import android.text.Layout
 import android.text.TextUtils.TruncateAt
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -58,6 +61,8 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
         setLineSpacing(INITIAL_LINESPACING, lineSpacingMultiplier)
         setPadding(padding)
         ellipsize = TruncateAt.END
+        breakStrategy = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)  LineBreaker.BREAK_STRATEGY_SIMPLE else Layout.BREAK_STRATEGY_SIMPLE
+        //hyphenationFrequency = Layout.HYPHENATION_FREQUENCY_NONE
     }
 
     private val increaseLineSpacingButton: FloatingActionButton = createTransparentFab(context, R.drawable.btn_plus).apply {
