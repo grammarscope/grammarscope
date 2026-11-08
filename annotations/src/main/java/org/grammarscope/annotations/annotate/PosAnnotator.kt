@@ -78,7 +78,7 @@ class PosAnnotator<N>(
         for (sentenceIdx in 0..<n) {
             val graph: Graph<N> = document.getGraph(sentenceIdx)
 
-            // NODES
+            // iterate over graph nodes
             for (node in graph.nodes) {
                 val token = node as Token
 
@@ -88,22 +88,41 @@ class PosAnnotator<N>(
                     continue
 
                 // pos
-                val tagMap = Token.TokenTagProcessor.splitTag(token.tag)
-                Log.d(TAG, "token $token $tagMap")
-                val pos = if (posIndex == null) tagMap[posKey]!! else tagMap[posKey]?.split("++")!![posIndex]
-                Log.d(TAG, "pos $token $pos}")
+                val pos = token.getPos(posKey, posIndex)
 
-                // location
+                // x location
                 val segment = document.getTextSegment(sentenceIdx, node.segment)
                 val wordBox = textView.segmentToViewRectF(segment)
 
-                val annotationTop = wordBox.top + manager.lineHeight
+                // index in mwtoken
+                val indexInMWToken = token.getIndexInMWToken()
+                var line = indexInMWToken ?: 1
+                if (indexInMWToken != null) {
+                    line++
+                }
+
+                val annotationTop = wordBox.top + (line * manager.lineHeight)
                 val annotationBottom = annotationTop + padHeight
                 val annotationBox = RectF(wordBox.left, annotationTop + padTopOffset + PAD_TOP_INSET, wordBox.right, annotationBottom - PAD_BOTTOM_INSET)
                 boxes.add(LabelAnnotation(annotationBox, pos, backColor = null, foreColor = Palette.posColor))
             }
         }
         return mapOf(AnnotationType.LABEL to boxes)
+    }
+
+    private fun Token.getIndexInMWToken(): Int? {
+        if (mwt != null) {
+            return mwt!!.firstToken - index
+        }
+        return null
+    }
+
+    private fun Token.getPos(posKey: String, posIndex: Int?): String {
+        val tagMap = Token.TokenTagProcessor.splitTag(tag)
+        Log.d(TAG, "token $this $tagMap")
+        val pos = if (posIndex == null) tagMap[posKey]!! else tagMap[posKey]?.split("++")!![posIndex]
+        Log.d(TAG, "pos $this $pos}")
+        return pos
     }
 
     companion object {
