@@ -2,6 +2,7 @@ package org.grammarscope.annotations.document
 
 import android.text.SpannableStringBuilder
 import android.util.Log
+import org.depparse.MWToken
 import org.depparse.Segment
 import org.depparse.Sentence
 import org.depparse.Token
@@ -102,6 +103,12 @@ class ParsedDocument(val sentences: Array<Sentence>, val sentenceStarts: Array<I
         val start = sentenceStarts[sentenceIdx]
         return start + segment.first to start + segment.second
     }
+
+    override val tokens: Sequence<Token>
+        get() = (0..<sentenceCount).flatMap { sentenceIdx -> sentences[sentenceIdx].tokens.asSequence() }.asSequence()
+
+    override val mwTokens: Sequence<MWToken>
+        get() = (0..<sentenceCount).flatMap { sentenceIdx -> sentences[sentenceIdx].mwtokens?.asSequence() ?: emptySequence() }.asSequence()
 
     override val wordSegments: List<Segment> by lazy {
         (0..<sentenceCount).flatMap { sentenceIdx -> sentences[sentenceIdx].tokens.map { getTextSegment(sentenceIdx, it.segment) } }.toList()
