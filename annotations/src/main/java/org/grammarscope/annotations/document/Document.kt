@@ -3,8 +3,10 @@ package org.grammarscope.annotations.document
 import org.depparse.HasIndex
 import org.depparse.HasIndices
 import org.depparse.HasSegment
+import org.depparse.MWToken
 import org.depparse.Segment
 import org.depparse.Sentence
+import org.depparse.Token
 
 /**
  * Graph edge
@@ -37,6 +39,10 @@ interface Document<N> where N : HasIndex, N : HasSegment {
     val sentenceCount: Int
 
     val wordSegments: List<Segment>
+
+    val tokens: Sequence<Token>
+
+    val mwTokens: Sequence<MWToken>
 
     fun getText(): CharSequence
 

@@ -37,10 +37,10 @@ class AnnotationManager(val textView: TextView) {
         Log.d(TAG, "Annotation height $annotationHeight")
     }
 
-    fun allocate(type: Type): Float {
+    fun allocate(type: Type, linesAbove: Int = 1): Float {
         return when (type) {
             Type.POS -> TOP_OFFSET
-            Type.DEP -> TOP_OFFSET + Paint().apply { textSize = LABEL_TEXT_SIZE }.fontMetrics.height() + TOP_OFFSET
+            Type.DEP -> TOP_OFFSET + linesAbove * (Paint().apply { textSize = LABEL_TEXT_SIZE }.fontMetrics.height() + TOP_OFFSET)
         }
     }
 

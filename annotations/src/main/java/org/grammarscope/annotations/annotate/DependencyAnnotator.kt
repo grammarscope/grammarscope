@@ -59,6 +59,14 @@ class DependencyAnnotator<N>(
     private val bidiFormatter: BidiFormatter = BidiFormatter.getInstance(false)
 
     /**
+     * Returns the max span of mwtoken in the document     *
+     * @return the int
+     */
+    private fun Document<N>.getMaxMWTokenSpan(): Int? {
+        return this.mwTokens.maxOfOrNull { it.lastToken - it.firstToken + 1 }
+    }
+
+    /**
      * Annotate
      *
      * @param document document to annotate from
@@ -74,7 +82,8 @@ class DependencyAnnotator<N>(
         Log.d(TAG, "Annotating")
 
         // space allocation
-        val padTopOffset = manager.allocate(Type.DEP)
+        val maxMWTokenSpan = document.getMaxMWTokenSpan()
+        val padTopOffset = manager.allocate(Type.DEP, linesAbove = maxMWTokenSpan ?: 1)
 
         // annotations
         val edges: MutableCollection<EdgeAnnotation> = ArrayList()
