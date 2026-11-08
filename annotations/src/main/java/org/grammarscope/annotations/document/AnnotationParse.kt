@@ -1,11 +1,13 @@
 package org.grammarscope.annotations.document
 
+import android.text.SpannableStringBuilder
 import android.util.Log
 import org.depparse.Segment
 import org.depparse.Sentence
 import org.depparse.Token
 import org.depparse.Token.TokenEnhancedDepsProcessor
 import org.depparse.common.BaseParse
+import org.grammarscope.annotations.document.TokenSpan.Companion.enforceNoBreaks
 import java.util.function.Consumer
 
 class AnnotationParse(consumer: Consumer<Document<Token>?>) : BaseParse<Document<Token>>(consumer) {
@@ -70,7 +72,7 @@ class ParsedGraph(val sentence: Sentence) : Graph<Token> {
 class ParsedDocument(val sentences: Array<Sentence>, val sentenceStarts: Array<Int>) : Document<Token> {
 
     init {
-        sentences.forEach{ sentence ->
+        sentences.forEach { sentence ->
             sentence.mwtokens?.forEach { mwtoken ->
                 (mwtoken.firstToken..mwtoken.lastToken).drop(1).forEach { i ->
                     sentence.tokens[i - 1].apply {
@@ -104,6 +106,8 @@ class ParsedDocument(val sentences: Array<Sentence>, val sentenceStarts: Array<I
     override val wordSegments: List<Segment> by lazy {
         (0..<sentenceCount).flatMap { sentenceIdx -> sentences[sentenceIdx].tokens.map { getTextSegment(sentenceIdx, it.segment) } }.toList()
     }
+
+    override fun getText(): CharSequence = sentences.joinTo(SpannableStringBuilder(), separator = "\n") { enforceNoBreaks(it.text, it.tokens) }
 
     fun dump() {
         val text: String = sentences.joinToString("\n") { it.text }

@@ -38,6 +38,8 @@ interface Document<N> where N : HasIndex, N : HasSegment {
 
     val wordSegments: List<Segment>
 
+    fun getText(): CharSequence
+
     fun getSentence(sentenceIdx: Int): Sentence
 
     fun getTextSegment(sentenceIdx: Int, segment: Segment): Segment

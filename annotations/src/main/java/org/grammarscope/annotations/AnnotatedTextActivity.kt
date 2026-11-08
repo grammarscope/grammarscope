@@ -52,7 +52,7 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
         textView = findViewById(textControl.textView.id)
 
         // set text
-        textView.text = query + '\n'
+        textView.text = query // pending
 
         // observe layout change events
         textView.changed.observe(this) {
@@ -65,6 +65,10 @@ class AnnotatedTextActivity : BaseParseActivity<Document<Token>?>() {
         Log.d(TAG, "Accept document")
         if (result != null) {
             this.document = result
+
+            // spanned text
+            val text2 = this.document!!.getText()
+            textView.text = text2
 
             runAnnotations()
         }
