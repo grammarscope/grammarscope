@@ -10,6 +10,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.PathEffect
 import android.graphics.RectF
+import android.util.Log
 import org.grammarscope.annotations.annotation.Annotation.BoxAnnotation
 import org.grammarscope.annotations.annotation.Annotation.EdgeAnnotation
 import org.grammarscope.annotations.annotation.Annotation.LabelAnnotation
@@ -33,6 +34,7 @@ object AnnotationPainter {
 
         // draw edge
         for (edgeAnnotation in edgeAnnotations) {
+            Log.d(TAG, edgeAnnotation.toString())
             edgeAnnotation.draw(canvas, padWidth)
         }
 
@@ -96,4 +98,6 @@ object AnnotationPainter {
         color = Palette.spanColor
         pathEffect = SPAN_STROKE
     }
+
+    const val TAG = "AnnotatiopPainter"
 }
