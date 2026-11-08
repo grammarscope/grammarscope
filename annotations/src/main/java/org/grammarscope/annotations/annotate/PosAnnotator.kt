@@ -23,7 +23,7 @@ import org.grammarscope.annotations.paint.Palette
 import org.grammarscope.annotations.segmentToViewRectF
 
 /**
- * Semantic graph renderer
+ * POS tag renderer
  *
  * @param textView textView
  *
