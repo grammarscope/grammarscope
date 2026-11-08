@@ -59,8 +59,8 @@ class DependencyAnnotator<N>(
     private val bidiFormatter: BidiFormatter = BidiFormatter.getInstance(false)
 
     /**
-     * Returns the max span of mwtoken in the document     *
-     * @return the int
+     * Returns the max span of mwtokens in the document
+     * @return max span (number of tokens in the longest MWToken)
      */
     private fun Document<N>.getMaxMWTokenSpan(): Int? {
         return this.mwTokens.maxOfOrNull { it.lastToken - it.firstToken + 1 }
