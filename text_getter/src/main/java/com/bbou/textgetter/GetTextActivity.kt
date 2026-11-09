@@ -241,6 +241,7 @@ class GetTextActivity : BaseActivity() {
                 val authority = "${applicationId}.fileprovider"
                 val photoURI = FileProvider.getUriForFile(this, authority, photoFile)
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                 activityCameraResultLauncher!!.launch(takePictureIntent)
             } catch (e: IOException) {
                 Log.e(TAG, " Error occurred while creating photo file $e")
