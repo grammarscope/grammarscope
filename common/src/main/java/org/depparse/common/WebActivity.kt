@@ -75,7 +75,7 @@ class WebActivity : BaseActivity() {
         //webview.getSettings().setAllowUniversalAccessFromFileURLs(true);
         //}
         webview.webViewClient = object : WebViewClient() {
-            @Deprecated("Deprecated")
+            @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
             override fun onReceivedError(view: WebView, errorCode: Int, description: String, failingUrl: String) {
                 Log.e(TAG, "$failingUrl:$description,$errorCode")
             }
@@ -84,7 +84,7 @@ class WebActivity : BaseActivity() {
                 Log.e(TAG, error.description.toString() + ',' + error.errorCode)
             }
 
-            @Deprecated("Deprecated")
+            @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 view.loadUrl(url)
                 return false
@@ -97,12 +97,11 @@ class WebActivity : BaseActivity() {
                 return false
             }
 
-            @Deprecated("Deprecated in Java")
+            @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
             override fun shouldInterceptRequest(view: WebView, url: String): WebResourceResponse? {
                 return if (assetLoader != null) {
                     assetLoader.shouldInterceptRequest(url.toUri())
                 } else {
-                    @Suppress("DEPRECATION")
                     super.shouldInterceptRequest(view, url)
                 }
             }
