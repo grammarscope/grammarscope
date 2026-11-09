@@ -77,7 +77,7 @@ string to_hex_codepoints(const std::string &s) {
 
     size_t i = 0;
     while (i < s.size()) {
-        unsigned char c = static_cast<unsigned char>(s[i]);
+        auto c = static_cast<unsigned char>(s[i]);
         char32_t cp;
         size_t len;
 
@@ -100,7 +100,7 @@ string to_hex_codepoints(const std::string &s) {
         else { throw std::runtime_error("invalid UTF-8"); }
 
         for (size_t k = 1; k < len; ++k) {
-            unsigned char cc = static_cast<unsigned char>(s[i + k]);
+            auto cc = static_cast<unsigned char>(s[i + k]);
             if ((cc & 0xC0) != 0x80) throw std::runtime_error("invalid UTF-8");
             cp = (cp << 6) | (cc & 0x3F);
         }
