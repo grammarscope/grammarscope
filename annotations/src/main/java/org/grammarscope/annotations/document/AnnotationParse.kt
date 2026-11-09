@@ -8,7 +8,7 @@ import org.depparse.Sentence
 import org.depparse.Token
 import org.depparse.Token.TokenEnhancedDepsProcessor
 import org.depparse.common.BaseParse
-import org.grammarscope.annotations.document.TokenSpan.Companion.enforceNoBreaks
+import org.grammarscope.annotations.document.BreakManager.enforceNoBreaks
 import java.util.function.Consumer
 
 class AnnotationParse(consumer: Consumer<Document<Token>?>) : BaseParse<Document<Token>>(consumer) {
