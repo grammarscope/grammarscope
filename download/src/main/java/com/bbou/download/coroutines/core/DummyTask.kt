@@ -58,11 +58,11 @@ class DummyTask : Task<DummyTask.Parameters, Pair<Long, Long>, Boolean?>() {
     /**
      * Run
      *
-     * @property fromUrl dummy source url
-     * @property toFile dummy dest file
-     * @property entry dummy entry
-     * @property renameFrom dummy rename source
-     * @property renameTo dummy rename dest
+     * @param fromUrl dummy source url
+     * @param toFile dummy dest file
+     * @param entry dummy entry
+     * @param renameFrom dummy rename source
+     * @param renameTo dummy rename dest
      * @param observer observer
      * @param resultConsumer result consumer
      */

@@ -26,9 +26,8 @@ class SlotAllocator<E : HasIndices> : SlotAllocatorForIndexRanges<E>() {
 
     override fun toString(): String {
         val sb = StringBuilder()
-        for (entry in this.slots.entries) {
-            val edge = entry.key
-            sb.append("$edge index=(${edge.lowIndex}-${edge.highIndex}) = ${entry.value}\n")
+        for ((edge, value) in this.slots) {
+            sb.append("$edge index=(${edge.lowIndex}-${edge.highIndex}) = $value\n")
         }
         return sb.toString()
     }

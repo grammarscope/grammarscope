@@ -91,7 +91,7 @@ object Utils {
      * @param x0    x coordinate
      * @param y0    y coordinate
      * @param r     radius
-     * @param color color
+     * @param paint paint
      */
     @JvmStatic
     fun Canvas.drawDiamond(x0: Float, y0: Float, r: Float, paint: Paint) {
@@ -111,7 +111,7 @@ object Utils {
      *
      * @param x0    x coordinate
      * @param y0    y coordinate
-     * @param color color
+     * @param paint paint
      */
     @JvmStatic
     fun Canvas.drawEllipticalMark(x0: Float, y0: Float, paint: Paint) {
@@ -140,7 +140,7 @@ object Utils {
      * @param y0  tip y coordinate
      * @param w2  half width
      * @param h   half height
-     * @param reverse reverse
+     * @param downward downward arrow
      * @return path
      */
     private fun verticalArrow(x0: Float, y0: Float, w2: Float, h: Float, downward: Boolean = false): Path {

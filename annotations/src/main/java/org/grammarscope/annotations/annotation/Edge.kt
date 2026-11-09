@@ -37,7 +37,6 @@ import kotlin.math.atan2
  * @property height          height
  * @property tag             edge label/tag
  * @property isVertical      label/tag is vertical
- * @property color           color
  * @property isBackwards     direction
  * @property isLeftTerminal  is left terminal
  * @property isRightTerminal is right terminal

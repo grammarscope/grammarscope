@@ -47,7 +47,7 @@ class SentenceGraph<V : Token, E : Label>(@Suppress("unused") private val senten
             val v2 = endpoints.target()
             sb.append(v1)
                 .append('-')
-                .append(e!!.label())
+                .append(e.label())
                 .append('-')
                 .append('>')
                 .append(v2)

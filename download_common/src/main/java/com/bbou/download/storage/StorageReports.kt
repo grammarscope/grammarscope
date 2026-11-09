@@ -398,8 +398,7 @@ object StorageReports {
     @SafeVarargs
     fun namesValuesToReportStyled(vararg directories: Pair<Array<out CharSequence>, Array<String>>): CharSequence {
         val sb = SpannableStringBuilder()
-        for (namesValues in directories) {
-            val names = namesValues.first
+        for ((names) in directories) {
             for (name in names) {
                 sb.append(name)
                 sb.append('\n')

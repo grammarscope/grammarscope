@@ -11,13 +11,13 @@ class DependencyGraphParse(consumer: Consumer<SentenceGraph<Token, Token>?>, pri
     override fun toR(sentences: Array<Sentence>?): SentenceGraph<Token, Token>? {
         return sentences?.let {
             val graph = SentenceGraph<Token, Token>(sentences)
-            for (sentence in sentences) {
-                for (token in sentence.tokens) {
+            for ((_, _, _, tokens) in sentences) {
+                for (token in tokens) {
                     if (!graph.mutableNetwork.nodes().contains(token)) {
                         graph.mutableNetwork.addNode(token)
                     }
-                    if (token.head != -1 && token.head < sentence.tokens.size) {
-                        val token2 = sentence.tokens[token.head] // 0-based head index
+                    if (token.head != -1 && token.head < tokens.size) {
+                        val token2 = tokens[token.head] // 0-based head index
                         if (!graph.mutableNetwork.nodes().contains(token2)) {
                             graph.mutableNetwork.addNode(token2)
                         }

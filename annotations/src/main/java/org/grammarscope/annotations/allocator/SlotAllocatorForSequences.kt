@@ -10,7 +10,7 @@ open class SlotAllocatorForSequences<T> {
     /**
      * Each element has one slot map attached to it. Each slot is represented by one bit in the slot map (0 to 63 slots)
      */
-    private val slotMaps: MutableMap<T, Long> = Hashtable<T, Long>()
+    private val slotMaps: MutableMap<T, Long> = Hashtable()
 
     /**
      * Allocate slot

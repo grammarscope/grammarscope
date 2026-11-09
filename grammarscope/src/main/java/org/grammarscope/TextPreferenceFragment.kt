@@ -112,7 +112,6 @@ class TextPreferenceFragment : PreferenceFragmentCompat() {
                     return
                 }
             }
-        preference as ColorPreference
         manager.setFragmentResultListener(ColorPreference.COLOR_RESULT_KEY, this) { key: String, bundle: Bundle ->
             run {
                 if (key == ColorPreference.COLOR_RESULT_KEY) {

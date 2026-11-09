@@ -18,7 +18,7 @@ class AnchorAllocator<N>(val isRtl: Boolean) where N : HasIndex, N : HasSegment 
     /**
      * Cache of allocated anchors
      */
-    private val anchors: MutableMap<N, Triple<Int, Int, Map<GraphEdge<N>, Int>>> = HashMap<N, Triple<Int, Int, Map<GraphEdge<N>, Int>>>()
+    private val anchors: MutableMap<N, Triple<Int, Int, Map<GraphEdge<N>, Int>>> = HashMap()
 
     /**
      * Allocate node slots

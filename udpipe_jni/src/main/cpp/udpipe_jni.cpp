@@ -16,8 +16,6 @@
 
 #include <android/log.h>
 
-#include "utf8.h"
-
 #include "udpipe/iface_h.h"
 
 #define LOG_TAG    "UDPIPE_JNI"

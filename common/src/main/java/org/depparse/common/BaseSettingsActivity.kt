@@ -109,9 +109,7 @@ abstract class BaseSettingsActivity : BaseActivity(), PreferenceFragmentCompat.O
 
     override fun onSupportNavigateUp(): Boolean {
         val fm = supportFragmentManager
-        return if (fm.popBackStackImmediate()) {
-            true
-        } else super.onSupportNavigateUp()
+        return fm.popBackStackImmediate() || super.onSupportNavigateUp()
     }
 
     // F A C T O R Y

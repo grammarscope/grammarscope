@@ -5,9 +5,7 @@ import org.depparse.Token
 data class Instance(val sentenceIndex: Int, val token: Token) {
 
     override fun equals(other: Any?): Boolean {
-        return if (other !is Instance) {
-            false
-        } else sentenceIndex == other.sentenceIndex && token == other.token
+        return other is Instance && sentenceIndex == other.sentenceIndex && token == other.token
     }
 
     override fun hashCode(): Int {

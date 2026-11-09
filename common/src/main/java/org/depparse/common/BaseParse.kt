@@ -2,7 +2,6 @@ package org.depparse.common
 
 import com.bbou.coroutines.BaseTaskWithCallback
 import org.depparse.Sentence
-import java.text.Normalizer
 import java.util.function.Consumer
 
 abstract class BaseParse<R>(private val consumer: Consumer<R?>) : BaseTaskWithCallback<String, R?>() {

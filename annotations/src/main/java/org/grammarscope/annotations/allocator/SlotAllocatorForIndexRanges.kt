@@ -12,7 +12,7 @@ open class SlotAllocatorForIndexRanges<T : HasIndices> : SlotAllocatorForSequenc
      * Each element has one slot map attached to it. Each slot is represented by one bit in the slot map (0 to 63 slots)
      */
     @JvmField
-    protected val slots: MutableMap<T, Int> = Hashtable<T, Int>()
+    protected val slots: MutableMap<T, Int> = Hashtable()
 
     /**
      * Allocate slots and cache them

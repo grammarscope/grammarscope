@@ -597,10 +597,7 @@ object StorageUtils {
          * Equals
          */
         override fun equals(other: Any?): Boolean {
-            if (other !is StorageDirectory) {
-                return false
-            }
-            return dir == other.dir
+            return other is StorageDirectory && dir == other.dir
         }
 
         /**
