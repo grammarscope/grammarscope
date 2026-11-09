@@ -2,20 +2,14 @@
  * Copyright (c) 2026. Bernard Bou <1313ou@gmail.com>.
  */
 
-package org.grammarscope.annotations.document
+package org.grammarscope.annotations.paint
 
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Build
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.LineBreakConfigSpan
 import android.text.style.ReplacementSpan
-import org.depparse.Token
 import kotlin.math.roundToInt
 
-class TokenSpan : ReplacementSpan() {
+class TokenSpan(val isRoot: Boolean = false) : ReplacementSpan() {
 
     /**
      * Returns the size
@@ -61,41 +55,10 @@ class TokenSpan : ReplacementSpan() {
         bottom: Int,
         paint: Paint
     ) {
-        canvas.drawText(text, start, end, x, y.toFloat(), paint)
-    }
-
-    companion object {
-
-        fun enforceNoBreaks(
-            text: String,
-            tokens: Array<Token>
-        ): CharSequence {
-            val sb = SpannableStringBuilder(text)
-            tokens.forEach { token ->
-                if (token.end > token.start)
-                    applyNoBreakSpan(sb, token.start, token.end + 1)
-            }
-            return sb
-        }
-
-        fun applyNoBreakSpan(
-            text: Spannable,
-            start: Int,
-            end: Int // exclusive
-        ) {
-            val span: Any =
-                if (Build.VERSION.SDK_INT >= 35) {
-                    LineBreakConfigSpan.createNoBreakSpan()
-                } else {
-                    TokenSpan()
-                }
-
-            text.setSpan(
-                span,
-                start,
-                end,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-        }
+        if (isRoot) {
+            val paintRoot = Paint(paint).apply { color = Palette.rootColor }
+            canvas.drawText(text, start, end, x, y.toFloat(), paintRoot)
+        } else
+            canvas.drawText(text, start, end, x, y.toFloat(), paint)
     }
 }
