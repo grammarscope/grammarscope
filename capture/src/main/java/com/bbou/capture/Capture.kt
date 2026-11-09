@@ -12,12 +12,17 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.net.Uri
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import androidx.annotation.UiThread
+import androidx.annotation.WorkerThread
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.graphics.createBitmap
 import androidx.preference.PreferenceManager
 import java.io.File
 import java.io.FileOutputStream
@@ -25,7 +30,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import androidx.core.graphics.createBitmap
+import java.util.concurrent.Executors
 
 object Capture {
 
@@ -37,8 +42,13 @@ object Capture {
 
     const val PREF_CAPTURE_TIME_STAMPED = "pref_capture_time_stamped"
 
+    private val executor = Executors.newSingleThreadExecutor()
+
+    private val mainHandler = Handler(Looper.getMainLooper())
+
     // capture bitmap
 
+    @UiThread
     @JvmStatic
     fun getBackgroundFromTheme(context: Context): Int {
         val theme = context.theme
@@ -58,18 +68,21 @@ object Capture {
         return ContextCompat.getColor(context, android.R.color.background_light)
     }
 
+    @UiThread
     @JvmOverloads
     fun captureScreen(activity: Activity, backGround: Int? = null): Bitmap {
         val view = activity.window.decorView.rootView
         return captureView(view, backGround = backGround)
     }
 
+    @UiThread
     @JvmOverloads
     fun captureScreen(activity: Activity, backGround: Int? = null, onCaptureComplete: (Bitmap) -> Unit) {
         val view = activity.window.decorView.rootView
-        return captureView(view, backGround = backGround, onCaptureComplete)
+        captureView(view, backGround = backGround, onCaptureComplete)
     }
 
+    @UiThread
     @JvmOverloads
     fun captureView(view: View, backGround: Int? = null): Bitmap {
         val bitmap = createBitmap(view.width, view.height)
@@ -80,6 +93,7 @@ object Capture {
         return bitmap
     }
 
+    @UiThread
     @JvmOverloads
     fun captureView(view: View, backGround: Int? = null, onCaptureComplete: (Bitmap) -> Unit) {
         view.post {
@@ -90,22 +104,26 @@ object Capture {
 
     // save
 
+    @WorkerThread
     private fun getFilename(context: Context): String {
         val timeStamped = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PREF_CAPTURE_TIME_STAMPED, false)
         return if (timeStamped) "${CAPTURE_NAME}_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())}$CAPTURE_EXT"
         else "$CAPTURE_NAME$CAPTURE_EXT"
     }
 
+    @WorkerThread
     fun saveBitmapToExternalCacheFile(bitmap: Bitmap, context: Context): Uri? {
         val file = File(context.externalCacheDir, getFilename(context))
         return saveBitmapToFile(bitmap, file, context)
     }
 
+    @WorkerThread
     fun saveBitmapToCacheFile(bitmap: Bitmap, context: Context): Uri? {
         val file = File(context.cacheDir, getFilename(context))
         return saveBitmapToFile(bitmap, file, context)
     }
 
+    @WorkerThread
     fun saveBitmapToFile(bitmap: Bitmap, file: File, context: Context): Uri? {
         FileOutputStream(file).use { out ->
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
@@ -114,6 +132,7 @@ object Capture {
         return FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
     }
 
+    @WorkerThread
     fun saveBitmapToMediaStoreFile(bitmap: Bitmap, context: Context): Uri? {
         val values = ContentValues().apply {
             put(MediaStore.Images.Media.DISPLAY_NAME, getFilename(context))
@@ -129,6 +148,7 @@ object Capture {
         return null
     }
 
+    @WorkerThread
     fun saveBitmapToFile(bitmap: Bitmap, context: Context): Uri? {
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
         val inMediaStore = sharedPrefs.getBoolean(PREF_CAPTURE_IN_MEDIASTORE, false)
@@ -137,18 +157,22 @@ object Capture {
         return uri
     }
 
+    @UiThread
     fun saveBitmapToFile(bitmap: Bitmap, context: Context, onSaveComplete: (Boolean, Uri?) -> Unit) {
-        try {
-            val uri = saveBitmapToFile(bitmap, context)
-            onSaveComplete(true, uri)
-        } catch (e: IOException) {
-            e.printStackTrace()
-            onSaveComplete(false, null)
+        executor.execute {
+            try {
+                val uri = saveBitmapToFile(bitmap, context)
+                mainHandler.post { onSaveComplete(true, uri) }
+            } catch (e: IOException) {
+                e.printStackTrace()
+                mainHandler.post { onSaveComplete(false, null) }
+            }
         }
     }
 
     // share
 
+    @UiThread
     fun sharePng(activity: Activity, uri: Uri) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "image/png"
@@ -160,18 +184,27 @@ object Capture {
 
     // combine
 
+    @UiThread
     @JvmOverloads
     fun captureAndSave(view: View, context: Context, backGround: Int? = null) {
         val bm = captureView(view, backGround = backGround)
-        saveBitmapToFile(bm, context)
+        executor.execute {
+            saveBitmapToFile(bm, context)
+        }
     }
 
+    @UiThread
     @JvmOverloads
     fun captureAndShare(view: View, activity: Activity, backGround: Int? = null) {
         val bm = captureView(view, backGround = backGround)
-        val uri = saveBitmapToFile(bm, activity)
-        if (uri != null)
-            sharePng(activity, uri)
+        executor.execute {
+            val uri = saveBitmapToFile(bm, activity)
+            if (uri != null) {
+                mainHandler.post {
+                    sharePng(activity, uri)
+                }
+            }
+        }
     }
 
     private const val TAG = "Capture"
