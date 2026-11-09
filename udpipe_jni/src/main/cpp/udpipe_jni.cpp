@@ -290,7 +290,7 @@ toJavaSentence(
             int mwt_ilast = static_cast<int>(strtol(mwt_last.c_str(), nullptr, 10));
             int mwt_istart = -1;
             int mwt_iend = -1;
-            if (mwt_misc != "") {
+            if (!mwt_misc.empty()) {
                 std::regex pattern(R"(TokenRange=(\d+):(\d+))");
                 std::smatch matches;
                 // Use std::regex_search if the pattern is embedded in a larger string, or std::regex_match if the entire string must match the pattern.
