@@ -4,6 +4,7 @@
 
 package org.grammarscope.annotations
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -61,7 +62,11 @@ class AnnotatedTextControl(context: Context, attrs: AttributeSet?) : ConstraintL
         setLineSpacing(INITIAL_LINESPACING, lineSpacingMultiplier)
         setPadding(padding)
         ellipsize = TruncateAt.END
-        breakStrategy = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)  LineBreaker.BREAK_STRATEGY_SIMPLE else Layout.BREAK_STRATEGY_SIMPLE
+        breakStrategy = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) LineBreaker.BREAK_STRATEGY_SIMPLE
+        else {
+            @SuppressLint("WrongConstant")
+            Layout.BREAK_STRATEGY_SIMPLE
+        }
         //hyphenationFrequency = Layout.HYPHENATION_FREQUENCY_NONE
     }
 
