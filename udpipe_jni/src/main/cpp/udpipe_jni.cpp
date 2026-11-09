@@ -281,7 +281,7 @@ toJavaSentence(
         const string &mwt_misc = it != token.end() ? it->second : "";
         it = token.find("mwt_form");
         const string &mwt_form = it != token.end() ? it->second : "";
-        if (mwt_misc != "") {
+        if (!mwt_misc.empty()) {
             it = token.find("mwt_first");
             const string &mwt_first = it != token.end() ? it->second : "-1";
             int mwt_ifirst = static_cast<int>(strtol(mwt_first.c_str(), nullptr, 10));
