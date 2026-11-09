@@ -5,7 +5,8 @@
   -->
 
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/toolbar"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
 	android:layout_width="match_parent"
 	android:layout_height="?attr/actionBarSize"
 	android:elevation="4dp">
@@ -19,7 +20,8 @@
 		android:layout_marginEnd="10dp"
 		android:background="@android:color/transparent"
 		android:contentDescription="@string/app_name"
-		android:visibility="gone"/>
+		android:visibility="gone"
+        tools:ignore="InconsistentLayout" />
 
 	<!--
 	<ImageButton
