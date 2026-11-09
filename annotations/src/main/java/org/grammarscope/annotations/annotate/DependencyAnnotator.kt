@@ -150,7 +150,7 @@ class DependencyAnnotator<N>(
                     val textSegment = document.getTextSegment(sentenceIdx, token.segment)
                     val wordStart: Int = textSegment.first
                     val wordEnd: Int = textSegment.second + 1
-                    //textView.backHighlightWord(wordStart, wordEnd, Palette.rootBackColor)
+                    // ineffectual for < API35
                     textView.foreHighlightWord(wordStart, wordEnd, Palette.rootColor)
                 }
             }
