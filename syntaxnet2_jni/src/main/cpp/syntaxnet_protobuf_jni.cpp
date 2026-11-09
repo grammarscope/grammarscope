@@ -75,7 +75,7 @@ JNICALL Java_org_syntaxnet2_JNI2_parseProtos(JNIEnv *env, jobject /*thiz*/, jlon
 
     // parse
     vector<string> parsed_sentence_protos;
-    sni_parse_hp(handle, texts, parsed_sentence_protos);
+    sni_parse_hp(static_cast<long>(handle), texts, parsed_sentence_protos);
     LOGD("Parsed %zu sentences\n", parsed_sentence_protos.size());
 
     // interpret
@@ -99,7 +99,7 @@ JNICALL Java_org_syntaxnet2_JNI2_splitParseProtos(JNIEnv *env, jobject /*thiz*/,
 
     // parse
     vector<string> split_parsed_sentence_protos;
-    sni_split_parse_hp(handle, texts, split_parsed_sentence_protos);
+    sni_split_parse_hp(static_cast<long>(handle), texts, split_parsed_sentence_protos);
     LOGD("Parsed %zu sentences\n", split_parsed_sentence_protos.size());
 
     // interpret
@@ -123,7 +123,7 @@ JNICALL Java_org_syntaxnet2_JNI2_segmentProtos(JNIEnv *env, jobject /*thiz*/, jl
 
     // parse
     vector<string> segmented_sentence_protos;
-    sni_segment_hp(handle, texts, segmented_sentence_protos);
+    sni_segment_hp(static_cast<long>(handle), texts, segmented_sentence_protos);
     LOGD("Segmented %zu sentences\n", segmented_sentence_protos.size());
 
     // result
