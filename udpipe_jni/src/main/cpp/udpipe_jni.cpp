@@ -440,6 +440,7 @@ toJavaSentence(
  * - array of sentences could not be created
  * - one parsed sentence has no token
  */
+static
 jobjectArray
 toJavaSentences(
         JNIEnv *env,
