@@ -67,7 +67,7 @@ android {
     //    }
     //}
 
-    ndkVersion = "25.0.8775105"
+    ndkVersion = "30.0.16248370"
 }
 
 kotlin {
