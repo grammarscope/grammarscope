@@ -135,14 +135,14 @@ string to_hex_codepoints(const std::string &s) {
 // F R O M   J A V A
 
 extern
-vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array) {
-    int count = env->GetArrayLength(string_array);
+vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs) {
+    const int count = env->GetArrayLength(j_strs);
     vector<string> result;
     for (int i = 0; i < count; i++) {
-        auto jstr = reinterpret_cast<jstring>(env->GetObjectArrayElement(string_array, i));
-        const char *raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
+        auto j_str = reinterpret_cast<jstring>(env->GetObjectArrayElement(j_strs, i));
+        const char *raw_str = env->GetStringUTFChars(j_str, JNI_FALSE);
         result.emplace_back(raw_str);
-        env->ReleaseStringUTFChars(jstr, raw_str);
+        env->ReleaseStringUTFChars(j_str, raw_str);
 
         string hex = to_hex_codepoints(result[i]);
         LOGD("Input %d Codepoints cps = %s", i, hex.c_str());
@@ -150,10 +150,10 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array) {
     return result;
 }
 
-string jniStringToString(JNIEnv *env, jstring jstr) {
-    const char *raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
+static string jniStringToString(JNIEnv *env, jstring j_str) {
+    const char *raw_str = env->GetStringUTFChars(j_str, JNI_FALSE);
     string result(raw_str);
-    env->ReleaseStringUTFChars(jstr, raw_str);
+    env->ReleaseStringUTFChars(j_str, raw_str);
     return result;
 }
 
@@ -182,17 +182,17 @@ toJavaSentence(
         JNIEnv *env,
         const sentence_t &parsed_sentence,
         int sentenceIndex,
-        jclass sentence_class,
-        jmethodID sentence_ctor,
-        jclass token_class,
-        jmethodID token_ctor,
-        jclass mwtoken_class,
-        jmethodID mwtoken_ctor) {
+        jclass j_sentence_class,
+        jmethodID j_sentence_ctor,
+        jclass j_token_class,
+        jmethodID j_token_ctor,
+        jclass j_mwtoken_class,
+        jmethodID j_mwtoken_ctor) {
     int nTokens = static_cast<int>(parsed_sentence.size());
 
     // make java array of tokens Token[] to be field of Sentence class and return back to Java
 
-    jobjectArray jtoken_array = CheckNotNull(env, env->NewObjectArray(nTokens - 1, token_class, nullptr));
+    jobjectArray j_token_array = check_not_null(env, env->NewObjectArray(nTokens - 1, j_token_class, nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -217,8 +217,9 @@ toJavaSentence(
     int s_iend = static_cast<int>(strtol(s_end.c_str(), nullptr, 10));
 
     // Tokens
-    vector<jobject> jmwtokens;
-    int ijmwtoken = 0;
+
+    vector<jobject> j_mwtokens;
+    int i_mwtoken = 0;
     for (int j = 1; j < nTokens; j++) {
         // collect token data
 
@@ -295,7 +296,7 @@ toJavaSentence(
         const string &t_end = it != token.end() ? it->second : "-1";
 
         // mwt
-        jobject jmwtoken = nullptr;
+        jobject j_mwtoken = nullptr;
         it = token.find("mwt_misc");
         const string &mwt_misc = it != token.end() ? it->second : "";
         it = token.find("mwt_form");
@@ -323,7 +324,7 @@ toJavaSentence(
                     mwt_iend = static_cast<int>(strtol(mwt_end.c_str(), nullptr, 10));
                 }
             }
-            jstring jmwt_form = CheckNotNull(env, env->NewStringUTF(mwt_form.c_str()));
+            jstring j_mwt_form = check_not_null(env, env->NewStringUTF(mwt_form.c_str()));
             if (env->ExceptionCheck()) {
                 return nullptr;
             }
@@ -335,6 +336,14 @@ toJavaSentence(
                                                         mwt_iend, // end: Int, inclusive, relative to sentence text
                                                         mwt_ifirst, // firstToken: Int
                                                         mwt_ilast // lastToken: Int, // inclusive
+            j_mwtoken = check_not_null(env, env->NewObject(j_mwtoken_class, j_mwtoken_ctor,
+                                                           sentenceIndex, //sentenceIndex: Int
+                                                           i_mwtoken++,// index: Int
+                                                           j_mwt_form, // word: String, // not null
+                                                           mwt_istart, // start: Int
+                                                           mwt_iend, // end: Int, inclusive, relative to sentence text
+                                                           mwt_ifirst, // firstToken: Int
+                                                           mwt_ilast // lastToken: Int, // inclusive
             ));
             jmwtokens.push_back(jmwtoken);
             if (env->ExceptionCheck()) {
@@ -352,7 +361,7 @@ toJavaSentence(
 
         // token constructor parameters
 
-        jstring jword = CheckNotNull(env, env->NewStringUTF(word.c_str()));
+        jstring j_word = check_not_null(env, env->NewStringUTF(word.c_str()));
         int t_istart = static_cast<int>(strtol(t_start.c_str(), nullptr, 10));
         int t_iend = static_cast<int>(strtol(t_end.c_str(), nullptr, 10));
         if (t_iend != -1)
@@ -362,14 +371,14 @@ toJavaSentence(
         }
         t_istart -= sentence_start;
         t_iend -= sentence_start;
-        jstring jcategory = CheckNotNull(env, env->NewStringUTF(category.c_str()));
-        jstring jtag = CheckNotNull(env, env->NewStringUTF(tag.c_str()));
-        jstring jlabel = CheckNotNull(env, env->NewStringUTF(label.c_str()));
+        jstring j_category = check_not_null(env, env->NewStringUTF(category.c_str()));
+        jstring j_tag = check_not_null(env, env->NewStringUTF(tag.c_str()));
+        jstring j_label = check_not_null(env, env->NewStringUTF(label.c_str()));
         int ihead = static_cast<int>(strtol(head.c_str(), nullptr, 10));
         if (ihead > 0) // O-based
             ihead--;
         int ibreaklevel = static_cast<int>(strtol(breaklevel.c_str(), nullptr, 10));
-        jstring jdeps = CheckNotNull(env, env->NewStringUTF(deps.c_str()));
+        jstring j_deps = check_not_null(env, env->NewStringUTF(deps.c_str()));
 
         // make java token
         // jword: String!!, possibly ""
@@ -380,31 +389,31 @@ toJavaSentence(
         // ihead: Int!!, possibly -1
         // jlabel: String!!, possibly ""
         // ibreaklevel: Int!!, possibly -1
-        jobject jtoken = CheckNotNull(env, env->NewObject(token_class, token_ctor, sentenceIndex, j - 1, jword,
-                                                          t_istart, t_iend, jcategory, jtag, ihead, jlabel, ibreaklevel,
-                                                          jdeps, jmwtoken));
+        jobject jtoken = check_not_null(env, env->NewObject(j_token_class, j_token_ctor, sentenceIndex, j - 1, j_word,
+                                                            t_istart, t_iend, j_category, j_tag, ihead, j_label, ibreaklevel,
+                                                            j_deps, j_mwtoken));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
 
         // set token in array
 
-        env->SetObjectArrayElement(jtoken_array, j - 1, jtoken);
+        env->SetObjectArrayElement(j_token_array, j - 1, jtoken);
     }
 
     // array of mwtokens
 
-    jobjectArray jmwtoken_array = nullptr;
-    int nMwtokens = static_cast<int>(jmwtokens.size());
+    jobjectArray j_mwtoken_array = nullptr;
+    int nMwtokens = static_cast<int>(j_mwtokens.size());
     if (nMwtokens > 0) {
-        jmwtoken_array = CheckNotNull(env, env->NewObjectArray(nMwtokens, mwtoken_class, nullptr));
+        j_mwtoken_array = check_not_null(env, env->NewObjectArray(nMwtokens, j_mwtoken_class, nullptr));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
         // populate
         for (int j = 0; j < nMwtokens; j++) {
-            jobject& jmwtoken = jmwtokens[j];
-            env->SetObjectArrayElement(jmwtoken_array, j, jmwtoken);
+            jobject &j_mwtoken = j_mwtokens[j];
+            env->SetObjectArrayElement(j_mwtoken_array, j, j_mwtoken);
             if (env->ExceptionCheck()) {
                 return nullptr;
             }
@@ -413,19 +422,19 @@ toJavaSentence(
 
     // make sentence
 
-    jstring jtext = CheckNotNull(env, env->NewStringUTF(text.c_str()));
+    jstring j_text = check_not_null(env, env->NewStringUTF(text.c_str()));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jstring jdocid = CheckNotNull(env, env->NewStringUTF(docid.c_str()));
+    jstring j_docid = check_not_null(env, env->NewStringUTF(docid.c_str()));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jobject jsentence = env->NewObject(sentence_class, sentence_ctor, jtext, s_istart, s_iend, jtoken_array, jmwtoken_array, jdocid);
+    jobject j_sentence = env->NewObject(j_sentence_class, j_sentence_ctor, j_text, s_istart, s_iend, j_token_array, j_mwtoken_array, j_docid);
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    return jsentence;
+    return j_sentence;
 }
 
 /**
@@ -455,35 +464,35 @@ toJavaSentences(
 
     // classes and constructors
 
-    jclass sentence_class = CheckNotNull(env, env->FindClass(sentenceClass));
+    jclass j_sentence_class = check_not_null(env, env->FindClass(sentenceClass));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID sentence_ctor = CheckNotNull(env, env->GetMethodID(sentence_class, "<init>", sentenceCtor));
+    jmethodID j_sentence_ctor = check_not_null(env, env->GetMethodID(j_sentence_class, "<init>", sentenceCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jclass token_class = CheckNotNull(env, env->FindClass(tokenClass));
+    jclass j_token_class = check_not_null(env, env->FindClass(tokenClass));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID token_ctor = CheckNotNull(env, env->GetMethodID(token_class, "<init>", tokenCtor));
+    jmethodID j_token_ctor = check_not_null(env, env->GetMethodID(j_token_class, "<init>", tokenCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jclass mwtoken_class = CheckNotNull(env, env->FindClass(mwtokenClass));
+    jclass j_mwtoken_class = check_not_null(env, env->FindClass(mwtokenClass));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID mwtoken_ctor = CheckNotNull(env, env->GetMethodID(mwtoken_class, "<init>", mwtokenCtor));
+    jmethodID j_mwtoken_ctor = check_not_null(env, env->GetMethodID(j_mwtoken_class, "<init>", mwtokenCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
 
     // make Array<Sentence> to return back to Java
 
-    int n = static_cast<int>(parsed_sentences.size());
-    jobjectArray sentence_array = CheckNotNull(env, env->NewObjectArray(n, sentence_class, nullptr));
+    const int n = static_cast<int>(parsed_sentences.size());
+    jobjectArray j_sentence_array = check_not_null(env, env->NewObjectArray(n, j_sentence_class, nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -502,7 +511,7 @@ toJavaSentences(
         }
         i++;
     }
-    return sentence_array;
+    return j_sentence_array;
 }
 
 // N A T I V E   I N T E R F A C E
@@ -517,11 +526,11 @@ string model_path;
 extern "C" JNIEXPORT
 jint
 JNICALL Java_org_udpipe_JNI_version(
-        JNIEnv *env,
-        jobject type) {
+        const JNIEnv *env,
+        jobject j_type) {
     (void) env;
-    (void) type;
-    int version = udpipe_version();
+    (void) j_type;
+    const int version = udpipe_version();
     return version;
 }
 
@@ -546,9 +555,9 @@ extern "C" JNIEXPORT
 jlong
 JNICALL Java_org_udpipe_JNI_load(
         JNIEnv *env,
-        jobject type,
+        jobject j_type,
         jstring j_model_path) {
-    (void) type;
+    (void) j_type;
     model_path = jniStringToString(env, j_model_path);
 
     long handle = udpipe_load_h(model_path.c_str());
@@ -562,14 +571,14 @@ extern "C" JNIEXPORT
 void
 JNICALL Java_org_udpipe_JNI_unload(
         JNIEnv *env,
-        jobject type,
-        jlong handle) {
-    (void) type;
-    if (handle == 0) {
+        jobject j_type,
+        jlong j_handle) {
+    (void) j_type;
+    if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot free null handle");
         return;
     }
-    udpipe_unload_h(static_cast<long>(handle));
+    udpipe_unload_h(j_handle);
 }
 
 // p a r s e
@@ -581,26 +590,26 @@ extern "C" JNIEXPORT
 jobjectArray
 JNICALL Java_org_udpipe_JNI_parse(
         JNIEnv *env,
-        jobject type,
-        jlong handle,
-        jobjectArray input_texts) {
-    (void) type;
-    if (handle == 0) {
+        jobject j_type,
+        jlong j_handle,
+        jobjectArray j_input_texts) {
+    (void) j_type;
+    if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
     }
 
     // input
-    const vector<string> texts = jniStringArrayToVector(env, input_texts);
+    const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
 
     // parse
     vector<sentence_t> parsed_sentences;
-    udpipe_parse_h(static_cast<long>(handle), texts, parsed_sentences);
+    udpipe_parse_h(j_handle, texts, parsed_sentences);
     LOGD("Parsed %zu sentences\n", parsed_sentences.size());
 
     // interpret
-    jobjectArray sentence_array = toJavaSentences(env, parsed_sentences);
+    jobjectArray j_sentence_array = toJavaSentences(env, parsed_sentences);
 
     LOGD("Parsing done\n");
-    return sentence_array;
+    return j_sentence_array;
 }
