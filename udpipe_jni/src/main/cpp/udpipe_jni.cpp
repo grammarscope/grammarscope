@@ -337,7 +337,7 @@ toJavaSentence(
                                                            mwt_ifirst, // firstToken: Int
                                                            mwt_ilast // lastToken: Int, // inclusive
             ));
-            jmwtokens.push_back(jmwtoken);
+            j_mwtokens.push_back(j_mwtoken);
             if (env->ExceptionCheck()) {
                 return nullptr;
             }
@@ -493,11 +493,8 @@ toJavaSentences(
 
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        jobject jsentence = toJavaSentence(env, parsed_sentence, i, sentence_class, sentence_ctor, token_class, token_ctor, mwtoken_class, mwtoken_ctor);
-        if (env->ExceptionCheck() || !jsentence) {
-            return nullptr;
-        }
-        env->SetObjectArrayElement(sentence_array, i, jsentence);
+        jobject j_sentence = toJavaSentence(env, parsed_sentence, i, j_sentence_class, j_sentence_ctor, j_token_class, j_token_ctor, j_mwtoken_class, j_mwtoken_ctor);
+        env->SetObjectArrayElement(j_sentence_array, i, j_sentence);
         if (env->ExceptionCheck()) {
             return nullptr;
         }
