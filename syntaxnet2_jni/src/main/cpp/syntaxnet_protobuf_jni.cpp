@@ -25,7 +25,7 @@ const char kIllegalStateException[] = "java/lang/IllegalStateException";
 // C H E C K   H E L P E R S
 
 template<typename T>
-T CheckNotNull(JNIEnv *env, T &&t) {
+T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "");
         return nullptr;
@@ -40,11 +40,11 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array);
 
 jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
     // element class
-    jclass byte_array_class = CheckNotNull(env, env->FindClass("[B")); // '[' for array of, 'B' for byte
+    jclass byte_array_class = check_not_null(env, env->FindClass("[B")); // '[' for array of, 'B' for byte
 
     // allocate array
     int n = (int) protos.size();
-    jobjectArray array_of_byte_arrays = CheckNotNull(env, env->NewObjectArray(n, byte_array_class, nullptr));
+    jobjectArray array_of_byte_arrays = check_not_null(env, env->NewObjectArray(n, byte_array_class, nullptr));
 
     for (int i = 0; i < n; i++) {
         // element byte array

@@ -67,11 +67,11 @@ void stringVectorToCStringArray(const vector<string> &texts, const char *c_texts
 // F R O M   J A V A
 
 extern
-vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array) {
-    int count = env->GetArrayLength(string_array);
+vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs) {
+    int count = env->GetArrayLength(j_strs);
     vector<string> result;
     for (int i = 0; i < count; i++) {
-        auto jstr = reinterpret_cast<jstring>(env->GetObjectArrayElement(string_array, i));
+        auto jstr = reinterpret_cast<jstring>(env->GetObjectArrayElement(j_strs, i));
         const char *raw_str = env->GetStringUTFChars(jstr, JNI_FALSE);
         result.emplace_back(raw_str);
         env->ReleaseStringUTFChars(jstr, raw_str);
