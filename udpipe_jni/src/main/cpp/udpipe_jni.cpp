@@ -68,9 +68,16 @@ T CheckNotNull(JNIEnv *env, T &&t) {
     return std::forward<T>(t);
 }
 
-// S P L I T
+// S T R I N G   H E L P E R S
 
-void split(const string &s, const char c, vector<string> &v) {
+/**
+ * Split string
+ *
+ * @param s  input string
+ * @param c delimiter character
+ * @param v result vector
+ */
+static void split(const string &s, const char c, vector<string> &v) {
     string::size_type i = 0;
     string::size_type j = s.find(c);
     while (j != string::npos) {
@@ -158,12 +165,12 @@ string jniStringToString(JNIEnv *env, jstring jstr) {
  * @param env environment
  * @param parsed_sentence parsed C sentence, non-null
  * @param sentenceIndex sentence index
- * @param sentence_class java class of sentence
- * @param sentence_ctor java constructor
- * @param token_class java class of token
- * @param token_ctor java constructor of token
- * @param mwttoken_class java class of mwtoken
- * @param mwttoken_ctor java constructor of mwtoken
+ * @param j_sentence_class java class of sentence
+ * @param j_sentence_ctor java constructor
+ * @param j_token_class java class of token
+ * @param j_token_ctor java constructor of token
+ * @param j_mwttoken_class java class of mwtoken
+ * @param j_mwttoken_ctor java constructor of mwtoken
  * @return Sentence with tokens field being Array<Token!!>!! otherwise
  * @throws IllegalStateException whenever CheckNull encounters a null value, that is
  * -word is null (should not happen)
