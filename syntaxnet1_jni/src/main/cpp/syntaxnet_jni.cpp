@@ -45,7 +45,7 @@ constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
  * @return object
  */
 template<typename T>
-T CheckNotNull(JNIEnv *env, T &&t) {
+T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "");
         return nullptr;
@@ -216,25 +216,25 @@ JNICALL Java_org_syntaxnet1_JNI1_predictJNI(
     }
 
     // classes and constructors
-    jclass sentence_class = CheckNotNull(env, env->FindClass(sentenceClass));
+    jclass sentence_class = check_not_null(env, env->FindClass(sentenceClass));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID sentence_ctor = CheckNotNull(env, env->GetMethodID(sentence_class, "<init>", sentenceCtor));
+    jmethodID sentence_ctor = check_not_null(env, env->GetMethodID(sentence_class, "<init>", sentenceCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jclass token_class = CheckNotNull(env, env->FindClass(tokenClass));
+    jclass token_class = check_not_null(env, env->FindClass(tokenClass));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID token_ctor = CheckNotNull(env, env->GetMethodID(token_class, "<init>", tokenCtor));
+    jmethodID token_ctor = check_not_null(env, env->GetMethodID(token_class, "<init>", tokenCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
 
     // Sentence[] to return back to Java
-    jobjectArray sentence_array = CheckNotNull(env, env->NewObjectArray(n, sentence_class, nullptr));
+    jobjectArray sentence_array = check_not_null(env, env->NewObjectArray(n, sentence_class, nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -244,7 +244,7 @@ JNICALL Java_org_syntaxnet1_JNI1_predictJNI(
         int nTokens = (int) parsed_sentence.size();
 
         // Token[] to return back to Java
-        jobjectArray jtoken_array = CheckNotNull(env, env->NewObjectArray(nTokens - 1, token_class, nullptr));
+        jobjectArray jtoken_array = check_not_null(env, env->NewObjectArray(nTokens - 1, token_class, nullptr));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
@@ -277,16 +277,19 @@ JNICALL Java_org_syntaxnet1_JNI1_predictJNI(
 
             LOGD("Predicted token #%s %s %s %s %s", word.c_str(), label.c_str(), category.c_str(), tag.c_str(), head.c_str());
 
-            jstring jword = CheckNotNull(env, env->NewStringUTF(word.c_str()));
+            jstring jword = check_not_null(env, env->NewStringUTF(word.c_str()));
             int istart = strtol(start.c_str(), nullptr, 10);
             int iend = strtol(end.c_str(), nullptr, 10);
             jstring jcategory = CheckNotNull(env, env->NewStringUTF(category.c_str()));
             jstring jtag = CheckNotNull(env, env->NewStringUTF(tag.c_str()));
             jstring jlabel = CheckNotNull(env, env->NewStringUTF(label.c_str()));
+            jstring jcategory = check_not_null(env, env->NewStringUTF(category.c_str()));
+            jstring jtag = check_not_null(env, env->NewStringUTF(tag.c_str()));
+            jstring jlabel = check_not_null(env, env->NewStringUTF(label.c_str()));
             int ihead = strtol(head.c_str(), nullptr, 10);
             int ibreaklevel = strtol(breaklevel.c_str(), nullptr, 10);
 
-            jobject jtoken = CheckNotNull(env, env->NewObject(token_class, token_ctor, i, j - 1, jword, istart, iend, jcategory, jtag, ihead, jlabel, ibreaklevel, nullptr));
+            jobject jtoken = check_not_null(env, env->NewObject(token_class, token_ctor, i, j - 1, jword, istart, iend, jcategory, jtag, ihead, jlabel, ibreaklevel, nullptr));
             if (env->ExceptionCheck()) {
                 return nullptr;
             }
@@ -309,8 +312,8 @@ JNICALL Java_org_syntaxnet1_JNI1_predictJNI(
         const string &end = it0 != token0.end() ? it0->second : "-1";
         int iend = strtol(end.c_str(), nullptr, 10);
 
-        jstring jtext = CheckNotNull(env, env->NewStringUTF(text.c_str()));
-        jstring jdocid = CheckNotNull(env, env->NewStringUTF(docid.c_str()));
+        jstring jtext = check_not_null(env, env->NewStringUTF(text.c_str()));
+        jstring jdocid = check_not_null(env, env->NewStringUTF(docid.c_str()));
         jobject jsentence = env->NewObject(sentence_class, sentence_ctor, jtext, istart, iend, jtoken_array, nullptr, jdocid);
         env->SetObjectArrayElement(sentence_array, i, jsentence);
     }
