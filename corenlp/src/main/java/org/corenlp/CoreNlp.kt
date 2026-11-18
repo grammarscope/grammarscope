@@ -202,7 +202,7 @@ object CoreNlp {
 
                             val deps: String = enhancedDependency(constituencyEnhancedDeps, dependentIndex + 1)
 
-                            val token = Token(sentenceIndex, dependentIndex, dependentWord, dependentStart, dependentEnd, "", dependentPos.ifEmpty { "?" }, head = headIndex, label, breakLevel = breakLevel, deps = deps)
+                            val token = Token(sentenceIndex, dependentIndex, dependentWord, dependentStart, dependentEnd, "", dependentPos.ifEmpty { "?" }, head = headIndex, label, breakLevel = breakLevel, deps = deps, mwt = null)
                             token
                         }
                         .sortedBy { it.index }
@@ -210,7 +210,7 @@ object CoreNlp {
 
                     val text = sentence.text()
                     val docid = sentence.document().docID() ?: ""
-                    Sentence(text, sentenceStart, sentenceEnd, tokens, docid)
+                    Sentence(text, sentenceStart, sentenceEnd, tokens, null, docid)
                 }
                 .toTypedArray()
         } catch (iae: IllegalArgumentException) {
@@ -262,7 +262,7 @@ object CoreNlp {
 
                             val deps: String = enhancedEdge(neuralEnhancedDeps, targetIndex + 1)
 
-                            val token = Token(sentenceIndex, targetIndex, targetWord, targetStart, targetEnd, "", targetPos, head = sourceIndex, label, breakLevel = breakLevel, deps = deps)
+                            val token = Token(sentenceIndex, targetIndex, targetWord, targetStart, targetEnd, "", targetPos, head = sourceIndex, label, breakLevel = breakLevel, deps = deps, mwt = null)
                             token
                         }
 
@@ -274,12 +274,12 @@ object CoreNlp {
                     val rootPos = "name: 'postag' value: '${root.get(CoreAnnotations.PartOfSpeechAnnotation::class.java)}'"
                     val rootBreakLevel = root.breakLevel()
 
-                    val tokens: Sequence<Token> = sequenceOf(Token(sentenceIndex, rootIndex, rootWord, rootStart, rootEnd, "", rootPos, head = -1, "root", breakLevel = rootBreakLevel, deps = null)) + deps
+                    val tokens: Sequence<Token> = sequenceOf(Token(sentenceIndex, rootIndex, rootWord, rootStart, rootEnd, "", rootPos, head = -1, "root", breakLevel = rootBreakLevel, deps = null, mwt = null)) + deps
                     val tokenArray: Array<Token> = tokens.sortedBy { it.index }.toList().toTypedArray()
 
                     val text = sentence.text()
                     val docid = sentence.document().docID() ?: ""
-                    Sentence(text, sentenceStart, sentenceEnd, tokenArray, docid)
+                    Sentence(text, sentenceStart, sentenceEnd, tokenArray, null, docid)
                 }
                 .toTypedArray()
         } catch (iae: IllegalArgumentException) {
