@@ -36,7 +36,7 @@ T check_not_null(JNIEnv *env, T &&t) {
 // C O N V E R S I O N   H E L P E R S
 
 extern
-vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray string_array);
+vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs);
 
 jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
     // element class
