@@ -374,24 +374,24 @@ toJavaSentence(
         jstring j_deps = check_not_null(env, env->NewStringUTF(deps.c_str()));
 
         // make java token
-        // jword: String!!, possibly ""
+        // j_word: String!!, possibly ""
         // istart: Int!!, possibly -1
         // iend: Int!!, possibly -1
-        // jcategory!!: String!!, possibly ""
-        // jtag: String!!
+        // j_category!!: String!!, possibly ""
+        // j_tag: String!!
         // ihead: Int!!, possibly -1
-        // jlabel: String!!, possibly ""
+        // j_label: String!!, possibly ""
         // ibreaklevel: Int!!, possibly -1
-        jobject jtoken = check_not_null(env, env->NewObject(j_token_class, j_token_ctor, sentenceIndex, j - 1, j_word,
-                                                            t_istart, t_iend, j_category, j_tag, ihead, j_label, ibreaklevel,
-                                                            j_deps, j_mwtoken));
+        jobject j_token = check_not_null(env, env->NewObject(j_token_class, j_token_ctor, sentenceIndex, j - 1, j_word,
+                                                             t_istart, t_iend, j_category, j_tag, ihead, j_label, ibreaklevel,
+                                                             j_deps, j_mwtoken));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
 
         // set token in array
 
-        env->SetObjectArrayElement(j_token_array, j - 1, jtoken);
+        env->SetObjectArrayElement(j_token_array, j - 1, j_token);
     }
 
     // array of mwtokens
