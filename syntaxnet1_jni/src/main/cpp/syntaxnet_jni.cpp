@@ -280,9 +280,6 @@ JNICALL Java_org_syntaxnet1_JNI1_predictJNI(
             jstring jword = check_not_null(env, env->NewStringUTF(word.c_str()));
             int istart = strtol(start.c_str(), nullptr, 10);
             int iend = strtol(end.c_str(), nullptr, 10);
-            jstring jcategory = CheckNotNull(env, env->NewStringUTF(category.c_str()));
-            jstring jtag = CheckNotNull(env, env->NewStringUTF(tag.c_str()));
-            jstring jlabel = CheckNotNull(env, env->NewStringUTF(label.c_str()));
             jstring jcategory = check_not_null(env, env->NewStringUTF(category.c_str()));
             jstring jtag = check_not_null(env, env->NewStringUTF(tag.c_str()));
             jstring jlabel = check_not_null(env, env->NewStringUTF(label.c_str()));
