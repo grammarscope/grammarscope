@@ -43,7 +43,7 @@ constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
  * @return object
  */
 template<typename T>
-T CheckNotNull(JNIEnv *env, T &&t) {
+T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "");
         return nullptr;
