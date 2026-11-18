@@ -177,6 +177,7 @@ static string jniStringToString(JNIEnv *env, jstring j_str) {
  * -category, label, tag are guarded against being null by being set to empty string at token level
  * -text, docids are guarded against being null by being set to empty string at sentence level
  */
+static
 jobject
 toJavaSentence(
         JNIEnv *env,
