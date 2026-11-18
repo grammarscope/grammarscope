@@ -20,7 +20,7 @@
 
 #endif
 
-#include "udpipe/iface_h.h"
+#include "udpipe_glue/glue.h"
 
 #define LOG_TAG    "UDPIPE_JNI"
 
@@ -193,7 +193,8 @@ toJavaSentence(
 
     // make java array of tokens Token[] to be field of Sentence class and return back to Java
 
-    jobjectArray j_token_array = check_not_null(env, env->NewObjectArray(nTokens - 1, j_token_class, nullptr));
+    jobjectArray j_token_array = check_not_null(env, env->NewObjectArray(nTokens - 1, j_token_class,
+                                                                         nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -350,7 +351,11 @@ toJavaSentence(
         it = token.find("deps");
         const string &deps = it != token.end() ? it->second : "";
 
-        LOGD("Token #%d '%s' [%s:%s] label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s\n", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str(), mwt_form.c_str(), mwt_misc.c_str());
+        LOGD("Token #%d '%s' [%s:%s] label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s\n", j,
+             word.c_str(),
+             t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str(),
+             mwt_form.c_str(),
+             mwt_misc.c_str());
 
         // token constructor parameters
 
@@ -382,9 +387,13 @@ toJavaSentence(
         // ihead: Int!!, possibly -1
         // j_label: String!!, possibly ""
         // ibreaklevel: Int!!, possibly -1
-        jobject j_token = check_not_null(env, env->NewObject(j_token_class, j_token_ctor, sentenceIndex, j - 1, j_word,
-                                                             t_istart, t_iend, j_category, j_tag, ihead, j_label, ibreaklevel,
-                                                             j_deps, j_mwtoken));
+        jobject j_token = check_not_null(env,
+                                         env->NewObject(j_token_class, j_token_ctor, sentenceIndex,
+                                                        j - 1, j_word,
+                                                        t_istart, t_iend, j_category, j_tag, ihead,
+                                                        j_label,
+                                                        ibreaklevel,
+                                                        j_deps, j_mwtoken));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
@@ -399,7 +408,8 @@ toJavaSentence(
     jobjectArray j_mwtoken_array = nullptr;
     int nMwtokens = static_cast<int>(j_mwtokens.size());
     if (nMwtokens > 0) {
-        j_mwtoken_array = check_not_null(env, env->NewObjectArray(nMwtokens, j_mwtoken_class, nullptr));
+        j_mwtoken_array = check_not_null(env,
+                                         env->NewObjectArray(nMwtokens, j_mwtoken_class, nullptr));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
@@ -423,7 +433,9 @@ toJavaSentence(
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jobject j_sentence = env->NewObject(j_sentence_class, j_sentence_ctor, j_text, s_istart, s_iend, j_token_array, j_mwtoken_array, j_docid);
+    jobject j_sentence = env->NewObject(j_sentence_class, j_sentence_ctor, j_text, s_istart, s_iend,
+                                        j_token_array,
+                                        j_mwtoken_array, j_docid);
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -462,7 +474,8 @@ toJavaSentences(
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID j_sentence_ctor = check_not_null(env, env->GetMethodID(j_sentence_class, "<init>", sentenceCtor));
+    jmethodID j_sentence_ctor = check_not_null(env, env->GetMethodID(j_sentence_class, "<init>",
+                                                                     sentenceCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -470,7 +483,8 @@ toJavaSentences(
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID j_token_ctor = check_not_null(env, env->GetMethodID(j_token_class, "<init>", tokenCtor));
+    jmethodID j_token_ctor = check_not_null(env,
+                                            env->GetMethodID(j_token_class, "<init>", tokenCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -478,7 +492,8 @@ toJavaSentences(
     if (env->ExceptionCheck()) {
         return nullptr;
     }
-    jmethodID j_mwtoken_ctor = check_not_null(env, env->GetMethodID(j_mwtoken_class, "<init>", mwtokenCtor));
+    jmethodID j_mwtoken_ctor = check_not_null(env, env->GetMethodID(j_mwtoken_class, "<init>",
+                                                                    mwtokenCtor));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -486,7 +501,8 @@ toJavaSentences(
     // make Array<Sentence> to return back to Java
 
     const int n = static_cast<int>(parsed_sentences.size());
-    jobjectArray j_sentence_array = check_not_null(env, env->NewObjectArray(n, j_sentence_class, nullptr));
+    jobjectArray j_sentence_array = check_not_null(env, env->NewObjectArray(n, j_sentence_class,
+                                                                            nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -495,7 +511,9 @@ toJavaSentences(
 
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        jobject j_sentence = toJavaSentence(env, parsed_sentence, i, j_sentence_class, j_sentence_ctor, j_token_class, j_token_ctor, j_mwtoken_class, j_mwtoken_ctor);
+        jobject j_sentence = toJavaSentence(env, parsed_sentence, i, j_sentence_class,
+                                            j_sentence_ctor, j_token_class,
+                                            j_token_ctor, j_mwtoken_class, j_mwtoken_ctor);
         env->SetObjectArrayElement(j_sentence_array, i, j_sentence);
         if (env->ExceptionCheck()) {
             return nullptr;
