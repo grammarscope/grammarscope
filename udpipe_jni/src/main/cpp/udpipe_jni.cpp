@@ -119,7 +119,7 @@ string to_hex_codepoints(const std::string &s) {
         else { throw std::runtime_error("invalid UTF-8"); }
 
         for (size_t k = 1; k < len; ++k) {
-            auto cc = static_cast<unsigned char>(s[i + k]);
+            const auto cc = static_cast<unsigned char>(s[i + k]);
             if ((cc & 0xC0) != 0x80) throw std::runtime_error("invalid UTF-8");
             cp = (cp << 6) | (cc & 0x3F);
         }
@@ -551,7 +551,7 @@ JNICALL Java_org_udpipe_JNI_load(
     (void) j_type;
     model_path = jniStringToString(env, j_model_path);
 
-    long handle = udpipe_load_h(model_path.c_str());
+    const long handle = udpipe_load_h(model_path.c_str());
     return handle;
 }
 
