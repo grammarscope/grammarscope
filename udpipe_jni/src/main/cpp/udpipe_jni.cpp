@@ -14,16 +14,28 @@
 #include <regex>
 #include <iomanip>   // std::setfill, std::setw, std::hex  ← required
 
+#ifdef __ANDROID__
+
 #include <android/log.h>
+
+#endif
 
 #include "udpipe/iface_h.h"
 
 #define LOG_TAG    "UDPIPE_JNI"
 
+#ifdef __ANDROID__
 //#define LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 //#define LOGW(...)  __android_log_print(ANDROID_LOG_WARN,LOG_TAG,__VA_ARGS__)
 #define LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 //#define LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
+#else
+#include <cstdio>
+//#define LOGE(...)  do { fprintf(stderr, "[E/%s] ", LOG_TAG); fprintf(stderr, __VA_ARGS__); } while(0)
+//#define LOGW(...)  do { fprintf(stderr, "[W/%s] ", LOG_TAG); fprintf(stderr, __VA_ARGS__); } while(0)
+#define LOGD(...)  do { fprintf(stderr, "[D/%s] ", LOG_TAG); fprintf(stderr, __VA_ARGS__); } while(0)
+//#define LOGI(...)  do { fprintf(stderr, "[I/%s] ", LOG_TAG); fprintf(stderr, __VA_ARGS__); } while(0)
+#endif
 
 using namespace std;
 
