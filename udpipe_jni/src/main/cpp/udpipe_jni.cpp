@@ -58,7 +58,7 @@ constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
  * @return object
  */
 template<typename T>
-T CheckNotNull(JNIEnv *env, T &&t) {
+static T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
         if (!env->ExceptionCheck()) {
             env->ThrowNew(env->FindClass(kIllegalStateException), "");
@@ -328,14 +328,6 @@ toJavaSentence(
             if (env->ExceptionCheck()) {
                 return nullptr;
             }
-            jmwtoken = CheckNotNull(env, env->NewObject(mwtoken_class, mwtoken_ctor,
-                                                        sentenceIndex, //sentenceIndex: Int
-                                                        ijmwtoken++,// index: Int
-                                                        jmwt_form, // word: String, // not null
-                                                        mwt_istart, // start: Int
-                                                        mwt_iend, // end: Int, inclusive, relative to sentence text
-                                                        mwt_ifirst, // firstToken: Int
-                                                        mwt_ilast // lastToken: Int, // inclusive
             j_mwtoken = check_not_null(env, env->NewObject(j_mwtoken_class, j_mwtoken_ctor,
                                                            sentenceIndex, //sentenceIndex: Int
                                                            i_mwtoken++,// index: Int
