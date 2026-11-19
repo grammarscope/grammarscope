@@ -362,11 +362,8 @@ toJavaSentence(
         it = token.find("deps");
         const string &deps = it != token.end() ? it->second : "";
 
-        LOGD("Token #%d '%s' [%s:%s] label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s\n", j,
-             word.c_str(),
-             t_start.c_str(), t_end.c_str(), label.c_str(), tag.c_str(), head.c_str(), deps.c_str(),
-             mwt_form.c_str(),
-             mwt_misc.c_str());
+        LOGD("Token #%d '%s' [%s:%s] label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(),
+             tag.c_str(), head.c_str(), deps.c_str(), mwt_form.c_str(), mwt_misc.c_str());
 
         // token constructor parameters
 
@@ -500,7 +497,7 @@ toJavaSentences(
     // check
     int i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        LOGD("Sentence #%d: %zu tokens\n", i++, parsed_sentence.size());
+        LOGD("Sentence #%d: %zu tokens", i++, parsed_sentence.size());
         if (parsed_sentence.empty()) {
             env->ThrowNew(env->FindClass(kIllegalStateException), "No token in sentence");
             return nullptr;
@@ -659,11 +656,11 @@ JNICALL Java_org_udpipe_JNI_parse(
     // parse
     vector<sentence_t> parsed_sentences;
     udpipe_parse_h(j_handle, texts, parsed_sentences);
-    LOGD("Parsed %zu sentences\n", parsed_sentences.size());
+    LOGD("Parsed %zu sentences", parsed_sentences.size());
 
     // interpret
     jobjectArray j_sentence_array = toJavaSentences(env, parsed_sentences);
 
-    LOGD("Parsing done\n");
+    LOGD("Parsing done");
     return j_sentence_array;
 }
