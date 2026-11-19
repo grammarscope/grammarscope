@@ -5,7 +5,7 @@ import org.depparse.Sentence
 object JNI {
 
     fun init() {
-        System.loadLibrary("syntaxnet_inference")
+        System.loadLibrary("syntaxnet_inference_android")
         System.loadLibrary("syntaxnet_jni")
     }
 
