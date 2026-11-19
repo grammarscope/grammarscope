@@ -354,7 +354,12 @@ toJavaSentences(
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
         jobject j_sentence = toJavaSentence(env, parsed_sentence, i, j_sentence_class, j_sentence_ctor, j_token_class, j_token_ctor, j_mwtoken_class, j_mwtoken_ctor);
+        if (env->ExceptionCheck() || j_sentence == nullptr) {
+            env->DeleteLocalRef(j_sentence_array);
+            return nullptr;
+        }
         env->SetObjectArrayElement(j_sentence_array, i, j_sentence);
+        env->DeleteLocalRef(j_sentence);
         i++;
     }
     return j_sentence_array;
