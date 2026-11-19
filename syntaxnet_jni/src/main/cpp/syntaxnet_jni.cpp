@@ -3,9 +3,11 @@
  * 1313ou@gmail.com */
 
 #include <jni.h>
+
 #include <string>
 #include <vector>
 #include <unistd.h>
+
 #include <iostream>
 #include <unistd.h>
 #include <codecvt>
