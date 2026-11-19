@@ -89,8 +89,10 @@ static void split(const string &s, const char c, vector<string> &v) {
     }
 }
 
-// Decode UTF-8 bytes into code points, then print each as hex
-string to_hex_codepoints(const std::string &s) {
+/**
+ * Decode UTF-8 bytes into code points, then output each as hex
+ */
+static string to_hex_codepoints(const std::string &s) {
     std::ostringstream oss;
     oss << std::hex << std::setfill('0');
 
