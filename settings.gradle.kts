@@ -48,8 +48,7 @@ include(":coroutines")
 
 // JNI
 
-include(":syntaxnet1_jni")
-include(":syntaxnet2_jni")
+include(":syntaxnet_jni")
 include(":udpipe_jni")
 include(":corenlp")
 

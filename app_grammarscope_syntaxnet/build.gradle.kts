@@ -155,7 +155,7 @@ dependencies {
     implementation(project(":others")) // strictly not a dependency but for manifest validation
     implementation(project(":donate")) // strictly not a dependency but for manifest validation
 
-    runtimeOnly(project(":syntaxnet2_jni"))
+    runtimeOnly(project(":syntaxnet_jni"))
     runtimeOnly(project(":syntaxnet_engine"))
 
     implementation(libs.annotation) // strictly runtimeOnly but needed for resources validation
