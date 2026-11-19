@@ -2,7 +2,7 @@ package org.grammarscope.syntaxnet
 
 import android.util.Log
 import com.bbou.coroutines.Task
-import org.syntaxnet2.JNI2
+import org.syntaxnet.JNI
 
 /**
  * Loader
@@ -10,12 +10,12 @@ import org.syntaxnet2.JNI2
 class Loader : Task<String, Void, Long?>() {
 
     init {
-        Log.d(TAG, "JNI version " + JNI2.version())
+        Log.d(TAG, "JNI version " + JNI.version())
     }
 
     override suspend fun doJob(params: String): Long? {
         try {
-            val handle = JNI2.load(params)
+            val handle = JNI.load(params)
             return if (handle != 0L) {
                 handle
             } else null

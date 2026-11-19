@@ -11,7 +11,7 @@ import org.depparse.IEngine
 import org.depparse.IProvider
 import org.depparse.Sentence
 import org.depparse.Storage
-import org.syntaxnet2.JNI2
+import org.syntaxnet.JNI
 import java.io.File
 import java.util.function.Consumer
 
@@ -24,7 +24,7 @@ class SyntaxnetEngine(private val context: Context) : IEngine<Array<Sentence>>, 
 
     override fun load(modelPath: String) {
         Log.i(TAG, "loading from $modelPath")
-        handle = JNI2.load(modelPath)
+        handle = JNI.load(modelPath)
         Log.d(TAG, "loaded $handle")
     }
 
@@ -50,7 +50,7 @@ class SyntaxnetEngine(private val context: Context) : IEngine<Array<Sentence>>, 
             return
         }
         Log.i(TAG, "Unloading $handle")
-        JNI2.unload(handle!!)
+        JNI.unload(handle!!)
         handle = null
         broadcastEvent(if (isEmbedded) Broadcast.EventType.EMBEDDED_UNLOADED.name else Broadcast.EventType.UNLOADED.name)
         Log.i(TAG, "Unloaded")
@@ -63,7 +63,7 @@ class SyntaxnetEngine(private val context: Context) : IEngine<Array<Sentence>>, 
             throw IllegalStateException("Trying to process while not initialized.")
         }
         Log.d(TAG, "Processing $handle")
-        val result = JNI2.parse(handle!!, args)
+        val result = JNI.parse(handle!!, args)
         Log.d(TAG, "Processed $handle")
         return result
     }
@@ -84,7 +84,7 @@ class SyntaxnetEngine(private val context: Context) : IEngine<Array<Sentence>>, 
     }
 
     override fun version(): String {
-        val version = JNI2.version()
+        val version = JNI.version()
         return version.toString()
     }
 
@@ -101,7 +101,7 @@ class SyntaxnetEngine(private val context: Context) : IEngine<Array<Sentence>>, 
         private const val TAG = "Engine"
 
         init {
-            JNI2.init()
+            JNI.init()
         }
 
         /**

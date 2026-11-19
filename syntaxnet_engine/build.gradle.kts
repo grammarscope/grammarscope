@@ -47,7 +47,7 @@ dependencies {
     implementation(project(":provider"))
     implementation(project(":stub"))
     implementation(project(":coroutines"))
-    implementation(project(":syntaxnet2_jni"))
+    implementation(project(":syntaxnet_jni"))
 
     implementation(libs.core.ktx)
     implementation(libs.annotation)
