@@ -10,6 +10,7 @@ object JNI {
     }
 
     external fun version(): Int
+    external fun modelPath(): String
     external fun load(modelPath: String): Long
     external fun unload(handle: Long)
 
