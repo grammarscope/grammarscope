@@ -27,7 +27,9 @@ const char kIllegalStateException[] = "java/lang/IllegalStateException";
 template<typename T>
 T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "");
+        if (!env->ExceptionCheck()) {
+            env->ThrowNew(env->FindClass(kIllegalStateException), "");
+        }
         return nullptr;
     }
     return std::forward<T>(t);
@@ -41,15 +43,27 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs);
 jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
     // element class
     jclass j_byte_array_class = check_not_null(env, env->FindClass("[B")); // '[' for array of, 'B' for byte
+    if (env->ExceptionCheck() || j_byte_array_class == nullptr) {
+        return nullptr;
+    }
 
     // allocate array
     int n = (int) protos.size();
     jobjectArray j_array_of_byte_arrays = check_not_null(env, env->NewObjectArray(n, j_byte_array_class, nullptr));
+    if (env->ExceptionCheck() || j_array_of_byte_arrays == nullptr) {
+        env->DeleteLocalRef(j_byte_array_class);
+        return nullptr;
+    }
 
     for (int i = 0; i < n; i++) {
         // element byte array
         int s = (int) protos[i].size();
-        jbyteArray j_byte_array = env->NewByteArray(s);
+        jbyteArray j_byte_array = check_not_null(env, env->NewByteArray(s));
+        if (env->ExceptionCheck() || j_byte_array == nullptr) {
+            env->DeleteLocalRef(j_byte_array_class);
+            env->DeleteLocalRef(j_array_of_byte_arrays);
+            return nullptr;
+        }
 
         // copy data
         const auto *data = reinterpret_cast<const j_byte *>(protos[i].data());
@@ -57,7 +71,9 @@ jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
 
         // array element
         env->SetObjectArrayElement(j_array_of_byte_arrays, i, j_byte_array);
+        env->DeleteLocalRef(j_byte_array);
     }
+    env->DeleteLocalRef(j_byte_array_class);
     return j_array_of_byte_arrays;
 }
 
@@ -72,6 +88,9 @@ JNICALL Java_org_syntaxnet_JNI_parseProtos(JNIEnv *env, jobject /*thiz*/, jlong 
 
     // input
     const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
 
     // parse
     vector<string> parsed_sentence_protos;
@@ -96,6 +115,9 @@ JNICALL Java_org_syntaxnet_JNI_splitParseProtos(JNIEnv *env, jobject /*thiz*/, j
 
     // input
     const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
 
     // parse
     vector<string> split_parsed_sentence_protos;
@@ -120,6 +142,9 @@ JNICALL Java_org_syntaxnet_JNI_segmentProtos(JNIEnv *env, jobject /*thiz*/, jlon
 
     // input
     const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
 
     // parse
     vector<string> segmented_sentence_protos;
