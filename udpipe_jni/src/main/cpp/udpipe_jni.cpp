@@ -245,15 +245,15 @@ toJavaSentence(
 
         string tag;
         it = token.find("upostag");
-        const string &upostag = it != token.end() ? it->second : "";
-        if (!upostag.empty()) {
+        if (const string& upostag = it != token.end() ? it->second : ""; !upostag.empty())
+        {
             tag += "name: 'upostag' value: '";
             tag += upostag;
             tag += '\'';
         }
         it = token.find("xpostag");
-        const string &xpostag = it != token.end() ? it->second : "";
-        if (!xpostag.empty()) {
+        if (const string& xpostag = it != token.end() ? it->second : ""; !xpostag.empty())
+        {
             if (!tag.empty())
                 tag += ' ';
             tag += "name: 'xpostag' value: '";
@@ -261,8 +261,8 @@ toJavaSentence(
             tag += '\'';
         }
         it = token.find("lemma");
-        const string &lemma = it != token.end() ? it->second : "";
-        if (!lemma.empty()) {
+        if (const string& lemma = it != token.end() ? it->second : ""; !lemma.empty())
+        {
             if (!tag.empty())
                 tag += ' ';
             tag += "name: 'lemma' value: '";
@@ -270,8 +270,8 @@ toJavaSentence(
             tag += '\'';
         }
         it = token.find("feats");
-        const string &feats = it != token.end() ? it->second : "";
-        if (!feats.empty()) {
+        if (const string& feats = it != token.end() ? it->second : ""; !feats.empty())
+        {
             if (!tag.empty())
                 tag += ' ';
             //tag += "name: 'feats' value: '";
