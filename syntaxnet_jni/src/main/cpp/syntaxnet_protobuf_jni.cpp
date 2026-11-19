@@ -40,96 +40,96 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs);
 
 jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
     // element class
-    jclass byte_array_class = check_not_null(env, env->FindClass("[B")); // '[' for array of, 'B' for byte
+    jclass j_byte_array_class = check_not_null(env, env->FindClass("[B")); // '[' for array of, 'B' for byte
 
     // allocate array
     int n = (int) protos.size();
-    jobjectArray array_of_byte_arrays = check_not_null(env, env->NewObjectArray(n, byte_array_class, nullptr));
+    jobjectArray j_array_of_byte_arrays = check_not_null(env, env->NewObjectArray(n, j_byte_array_class, nullptr));
 
     for (int i = 0; i < n; i++) {
         // element byte array
         int s = (int) protos[i].size();
-        jbyteArray byte_array = env->NewByteArray(s);
+        jbyteArray j_byte_array = env->NewByteArray(s);
 
         // copy data
-        const auto *data = reinterpret_cast<const jbyte *>(protos[i].data());
-        env->SetByteArrayRegion(byte_array, 0, s, data);
+        const auto *data = reinterpret_cast<const j_byte *>(protos[i].data());
+        env->SetByteArrayRegion(j_byte_array, 0, s, data);
 
         // array element
-        env->SetObjectArrayElement(array_of_byte_arrays, i, byte_array);
+        env->SetObjectArrayElement(j_array_of_byte_arrays, i, j_byte_array);
     }
-    return array_of_byte_arrays;
+    return j_array_of_byte_arrays;
 }
 
 // P A R S E
 
 extern "C" JNIEXPORT jobjectArray
-JNICALL Java_org_syntaxnet_JNI_parseProtos(JNIEnv *env, jobject /*thiz*/, jlong handle, jobjectArray input_texts) {
-    if (handle == 0) {
+JNICALL Java_org_syntaxnet_JNI_parseProtos(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
+    if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
     }
 
     // input
-    const vector<string> texts = jniStringArrayToVector(env, input_texts);
+    const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
 
     // parse
     vector<string> parsed_sentence_protos;
-    sni_parse_hp(static_cast<long>(handle), texts, parsed_sentence_protos);
+    sni_parse_hp(static_cast<long>(j_handle), texts, parsed_sentence_protos);
     LOGD("Parsed %zu sentences\n", parsed_sentence_protos.size());
 
     // interpret
-    jobjectArray sentence_proto_array = toJavaByteArray(env, parsed_sentence_protos);
+    jobjectArray j_sentence_proto_array = toJavaByteArray(env, parsed_sentence_protos);
 
     LOGD("Parsing done\n");
-    return sentence_proto_array;
+    return j_sentence_proto_array;
 }
 
 // S P L I T P A R S E
 
 extern "C" JNIEXPORT jobjectArray
-JNICALL Java_org_syntaxnet_JNI_splitParseProtos(JNIEnv *env, jobject /*thiz*/, jlong handle, jobjectArray input_texts) {
-    if (handle == 0) {
+JNICALL Java_org_syntaxnet_JNI_splitParseProtos(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
+    if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
     }
 
     // input
-    const vector<string> texts = jniStringArrayToVector(env, input_texts);
+    const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
 
     // parse
     vector<string> split_parsed_sentence_protos;
-    sni_split_parse_hp(static_cast<long>(handle), texts, split_parsed_sentence_protos);
+    sni_split_parse_hp(static_cast<long>(j_handle), texts, split_parsed_sentence_protos);
     LOGD("Parsed %zu sentences\n", split_parsed_sentence_protos.size());
 
     // interpret
-    jobjectArray sentence_proto_array = toJavaByteArray(env, split_parsed_sentence_protos);
+    jobjectArray j_sentence_proto_array = toJavaByteArray(env, split_parsed_sentence_protos);
 
     LOGD("Parsing done\n");
-    return sentence_proto_array;
+    return j_sentence_proto_array;
 }
 
 // S E G M E N T
 
 extern "C" JNIEXPORT jobjectArray
-JNICALL Java_org_syntaxnet_JNI_segmentProtos(JNIEnv *env, jobject /*thiz*/, jlong handle, jobjectArray input_texts) {
-    if (handle == 0) {
+JNICALL Java_org_syntaxnet_JNI_segmentProtos(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
+    if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
     }
 
     // input
-    const vector<string> texts = jniStringArrayToVector(env, input_texts);
+    const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
 
     // parse
     vector<string> segmented_sentence_protos;
-    sni_segment_hp(static_cast<long>(handle), texts, segmented_sentence_protos);
+    sni_segment_hp(static_cast<long>(j_handle), texts, segmented_sentence_protos);
     LOGD("Segmented %zu sentences\n", segmented_sentence_protos.size());
 
     // result
-    jobjectArray sentence_proto_array = toJavaByteArray(env, segmented_sentence_protos);
+    jobjectArray j_sentence_proto_array = toJavaByteArray(env, segmented_sentence_protos);
 
     LOGD("Segmenting done\n");
-    return sentence_proto_array;
+    return j_sentence_proto_array;
 }
 
