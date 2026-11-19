@@ -408,8 +408,7 @@ toJavaSentence(
     jobjectArray j_mwtoken_array = nullptr;
     int nMwtokens = static_cast<int>(j_mwtokens.size());
     if (nMwtokens > 0) {
-        j_mwtoken_array = check_not_null(env,
-                                         env->NewObjectArray(nMwtokens, j_mwtoken_class, nullptr));
+        j_mwtoken_array = check_not_null(env, env->NewObjectArray(nMwtokens, j_mwtoken_class, nullptr));
         if (env->ExceptionCheck()) {
             return nullptr;
         }
@@ -511,9 +510,10 @@ toJavaSentences(
 
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        jobject j_sentence = toJavaSentence(env, parsed_sentence, i, j_sentence_class,
-                                            j_sentence_ctor, j_token_class,
-                                            j_token_ctor, j_mwtoken_class, j_mwtoken_ctor);
+        jobject j_sentence = toJavaSentence(env, parsed_sentence, i,
+            j_sentence_class, j_sentence_ctor,
+            j_token_class, j_token_ctor,
+            j_mwtoken_class, j_mwtoken_ctor);
         env->SetObjectArrayElement(j_sentence_array, i, j_sentence);
         if (env->ExceptionCheck()) {
             return nullptr;
