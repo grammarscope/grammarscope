@@ -226,6 +226,8 @@ toJavaSentence(
     const string &s_end = it0 != token0.end() ? it0->second : "-1";
     int s_iend = static_cast<int>(strtol(s_end.c_str(), nullptr, 10));
 
+    LOGD("Token #0 [%d:%d] sentence", s_istart, s_iend);
+
     // Tokens
 
     vector<jobject> j_mwtokens;
