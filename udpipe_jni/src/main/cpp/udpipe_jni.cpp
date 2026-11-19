@@ -140,9 +140,14 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs) {
     vector<string> result;
     for (int i = 0; i < count; i++) {
         auto j_str = reinterpret_cast<jstring>(env->GetObjectArrayElement(j_strs, i));
-        const char *raw_str = env->GetStringUTFChars(j_str, JNI_FALSE);
-        result.emplace_back(raw_str);
-        env->ReleaseStringUTFChars(j_str, raw_str);
+        if (j_str != nullptr) {
+            const char *raw_str = env->GetStringUTFChars(j_str, JNI_FALSE);
+            if (raw_str != nullptr) {
+                result.emplace_back(raw_str);
+                env->ReleaseStringUTFChars(j_str, raw_str);
+            }
+            env->DeleteLocalRef(j_str);
+        }
 
         string hex = to_hex_codepoints(result[i]);
         LOGD("Input %d Codepoints cps = %s", i, hex.c_str());
@@ -327,7 +332,7 @@ toJavaSentence(
                 }
             }
             jstring j_mwt_form = check_not_null(env, env->NewStringUTF(mwt_form.c_str()));
-            if (env->ExceptionCheck()) {
+            if (env->ExceptionCheck() || j_mwt_form == nullptr) {
                 return nullptr;
             }
             j_mwtoken = check_not_null(env, env->NewObject(j_mwtoken_class, j_mwtoken_ctor,
@@ -339,10 +344,11 @@ toJavaSentence(
                                                            mwt_ifirst, // firstToken: Int
                                                            mwt_ilast // lastToken: Int, // inclusive
             ));
-            j_mwtokens.push_back(j_mwtoken);
-            if (env->ExceptionCheck()) {
+            env->DeleteLocalRef(j_mwt_form);
+            if (env->ExceptionCheck() || j_mwtoken == nullptr) {
                 return nullptr;
             }
+            j_mwtokens.push_back(j_mwtoken);
         }
 
         it = token.find("breaklevel");
@@ -394,13 +400,25 @@ toJavaSentence(
                                                         j_label,
                                                         ibreaklevel,
                                                         j_deps, j_mwtoken));
-        if (env->ExceptionCheck()) {
+        if (env->ExceptionCheck() || j_token == nullptr) {
+            env->DeleteLocalRef(j_word);
+            env->DeleteLocalRef(j_category);
+            env->DeleteLocalRef(j_tag);
+            env->DeleteLocalRef(j_label);
+            env->DeleteLocalRef(j_deps);
             return nullptr;
         }
 
         // set token in array
 
         env->SetObjectArrayElement(j_token_array, j - 1, j_token);
+
+        env->DeleteLocalRef(j_word);
+        env->DeleteLocalRef(j_category);
+        env->DeleteLocalRef(j_tag);
+        env->DeleteLocalRef(j_label);
+        env->DeleteLocalRef(j_deps);
+        env->DeleteLocalRef(j_token);
     }
 
     // array of mwtokens
@@ -409,14 +427,21 @@ toJavaSentence(
     int nMwtokens = static_cast<int>(j_mwtokens.size());
     if (nMwtokens > 0) {
         j_mwtoken_array = check_not_null(env, env->NewObjectArray(nMwtokens, j_mwtoken_class, nullptr));
-        if (env->ExceptionCheck()) {
+        if (env->ExceptionCheck() || j_mwtoken_array == nullptr) {
+            for (jobject j_mwtoken_item : j_mwtokens) {
+                env->DeleteLocalRef(j_mwtoken_item);
+            }
+            env->DeleteLocalRef(j_token_array);
             return nullptr;
         }
         // populate
         for (int j = 0; j < nMwtokens; j++) {
-            jobject &j_mwtoken = j_mwtokens[j];
+            jobject j_mwtoken = j_mwtokens[j];
             env->SetObjectArrayElement(j_mwtoken_array, j, j_mwtoken);
+            env->DeleteLocalRef(j_mwtoken);
             if (env->ExceptionCheck()) {
+                env->DeleteLocalRef(j_token_array);
+                env->DeleteLocalRef(j_mwtoken_array);
                 return nullptr;
             }
         }
@@ -425,17 +450,27 @@ toJavaSentence(
     // make sentence
 
     jstring j_text = check_not_null(env, env->NewStringUTF(text.c_str()));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck() || j_text == nullptr) {
+        env->DeleteLocalRef(j_token_array);
+        if (j_mwtoken_array) env->DeleteLocalRef(j_mwtoken_array);
         return nullptr;
     }
     jstring j_docid = check_not_null(env, env->NewStringUTF(docid.c_str()));
-    if (env->ExceptionCheck()) {
+    if (env->ExceptionCheck() || j_docid == nullptr) {
+        env->DeleteLocalRef(j_text);
+        env->DeleteLocalRef(j_token_array);
+        if (j_mwtoken_array) env->DeleteLocalRef(j_mwtoken_array);
         return nullptr;
     }
     jobject j_sentence = env->NewObject(j_sentence_class, j_sentence_ctor, j_text, s_istart, s_iend,
                                         j_token_array,
                                         j_mwtoken_array, j_docid);
-    if (env->ExceptionCheck()) {
+    env->DeleteLocalRef(j_text);
+    env->DeleteLocalRef(j_docid);
+    env->DeleteLocalRef(j_token_array);
+    if (j_mwtoken_array) env->DeleteLocalRef(j_mwtoken_array);
+
+    if (env->ExceptionCheck() || j_sentence == nullptr) {
         return nullptr;
     }
     return j_sentence;
@@ -514,10 +549,12 @@ toJavaSentences(
             j_sentence_class, j_sentence_ctor,
             j_token_class, j_token_ctor,
             j_mwtoken_class, j_mwtoken_ctor);
-        env->SetObjectArrayElement(j_sentence_array, i, j_sentence);
-        if (env->ExceptionCheck()) {
+        if (env->ExceptionCheck() || j_sentence == nullptr) {
+            env->DeleteLocalRef(j_sentence_array);
             return nullptr;
         }
+        env->SetObjectArrayElement(j_sentence_array, i, j_sentence);
+        env->DeleteLocalRef(j_sentence);
         i++;
     }
     return j_sentence_array;
@@ -610,6 +647,9 @@ JNICALL Java_org_udpipe_JNI_parse(
 
     // input
     const vector<string> texts = jniStringArrayToVector(env, j_input_texts);
+    if (env->ExceptionCheck()) {
+        return nullptr;
+    }
 
     // parse
     vector<sentence_t> parsed_sentences;
