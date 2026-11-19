@@ -115,9 +115,14 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs) {
     vector<string> result;
     for (int i = 0; i < count; i++) {
         auto j_str = reinterpret_cast<jstring>(env->GetObjectArrayElement(j_strs, i));
-        const char *raw_str = env->GetStringUTFChars(j_str, JNI_FALSE);
-        result.emplace_back(raw_str);
-        env->ReleaseStringUTFChars(j_str, raw_str);
+        if (j_str != nullptr) {
+            const char *raw_str = env->GetStringUTFChars(j_str, JNI_FALSE);
+            if (raw_str != nullptr) {
+                result.emplace_back(raw_str);
+                env->ReleaseStringUTFChars(j_str, raw_str);
+            }
+            env->DeleteLocalRef(j_str);
+        }
     }
     return result;
 }
