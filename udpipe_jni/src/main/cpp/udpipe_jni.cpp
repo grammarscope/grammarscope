@@ -324,9 +324,9 @@ toJavaSentence(
             int mwt_iend = -1;
             if (!mwt_misc.empty()) {
                 std::regex pattern(R"(TokenRange=(\d+):(\d+))");
-                std::smatch matches;
                 // Use std::regex_search if the pattern is embedded in a larger string, or std::regex_match if the entire string must match the pattern.
-                if (std::regex_search(mwt_misc, matches, pattern)) {
+                if (std::smatch matches; std::regex_search(mwt_misc, matches, pattern))
+                {
                     // matches[0] contains the entire matched string ("TokenRange:10,25")
                     // matches[1] contains the first capture group (start)
                     // matches[2] contains the second capture group (end)
