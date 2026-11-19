@@ -66,7 +66,7 @@ jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
         }
 
         // copy data
-        const auto *data = reinterpret_cast<const j_byte *>(protos[i].data());
+        const auto *data = reinterpret_cast<const jbyte *>(protos[i].data());
         env->SetByteArrayRegion(j_byte_array, 0, s, data);
 
         // array element
