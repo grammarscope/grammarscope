@@ -245,15 +245,13 @@ toJavaSentence(
 
         string tag;
         it = token.find("upostag");
-        if (const string& upostag = it != token.end() ? it->second : ""; !upostag.empty())
-        {
+        if (const string &upostag = it != token.end() ? it->second : ""; !upostag.empty()) {
             tag += "name: 'upostag' value: '";
             tag += upostag;
             tag += '\'';
         }
         it = token.find("xpostag");
-        if (const string& xpostag = it != token.end() ? it->second : ""; !xpostag.empty())
-        {
+        if (const string &xpostag = it != token.end() ? it->second : ""; !xpostag.empty()) {
             if (!tag.empty())
                 tag += ' ';
             tag += "name: 'xpostag' value: '";
@@ -261,8 +259,7 @@ toJavaSentence(
             tag += '\'';
         }
         it = token.find("lemma");
-        if (const string& lemma = it != token.end() ? it->second : ""; !lemma.empty())
-        {
+        if (const string &lemma = it != token.end() ? it->second : ""; !lemma.empty()) {
             if (!tag.empty())
                 tag += ' ';
             tag += "name: 'lemma' value: '";
@@ -270,8 +267,7 @@ toJavaSentence(
             tag += '\'';
         }
         it = token.find("feats");
-        if (const string& feats = it != token.end() ? it->second : ""; !feats.empty())
-        {
+        if (const string &feats = it != token.end() ? it->second : ""; !feats.empty()) {
             if (!tag.empty())
                 tag += ' ';
             //tag += "name: 'feats' value: '";
@@ -325,8 +321,7 @@ toJavaSentence(
             if (!mwt_misc.empty()) {
                 std::regex pattern(R"(TokenRange=(\d+):(\d+))");
                 // Use std::regex_search if the pattern is embedded in a larger string, or std::regex_match if the entire string must match the pattern.
-                if (std::smatch matches; std::regex_search(mwt_misc, matches, pattern))
-                {
+                if (std::smatch matches; std::regex_search(mwt_misc, matches, pattern)) {
                     // matches[0] contains the entire matched string ("TokenRange:10,25")
                     // matches[1] contains the first capture group (start)
                     // matches[2] contains the second capture group (end)
@@ -430,7 +425,7 @@ toJavaSentence(
     if (nMwtokens > 0) {
         j_mwtoken_array = check_not_null(env, env->NewObjectArray(nMwtokens, j_mwtoken_class, nullptr));
         if (env->ExceptionCheck() || j_mwtoken_array == nullptr) {
-            for (jobject j_mwtoken_item : j_mwtokens) {
+            for (jobject j_mwtoken_item: j_mwtokens) {
                 env->DeleteLocalRef(j_mwtoken_item);
             }
             env->DeleteLocalRef(j_token_array);
@@ -548,9 +543,9 @@ toJavaSentences(
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
         jobject j_sentence = toJavaSentence(env, parsed_sentence, i,
-            j_sentence_class, j_sentence_ctor,
-            j_token_class, j_token_ctor,
-            j_mwtoken_class, j_mwtoken_ctor);
+                                            j_sentence_class, j_sentence_ctor,
+                                            j_token_class, j_token_ctor,
+                                            j_mwtoken_class, j_mwtoken_ctor);
         if (env->ExceptionCheck() || j_sentence == nullptr) {
             env->DeleteLocalRef(j_sentence_array);
             return nullptr;
