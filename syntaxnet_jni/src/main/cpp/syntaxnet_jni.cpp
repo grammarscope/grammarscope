@@ -58,14 +58,6 @@ T check_not_null(JNIEnv *env, T &&t) {
 
 // C O N V E R S I O N   H E L P E R S
 
-/*
-inline
-void stringVectorToCStringArray(const vector<string> &texts, const char *c_texts[], const int n) {
-    for (int i = 0; i < n; i++) {
-        c_texts[i] = texts[i].c_str();
-    }
-}
-*/
 /**
  * Decode UTF-8 bytes into code points, then output each as hex
  */
@@ -102,6 +94,7 @@ static string to_hex_codepoints(const std::string &s) {
             if ((cc & 0xC0) != 0x80) throw std::runtime_error("invalid UTF-8");
             cp = (cp << 6) | (cc & 0x3F);
         }
+
         oss << std::setw(len == 1 ? 2 : (len == 2 ? 3 : (len == 3 ? 4 : 5)))
             << static_cast<unsigned>(cp)
             << ' ';
