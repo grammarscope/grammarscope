@@ -120,11 +120,11 @@ class ParsedDocument(val sentences: Array<Sentence>, val sentenceStarts: Array<I
         val text: String = sentences.joinToString("\n") { it.text }
         for (sentenceIdx in 0..<sentenceCount) {
             val sentence = sentences[sentenceIdx]
-            Log.d("Sentence", "Sentence[$sentenceIdx] '${sentence.text}' ${sentence.start}-${sentence.end} ${sentence.segment.first}-${sentence.segment.second} '${text.substring(sentence.segment.first, sentence.segment.second + 1)}'")
-            for (token in sentence.tokens) {
+            Log.d("Sentence", "Sentence[$sentenceIdx] '${sentence.text}' (${sentence.start}:${sentence.end}) ${sentence.segment.first}-${sentence.segment.second} '${text.substring(sentence.segment.first, sentence.segment.second + 1)}'")
+            sentence.tokens.withIndex().forEach {(i, token) ->
                 val textSegment = getTextSegment(sentenceIdx, token.segment)
                 val tokenSegment = token.segment
-                Log.d("Token", "Token [$sentenceIdx] ${textSegment.first}-${textSegment.second} '${text.substring(textSegment.first, textSegment.second + 1)}' / '${sentence.text.substring(tokenSegment.first, tokenSegment.second + 1)}'")
+                Log.d("Token", "Token[$sentenceIdx,${i + 1}] (${textSegment.first}:${textSegment.second}) '${text.substring(textSegment.first, textSegment.second + 1)}' / '${sentence.text.substring(tokenSegment.first, tokenSegment.second + 1)}'")
             }
         }
     }
