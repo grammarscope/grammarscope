@@ -564,7 +564,7 @@ toJavaSentences(
 
 // N A T I V E   I N T E R F A C E
 
-string model_path;
+static string model_path;
 
 // u t i l s
 
