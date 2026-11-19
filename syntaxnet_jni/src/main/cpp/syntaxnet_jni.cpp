@@ -9,10 +9,12 @@
 #include <unistd.h>
 
 #include <codecvt>
+#include <cwchar>
 #include <iostream>
-#include <unistd.h>
-#include <codecvt>
+#include <sstream>
 #include <locale>
+#include <regex>
+#include <iomanip>   // std::setfill, std::setw, std::hex  ← required
 
 #include <android/log.h>
 
