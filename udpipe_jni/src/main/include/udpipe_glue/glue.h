@@ -2,8 +2,8 @@
  * Bernard Bou
  * 1313ou@gmail.com */
 
-#ifndef IFACE_H_H
-#define IFACE_H_H
+#ifndef GLUE_H
+#define GLUE_H
 
 #include <string>
 #include <map>
