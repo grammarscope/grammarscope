@@ -8,6 +8,7 @@
 #include <vector>
 #include <unistd.h>
 
+#include <codecvt>
 #include <iostream>
 #include <unistd.h>
 #include <codecvt>
