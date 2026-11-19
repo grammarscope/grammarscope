@@ -177,8 +177,8 @@ static string jniStringToString(JNIEnv *env, jstring j_str) {
  * @param j_sentence_ctor java constructor
  * @param j_token_class java class of token
  * @param j_token_ctor java constructor of token
- * @param j_mwttoken_class java class of mwtoken
- * @param j_mwttoken_ctor java constructor of mwtoken
+ * @param j_mwtoken_class java class of mwtoken
+ * @param j_mwtoken_ctor java constructor of mwtoken
  * @return Sentence with tokens field being Array<Token!!>!! otherwise
  * @throws IllegalStateException whenever CheckNull encounters a null value, that is
  * -word is null (should not happen)
