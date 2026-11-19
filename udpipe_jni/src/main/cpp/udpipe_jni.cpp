@@ -226,7 +226,7 @@ toJavaSentence(
     const string &s_end = it0 != token0.end() ? it0->second : "-1";
     int s_iend = static_cast<int>(strtol(s_end.c_str(), nullptr, 10));
 
-    LOGD("Token #0 [%d:%d] sentence", s_istart, s_iend);
+    LOGD("Token #0 (%d:%d) sentence", s_istart, s_iend);
 
     // Tokens
 
@@ -357,8 +357,10 @@ toJavaSentence(
         it = token.find("deps");
         const string &deps = it != token.end() ? it->second : "";
 
-        LOGD("Token #%d '%s' [%s:%s] label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s", j, word.c_str(), t_start.c_str(), t_end.c_str(), label.c_str(),
+        /*
+        LOGD("Token #%d (%s:%s) '%s' label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s", j, t_start.c_str(), t_end.c_str(), word.c_str(), label.c_str(),
              tag.c_str(), head.c_str(), deps.c_str(), mwt_form.c_str(), mwt_misc.c_str());
+        */
 
         // token constructor parameters
 
@@ -381,6 +383,9 @@ toJavaSentence(
         int ibreaklevel = static_cast<int>(strtol(breaklevel.c_str(), nullptr, 10));
         jstring j_deps = check_not_null(env, env->NewStringUTF(deps.c_str()));
 
+        LOGD("Token #%d (%d:%d) '%s' label=%s tag=%s head=%s x=<%s> mwt=%s mwtrange=%s", j, t_istart, t_iend, word.c_str(), label.c_str(),
+             tag.c_str(), head.c_str(), deps.c_str(), mwt_form.c_str(), mwt_misc.c_str());
+
         // make java token
         // j_word: String!!, possibly ""
         // istart: Int!!, possibly -1
@@ -390,13 +395,15 @@ toJavaSentence(
         // ihead: Int!!, possibly -1
         // j_label: String!!, possibly ""
         // ibreaklevel: Int!!, possibly -1
-        jobject j_token = check_not_null(env,
-                                         env->NewObject(j_token_class, j_token_ctor, sentenceIndex,
-                                                        j - 1, j_word,
-                                                        t_istart, t_iend, j_category, j_tag, ihead,
-                                                        j_label,
-                                                        ibreaklevel,
-                                                        j_deps, j_mwtoken));
+        jobject j_token = check_not_null(env, env->NewObject(
+                j_token_class, j_token_ctor,
+                sentenceIndex,
+                j - 1, j_word,
+                t_istart, t_iend,
+                j_category, j_tag, ihead,
+                j_label,
+                ibreaklevel,
+                j_deps, j_mwtoken));
         if (env->ExceptionCheck() || j_token == nullptr) {
             env->DeleteLocalRef(j_word);
             env->DeleteLocalRef(j_category);
@@ -409,7 +416,6 @@ toJavaSentence(
         // set token in array
 
         env->SetObjectArrayElement(j_token_array, j - 1, j_token);
-
         env->DeleteLocalRef(j_word);
         env->DeleteLocalRef(j_category);
         env->DeleteLocalRef(j_tag);
@@ -492,7 +498,7 @@ toJavaSentences(
     // check
     int i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        LOGD("Sentence #%d: %zu tokens", i++, parsed_sentence.size());
+        LOGD("Sentence #%d: %zu tokens", i++, parsed_sentence.size() - 1);
         if (parsed_sentence.empty()) {
             env->ThrowNew(env->FindClass(kIllegalStateException), "No token in sentence");
             return nullptr;

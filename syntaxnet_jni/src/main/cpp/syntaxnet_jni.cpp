@@ -103,6 +103,51 @@ static string to_hex_codepoints(const std::string &s) {
     return oss.str();
 }
 
+// T O   C H A R / C O D E P O I N T   I N D E X   H E L P E R
+
+/**
+ * Creates a mapping from UTF-8 byte positions to character indices.
+ *
+ * @param text The UTF-8 encoded string to process
+ * @return A vector where each index represents a byte position, and the value is the corresponding character index
+ */
+static vector<int> get_byte_offset_to_char_index(const string &text) {
+    // Get the byte size of the UTF-8 string
+    const size_t &byte_size = text.size();
+
+    // Create vector for byte-to-char index mapping (size + 1 to include position after last byte)
+    vector<int> map_byte_offset_to_char_index(byte_size + 1);
+
+    // Convert to wstring to work with Unicode code points properly
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+    wstring wide_text = converter.from_bytes(text);
+
+    // Iterate through each Unicode character
+    size_t byte_pos = 0;
+    for (size_t i = 0; i < wide_text.size(); ++i) {
+        wchar_t wch = wide_text[i];
+
+        // Convert this single character back to UTF-8 to get its byte count
+        string char_bytes = converter.to_bytes(wch);
+        size_t char_bytes_count = char_bytes.size();
+
+        // Fill in the byte-to-char mapping for each byte in this character
+        for (size_t j = 0; j < char_bytes_count; ++j) {
+            if (byte_pos + j < map_byte_offset_to_char_index.size()) {
+                map_byte_offset_to_char_index[byte_pos + j] = static_cast<int>(i);
+            }
+        }
+        byte_pos += char_bytes_count;
+    }
+
+    // Set the final position
+    if (byte_pos < map_byte_offset_to_char_index.size()) {
+        map_byte_offset_to_char_index[byte_pos] = static_cast<int>(wide_text.size());
+    }
+
+    return map_byte_offset_to_char_index;
+}
+
 // F R O M   J A V A
 
 extern
@@ -119,9 +164,7 @@ vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs) {
             }
             env->DeleteLocalRef(j_str);
         }
-
-        string hex = to_hex_codepoints(result[i]);
-        LOGD("Input %d Codepoints cps = %s", i, hex.c_str());
+        LOGD("Input %d Codepoints cps = %s", i, to_hex_codepoints(result[i]).c_str());
     }
     return result;
 }
@@ -162,7 +205,7 @@ toJavaSentence(
         jmethodID j_token_ctor,
         jclass j_mwtoken_class,
         jmethodID j_mwtoken_ctor
-        ) {
+) {
 
     int nTokens = (int) parsed_sentence.size();
 
@@ -179,16 +222,25 @@ toJavaSentence(
 
     const string &text = token0.at("text");
 
+    // Start and end positions are expressed in byte offsets, make a conversion map for the sentence
+    const vector<int> map_byte_offset_to_char_index = get_byte_offset_to_char_index(text);
+
     auto it0 = token0.find("docid");
     const string &docid = it0 != token0.end() ? it0->second : "";
 
     it0 = token0.find("start");
     const string &s_start = it0 != token0.end() ? it0->second : "-1";
-    const int s_istart = strtol(s_start.c_str(), nullptr, 10);
-
     it0 = token0.find("end");
     const string &s_end = it0 != token0.end() ? it0->second : "-1";
-    const int s_iend = strtol(s_end.c_str(), nullptr, 10);
+
+    int s_istart = strtol(s_start.c_str(), nullptr, 10);
+    int s_iend = strtol(s_end.c_str(), nullptr, 10);
+    if (s_istart != -1)
+        s_istart = map_byte_offset_to_char_index[s_istart];
+    if (s_iend != -1)
+        s_iend = map_byte_offset_to_char_index[s_iend];
+
+    LOGD("Token #0 '%s' (%d:%d) ", text.c_str(), s_istart, s_iend);
 
     // Tokens
 
@@ -221,18 +273,23 @@ toJavaSentence(
         it = token.find("breaklevel");
         const string &breaklevel = it != token.end() ? it->second : "-1";
 
-        LOGD("Token #%d '%s' l=%s t=%s h=%s\n", j, word.c_str(), label.c_str(), tag.c_str(), head.c_str());
+        int t_istart = strtol(t_start.c_str(), nullptr, 10);
+        int t_iend = strtol(t_end.c_str(), nullptr, 10);
+        if (t_istart != -1)
+            t_istart = map_byte_offset_to_char_index[t_istart];
+        if (t_iend != -1)
+            t_iend = map_byte_offset_to_char_index[t_iend];
 
         // token constructor parameters
 
         jstring j_word = check_not_null(env, env->NewStringUTF(word.c_str()));
-        const int t_istart = strtol(t_start.c_str(), nullptr, 10);
-        const int t_iend = strtol(t_end.c_str(), nullptr, 10);
         jstring j_category = check_not_null(env, env->NewStringUTF(category.c_str()));
         jstring j_tag = check_not_null(env, env->NewStringUTF(tag.c_str()));
         jstring j_label = check_not_null(env, env->NewStringUTF(label.c_str()));
         int ihead = strtol(head.c_str(), nullptr, 10);
         int ibreaklevel = strtol(breaklevel.c_str(), nullptr, 10);
+
+        LOGD("Token #%d (%d:%d) '%s' l=%s t=%s h=%s\n", j, t_istart, t_iend, word.c_str(), label.c_str(), tag.c_str(), head.c_str());
 
         // make java token
         // j_word: String!!, possibly ""
@@ -245,7 +302,12 @@ toJavaSentence(
         // ibreaklevel: Int!!, possibly -1
         // deps: String?, nullable (nullptr)
         // mwt: MWToken?, nullable (nullptr)
-        jobject j_token = check_not_null(env, env->NewObject(j_token_class, j_token_ctor, sentenceIndex, j - 1, j_word, t_istart, t_iend, j_category, j_tag, ihead, j_label, ibreaklevel, nullptr, nullptr));
+        jobject j_token = check_not_null(env, env->NewObject(
+                j_token_class, j_token_ctor,
+                sentenceIndex, j - 1, j_word,
+                t_istart, t_iend,
+                j_category, j_tag, ihead, j_label, ibreaklevel,
+                nullptr, nullptr));
         if (env->ExceptionCheck() || j_token == nullptr) {
             env->DeleteLocalRef(j_word);
             env->DeleteLocalRef(j_category);
@@ -302,7 +364,7 @@ toJavaSentences(
     // check
     int i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        LOGD("Sentence #%d: %zu tokens\n", i++, parsed_sentence.size());
+        LOGD("Sentence #%d: %zu tokens\n", i++, parsed_sentence.size() - 1);
         if (parsed_sentence.empty()) {
             env->ThrowNew(env->FindClass(kIllegalStateException), "No token in sentence");
             return nullptr;
@@ -348,7 +410,8 @@ toJavaSentences(
 
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        jobject j_sentence = toJavaSentence(env, parsed_sentence, i, j_sentence_class, j_sentence_ctor, j_token_class, j_token_ctor, j_mwtoken_class, j_mwtoken_ctor);
+        jobject j_sentence = toJavaSentence(env, parsed_sentence, i, j_sentence_class, j_sentence_ctor, j_token_class, j_token_ctor, j_mwtoken_class,
+                                            j_mwtoken_ctor);
         if (env->ExceptionCheck() || j_sentence == nullptr) {
             env->DeleteLocalRef(j_sentence_array);
             return nullptr;
