@@ -13,12 +13,13 @@
 long
 sni_load_h(const char *model, bool is_frozen);
 
-void
-sni_unload_h(long handle);
+//See glue.h
+//void
+//sni_unload_h(long handle);
 
-int
-sni_version();
-
+//See glue.h
+//int
+//sni_version();
 
 std::string
 sni_parse_hp(long handle, const char *text);
