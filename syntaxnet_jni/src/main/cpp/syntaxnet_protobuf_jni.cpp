@@ -1,4 +1,4 @@
-/* Copyright 2018
+/* Copyright 2026
  * Bernard Bou
  * 1313ou@gmail.com */
 
@@ -20,7 +20,7 @@
 
 using namespace std;
 
-const char kIllegalStateException[] = "java/lang/IllegalStateException";
+const char illegalStateExceptionClass[] = "java/lang/IllegalStateException";
 
 // C H E C K   H E L P E R S
 
@@ -28,7 +28,7 @@ template<typename T>
 T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
         if (!env->ExceptionCheck()) {
-            env->ThrowNew(env->FindClass(kIllegalStateException), "");
+            env->ThrowNew(env->FindClass(illegalStateExceptionClass), "");
         }
         return nullptr;
     }
@@ -83,7 +83,7 @@ extern "C" JNIEXPORT
 jobjectArray
 JNICALL Java_org_syntaxnet_JNI_parseProtobufs(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
         return nullptr;
     }
 
@@ -95,7 +95,7 @@ JNICALL Java_org_syntaxnet_JNI_parseProtobufs(JNIEnv *env, jobject /*thiz*/, jlo
 
     // parse
     vector<string> parsed_sentence_protos;
-    sni_parse_hp(static_cast<long>(j_handle), texts, parsed_sentence_protos);
+    sni_parse_h_pb(static_cast<long>(j_handle), texts, parsed_sentence_protos);
     LOGD("Parsed %zu sentences\n", parsed_sentence_protos.size());
 
     // interpret
@@ -111,7 +111,7 @@ extern "C" JNIEXPORT
 jobjectArray
 JNICALL Java_org_syntaxnet_JNI_splitParseProtobufs(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
         return nullptr;
     }
 
@@ -123,7 +123,7 @@ JNICALL Java_org_syntaxnet_JNI_splitParseProtobufs(JNIEnv *env, jobject /*thiz*/
 
     // parse
     vector<string> split_parsed_sentence_protos;
-    sni_split_parse_hp(static_cast<long>(j_handle), texts, split_parsed_sentence_protos);
+    sni_split_parse_h_pb(static_cast<long>(j_handle), texts, split_parsed_sentence_protos);
     LOGD("Parsed %zu sentences\n", split_parsed_sentence_protos.size());
 
     // interpret
@@ -139,7 +139,7 @@ extern "C" JNIEXPORT
 jobjectArray
 JNICALL Java_org_syntaxnet_JNI_segmentProtobufs(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
         return nullptr;
     }
 
@@ -151,7 +151,7 @@ JNICALL Java_org_syntaxnet_JNI_segmentProtobufs(JNIEnv *env, jobject /*thiz*/, j
 
     // parse
     vector<string> segmented_sentence_protos;
-    sni_segment_hp(static_cast<long>(j_handle), texts, segmented_sentence_protos);
+    sni_segment_h_pb(static_cast<long>(j_handle), texts, segmented_sentence_protos);
     LOGD("Segmented %zu sentences\n", segmented_sentence_protos.size());
 
     // result

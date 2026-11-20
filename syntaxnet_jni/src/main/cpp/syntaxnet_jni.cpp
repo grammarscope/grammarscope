@@ -29,16 +29,7 @@
 
 using namespace std;
 
-constexpr char kIllegalStateException[] = "java/lang/IllegalStateException";
-
-constexpr char sentenceClass[] = "org/depparse/Sentence";
-constexpr char tokenClass[] = "org/depparse/Token";
-constexpr char mwtokenClass[] = "org/depparse/MWToken";
-constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;[Lorg/depparse/MWToken;Ljava/lang/String;)V";
-constexpr char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Lorg/depparse/MWToken;)V";
-constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
-
-// C H E C K   H E L P E R S
+constexpr char illegalStateExceptionClass[] = "java/lang/IllegalStateException";
 
 /**
  * Check nullity and throw an IllegalStateException if the object is null
@@ -50,10 +41,70 @@ constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
 template<typename T>
 T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "");
         return nullptr;
     }
     return std::forward<T>(t);
+}
+
+// C L A S S E S   A N D   C O N S T R U C T O R S
+
+constexpr char sentenceClass[] = "org/depparse/Sentence";
+constexpr char tokenClass[] = "org/depparse/Token";
+constexpr char mwtokenClass[] = "org/depparse/MWToken";
+constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;[Lorg/depparse/MWToken;Ljava/lang/String;)V";
+constexpr char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Lorg/depparse/MWToken;)V";
+constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
+
+static jclass j_sentence_class = nullptr;
+static jmethodID j_sentence_ctor = nullptr;
+static jclass j_token_class = nullptr;
+static jmethodID j_token_ctor = nullptr;
+static jclass j_mwtoken_class = nullptr;
+static jmethodID j_mwtoken_ctor = nullptr;
+
+bool
+load_classes_and_constructors(JNIEnv *env) {
+    if (j_sentence_class != nullptr && j_token_class != nullptr && j_mwtoken_class != nullptr) {
+        return true;
+    }
+
+    jclass _j_sentence_class = check_not_null(env, env->FindClass(sentenceClass));
+    if (env->ExceptionCheck() || _j_sentence_class == nullptr) {
+        return false;
+    }
+    jmethodID _j_sentence_ctor = check_not_null(env, env->GetMethodID(_j_sentence_class, "<init>", sentenceCtor));
+    if (env->ExceptionCheck() || _j_sentence_ctor == nullptr) {
+        return false;
+    }
+    jclass _j_token_class = check_not_null(env, env->FindClass(tokenClass));
+    if (env->ExceptionCheck() || _j_token_class == nullptr) {
+        return false;
+    }
+    jmethodID _j_token_ctor = check_not_null(env, env->GetMethodID(_j_token_class, "<init>", tokenCtor));
+    if (env->ExceptionCheck() || _j_token_ctor == nullptr) {
+        return false;
+    }
+    jclass _j_mwtoken_class = check_not_null(env, env->FindClass(mwtokenClass));
+    if (env->ExceptionCheck() || _j_mwtoken_class == nullptr) {
+        return false;
+    }
+    jmethodID _j_mwtoken_ctor = check_not_null(env, env->GetMethodID(_j_mwtoken_class, "<init>", mwtokenCtor));
+    if (env->ExceptionCheck() || _j_mwtoken_ctor == nullptr) {
+        return false;
+    }
+
+    j_sentence_class = reinterpret_cast<jclass>(env->NewGlobalRef(_j_sentence_class));
+    j_sentence_ctor = _j_sentence_ctor;
+    j_token_class = reinterpret_cast<jclass>(env->NewGlobalRef(_j_token_class));
+    j_token_ctor = _j_token_ctor;
+    j_mwtoken_class = reinterpret_cast<jclass>(env->NewGlobalRef(_j_mwtoken_class));
+    j_mwtoken_ctor = _j_mwtoken_ctor;
+
+    env->DeleteLocalRef(_j_sentence_class);
+    env->DeleteLocalRef(_j_token_class);
+    env->DeleteLocalRef(_j_mwtoken_class);
+    return true;
 }
 
 // C O N V E R S I O N   H E L P E R S
@@ -184,8 +235,8 @@ string jniStringToString(JNIEnv *env, jstring j_str) {
  * @param env environment
  * @param parsed_sentence parsed C sentence, non-null
  * @param sentenceIndex sentence index
- * @param j_sentence_class java class of sentence
- * @param j_sentence_ctor java constructor
+ * @param _j_sentence_class java class of sentence
+ * @param _j_sentence_ctor java constructor
  * @param j_token_class java class of token
  * @param j_token_ctor java constructor of token
  * @return Sentence with tokens field being Array<Token!!>!! otherwise
@@ -199,19 +250,19 @@ toJavaSentence(
         JNIEnv *env,
         const sentence_t &parsed_sentence,
         int sentenceIndex,
-        jclass j_sentence_class,
-        jmethodID j_sentence_ctor,
-        jclass j_token_class,
-        jmethodID j_token_ctor,
-        jclass j_mwtoken_class,
-        jmethodID j_mwtoken_ctor
+        jclass _j_sentence_class,
+        jmethodID _j_sentence_ctor,
+        jclass _j_token_class,
+        jmethodID _j_token_ctor,
+        jclass _j_mwtoken_class,
+        jmethodID _j_mwtoken_ctor
 ) {
 
     int nTokens = (int) parsed_sentence.size();
 
     // make java array of tokens Token[] to be field of Sentence class and return back to Java
 
-    jobjectArray j_token_array = check_not_null(env, env->NewObjectArray(nTokens - 1, j_token_class, nullptr));
+    jobjectArray j_token_array = check_not_null(env, env->NewObjectArray(nTokens - 1, _j_token_class, nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -289,7 +340,7 @@ toJavaSentence(
         int ihead = strtol(head.c_str(), nullptr, 10);
         int ibreaklevel = strtol(breaklevel.c_str(), nullptr, 10);
 
-        LOGD("Token #%d (%d:%d) '%s' l=%s t=%s h=%s\n", j, t_istart, t_iend, word.c_str(), label.c_str(), tag.c_str(), head.c_str());
+        LOGD("Token #%d (%d:%d) '%s' l=%s t=%s h=%s", j, t_istart, t_iend, word.c_str(), label.c_str(), tag.c_str(), head.c_str());
 
         // make java token
         // j_word: String!!, possibly ""
@@ -303,7 +354,7 @@ toJavaSentence(
         // deps: String?, nullable (nullptr)
         // mwt: MWToken?, nullable (nullptr)
         jobject j_token = check_not_null(env, env->NewObject(
-                j_token_class, j_token_ctor,
+                _j_token_class, _j_token_ctor,
                 sentenceIndex, j - 1, j_word,
                 t_istart, t_iend,
                 j_category, j_tag, ihead, j_label, ibreaklevel,
@@ -338,11 +389,24 @@ toJavaSentence(
         env->DeleteLocalRef(j_text);
         return nullptr;
     }
-    jobject j_sentence = env->NewObject(j_sentence_class, j_sentence_ctor, j_text, s_istart, s_iend, j_token_array, nullptr, j_docid);
+    jobject j_sentence = env->NewObject(_j_sentence_class, _j_sentence_ctor, j_text, s_istart, s_iend, j_token_array, nullptr, j_docid);
     env->DeleteLocalRef(j_text);
     env->DeleteLocalRef(j_docid);
     env->DeleteLocalRef(j_token_array);
     return j_sentence;
+}
+
+jobject
+toJavaSentence(
+        JNIEnv *env,
+        const sentence_t &parsed_sentence) {
+    return toJavaSentence(
+            env,
+            parsed_sentence,
+            0,
+            j_sentence_class, j_sentence_ctor,
+            j_token_class, j_token_ctor,
+            j_mwtoken_class, j_mwtoken_ctor);
 }
 
 /**
@@ -366,36 +430,9 @@ toJavaSentences(
     for (const auto &parsed_sentence: parsed_sentences) {
         LOGD("Sentence #%d: %zu tokens\n", i++, parsed_sentence.size() - 1);
         if (parsed_sentence.empty()) {
-            env->ThrowNew(env->FindClass(kIllegalStateException), "No token in sentence");
+            env->ThrowNew(env->FindClass(illegalStateExceptionClass), "No token in sentence");
             return nullptr;
         }
-    }
-
-    // classes and constructors
-
-    jclass j_sentence_class = check_not_null(env, env->FindClass(sentenceClass));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jmethodID j_sentence_ctor = check_not_null(env, env->GetMethodID(j_sentence_class, "<init>", sentenceCtor));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jclass j_token_class = check_not_null(env, env->FindClass(tokenClass));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jmethodID j_token_ctor = check_not_null(env, env->GetMethodID(j_token_class, "<init>", tokenCtor));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jclass j_mwtoken_class = check_not_null(env, env->FindClass(mwtokenClass));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jmethodID j_mwtoken_ctor = check_not_null(env, env->GetMethodID(j_mwtoken_class, "<init>", mwtokenCtor));
-    if (env->ExceptionCheck()) {
-        return nullptr;
     }
 
     // make Array<Sentence> to return back to Java
@@ -470,6 +507,12 @@ JNICALL Java_org_syntaxnet_JNI_load(
         jstring j_model_path) {
 
     (void) j_type;
+
+    if (!load_classes_and_constructors(env)) {
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot load classes");
+        return 0;
+    };
+
     model_path = jniStringToString(env, j_model_path);
 
     long handle = sni_load_h(model_path.c_str());
@@ -488,13 +531,45 @@ JNICALL Java_org_syntaxnet_JNI_unload(
 
     (void) j_type;
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot free null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot free null handle");
         return;
     }
     sni_unload_h(static_cast<long>(j_handle));
 }
 
 // p a r s e
+
+/**
+ * Native parse1 function callable from Java
+ */
+extern "C" JNIEXPORT
+jobject
+JNICALL Java_org_syntaxnet_JNI_parse1(
+        JNIEnv *env,
+        jobject j_type,
+        jlong j_handle,
+        jstring j_input_text) {
+
+    (void) j_type;
+    if (j_handle == 0) {
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
+        return nullptr;
+    }
+
+    // input
+    const string &text = jniStringToString(env, j_input_text);
+
+    // parse
+    sentence_t parsed_sentence;
+    sni_parse_h(static_cast<long>(j_handle), text.c_str(), parsed_sentence);
+    LOGD("Parsed 1 sentence");
+
+    // interpret
+    jobject j_sentence = toJavaSentence(env, parsed_sentence);
+
+    LOGD("Parsing done");
+    return j_sentence;
+}
 
 /**
  * Native parse function callable from Java
@@ -509,7 +584,7 @@ JNICALL Java_org_syntaxnet_JNI_parse(
 
     (void) j_type;
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
         return nullptr;
     }
 
@@ -519,12 +594,12 @@ JNICALL Java_org_syntaxnet_JNI_parse(
     // parse
     vector<sentence_t> parsed_sentences;
     sni_parse_h(static_cast<long>(j_handle), texts, parsed_sentences);
-    LOGD("Parsed %zu sentences\n", parsed_sentences.size());
+    LOGD("Parsed %zu sentences", parsed_sentences.size());
 
     // interpret
     jobjectArray j_sentence_array = toJavaSentences(env, parsed_sentences);
 
-    LOGD("Parsing done\n");
+    LOGD("Parsing done");
     return j_sentence_array;
 }
 
@@ -541,7 +616,7 @@ JNICALL Java_org_syntaxnet_JNI_splitParse(
 
     (void) j_type;
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
         return nullptr;
     }
 
@@ -551,12 +626,45 @@ JNICALL Java_org_syntaxnet_JNI_splitParse(
     // parse
     vector<sentence_t> parsed_sentences;
     sni_parse_h(static_cast<long>(j_handle), texts, parsed_sentences);
-    LOGD("Parsed %zu sentences\n", parsed_sentences.size());
+    LOGD("Parsed %zu sentences", parsed_sentences.size());
 
     // interpret
     jobjectArray j_sentence_array = toJavaSentences(env, parsed_sentences);
 
-    LOGD("Parsing done\n");
+    LOGD("Parsing done");
+    return j_sentence_array;
+}
+
+
+/**
+ * Native splitParse function callable from Java
+ */
+extern "C" JNIEXPORT
+jobjectArray
+JNICALL Java_org_syntaxnet_JNI_splitParse1(
+        JNIEnv *env,
+        jobject j_type,
+        jlong j_handle,
+        jstring j_input_text) {
+
+    (void) j_type;
+    if (j_handle == 0) {
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
+        return nullptr;
+    }
+
+    // input
+    const string &text = jniStringToString(env, j_input_text);
+
+    // parse
+    vector<sentence_t> parsed_sentences;
+    sni_split_parse_h(static_cast<long>(j_handle), text.c_str(), parsed_sentences);
+    LOGD("Parsed 1 sentence");
+
+    // interpret
+    jobjectArray j_sentence_array = toJavaSentences(env, parsed_sentences);
+
+    LOGD("Parsing done");
     return j_sentence_array;
 }
 
@@ -565,7 +673,7 @@ JNICALL Java_org_syntaxnet_JNI_splitParse(
  */
 extern "C" JNIEXPORT
 jobjectArray
-JNICALL Java_org_syntaxnet_JNI_segment__J_3Ljava_lang_String_2(
+JNICALL Java_org_syntaxnet_JNI_segment(
         JNIEnv *env,
         jobject j_type,
         jlong j_handle,
@@ -573,7 +681,7 @@ JNICALL Java_org_syntaxnet_JNI_segment__J_3Ljava_lang_String_2(
 
     (void) j_type;
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
         return nullptr;
     }
 
@@ -583,11 +691,44 @@ JNICALL Java_org_syntaxnet_JNI_segment__J_3Ljava_lang_String_2(
     // parse
     vector<sentence_t> segmented_sentences;
     sni_segment_h(static_cast<long>(j_handle), texts, segmented_sentences);
-    LOGD("Segmented %zu sentences\n", segmented_sentences.size());
+    LOGD("Segmented %zu sentences", segmented_sentences.size());
 
     // interpret
     jobjectArray j_sentence_array = toJavaSentences(env, segmented_sentences);
 
-    LOGD("Segmenting done\n");
+    LOGD("Segmenting done");
     return j_sentence_array;
+}
+
+
+/**
+ * Native segment function callable from Java
+ */
+extern "C" JNIEXPORT
+jobject
+JNICALL Java_org_syntaxnet_JNI_segment1(
+        JNIEnv *env,
+        jobject j_type,
+        jlong j_handle,
+        jstring j_input_text) {
+
+    (void) j_type;
+    if (j_handle == 0) {
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
+        return nullptr;
+    }
+
+    // input
+    const string &text = jniStringToString(env, j_input_text);
+
+    // parse
+    sentence_t segmented_sentence;
+    sni_segment_h(static_cast<long>(j_handle), text.c_str(), segmented_sentence);
+    LOGD("Segmented 1 sentence");
+
+    // interpret
+    jobject j_sentence = toJavaSentence(env, segmented_sentence);
+
+    LOGD("Segmenting done");
+    return j_sentence;
 }
