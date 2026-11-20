@@ -79,8 +79,9 @@ jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
 
 // P A R S E
 
-extern "C" JNIEXPORT jobjectArray
-JNICALL Java_org_syntaxnet_JNI_parseProtos(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
+extern "C" JNIEXPORT
+jobjectArray
+JNICALL Java_org_syntaxnet_JNI_parseProtobufs(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
     if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
@@ -106,8 +107,9 @@ JNICALL Java_org_syntaxnet_JNI_parseProtos(JNIEnv *env, jobject /*thiz*/, jlong 
 
 // S P L I T P A R S E
 
-extern "C" JNIEXPORT jobjectArray
-JNICALL Java_org_syntaxnet_JNI_splitParseProtos(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
+extern "C" JNIEXPORT
+jobjectArray
+JNICALL Java_org_syntaxnet_JNI_splitParseProtobufs(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
     if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
@@ -133,8 +135,9 @@ JNICALL Java_org_syntaxnet_JNI_splitParseProtos(JNIEnv *env, jobject /*thiz*/, j
 
 // S E G M E N T
 
-extern "C" JNIEXPORT jobjectArray
-JNICALL Java_org_syntaxnet_JNI_segmentProtos(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
+extern "C" JNIEXPORT
+jobjectArray
+JNICALL Java_org_syntaxnet_JNI_segmentProtobufs(JNIEnv *env, jobject /*thiz*/, jlong j_handle, jobjectArray j_input_texts) {
     if (j_handle == 0) {
         env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
         return nullptr;
