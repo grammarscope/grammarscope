@@ -6,8 +6,8 @@
 #define GLUE_H
 
 #include <string>
-#include <map>
 #include <vector>
+#include <map>
 
 typedef std::map<std::string, std::string> token_t;
 typedef std::vector<token_t> sentence_t;
