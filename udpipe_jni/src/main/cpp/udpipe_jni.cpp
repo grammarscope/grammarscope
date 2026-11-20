@@ -42,15 +42,6 @@ using namespace std;
 
 constexpr char illegalStateExceptionClass[] = "java/lang/IllegalStateException";
 
-constexpr char sentenceClass[] = "org/depparse/Sentence";
-constexpr char tokenClass[] = "org/depparse/Token";
-constexpr char mwtokenClass[] = "org/depparse/MWToken";
-constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;[Lorg/depparse/MWToken;Ljava/lang/String;)V";
-constexpr char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Lorg/depparse/MWToken;)V";
-constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
-
-// C H E C K   H E L P E R S
-
 /**
  * Check nullity and throw an IllegalStateException if the object is null
  * @tparam T object type
@@ -67,6 +58,66 @@ static T check_not_null(JNIEnv *env, T &&t) {
         return nullptr;
     }
     return std::forward<T>(t);
+}
+
+// C L A S S E S   A N D   C O N S T R U C T O R S
+
+constexpr char sentenceClass[] = "org/depparse/Sentence";
+constexpr char tokenClass[] = "org/depparse/Token";
+constexpr char mwtokenClass[] = "org/depparse/MWToken";
+constexpr char sentenceCtor[] = "(Ljava/lang/String;II[Lorg/depparse/Token;[Lorg/depparse/MWToken;Ljava/lang/String;)V";
+constexpr char tokenCtor[] = "(IILjava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Lorg/depparse/MWToken;)V";
+constexpr char mwtokenCtor[] = "(IILjava/lang/String;IIII)V";
+
+static jclass j_sentence_class = nullptr;
+static jmethodID j_sentence_ctor = nullptr;
+static jclass j_token_class = nullptr;
+static jmethodID j_token_ctor = nullptr;
+static jclass j_mwtoken_class = nullptr;
+static jmethodID j_mwtoken_ctor = nullptr;
+
+bool
+load_classes_and_constructors(JNIEnv *env) {
+    if (j_sentence_class != nullptr && j_token_class != nullptr && j_mwtoken_class != nullptr) {
+        return true;
+    }
+
+    jclass _j_sentence_class = check_not_null(env, env->FindClass(sentenceClass));
+    if (env->ExceptionCheck() || _j_sentence_class == nullptr) {
+        return false;
+    }
+    jmethodID _j_sentence_ctor = check_not_null(env, env->GetMethodID(_j_sentence_class, "<init>", sentenceCtor));
+    if (env->ExceptionCheck() || _j_sentence_ctor == nullptr) {
+        return false;
+    }
+    jclass _j_token_class = check_not_null(env, env->FindClass(tokenClass));
+    if (env->ExceptionCheck() || _j_token_class == nullptr) {
+        return false;
+    }
+    jmethodID _j_token_ctor = check_not_null(env, env->GetMethodID(_j_token_class, "<init>", tokenCtor));
+    if (env->ExceptionCheck() || _j_token_ctor == nullptr) {
+        return false;
+    }
+    jclass _j_mwtoken_class = check_not_null(env, env->FindClass(mwtokenClass));
+    if (env->ExceptionCheck() || _j_mwtoken_class == nullptr) {
+        return false;
+    }
+    jmethodID _j_mwtoken_ctor = check_not_null(env, env->GetMethodID(_j_mwtoken_class, "<init>", mwtokenCtor));
+    if (env->ExceptionCheck() || _j_mwtoken_ctor == nullptr) {
+        return false;
+    }
+
+    j_sentence_class = reinterpret_cast<jclass>(env->NewGlobalRef(_j_sentence_class));
+    j_sentence_ctor = _j_sentence_ctor;
+    j_token_class = reinterpret_cast<jclass>(env->NewGlobalRef(_j_token_class));
+    j_token_ctor = _j_token_ctor;
+    j_mwtoken_class = reinterpret_cast<jclass>(env->NewGlobalRef(_j_mwtoken_class));
+    j_mwtoken_ctor = _j_mwtoken_ctor;
+
+    env->DeleteLocalRef(_j_sentence_class);
+    env->DeleteLocalRef(_j_token_class);
+    env->DeleteLocalRef(_j_mwtoken_class);
+    return true;
 }
 
 // S T R I N G   H E L P E R S
@@ -173,13 +224,7 @@ static string jniStringToString(JNIEnv *env, jstring j_str) {
  * @param env environment
  * @param parsed_sentence parsed C sentence, non-null
  * @param sentenceIndex sentence index
- * @param j_sentence_class java class of sentence
- * @param j_sentence_ctor java constructor
- * @param j_token_class java class of token
- * @param j_token_ctor java constructor of token
- * @param j_mwtoken_class java class of mwtoken
- * @param j_mwtoken_ctor java constructor of mwtoken
- * @return Sentence with tokens field being Array<Token!!>!! otherwise
+ + @return Sentence with tokens field being Array<Token!!>!! otherwise
  * @throws IllegalStateException whenever CheckNull encounters a null value, that is
  * -word is null (should not happen)
  * -category, label, tag are guarded against being null by being set to empty string at token level
@@ -190,19 +235,12 @@ jobject
 toJavaSentence(
         JNIEnv *env,
         const sentence_t &parsed_sentence,
-        int sentenceIndex,
-        jclass j_sentence_class,
-        jmethodID j_sentence_ctor,
-        jclass j_token_class,
-        jmethodID j_token_ctor,
-        jclass j_mwtoken_class,
-        jmethodID j_mwtoken_ctor) {
+        int sentenceIndex) {
     int nTokens = static_cast<int>(parsed_sentence.size());
 
     // make java array of tokens Token[] to be field of Sentence class and return back to Java
 
-    jobjectArray j_token_array = check_not_null(env, env->NewObjectArray(nTokens - 1, j_token_class,
-                                                                         nullptr));
+    jobjectArray j_token_array = check_not_null(env, env->NewObjectArray(nTokens - 1, j_token_class, nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -505,41 +543,10 @@ toJavaSentences(
         }
     }
 
-    // classes and constructors
-
-    jclass j_sentence_class = check_not_null(env, env->FindClass(sentenceClass));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jmethodID j_sentence_ctor = check_not_null(env, env->GetMethodID(j_sentence_class, "<init>",
-                                                                     sentenceCtor));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jclass j_token_class = check_not_null(env, env->FindClass(tokenClass));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jmethodID j_token_ctor = check_not_null(env,
-                                            env->GetMethodID(j_token_class, "<init>", tokenCtor));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jclass j_mwtoken_class = check_not_null(env, env->FindClass(mwtokenClass));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-    jmethodID j_mwtoken_ctor = check_not_null(env, env->GetMethodID(j_mwtoken_class, "<init>",
-                                                                    mwtokenCtor));
-    if (env->ExceptionCheck()) {
-        return nullptr;
-    }
-
     // make Array<Sentence> to return back to Java
 
     const int n = static_cast<int>(parsed_sentences.size());
-    jobjectArray j_sentence_array = check_not_null(env, env->NewObjectArray(n, j_sentence_class,
-                                                                            nullptr));
+    jobjectArray j_sentence_array = check_not_null(env, env->NewObjectArray(n, j_sentence_class, nullptr));
     if (env->ExceptionCheck()) {
         return nullptr;
     }
@@ -548,10 +555,7 @@ toJavaSentences(
 
     i = 0;
     for (const auto &parsed_sentence: parsed_sentences) {
-        jobject j_sentence = toJavaSentence(env, parsed_sentence, i,
-                                            j_sentence_class, j_sentence_ctor,
-                                            j_token_class, j_token_ctor,
-                                            j_mwtoken_class, j_mwtoken_ctor);
+        jobject j_sentence = toJavaSentence(env, parsed_sentence, i);
         if (env->ExceptionCheck() || j_sentence == nullptr) {
             env->DeleteLocalRef(j_sentence_array);
             return nullptr;
@@ -607,6 +611,11 @@ JNICALL Java_org_udpipe_JNI_load(
         jobject j_type,
         jstring j_model_path) {
     (void) j_type;
+    if (!load_classes_and_constructors(env)) {
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot load classes");
+        return 0;
+    };
+
     model_path = jniStringToString(env, j_model_path);
 
     const long handle = udpipe_load_h(model_path.c_str());
