@@ -58,7 +58,7 @@ find_library(
 )
 
 add_library(syntaxnet_inference SHARED IMPORTED)
-set_target_properties(syntaxnet_inference PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libsyntaxnet_inference_android.so)
+set_target_properties(syntaxnet_inference PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libsyntaxnet_inference.so)
 #set_target_properties(syntaxnet_inference PROPERTIES IMPORTED_NO_SONAME 1)
 set_property(TARGET syntaxnet_inference PROPERTY IMPORTED_NO_SONAME 1)
 
