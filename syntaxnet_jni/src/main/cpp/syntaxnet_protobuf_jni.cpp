@@ -22,6 +22,8 @@ using namespace std;
 
 const char illegalStateExceptionClass[] = "java/lang/IllegalStateException";
 
+constexpr char byteArrayClass[] = "[B";
+
 // C H E C K   H E L P E R S
 
 template<typename T>
@@ -40,11 +42,16 @@ T check_not_null(JNIEnv *env, T &&t) {
 extern
 vector<string> jniStringArrayToVector(JNIEnv *env, jobjectArray j_strs);
 
+static jclass j_byte_array_class = nullptr;
+
 jobjectArray toJavaByteArray(JNIEnv *env, const vector<string> &protos) {
-    // element class
-    jclass j_byte_array_class = check_not_null(env, env->FindClass("[B")); // '[' for array of, 'B' for byte
-    if (env->ExceptionCheck() || j_byte_array_class == nullptr) {
-        return nullptr;
+
+    // byte array class
+    if (j_byte_array_class == nullptr) {
+        j_byte_array_class = check_not_null(env, env->FindClass(byteArrayClass));
+        if (env->ExceptionCheck() || j_byte_array_class == nullptr) {
+            return nullptr;
+        }
     }
 
     // allocate array
