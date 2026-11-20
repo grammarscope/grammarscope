@@ -40,7 +40,7 @@
 
 using namespace std;
 
-constexpr char kIllegalStateException[] = "java/lang/IllegalStateException";
+constexpr char illegalStateExceptionClass[] = "java/lang/IllegalStateException";
 
 constexpr char sentenceClass[] = "org/depparse/Sentence";
 constexpr char tokenClass[] = "org/depparse/Token";
@@ -62,7 +62,7 @@ template<typename T>
 static T check_not_null(JNIEnv *env, T &&t) {
     if (t == nullptr) {
         if (!env->ExceptionCheck()) {
-            env->ThrowNew(env->FindClass(kIllegalStateException), "");
+            env->ThrowNew(env->FindClass(illegalStateExceptionClass), "");
         }
         return nullptr;
     }
@@ -500,7 +500,7 @@ toJavaSentences(
     for (const auto &parsed_sentence: parsed_sentences) {
         LOGD("Sentence #%d: %zu tokens", i++, parsed_sentence.size() - 1);
         if (parsed_sentence.empty()) {
-            env->ThrowNew(env->FindClass(kIllegalStateException), "No token in sentence");
+            env->ThrowNew(env->FindClass(illegalStateExceptionClass), "No token in sentence");
             return nullptr;
         }
     }
@@ -624,7 +624,7 @@ JNICALL Java_org_udpipe_JNI_unload(
         jlong j_handle) {
     (void) j_type;
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot free null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot free null handle");
         return;
     }
     udpipe_unload_h(j_handle);
@@ -644,7 +644,7 @@ JNICALL Java_org_udpipe_JNI_parse(
         jobjectArray j_input_texts) {
     (void) j_type;
     if (j_handle == 0) {
-        env->ThrowNew(env->FindClass(kIllegalStateException), "Cannot parse with null handle");
+        env->ThrowNew(env->FindClass(illegalStateExceptionClass), "Cannot parse with null handle");
         return nullptr;
     }
 
