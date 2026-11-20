@@ -22,23 +22,23 @@ sni_load_h(const char *model, bool is_frozen);
 //sni_version();
 
 std::string
-sni_parse_hp(long handle, const char *text);
+sni_parse_h_pb(long handle, const char *text);
 
 void
-sni_parse_hp(long handle, const std::vector<std::string> &texts, std::vector<std::string> &parsed_sentences);
+sni_parse_h_pb(long handle, const std::vector<std::string> &texts, std::vector<std::string> &parsed_sentences);
 
 
 void
-sni_split_parse_hp(long handle, const char *text, std::vector<std::string> &split_parsed_sentences);
+sni_split_parse_h_pb(long handle, const char *text, std::vector<std::string> &split_parsed_sentences);
 
 void
-sni_split_parse_hp(long handle, const std::vector<std::string> &texts, std::vector<std::string> &split_parsed_sentences);
+sni_split_parse_h_pb(long handle, const std::vector<std::string> &texts, std::vector<std::string> &split_parsed_sentences);
 
 
 std::string
-sni_segment_hp(long handle, const char *text);
+sni_segment_h_pb(long handle, const char *text);
 
 void
-sni_segment_hp(long handle, const std::vector<std::string> &texts, std::vector<std::string> &segmented_sentences);
+sni_segment_h_pb(long handle, const std::vector<std::string> &texts, std::vector<std::string> &segmented_sentences);
 
 #endif
